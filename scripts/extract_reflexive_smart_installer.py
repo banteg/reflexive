@@ -318,31 +318,29 @@ def sorted_cab_files(raw_cabs_dir: Path, installer_stem: str) -> list[Path]:
 
 def clear_volume_aliases(raw_cabs_dir: Path, installer_stem: str) -> None:
     for index, _cab_path in enumerate(sorted_cab_files(raw_cabs_dir, installer_stem), start=1):
-        for alias in (f"Disk{index}", f"{index - 1:04d}.tmp"):
-            alias_path = raw_cabs_dir / alias
-            if alias_path.exists() or alias_path.is_symlink():
-                alias_path.unlink()
+        alias_path = raw_cabs_dir / f"{index - 1:04d}.tmp"
+        if alias_path.exists() or alias_path.is_symlink():
+            alias_path.unlink()
 
 
 def create_volume_aliases(raw_cabs_dir: Path, installer_stem: str, *, mode: str = "hardlink") -> None:
     for index, cab_path in enumerate(sorted_cab_files(raw_cabs_dir, installer_stem), start=1):
-        for alias in (f"Disk{index}", f"{index - 1:04d}.tmp"):
-            alias_path = raw_cabs_dir / alias
-            if alias_path.exists() or alias_path.is_symlink():
-                alias_path.unlink()
-            if mode == "copy":
-                shutil.copy2(cab_path, alias_path)
-                continue
-            try:
-                os.link(cab_path, alias_path)
-            except OSError as exc:
-                if exc.errno != errno.EXDEV:
-                    raise
-                shutil.copy2(cab_path, alias_path)
+        alias_path = raw_cabs_dir / f"{index - 1:04d}.tmp"
+        if alias_path.exists() or alias_path.is_symlink():
+            alias_path.unlink()
+        if mode == "copy":
+            shutil.copy2(cab_path, alias_path)
+            continue
+        try:
+            os.link(cab_path, alias_path)
+        except OSError as exc:
+            if exc.errno != errno.EXDEV:
+                raise
+            shutil.copy2(cab_path, alias_path)
 
 
 def preflight_volume_set(seven_zip: str, raw_cabs_dir: Path) -> bool:
-    return try_command([seven_zip, "l", "./Disk1"], cwd=raw_cabs_dir, quiet=True)
+    return try_command([seven_zip, "l", "./0000.tmp"], cwd=raw_cabs_dir, quiet=True)
 
 
 def materialize_payload(file_names: tuple[str, ...], raw_payload_dir: Path, destination_root: Path) -> None:
@@ -414,7 +412,7 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
             cab_count = reconstruct_raw_cabs(metadata, raw_cabs_dir)
             print(f"Rebuilt {cab_count} CAB volumes")
 
-            print("Creating Smart Install Maker volume aliases")
+            print("Creating numbered CAB volume aliases")
             create_volume_aliases(raw_cabs_dir, installer_path.stem)
 
             if not preflight_volume_set(seven_zip, raw_cabs_dir):
@@ -426,7 +424,7 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
                     raise ValueError("7z could not open the reconstructed multi-volume CAB set")
 
             print("Extracting numbered payload with 7z")
-            run_command([seven_zip, "x", "./Disk1", f"-o{raw_payload_dir}", "-y"], cwd=raw_cabs_dir)
+            run_command([seven_zip, "x", "./0000.tmp", f"-o{raw_payload_dir}", "-y"], cwd=raw_cabs_dir)
         else:
             print("Extracting uncompressed numbered payload directly")
             extract_uncompressed_payload(metadata, raw_payload_dir)
