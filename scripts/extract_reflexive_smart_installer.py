@@ -398,8 +398,9 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Extract a Smart Install Maker Reflexive Arcade installer into a final "
-            "payload tree without keeping intermediate CAB/raw directories."
+            "Extract one of the unofficial Reflexive Arcade Games Collection repack "
+            "installers into a final payload tree without keeping intermediate "
+            "CAB/raw directories."
         )
     )
     parser.add_argument("installer", type=Path, help="Path to the Smart Install Maker installer EXE.")
