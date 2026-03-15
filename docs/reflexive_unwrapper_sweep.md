@@ -5,14 +5,14 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 ## Summary
 
 - Effective wrapper roots scanned: 1083
-- Successful roots: 994
-- Not yet decryptable roots: 89
+- Successful roots: 1056
+- Not yet decryptable roots: 27
 - Reported unsupported: 26
-- Execution errors: 63
+- Execution errors: 1
 - Successful `direct` roots: 46
-- Successful `static` roots: 948
+- Successful `static` roots: 1010
 - Error roots by predicted strategy:
-  - `static`: 63
+  - `static`: 1
 
 ## Decryptable Roots
 
@@ -83,6 +83,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade A/Aqua Pearls` | `static` | `pearls.exe` |
 | `Reflexive Arcade A/Aqua Slider` | `static` | `AquaSlider.exe` |
 | `Reflexive Arcade A/Aqua Words` | `direct` | `game.exe` |
+| `Reflexive Arcade A/AquaPOP` | `static` | `AquaPop.exe` |
 | `Reflexive Arcade A/Aquaball` | `static` | `AquaBall.exe` |
 | `Reflexive Arcade A/Aquabble Avalanche` | `static` | `aquabbles.exe` |
 | `Reflexive Arcade A/Aquabble Quest` | `static` | `Aquabble Quest.exe` |
@@ -101,9 +102,11 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade A/Arxon` | `static` | `arxon.exe` |
 | `Reflexive Arcade A/Asea` | `static` | `Asea.exe` |
 | `Reflexive Arcade A/Ashley Jones` | `static` | `HrtEgypt.exe` |
+| `Reflexive Arcade A/Asianata` | `static` | `Asianata.exe` |
 | `Reflexive Arcade A/Astral Masters` | `static` | `masters.exe` |
 | `Reflexive Arcade A/Astro Avenger 2` | `static` | `AstroAvenger2.exe` |
 | `Reflexive Arcade A/Astro Fury` | `static` | `AstroFury.exe` |
+| `Reflexive Arcade A/AstroAvenger` | `static` | `AstroAvenger.exe` |
 | `Reflexive Arcade A/Astrobatics` | `static` | `Astrobatics.exe` |
 | `Reflexive Arcade A/Atlantis` | `static` | `Atlantis.exe` |
 | `Reflexive Arcade A/Atlantis Adventure` | `static` | `Atlantis.exe` |
@@ -122,13 +125,18 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade B/Babel Deluxe` | `static` | `Babel.exe` |
 | `Reflexive Arcade B/Ball 7` | `static` | `ball7.exe` |
 | `Reflexive Arcade B/Ballhalla` | `static` | `Ballhalla.exe` |
+| `Reflexive Arcade B/Ballistik` | `static` | `Ballistik.exe` |
+| `Reflexive Arcade B/Balloon Blast` | `static` | `BalloonBlast.exe` |
 | `Reflexive Arcade B/Band Of Bugs` | `static` | `BoB.exe` |
+| `Reflexive Arcade B/Barnyard Invasion` | `static` | `BarnyardInvasion.exe` |
 | `Reflexive Arcade B/Barrel Mania` | `static` | `bmania.exe` |
 | `Reflexive Arcade B/Battle Castles` | `static` | `BattleCastles.exe` |
 | `Reflexive Arcade B/Battleship` | `static` | `BattleshipSA.exe` |
+| `Reflexive Arcade B/Battleship Chess` | `static` | `bc.exe` |
 | `Reflexive Arcade B/Beach Party Craze` | `static` | `Beach Party Craze.exe` |
 | `Reflexive Arcade B/Beads` | `static` | `Beads.exe` |
 | `Reflexive Arcade B/Beeline` | `direct` | `Beeline.exe` |
+| `Reflexive Arcade B/Beesly's Buzzwords` | `static` | `Buzzwords.exe` |
 | `Reflexive Arcade B/Beetle Bomp` | `static` | `BeetleBomp.exe` |
 | `Reflexive Arcade B/Bejeweled 2 Deluxe` | `static` | `WinBej2.exe` |
 | `Reflexive Arcade B/Believe In Santa` | `static` | `BelieveInSanta.exe` |
@@ -138,6 +146,9 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade B/Big City Adventure San Francisco` | `static` | `BigCityAdventureSF.exe` |
 | `Reflexive Arcade B/Big City Adventure Sydney Australia` | `static` | `BigCityAdventureSyd.exe` |
 | `Reflexive Arcade B/Big Island Blends` | `static` | `BigIslandBlends.exe` |
+| `Reflexive Arcade B/Big Kahuna Reef` | `static` | `Big Kahuna Reef.exe` |
+| `Reflexive Arcade B/Big Kahuna Reef 2` | `static` | `Big Kahuna Reef 2.exe` |
+| `Reflexive Arcade B/Big Kahuna Words` | `static` | `Big Kahuna Words.exe` |
 | `Reflexive Arcade B/Birdies` | `static` | `Birdies.exe` |
 | `Reflexive Arcade B/Birds On A Wire` | `static` | `birds.exe` |
 | `Reflexive Arcade B/Bistro Stars` | `static` | `BistroStars.exe` |
@@ -159,13 +170,20 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade B/Brain Booster` | `static` | `brainbooster.exe` |
 | `Reflexive Arcade B/Brave Dwarves 2` | `static` | `BraveDwarves2.exe` |
 | `Reflexive Arcade B/Brave Dwarves Back For Treasures` | `static` | `Gnomes.exe` |
+| `Reflexive Arcade B/Brave Piglet` | `static` | `BravePiglet.exe` |
+| `Reflexive Arcade B/Break Ball 2 Gold` | `static` | `Break Ball 2 Gold.exe` |
+| `Reflexive Arcade B/Break Quest` | `static` | `BreakQuest.exe` |
 | `Reflexive Arcade B/Breaking News` | `static` | `bn.exe` |
 | `Reflexive Arcade B/Brick Journey` | `static` | `BrickJourney.exe` |
 | `Reflexive Arcade B/Brickquest` | `static` | `brickquest.exe` |
 | `Reflexive Arcade B/Bricks Of Egypt 2` | `static` | `BricksOfEgypt2.exe` |
 | `Reflexive Arcade B/Bricks of Atlantis` | `static` | `BricksOfAtlantis.exe` |
+| `Reflexive Arcade B/Bricks of Camelot` | `static` | `BricksOfCamelot.exe` |
+| `Reflexive Arcade B/Bricks of Egypt` | `static` | `BricksOfEgypt.exe` |
 | `Reflexive Arcade B/Brickshooter Egypt` | `static` | `BrickShooter.exe` |
 | `Reflexive Arcade B/Bricktopia` | `static` | `Bricktopia.exe` |
+| `Reflexive Arcade B/BrixFormer` | `static` | `BrixFormer.exe` |
+| `Reflexive Arcade B/Brixout XP` | `static` | `BrixoutXP.exe` |
 | `Reflexive Arcade B/Brixquest` | `static` | `BrixQuest.exe` |
 | `Reflexive Arcade B/Bubble Bay` | `static` | `bubblebay.exe` |
 | `Reflexive Arcade B/Bubble Odyssey` | `static` | `odyssey.exe` |
@@ -200,6 +218,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade C/Caribbean Mah Jong` | `static` | `CaribbeanMahJong.exe` |
 | `Reflexive Arcade C/Caribbean Treasures` | `static` | `CaribbeanTreasures.exe` |
 | `Reflexive Arcade C/Carl The Caveman` | `static` | `Caveman.exe` |
+| `Reflexive Arcade C/Carls Classics` | `static` | `cc.exe` |
 | `Reflexive Arcade C/Cash Out` | `static` | `CashOut.exe` |
 | `Reflexive Arcade C/Casino Island To Go` | `static` | `CasinoIsland.exe` |
 | `Reflexive Arcade C/Castle of Cards` | `static` | `castleofcards.exe` |
@@ -239,8 +258,10 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade C/Coffee Rush` | `static` | `CoffeeRush.exe` |
 | `Reflexive Arcade C/Coffee Tycoon` | `static` | `CoffeeTycoon.exe` |
 | `Reflexive Arcade C/Concentration` | `static` | `Concentration.exe` |
+| `Reflexive Arcade C/Cookie Chef` | `static` | `CookieChef.exe` |
 | `Reflexive Arcade C/Cooking Academy` | `static` | `CookingAcademy.exe` |
 | `Reflexive Arcade C/Cooking Dash` | `static` | `cookingdash.exe` |
+| `Reflexive Arcade C/Cosmic Bugs` | `static` | `cosmicbugs.exe` |
 | `Reflexive Arcade C/Cosmic Stacker` | `static` | `CosmicStacker.exe` |
 | `Reflexive Arcade C/Cradle Of Persia` | `static` | `CradleOfPersia.exe` |
 | `Reflexive Arcade C/Cradle Of Rome` | `static` | `CradleOfRome.exe` |
@@ -269,6 +290,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade D/Death On The Nile` | `static` | `DeathOnTheNile.exe` |
 | `Reflexive Arcade D/Deep Blue Sea` | `static` | `Deep Blue Sea.exe` |
 | `Reflexive Arcade D/Deep Quest` | `static` | `DeepQuest.exe` |
+| `Reflexive Arcade D/Deep Sea Adventures` | `static` | `dsa.exe` |
 | `Reflexive Arcade D/Deep Sea Tycoon` | `static` | `ut.exe` |
 | `Reflexive Arcade D/Deep Sea Tycoon 2` | `static` | `game.exe` |
 | `Reflexive Arcade D/Delicious 2 Deluxe` | `static` | `Delicious2.exe` |
@@ -281,6 +303,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade D/Devastation Zone Troopers` | `static` | `dzt.exe` |
 | `Reflexive Arcade D/Diamond Detective` | `static` | `DiamondDetective.exe` |
 | `Reflexive Arcade D/Diamond Drop` | `static` | `DiamondDrop.exe` |
+| `Reflexive Arcade D/Digi Pool` | `static` | `Digi Pool.exe` |
 | `Reflexive Arcade D/Diner Dash` | `static` | `Diner Dash.exe` |
 | `Reflexive Arcade D/Diner Dash 2` | `static` | `dinerdash2.exe` |
 | `Reflexive Arcade D/Diner Dash Flo On The Go` | `static` | `Diner Dash - Flo On The Go.exe` |
@@ -289,6 +312,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade D/Discovering Nature` | `static` | `DiscoveringNature.exe` |
 | `Reflexive Arcade D/Discovery A Seek And Find Adventure` | `static` | `Discovery.exe` |
 | `Reflexive Arcade D/Doggie Dash` | `static` | `doggiedash.exe` |
+| `Reflexive Arcade D/Dr Blobs Organism` | `static` | `organism.exe` |
 | `Reflexive Arcade D/Dr Daisy Pet Vet` | `static` | `daisy.exe` |
 | `Reflexive Arcade D/Dr Germ` | `static` | `DrGerm.exe` |
 | `Reflexive Arcade D/Dr Lynch Grave Secrets` | `static` | `gravesecrets.exe` |
@@ -349,6 +373,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade F/Fashion Fits` | `static` | `FashionFits.exe` |
 | `Reflexive Arcade F/Fashion Solitaire` | `static` | `Fashion.exe` |
 | `Reflexive Arcade F/Fashionista` | `static` | `Fashionista.exe` |
+| `Reflexive Arcade F/FastCrawl` | `static` | `FastCrawl.exe` |
 | `Reflexive Arcade F/Fatal Hearts` | `static` | `Fatal Hearts.exe` |
 | `Reflexive Arcade F/Fatman Adventures` | `direct` | `fatman.exe` |
 | `Reflexive Arcade F/Feed The Snake` | `direct` | `fsnake.exe` |
@@ -391,6 +416,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade F/Full Circle` | `static` | `FullCircle.exe` |
 | `Reflexive Arcade F/Funky Farm` | `static` | `Funky Farm.exe` |
 | `Reflexive Arcade F/Funny Creatures` | `static` | `FunnyCreatures.exe` |
+| `Reflexive Arcade F/Funny Faces` | `static` | `Funny Faces.exe` |
 | `Reflexive Arcade F/Fusion` | `direct` | `Fusion.exe` |
 | `Reflexive Arcade G/G2 Geeks Unleashed` | `static` | `GeeksPC.exe` |
 | `Reflexive Arcade G/GHOST Hunters The Haunting Of Majesty Manor` | `static` | `GHOST Hunters.exe` |
@@ -403,6 +429,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade G/Garfield Goes to Pieces` | `direct` | `PtJigsaw.exe` |
 | `Reflexive Arcade G/Gazillionaire III` | `static` | `GAZ3.exe` |
 | `Reflexive Arcade G/Gem Ball` | `static` | `_GemBall.exe` |
+| `Reflexive Arcade G/Gem Mine` | `static` | `GemMine.exe` |
 | `Reflexive Arcade G/Gem Shop` | `static` | `GemShop.exe` |
 | `Reflexive Arcade G/Gem Slider Deluxe` | `static` | `gs.exe` |
 | `Reflexive Arcade G/Gemsweeper` | `static` | `Gemsweeper.exe` |
@@ -423,8 +450,10 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade G/Gold Miner Vegas` | `static` | `GoldMinerVegas.exe` |
 | `Reflexive Arcade G/Gold Rush Treasure Hunt` | `static` | `GoldRushTreasureHunt.exe` |
 | `Reflexive Arcade G/Gold Sprinter` | `direct` | `GoldSprinter.exe` |
+| `Reflexive Arcade G/Golf Adventure Galaxy` | `static` | `minigolf.exe` |
 | `Reflexive Arcade G/Granny In Paradise` | `static` | `granny_download.exe` |
 | `Reflexive Arcade G/Gravity Drive` | `static` | `GravityDrive.exe` |
+| `Reflexive Arcade G/Gravity Gems` | `static` | `Gravity Gems.exe` |
 | `Reflexive Arcade G/Great Escapes Solitaire` | `static` | `solitaire.exe` |
 | `Reflexive Arcade G/Great Secrets Da Vinci` | `static` | `davinci.exe` |
 | `Reflexive Arcade G/Greedy Words` | `static` | `GreedyWords.exe` |
@@ -490,6 +519,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade J/Janes Realty` | `static` | `Reality.exe` |
 | `Reflexive Arcade J/Jeez` | `static` | `Jeez!.exe` |
 | `Reflexive Arcade J/Jet Jumper` | `static` | `JJ-Game.exe` |
+| `Reflexive Arcade J/Jets N Guns` | `static` | `JnG.exe` |
 | `Reflexive Arcade J/Jets N Guns GOLD` | `static` | `JnG.exe` |
 | `Reflexive Arcade J/Jewel Craft` | `static` | `JewelCraft.exe` |
 | `Reflexive Arcade J/Jewel Match` | `static` | `jewel.exe` |
@@ -497,6 +527,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade J/Jewel Match Winter Wonderland` | `static` | `JewelMatch_WinterWonderland.exe` |
 | `Reflexive Arcade J/Jewel Miner` | `static` | `JewelMiner.exe` |
 | `Reflexive Arcade J/Jewel Of Atlantis` | `static` | `Jewel of Atlantis.exe` |
+| `Reflexive Arcade J/Jewel Quest` | `static` | `JewelQuest.exe` |
 | `Reflexive Arcade J/Jewel Quest 2` | `static` | `JewelQuest2.exe` |
 | `Reflexive Arcade J/Jewel Quest III` | `static` | `JewelQuest3.exe` |
 | `Reflexive Arcade J/Jewel Quest Mysteries` | `static` | `EmeraldTear.exe` |
@@ -535,6 +566,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade L/Lemonade Tycoon` | `static` | `Lemonade.exe` |
 | `Reflexive Arcade L/Lemonade Tycoon 2` | `static` | `Lemonade2.exe` |
 | `Reflexive Arcade L/Letter Lab` | `static` | `Letter Lab.exe` |
+| `Reflexive Arcade L/LexiCastle` | `static` | `LexiCastle32.exe` |
 | `Reflexive Arcade L/Liong The Dragon Dance` | `static` | `liong.exe` |
 | `Reflexive Arcade L/Little Farm` | `static` | `LittleFarm.exe` |
 | `Reflexive Arcade L/Little Shop City Lights` | `static` | `LittleShopOfTreasures3.exe` |
@@ -552,7 +584,9 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade L/Luxor 3` | `static` | `Luxor3.exe` |
 | `Reflexive Arcade L/Luxor Amun Rising` | `static` | `Luxor AR.exe` |
 | `Reflexive Arcade L/Luxor Mah Jong` | `static` | `Luxor Mahjong.exe` |
+| `Reflexive Arcade M/Machine Hell` | `static` | `MachineHell.exe` |
 | `Reflexive Arcade M/Mad Cars` | `direct` | `madcars.exe` |
+| `Reflexive Arcade M/MadCaps` | `static` | `madcaps.exe` |
 | `Reflexive Arcade M/Magic Academy` | `static` | `academy.exe` |
 | `Reflexive Arcade M/Magic Ball 2` | `static` | `MagicBall2.exe` |
 | `Reflexive Arcade M/Magic Ball 2 New Worlds` | `static` | `MagicBall2.exe` |
@@ -575,6 +609,8 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade M/Magus In Search Of Adventure` | `static` | `Magus.exe` |
 | `Reflexive Arcade M/Mah Jomino` | `static` | `mahjomino.exe` |
 | `Reflexive Arcade M/Mah Jong Adventures` | `static` | `MahJongAdventures.exe` |
+| `Reflexive Arcade M/Mah Jong Medley` | `static` | `MahJong2.exe` |
+| `Reflexive Arcade M/Mah Jong Quest` | `static` | `mahjong.exe` |
 | `Reflexive Arcade M/Mah Jong Quest 3` | `static` | `MahjongQuest3.exe` |
 | `Reflexive Arcade M/Mah Jong Quest II` | `static` | `MahjongQuest2.exe` |
 | `Reflexive Arcade M/Mahjong Escape` | `static` | `MahjongEscape.exe` |
@@ -607,6 +643,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade M/Microblots` | `static` | `microblots.exe` |
 | `Reflexive Arcade M/Mighty Rodent` | `static` | `MightyRodent.exe` |
 | `Reflexive Arcade M/Mind Machine` | `static` | `mind_machine.exe` |
+| `Reflexive Arcade M/Mind Your Marbles` | `static` | `Mind Your Marbles.exe` |
 | `Reflexive Arcade M/Mind Your Marbles Christmas Edition` | `static` | `Mind Your Marbles.exe` |
 | `Reflexive Arcade M/Mini Golf Pro` | `static` | `MiniGolfPro_Reflexive.exe` |
 | `Reflexive Arcade M/Miriel The Magical Merchant` | `static` | `Miriel.exe` |
@@ -614,13 +651,17 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade M/Mirror Mixup` | `static` | `MirrorMixup.exe` |
 | `Reflexive Arcade M/Miss Management` | `static` | `Miss Management.exe` |
 | `Reflexive Arcade M/Miss Teri Tale` | `static` | `MissTeriTale.exe` |
+| `Reflexive Arcade M/Monarch The Butterfly King` | `static` | `Monarch.exe` |
 | `Reflexive Arcade M/Money Tree` | `static` | `money tree.exe` |
 | `Reflexive Arcade M/Monster Mash` | `static` | `MonsterMash.exe` |
 | `Reflexive Arcade M/Mortimer Beckett And The Secrets Of Spooky Manor` | `static` | `MortimerSpookyManor.exe` |
+| `Reflexive Arcade M/Mortimer and the Enchanted Castle` | `static` | `castle.exe` |
+| `Reflexive Arcade M/Mosaic Tomb of Mystery` | `static` | `Mosaic.exe` |
 | `Reflexive Arcade M/Mr Robot` | `static` | `MrRobot.exe` |
 | `Reflexive Arcade M/Mr Smoozles Goes Nutso` | `static` | `Nutso_Merscom.exe` |
 | `Reflexive Arcade M/Music Catch` | `static` | `MusicCatch.exe` |
 | `Reflexive Arcade M/Musikapa` | `static` | `game.exe` |
+| `Reflexive Arcade M/Mutant Storm` | `static` | `MutantStorm.exe` |
 | `Reflexive Arcade M/My Farm` | `static` | `My Farm.exe` |
 | `Reflexive Arcade M/Mysteries Of Horus` | `static` | `MysteriesOfHorus.exe` |
 | `Reflexive Arcade M/Mystery Case Files Huntsville` | `static` | `MysteryCaseFiles.exe` |
@@ -641,6 +682,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade M/Super Mahjong` | `direct` | `mahjong.exe` |
 | `Reflexive Arcade N/NBC Heads Up Poker` | `static` | `Poker3DClient.exe` |
 | `Reflexive Arcade N/Napad` | `static` | `Napad.exe` |
+| `Reflexive Arcade N/Naval Strike` | `static` | `NavalStrike.exe` |
 | `Reflexive Arcade N/Navigatris` | `static` | `Navigatris.exe` |
 | `Reflexive Arcade N/Neon Wars` | `static` | `neonwars.exe` |
 | `Reflexive Arcade N/Neptunes Secret` | `static` | `NeptunesSecret.exe` |
@@ -662,6 +704,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade P/Paparazzi` | `static` | `Paparazzi.exe` |
 | `Reflexive Arcade P/Paradoxion` | `static` | `Paradoxion.exe` |
 | `Reflexive Arcade P/Parking Dash` | `static` | `Parking Dash.exe` |
+| `Reflexive Arcade P/Passage 3` | `static` | `Extra.exe` |
 | `Reflexive Arcade P/Pastime Puzzles` | `static` | `PastimePuzzles.exe` |
 | `Reflexive Arcade P/Pastry Passion` | `static` | `PastryPassion.exe` |
 | `Reflexive Arcade P/Pat Sajak's Lucky Letters` | `direct` | `LuckyLetters100.exe` |
@@ -710,6 +753,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade P/Pulsarius` | `static` | `Pulsarius.exe` |
 | `Reflexive Arcade P/Puppy Luv` | `static` | `Puppy Luv.exe` |
 | `Reflexive Arcade P/Purrfect Pet Shop` | `static` | `ps.exe` |
+| `Reflexive Arcade P/Puzzle Blast` | `static` | `PuzzleBlast.exe` |
 | `Reflexive Arcade P/Puzzle City` | `static` | `pc.exe` |
 | `Reflexive Arcade P/Puzzle Detective` | `static` | `PuzzleDetective.exe` |
 | `Reflexive Arcade P/Puzzle Hero` | `static` | `PuzzleHero.exe` |
@@ -724,6 +768,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade R/Race Cars The Extreme Rally` | `static` | `Race Cars.exe` |
 | `Reflexive Arcade R/Rack Em Up Roadtrip` | `static` | `RackEmUpRoadTrip.exe` |
 | `Reflexive Arcade R/Rage Of Magic 2` | `static` | `Rage of Magic II.exe` |
+| `Reflexive Arcade R/Rainbow Drops Buster` | `static` | `RainbowDropsBuster.exe` |
 | `Reflexive Arcade R/Rainbow Mystery` | `static` | `RainbowMystery.exe` |
 | `Reflexive Arcade R/Rainbow Web` | `static` | `RainbowWeb.exe` |
 | `Reflexive Arcade R/Rainbow Web 2` | `static` | `RainbowWeb2.exe` |
@@ -741,6 +786,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade R/Restaurant Empire` | `static` | `re.exe` |
 | `Reflexive Arcade R/Restaurant Rush` | `static` | `RestaurantRush.exe` |
 | `Reflexive Arcade R/Rhombis` | `static` | `Rhombis.exe` |
+| `Reflexive Arcade R/Ricochet Infinity` | `static` | `RicochetInfinity.exe` |
 | `Reflexive Arcade R/Ricochet Lost Worlds Recharged` | `direct` | `Ricochet.exe` |
 | `Reflexive Arcade R/Ricochet Xtreme` | `static` | `Ricochet.exe` |
 | `Reflexive Arcade R/Righteous Kill` | `static` | `Righteous Kill.exe` |
@@ -749,9 +795,11 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade R/Risk` | `static` | `RiskSA.exe` |
 | `Reflexive Arcade R/Risk II` | `static` | `RiskII.exe` |
 | `Reflexive Arcade R/Rival Ball Tournament` | `static` | `RB Tournament.exe` |
+| `Reflexive Arcade R/River Raider II` | `static` | `RiverRaider2.exe` |
 | `Reflexive Arcade R/Robbox` | `static` | `Robbox.exe` |
 | `Reflexive Arcade R/Roboball` | `static` | `roboball.exe` |
 | `Reflexive Arcade R/Rock Frenzy` | `static` | `rf.exe` |
+| `Reflexive Arcade R/Rocket Bowl` | `static` | `RocketBowl.exe` |
 | `Reflexive Arcade R/Rocket Mania Deluxe` | `static` | `RocketMania.exe` |
 | `Reflexive Arcade R/Roller Rush` | `static` | `RollerRush.exe` |
 | `Reflexive Arcade R/Roman Bowl` | `static` | `RomanBowl.exe` |
@@ -779,12 +827,14 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade S/Serpengo` | `static` | `serpengo.exe` |
 | `Reflexive Arcade S/Sewer Run` | `static` | `sewerrun.exe` |
 | `Reflexive Arcade S/Shape Shifter` | `static` | `Shape.exe` |
+| `Reflexive Arcade S/Shape Solitaire` | `static` | `ShapeSolitaire.exe` |
 | `Reflexive Arcade S/Sheeplings` | `static` | `Sheeplings.exe` |
 | `Reflexive Arcade S/Shoot-n-Roll` | `static` | `Shoot-n-Roll.exe` |
 | `Reflexive Arcade S/Shopmania` | `static` | `Shopmania.exe` |
 | `Reflexive Arcade S/Shopping Blocks` | `static` | `ShoppingBlocks.exe` |
 | `Reflexive Arcade S/Shopping Marathon` | `static` | `ShoppingMarathon.exe` |
 | `Reflexive Arcade S/Sky Bubbles Deluxe` | `static` | `SkyBubbles.exe` |
+| `Reflexive Arcade S/Slickball` | `static` | `slickball.exe` |
 | `Reflexive Arcade S/Slingo` | `static` | `Slingo.exe` |
 | `Reflexive Arcade S/Slingo Casino Pak` | `static` | `SlingoCasinoPak.exe` |
 | `Reflexive Arcade S/Slingo Quest` | `static` | `SlingoQuest.exe` |
@@ -792,16 +842,21 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade S/Slingo Supreme` | `static` | `SlingoSupreme.exe` |
 | `Reflexive Arcade S/Slot Words` | `static` | `slotwords.exe` |
 | `Reflexive Arcade S/Slyder Adventures` | `static` | `sad.exe` |
+| `Reflexive Arcade S/Snail Mail` | `static` | `SnailMail.exe` |
 | `Reflexive Arcade S/Snapshot Adventures` | `static` | `Snap.exe` |
+| `Reflexive Arcade S/Snow Ball` | `static` | `SnowBall.exe` |
 | `Reflexive Arcade S/Snowy Lunch Rush` | `static` | `LunchRush.exe` |
 | `Reflexive Arcade S/Snowy Puzzle Islands` | `static` | `PuzzleIslands.exe` |
+| `Reflexive Arcade S/Snowy Space Trip` | `static` | `SpaceTrip.exe` |
 | `Reflexive Arcade S/Snowy Treasure Hunter` | `static` | `TreasureHunter.exe` |
 | `Reflexive Arcade S/Snowy Treasure Hunter 2` | `static` | `TreasureHunter2.exe` |
 | `Reflexive Arcade S/Snowy Treasure Hunter 3` | `static` | `TreasureHunter3.exe` |
+| `Reflexive Arcade S/Soda Pipes` | `static` | `Soda Pipes.exe` |
 | `Reflexive Arcade S/Solitaire` | `direct` | `solitaire.exe` |
 | `Reflexive Arcade S/Solitaire Pop` | `static` | `solitairepop.exe` |
 | `Reflexive Arcade S/Space Skramble` | `static` | `space_skramble_particles_Reflexive.exe` |
 | `Reflexive Arcade S/Space Strike` | `static` | `game.exe` |
+| `Reflexive Arcade S/Space Taxi 2` | `static` | `SpaceTaxi.exe` |
 | `Reflexive Arcade S/Spacebound` | `static` | `SPACEBOUND.exe` |
 | `Reflexive Arcade S/Spandex Force` | `static` | `Spandex Force.exe` |
 | `Reflexive Arcade S/Sparkle` | `static` | `Sparkle.exe` |
@@ -809,6 +864,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade S/Spellagories` | `static` | `Spellagories.exe` |
 | `Reflexive Arcade S/Spellunker` | `static` | `Spellunker.exe` |
 | `Reflexive Arcade S/Spin & Play` | `static` | `SpinAndPlay.exe` |
+| `Reflexive Arcade S/Spin & Win` | `static` | `SpinWin.exe` |
 | `Reflexive Arcade S/Spirit Of Wandering The Legend` | `static` | `SpiritOfWandering.exe` |
 | `Reflexive Arcade S/Splash` | `static` | `Splash.exe` |
 | `Reflexive Arcade S/Sprill` | `static` | `Sprill.exe` |
@@ -836,6 +892,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade S/Sudoku Maya Gold` | `static` | `SudokuMaya.exe` |
 | `Reflexive Arcade S/Sudoku Pagoda` | `static` | `sudoku pagoda.exe` |
 | `Reflexive Arcade S/Sunset Studio Deluxe` | `static` | `SunsetStudio.exe` |
+| `Reflexive Arcade S/Super Bounce Out` | `static` | `BounceOut.exe` |
 | `Reflexive Arcade S/Super Collapse 3` | `static` | `SuperCollapseIII.exe` |
 | `Reflexive Arcade S/Super Collapse Puzzle Gallery` | `static` | `CollapsePuzzle.exe` |
 | `Reflexive Arcade S/Super Collapse Puzzle Gallery 2` | `static` | `CollapsePuzzle2.exe` |
@@ -844,6 +901,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade S/Super Granny 3` | `static` | `SuperGranny3.exe` |
 | `Reflexive Arcade S/Super Granny 4` | `static` | `SuperGranny4.exe` |
 | `Reflexive Arcade S/Super Slyder` | `static` | `SuperSlyder_release.exe` |
+| `Reflexive Arcade S/Super Spongebob Collapse` | `static` | `SBCollapse.exe` |
 | `Reflexive Arcade S/Supercow` | `static` | `supercow.exe` |
 | `Reflexive Arcade S/Superstar Chefs` | `static` | `Superstar Chefs.exe` |
 | `Reflexive Arcade S/Sushi Frenzy` | `static` | `SushiFrenzy.exe` |
@@ -925,6 +983,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade T/TriPeaks Solitaire To Go` | `static` | `TriPeaks.exe` |
 | `Reflexive Arcade T/Triptych` | `direct` | `hwconfig.exe` |
 | `Reflexive Arcade T/TriviaNet Challenge` | `static` | `Trivia.exe` |
+| `Reflexive Arcade T/Troll` | `static` | `Troll.exe` |
 | `Reflexive Arcade T/Tropicabana` | `static` | `Tropicabana.exe` |
 | `Reflexive Arcade T/Tropico Jong` | `static` | `TropicoJong.exe` |
 | `Reflexive Arcade T/Tropix` | `static` | `Tropix.exe` |
@@ -938,6 +997,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade T/Turbo Subs` | `static` | `TurboSubs.exe` |
 | `Reflexive Arcade T/Turtix` | `static` | `Turtix.exe` |
 | `Reflexive Arcade T/Turtle Bay` | `static` | `TurtleBay.exe` |
+| `Reflexive Arcade T/Turtle Odyssey` | `static` | `Game.exe` |
 | `Reflexive Arcade T/Turtle Odyssey 2` | `static` | `Arcade.exe` |
 | `Reflexive Arcade T/Twinxoid` | `static` | `Twinxoid.exe` |
 | `Reflexive Arcade T/Twistingo` | `static` | `twistingo.exe` |
@@ -962,6 +1022,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade W/Warkanoid 2` | `static` | `Warkanoid2.exe` |
 | `Reflexive Arcade W/Water Bugs` | `static` | `waterbugs.exe` |
 | `Reflexive Arcade W/Waterscape Solitaire American Falls` | `static` | `WaterscapeSolitaire.exe` |
+| `Reflexive Arcade W/Weave Words` | `static` | `wwfull.exe` |
 | `Reflexive Arcade W/Wedding Dash` | `static` | `Wedding Dash.exe` |
 | `Reflexive Arcade W/Wedding Dash 2` | `static` | `weddingdash2.exe` |
 | `Reflexive Arcade W/Westward` | `static` | `WestwardVistaFinal.exe` |
@@ -991,6 +1052,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade W/World Mosaics` | `static` | `WorldMosaics.exe` |
 | `Reflexive Arcade X/XAvenger` | `static` | `X-Avenger.exe` |
 | `Reflexive Arcade X/Xango Tango` | `static` | `XangoTango.exe` |
+| `Reflexive Arcade X/Xeno Assault II` | `static` | `Xeno.exe` |
 | `Reflexive Arcade X/Xmas Bonus` | `static` | `xmasbonus.exe` |
 | `Reflexive Arcade Y/Yahtzee` | `static` | `Yahtzee.exe` |
 | `Reflexive Arcade Y/Yahtzee Texas Hold Em` | `static` | `YahtzeeTexasHoldEm.exe` |
@@ -1048,67 +1110,5 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 
 | Root | Strategy | Error |
 | --- | --- | --- |
-| `Reflexive Arcade A/AquaPOP` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade A/AquaPOP/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade A/Asianata` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade A/Asianata/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade A/AstroAvenger` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade A/AstroAvenger/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Ballistik` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Ballistik/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Balloon Blast` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Balloon Blast/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Barnyard Invasion` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Barnyard Invasion/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Battleship Chess` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Battleship Chess/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Beesly's Buzzwords` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Beesly's Buzzwords/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Big Kahuna Reef` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Big Kahuna Reef/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Big Kahuna Reef 2` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Big Kahuna Reef 2/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Big Kahuna Words` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Big Kahuna Words/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Brave Piglet` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Brave Piglet/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Break Ball 2 Gold` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Break Ball 2 Gold/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Break Quest` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Break Quest/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Bricks of Camelot` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Bricks of Camelot/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Bricks of Egypt` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Bricks of Egypt/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/BrixFormer` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/BrixFormer/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade B/Brixout XP` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Brixout XP/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade C/Carls Classics` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade C/Carls Classics/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade C/Cookie Chef` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade C/Cookie Chef/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade C/Cosmic Bugs` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade C/Cosmic Bugs/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade D/Deep Sea Adventures` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade D/Deep Sea Adventures/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade D/Digi Pool` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade D/Digi Pool/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade D/Dr Blobs Organism` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade D/Dr Blobs Organism/ReflexiveArcade/RAW_002.wdt` |
 | `Reflexive Arcade F/Family Feud` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade F/Family Feud/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade F/FastCrawl` | `static` | `.NET child payloads are not implemented yet for /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade F/FastCrawl/FastCrawl.RWG` |
-| `Reflexive Arcade F/Funny Faces` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade F/Funny Faces/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade G/Gem Mine` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade G/Gem Mine/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade G/Golf Adventure Galaxy` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade G/Golf Adventure Galaxy/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade G/Gravity Gems` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade G/Gravity Gems/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade J/Jets N Guns` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade J/Jets N Guns/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade J/Jewel Quest` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade J/Jewel Quest/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade L/LexiCastle` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade L/LexiCastle/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade M/Machine Hell` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Machine Hell/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade M/MadCaps` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/MadCaps/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade M/Mah Jong Medley` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mah Jong Medley/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade M/Mah Jong Quest` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mah Jong Quest/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade M/Mind Your Marbles` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mind Your Marbles/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade M/Monarch The Butterfly King` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Monarch The Butterfly King/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade M/Mortimer and the Enchanted Castle` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mortimer and the Enchanted Castle/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade M/Mosaic Tomb of Mystery` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mosaic Tomb of Mystery/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade M/Mutant Storm` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mutant Storm/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade N/Naval Strike` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade N/Naval Strike/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade P/Passage 3` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade P/Passage 3/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade P/Puzzle Blast` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade P/Puzzle Blast/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade R/Rainbow Drops Buster` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/Rainbow Drops Buster/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade R/Ricochet Infinity` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/Ricochet Infinity/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade R/River Raider II` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/River Raider II/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade R/Rocket Bowl` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/Rocket Bowl/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade S/Shape Solitaire` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Shape Solitaire/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade S/Slickball` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Slickball/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade S/Snail Mail` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Snail Mail/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade S/Snow Ball` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Snow Ball/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade S/Snowy Space Trip` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Snowy Space Trip/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade S/Soda Pipes` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Soda Pipes/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade S/Space Taxi 2` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Space Taxi 2/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade S/Spin & Win` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Spin & Win/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade S/Super Bounce Out` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Super Bounce Out/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade S/Super Spongebob Collapse` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Super Spongebob Collapse/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade T/Troll` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade T/Troll/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade T/Turtle Odyssey` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade T/Turtle Odyssey/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade W/Weave Words` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade W/Weave Words/ReflexiveArcade/RAW_002.wdt` |
-| `Reflexive Arcade X/Xeno Assault II` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade X/Xeno Assault II/ReflexiveArcade/RAW_002.wdt` |
 

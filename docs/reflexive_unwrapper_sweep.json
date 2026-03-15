@@ -4,10 +4,10 @@
   "mode": "probe",
   "summary": {
     "effective_root_count": 1083,
-    "ok_count": 994,
-    "not_decryptable_count": 89,
+    "ok_count": 1056,
+    "not_decryptable_count": 27,
     "unsupported_count": 26,
-    "error_count": 63,
+    "error_count": 1,
     "ok_by_strategy": [
       {
         "strategy": "direct",
@@ -15,13 +15,13 @@
       },
       {
         "strategy": "static",
-        "count": 948
+        "count": 1010
       }
     ],
     "error_by_strategy": [
       {
         "strategy": "static",
-        "count": 63
+        "count": 1
       }
     ]
   },
@@ -352,6 +352,11 @@
       "output_executable": "game.exe"
     },
     {
+      "root": "Reflexive Arcade A/AquaPOP",
+      "strategy": "static",
+      "output_executable": "AquaPop.exe"
+    },
+    {
       "root": "Reflexive Arcade A/Aquaball",
       "strategy": "static",
       "output_executable": "AquaBall.exe"
@@ -442,6 +447,11 @@
       "output_executable": "HrtEgypt.exe"
     },
     {
+      "root": "Reflexive Arcade A/Asianata",
+      "strategy": "static",
+      "output_executable": "Asianata.exe"
+    },
+    {
       "root": "Reflexive Arcade A/Astral Masters",
       "strategy": "static",
       "output_executable": "masters.exe"
@@ -455,6 +465,11 @@
       "root": "Reflexive Arcade A/Astro Fury",
       "strategy": "static",
       "output_executable": "AstroFury.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/AstroAvenger",
+      "strategy": "static",
+      "output_executable": "AstroAvenger.exe"
     },
     {
       "root": "Reflexive Arcade A/Astrobatics",
@@ -547,9 +562,24 @@
       "output_executable": "Ballhalla.exe"
     },
     {
+      "root": "Reflexive Arcade B/Ballistik",
+      "strategy": "static",
+      "output_executable": "Ballistik.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Balloon Blast",
+      "strategy": "static",
+      "output_executable": "BalloonBlast.exe"
+    },
+    {
       "root": "Reflexive Arcade B/Band Of Bugs",
       "strategy": "static",
       "output_executable": "BoB.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Barnyard Invasion",
+      "strategy": "static",
+      "output_executable": "BarnyardInvasion.exe"
     },
     {
       "root": "Reflexive Arcade B/Barrel Mania",
@@ -567,6 +597,11 @@
       "output_executable": "BattleshipSA.exe"
     },
     {
+      "root": "Reflexive Arcade B/Battleship Chess",
+      "strategy": "static",
+      "output_executable": "bc.exe"
+    },
+    {
       "root": "Reflexive Arcade B/Beach Party Craze",
       "strategy": "static",
       "output_executable": "Beach Party Craze.exe"
@@ -580,6 +615,11 @@
       "root": "Reflexive Arcade B/Beeline",
       "strategy": "direct",
       "output_executable": "Beeline.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Beesly's Buzzwords",
+      "strategy": "static",
+      "output_executable": "Buzzwords.exe"
     },
     {
       "root": "Reflexive Arcade B/Beetle Bomp",
@@ -625,6 +665,21 @@
       "root": "Reflexive Arcade B/Big Island Blends",
       "strategy": "static",
       "output_executable": "BigIslandBlends.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Big Kahuna Reef",
+      "strategy": "static",
+      "output_executable": "Big Kahuna Reef.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Big Kahuna Reef 2",
+      "strategy": "static",
+      "output_executable": "Big Kahuna Reef 2.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Big Kahuna Words",
+      "strategy": "static",
+      "output_executable": "Big Kahuna Words.exe"
     },
     {
       "root": "Reflexive Arcade B/Birdies",
@@ -732,6 +787,21 @@
       "output_executable": "Gnomes.exe"
     },
     {
+      "root": "Reflexive Arcade B/Brave Piglet",
+      "strategy": "static",
+      "output_executable": "BravePiglet.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Break Ball 2 Gold",
+      "strategy": "static",
+      "output_executable": "Break Ball 2 Gold.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Break Quest",
+      "strategy": "static",
+      "output_executable": "BreakQuest.exe"
+    },
+    {
       "root": "Reflexive Arcade B/Breaking News",
       "strategy": "static",
       "output_executable": "bn.exe"
@@ -757,6 +827,16 @@
       "output_executable": "BricksOfAtlantis.exe"
     },
     {
+      "root": "Reflexive Arcade B/Bricks of Camelot",
+      "strategy": "static",
+      "output_executable": "BricksOfCamelot.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bricks of Egypt",
+      "strategy": "static",
+      "output_executable": "BricksOfEgypt.exe"
+    },
+    {
       "root": "Reflexive Arcade B/Brickshooter Egypt",
       "strategy": "static",
       "output_executable": "BrickShooter.exe"
@@ -765,6 +845,16 @@
       "root": "Reflexive Arcade B/Bricktopia",
       "strategy": "static",
       "output_executable": "Bricktopia.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/BrixFormer",
+      "strategy": "static",
+      "output_executable": "BrixFormer.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Brixout XP",
+      "strategy": "static",
+      "output_executable": "BrixoutXP.exe"
     },
     {
       "root": "Reflexive Arcade B/Brixquest",
@@ -935,6 +1025,11 @@
       "root": "Reflexive Arcade C/Carl The Caveman",
       "strategy": "static",
       "output_executable": "Caveman.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Carls Classics",
+      "strategy": "static",
+      "output_executable": "cc.exe"
     },
     {
       "root": "Reflexive Arcade C/Cash Out",
@@ -1132,6 +1227,11 @@
       "output_executable": "Concentration.exe"
     },
     {
+      "root": "Reflexive Arcade C/Cookie Chef",
+      "strategy": "static",
+      "output_executable": "CookieChef.exe"
+    },
+    {
       "root": "Reflexive Arcade C/Cooking Academy",
       "strategy": "static",
       "output_executable": "CookingAcademy.exe"
@@ -1140,6 +1240,11 @@
       "root": "Reflexive Arcade C/Cooking Dash",
       "strategy": "static",
       "output_executable": "cookingdash.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cosmic Bugs",
+      "strategy": "static",
+      "output_executable": "cosmicbugs.exe"
     },
     {
       "root": "Reflexive Arcade C/Cosmic Stacker",
@@ -1282,6 +1387,11 @@
       "output_executable": "DeepQuest.exe"
     },
     {
+      "root": "Reflexive Arcade D/Deep Sea Adventures",
+      "strategy": "static",
+      "output_executable": "dsa.exe"
+    },
+    {
       "root": "Reflexive Arcade D/Deep Sea Tycoon",
       "strategy": "static",
       "output_executable": "ut.exe"
@@ -1342,6 +1452,11 @@
       "output_executable": "DiamondDrop.exe"
     },
     {
+      "root": "Reflexive Arcade D/Digi Pool",
+      "strategy": "static",
+      "output_executable": "Digi Pool.exe"
+    },
+    {
       "root": "Reflexive Arcade D/Diner Dash",
       "strategy": "static",
       "output_executable": "Diner Dash.exe"
@@ -1380,6 +1495,11 @@
       "root": "Reflexive Arcade D/Doggie Dash",
       "strategy": "static",
       "output_executable": "doggiedash.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dr Blobs Organism",
+      "strategy": "static",
+      "output_executable": "organism.exe"
     },
     {
       "root": "Reflexive Arcade D/Dr Daisy Pet Vet",
@@ -1682,6 +1802,11 @@
       "output_executable": "Fashionista.exe"
     },
     {
+      "root": "Reflexive Arcade F/FastCrawl",
+      "strategy": "static",
+      "output_executable": "FastCrawl.exe"
+    },
+    {
       "root": "Reflexive Arcade F/Fatal Hearts",
       "strategy": "static",
       "output_executable": "Fatal Hearts.exe"
@@ -1892,6 +2017,11 @@
       "output_executable": "FunnyCreatures.exe"
     },
     {
+      "root": "Reflexive Arcade F/Funny Faces",
+      "strategy": "static",
+      "output_executable": "Funny Faces.exe"
+    },
+    {
       "root": "Reflexive Arcade F/Fusion",
       "strategy": "direct",
       "output_executable": "Fusion.exe"
@@ -1950,6 +2080,11 @@
       "root": "Reflexive Arcade G/Gem Ball",
       "strategy": "static",
       "output_executable": "_GemBall.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gem Mine",
+      "strategy": "static",
+      "output_executable": "GemMine.exe"
     },
     {
       "root": "Reflexive Arcade G/Gem Shop",
@@ -2052,6 +2187,11 @@
       "output_executable": "GoldSprinter.exe"
     },
     {
+      "root": "Reflexive Arcade G/Golf Adventure Galaxy",
+      "strategy": "static",
+      "output_executable": "minigolf.exe"
+    },
+    {
       "root": "Reflexive Arcade G/Granny In Paradise",
       "strategy": "static",
       "output_executable": "granny_download.exe"
@@ -2060,6 +2200,11 @@
       "root": "Reflexive Arcade G/Gravity Drive",
       "strategy": "static",
       "output_executable": "GravityDrive.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gravity Gems",
+      "strategy": "static",
+      "output_executable": "Gravity Gems.exe"
     },
     {
       "root": "Reflexive Arcade G/Great Escapes Solitaire",
@@ -2387,6 +2532,11 @@
       "output_executable": "JJ-Game.exe"
     },
     {
+      "root": "Reflexive Arcade J/Jets N Guns",
+      "strategy": "static",
+      "output_executable": "JnG.exe"
+    },
+    {
       "root": "Reflexive Arcade J/Jets N Guns GOLD",
       "strategy": "static",
       "output_executable": "JnG.exe"
@@ -2420,6 +2570,11 @@
       "root": "Reflexive Arcade J/Jewel Of Atlantis",
       "strategy": "static",
       "output_executable": "Jewel of Atlantis.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Quest",
+      "strategy": "static",
+      "output_executable": "JewelQuest.exe"
     },
     {
       "root": "Reflexive Arcade J/Jewel Quest 2",
@@ -2612,6 +2767,11 @@
       "output_executable": "Letter Lab.exe"
     },
     {
+      "root": "Reflexive Arcade L/LexiCastle",
+      "strategy": "static",
+      "output_executable": "LexiCastle32.exe"
+    },
+    {
       "root": "Reflexive Arcade L/Liong The Dragon Dance",
       "strategy": "static",
       "output_executable": "liong.exe"
@@ -2697,9 +2857,19 @@
       "output_executable": "Luxor Mahjong.exe"
     },
     {
+      "root": "Reflexive Arcade M/Machine Hell",
+      "strategy": "static",
+      "output_executable": "MachineHell.exe"
+    },
+    {
       "root": "Reflexive Arcade M/Mad Cars",
       "strategy": "direct",
       "output_executable": "madcars.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/MadCaps",
+      "strategy": "static",
+      "output_executable": "madcaps.exe"
     },
     {
       "root": "Reflexive Arcade M/Magic Academy",
@@ -2810,6 +2980,16 @@
       "root": "Reflexive Arcade M/Mah Jong Adventures",
       "strategy": "static",
       "output_executable": "MahJongAdventures.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mah Jong Medley",
+      "strategy": "static",
+      "output_executable": "MahJong2.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mah Jong Quest",
+      "strategy": "static",
+      "output_executable": "mahjong.exe"
     },
     {
       "root": "Reflexive Arcade M/Mah Jong Quest 3",
@@ -2972,6 +3152,11 @@
       "output_executable": "mind_machine.exe"
     },
     {
+      "root": "Reflexive Arcade M/Mind Your Marbles",
+      "strategy": "static",
+      "output_executable": "Mind Your Marbles.exe"
+    },
+    {
       "root": "Reflexive Arcade M/Mind Your Marbles Christmas Edition",
       "strategy": "static",
       "output_executable": "Mind Your Marbles.exe"
@@ -3007,6 +3192,11 @@
       "output_executable": "MissTeriTale.exe"
     },
     {
+      "root": "Reflexive Arcade M/Monarch The Butterfly King",
+      "strategy": "static",
+      "output_executable": "Monarch.exe"
+    },
+    {
       "root": "Reflexive Arcade M/Money Tree",
       "strategy": "static",
       "output_executable": "money tree.exe"
@@ -3020,6 +3210,16 @@
       "root": "Reflexive Arcade M/Mortimer Beckett And The Secrets Of Spooky Manor",
       "strategy": "static",
       "output_executable": "MortimerSpookyManor.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mortimer and the Enchanted Castle",
+      "strategy": "static",
+      "output_executable": "castle.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mosaic Tomb of Mystery",
+      "strategy": "static",
+      "output_executable": "Mosaic.exe"
     },
     {
       "root": "Reflexive Arcade M/Mr Robot",
@@ -3040,6 +3240,11 @@
       "root": "Reflexive Arcade M/Musikapa",
       "strategy": "static",
       "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mutant Storm",
+      "strategy": "static",
+      "output_executable": "MutantStorm.exe"
     },
     {
       "root": "Reflexive Arcade M/My Farm",
@@ -3140,6 +3345,11 @@
       "root": "Reflexive Arcade N/Napad",
       "strategy": "static",
       "output_executable": "Napad.exe"
+    },
+    {
+      "root": "Reflexive Arcade N/Naval Strike",
+      "strategy": "static",
+      "output_executable": "NavalStrike.exe"
     },
     {
       "root": "Reflexive Arcade N/Navigatris",
@@ -3245,6 +3455,11 @@
       "root": "Reflexive Arcade P/Parking Dash",
       "strategy": "static",
       "output_executable": "Parking Dash.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Passage 3",
+      "strategy": "static",
+      "output_executable": "Extra.exe"
     },
     {
       "root": "Reflexive Arcade P/Pastime Puzzles",
@@ -3487,6 +3702,11 @@
       "output_executable": "ps.exe"
     },
     {
+      "root": "Reflexive Arcade P/Puzzle Blast",
+      "strategy": "static",
+      "output_executable": "PuzzleBlast.exe"
+    },
+    {
       "root": "Reflexive Arcade P/Puzzle City",
       "strategy": "static",
       "output_executable": "pc.exe"
@@ -3555,6 +3775,11 @@
       "root": "Reflexive Arcade R/Rage Of Magic 2",
       "strategy": "static",
       "output_executable": "Rage of Magic II.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rainbow Drops Buster",
+      "strategy": "static",
+      "output_executable": "RainbowDropsBuster.exe"
     },
     {
       "root": "Reflexive Arcade R/Rainbow Mystery",
@@ -3642,6 +3867,11 @@
       "output_executable": "Rhombis.exe"
     },
     {
+      "root": "Reflexive Arcade R/Ricochet Infinity",
+      "strategy": "static",
+      "output_executable": "RicochetInfinity.exe"
+    },
+    {
       "root": "Reflexive Arcade R/Ricochet Lost Worlds Recharged",
       "strategy": "direct",
       "output_executable": "Ricochet.exe"
@@ -3682,6 +3912,11 @@
       "output_executable": "RB Tournament.exe"
     },
     {
+      "root": "Reflexive Arcade R/River Raider II",
+      "strategy": "static",
+      "output_executable": "RiverRaider2.exe"
+    },
+    {
       "root": "Reflexive Arcade R/Robbox",
       "strategy": "static",
       "output_executable": "Robbox.exe"
@@ -3695,6 +3930,11 @@
       "root": "Reflexive Arcade R/Rock Frenzy",
       "strategy": "static",
       "output_executable": "rf.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rocket Bowl",
+      "strategy": "static",
+      "output_executable": "RocketBowl.exe"
     },
     {
       "root": "Reflexive Arcade R/Rocket Mania Deluxe",
@@ -3832,6 +4072,11 @@
       "output_executable": "Shape.exe"
     },
     {
+      "root": "Reflexive Arcade S/Shape Solitaire",
+      "strategy": "static",
+      "output_executable": "ShapeSolitaire.exe"
+    },
+    {
       "root": "Reflexive Arcade S/Sheeplings",
       "strategy": "static",
       "output_executable": "Sheeplings.exe"
@@ -3860,6 +4105,11 @@
       "root": "Reflexive Arcade S/Sky Bubbles Deluxe",
       "strategy": "static",
       "output_executable": "SkyBubbles.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Slickball",
+      "strategy": "static",
+      "output_executable": "slickball.exe"
     },
     {
       "root": "Reflexive Arcade S/Slingo",
@@ -3897,9 +4147,19 @@
       "output_executable": "sad.exe"
     },
     {
+      "root": "Reflexive Arcade S/Snail Mail",
+      "strategy": "static",
+      "output_executable": "SnailMail.exe"
+    },
+    {
       "root": "Reflexive Arcade S/Snapshot Adventures",
       "strategy": "static",
       "output_executable": "Snap.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Snow Ball",
+      "strategy": "static",
+      "output_executable": "SnowBall.exe"
     },
     {
       "root": "Reflexive Arcade S/Snowy Lunch Rush",
@@ -3910,6 +4170,11 @@
       "root": "Reflexive Arcade S/Snowy Puzzle Islands",
       "strategy": "static",
       "output_executable": "PuzzleIslands.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Snowy Space Trip",
+      "strategy": "static",
+      "output_executable": "SpaceTrip.exe"
     },
     {
       "root": "Reflexive Arcade S/Snowy Treasure Hunter",
@@ -3925,6 +4190,11 @@
       "root": "Reflexive Arcade S/Snowy Treasure Hunter 3",
       "strategy": "static",
       "output_executable": "TreasureHunter3.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Soda Pipes",
+      "strategy": "static",
+      "output_executable": "Soda Pipes.exe"
     },
     {
       "root": "Reflexive Arcade S/Solitaire",
@@ -3945,6 +4215,11 @@
       "root": "Reflexive Arcade S/Space Strike",
       "strategy": "static",
       "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Space Taxi 2",
+      "strategy": "static",
+      "output_executable": "SpaceTaxi.exe"
     },
     {
       "root": "Reflexive Arcade S/Spacebound",
@@ -3980,6 +4255,11 @@
       "root": "Reflexive Arcade S/Spin & Play",
       "strategy": "static",
       "output_executable": "SpinAndPlay.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Spin & Win",
+      "strategy": "static",
+      "output_executable": "SpinWin.exe"
     },
     {
       "root": "Reflexive Arcade S/Spirit Of Wandering The Legend",
@@ -4117,6 +4397,11 @@
       "output_executable": "SunsetStudio.exe"
     },
     {
+      "root": "Reflexive Arcade S/Super Bounce Out",
+      "strategy": "static",
+      "output_executable": "BounceOut.exe"
+    },
+    {
       "root": "Reflexive Arcade S/Super Collapse 3",
       "strategy": "static",
       "output_executable": "SuperCollapseIII.exe"
@@ -4155,6 +4440,11 @@
       "root": "Reflexive Arcade S/Super Slyder",
       "strategy": "static",
       "output_executable": "SuperSlyder_release.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Super Spongebob Collapse",
+      "strategy": "static",
+      "output_executable": "SBCollapse.exe"
     },
     {
       "root": "Reflexive Arcade S/Supercow",
@@ -4562,6 +4852,11 @@
       "output_executable": "Trivia.exe"
     },
     {
+      "root": "Reflexive Arcade T/Troll",
+      "strategy": "static",
+      "output_executable": "Troll.exe"
+    },
+    {
       "root": "Reflexive Arcade T/Tropicabana",
       "strategy": "static",
       "output_executable": "Tropicabana.exe"
@@ -4625,6 +4920,11 @@
       "root": "Reflexive Arcade T/Turtle Bay",
       "strategy": "static",
       "output_executable": "TurtleBay.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Turtle Odyssey",
+      "strategy": "static",
+      "output_executable": "Game.exe"
     },
     {
       "root": "Reflexive Arcade T/Turtle Odyssey 2",
@@ -4745,6 +5045,11 @@
       "root": "Reflexive Arcade W/Waterscape Solitaire American Falls",
       "strategy": "static",
       "output_executable": "WaterscapeSolitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Weave Words",
+      "strategy": "static",
+      "output_executable": "wwfull.exe"
     },
     {
       "root": "Reflexive Arcade W/Wedding Dash",
@@ -4890,6 +5195,11 @@
       "root": "Reflexive Arcade X/Xango Tango",
       "strategy": "static",
       "output_executable": "XangoTango.exe"
+    },
+    {
+      "root": "Reflexive Arcade X/Xeno Assault II",
+      "strategy": "static",
+      "output_executable": "Xeno.exe"
     },
     {
       "root": "Reflexive Arcade X/Xmas Bonus",
@@ -5131,319 +5441,9 @@
   ],
   "error_roots": [
     {
-      "root": "Reflexive Arcade A/AquaPOP",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade A/AquaPOP/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade A/Asianata",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade A/Asianata/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade A/AstroAvenger",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade A/AstroAvenger/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Ballistik",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Ballistik/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Balloon Blast",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Balloon Blast/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Barnyard Invasion",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Barnyard Invasion/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Battleship Chess",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Battleship Chess/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Beesly's Buzzwords",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Beesly's Buzzwords/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Big Kahuna Reef",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Big Kahuna Reef/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Big Kahuna Reef 2",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Big Kahuna Reef 2/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Big Kahuna Words",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Big Kahuna Words/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Brave Piglet",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Brave Piglet/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Break Ball 2 Gold",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Break Ball 2 Gold/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Break Quest",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Break Quest/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Bricks of Camelot",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Bricks of Camelot/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Bricks of Egypt",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Bricks of Egypt/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/BrixFormer",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/BrixFormer/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade B/Brixout XP",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Brixout XP/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade C/Carls Classics",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade C/Carls Classics/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade C/Cookie Chef",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade C/Cookie Chef/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade C/Cosmic Bugs",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade C/Cosmic Bugs/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade D/Deep Sea Adventures",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade D/Deep Sea Adventures/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade D/Digi Pool",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade D/Digi Pool/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade D/Dr Blobs Organism",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade D/Dr Blobs Organism/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
       "root": "Reflexive Arcade F/Family Feud",
       "strategy": "static",
       "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade F/Family Feud/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade F/FastCrawl",
-      "strategy": "static",
-      "error": ".NET child payloads are not implemented yet for /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade F/FastCrawl/FastCrawl.RWG"
-    },
-    {
-      "root": "Reflexive Arcade F/Funny Faces",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade F/Funny Faces/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade G/Gem Mine",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade G/Gem Mine/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade G/Golf Adventure Galaxy",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade G/Golf Adventure Galaxy/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade G/Gravity Gems",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade G/Gravity Gems/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade J/Jets N Guns",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade J/Jets N Guns/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade J/Jewel Quest",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade J/Jewel Quest/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade L/LexiCastle",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade L/LexiCastle/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade M/Machine Hell",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Machine Hell/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade M/MadCaps",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/MadCaps/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade M/Mah Jong Medley",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mah Jong Medley/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade M/Mah Jong Quest",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mah Jong Quest/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade M/Mind Your Marbles",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mind Your Marbles/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade M/Monarch The Butterfly King",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Monarch The Butterfly King/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade M/Mortimer and the Enchanted Castle",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mortimer and the Enchanted Castle/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade M/Mosaic Tomb of Mystery",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mosaic Tomb of Mystery/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade M/Mutant Storm",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mutant Storm/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade N/Naval Strike",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade N/Naval Strike/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade P/Passage 3",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade P/Passage 3/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade P/Puzzle Blast",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade P/Puzzle Blast/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade R/Rainbow Drops Buster",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/Rainbow Drops Buster/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade R/Ricochet Infinity",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/Ricochet Infinity/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade R/River Raider II",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/River Raider II/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade R/Rocket Bowl",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/Rocket Bowl/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade S/Shape Solitaire",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Shape Solitaire/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade S/Slickball",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Slickball/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade S/Snail Mail",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Snail Mail/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade S/Snow Ball",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Snow Ball/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade S/Snowy Space Trip",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Snowy Space Trip/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade S/Soda Pipes",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Soda Pipes/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade S/Space Taxi 2",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Space Taxi 2/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade S/Spin & Win",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Spin & Win/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade S/Super Bounce Out",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Super Bounce Out/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade S/Super Spongebob Collapse",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Super Spongebob Collapse/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade T/Troll",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade T/Troll/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade T/Turtle Odyssey",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade T/Turtle Odyssey/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade W/Weave Words",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade W/Weave Words/ReflexiveArcade/RAW_002.wdt"
-    },
-    {
-      "root": "Reflexive Arcade X/Xeno Assault II",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade X/Xeno Assault II/ReflexiveArcade/RAW_002.wdt"
     }
   ]
 }

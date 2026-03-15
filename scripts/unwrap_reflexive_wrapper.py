@@ -337,7 +337,7 @@ def decrypt_with_stream(data: bytes, seed: int) -> bytes:
 
 
 def looks_like_decrypted_config(data: bytes) -> bool:
-    return data.startswith(b"Application Name=") and b"Demo Time Seconds=" in data
+    return b"Application Name=" in data and b"Demo Time Seconds=" in data
 
 
 def parse_config(data: bytes) -> dict[str, str]:
@@ -461,18 +461,42 @@ def native_encrypted_region(pe: pefile.PE, short_fixed: bool) -> tuple[int, int]
     raise RuntimeError("unable to locate entrypoint section for child payload")
 
 
+def dotnet_encrypted_region(pe: pefile.PE) -> tuple[int, int]:
+    cli_directory = pe.OPTIONAL_HEADER.DATA_DIRECTORY[14]
+    if cli_directory.VirtualAddress == 0 or cli_directory.Size == 0:
+        raise RuntimeError("missing CLR COM descriptor for .NET child payload")
+
+    cli_offset = pe.get_offset_from_rva(cli_directory.VirtualAddress)
+    cli_header = pe.__data__[cli_offset : cli_offset + cli_directory.Size]
+    if len(cli_header) < 0x10:
+        raise RuntimeError("truncated CLR header")
+
+    cli_header_size = int.from_bytes(cli_header[0:4], "little")
+    metadata_rva = int.from_bytes(cli_header[8:12], "little")
+    if cli_header_size <= 0 or metadata_rva == 0:
+        raise RuntimeError("invalid CLR header fields")
+
+    region_start = cli_offset + cli_header_size
+    metadata_offset = pe.get_offset_from_rva(metadata_rva)
+    region_length = metadata_offset - region_start
+    if region_length <= 0:
+        raise RuntimeError("invalid .NET encrypted region")
+    return region_start, region_length
+
+
 def decrypt_static_child(wrapper_root: Path, strategy: Strategy) -> tuple[bytes, dict[str, Any]]:
     assert strategy.child_payload is not None
     assert strategy.config_path is not None
 
     seed_material = derive_seed_material(strategy.config_path, strategy.child_payload, wrapper_root)
     config = parse_config(seed_material.decrypted_config)
-    if config_flag(config, "Is .NET Executable"):
-        raise RuntimeError(f".NET child payloads are not implemented yet for {strategy.child_payload}")
 
     child_bytes = bytearray(strategy.child_payload.read_bytes())
     pe = pefile.PE(data=bytes(child_bytes), fast_load=True)
-    region_start, region_length = native_encrypted_region(pe, config_flag(config, "Game Needs Short Fixed Encryption"))
+    if config_flag(config, "Is .NET Executable"):
+        region_start, region_length = dotnet_encrypted_region(pe)
+    else:
+        region_start, region_length = native_encrypted_region(pe, config_flag(config, "Game Needs Short Fixed Encryption"))
     encrypted_config = strategy.config_path.read_bytes()
     seed2 = derive_seed2(encrypted_config)
     decrypted_region = decrypt_with_stream(bytes(child_bytes[region_start : region_start + region_length]), seed2)
