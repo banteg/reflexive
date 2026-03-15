@@ -17,8 +17,7 @@ Recommended wording:
 
 ## Local evidence
 
-Across the completed bundles checked locally (`0-9`, `A` through `P`, `S`, `U` through `Z`),
-the Smart Install Maker metadata is consistent:
+Across the bundles inspected locally, the Smart Install Maker metadata is consistent:
 
 - Title strings such as `Reflexive Arcade Games Collection - X - By Florian 07.12.2008`
 - Repeated site URL `http://www.topbancuri.ro`
@@ -32,7 +31,7 @@ releases.
 ## Why they are clearly unofficial
 
 The extracted installs include paired launcher files such as `Ingenious.exe` and
-`Ingenious.exe.BAK`. In the local extracted sample for `Reflexive Arcade I`, the launcher and its
+`Ingenious.exe.BAK`. In the locally extracted `Reflexive Arcade I` bundle, the launcher and its
 `.BAK` differ by only two bytes, which matches the preserved original-vs-patched launcher pattern
 seen in earlier reverse-engineering work on these same repacks.
 
