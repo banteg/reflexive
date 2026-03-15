@@ -241,6 +241,24 @@ def run_command(command: list[str], *, cwd: Path | None = None) -> None:
     print("+", " ".join(command))
     subprocess.run(command, cwd=cwd, check=True)
 
+
+def build_cab_extract_command(raw_payload_dir: Path) -> tuple[str, list[str], tuple[str, ...]]:
+    cabextract = shutil.which("cabextract")
+    if cabextract is not None:
+        return (
+            "cabextract",
+            [cabextract, "-q", "-d", str(raw_payload_dir), "./0000.tmp"],
+            ("hardlink", "copy"),
+        )
+
+    seven_zip = require_command("7z")
+    return (
+        "7z",
+        [seven_zip, "x", "./0000.tmp", f"-o{raw_payload_dir}", "-y"],
+        ("hardlink", "copy", "copy"),
+    )
+
+
 def reconstruct_raw_cabs(metadata: InstallerMetadata, raw_cabs_dir: Path) -> int:
     if not metadata.one_volume:
         raise ValueError("external Smart Install Maker volumes are not supported")
@@ -372,19 +390,21 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
     safe_prefix = re.sub(r"[^A-Za-z0-9._-]+", "-", installer_path.stem).strip("-") or "reflexive"
 
     if metadata.compressed:
-        seven_zip = require_command("7z")
         last_error: subprocess.CalledProcessError | None = None
+        max_attempts = 3
 
-        for attempt_index, alias_mode in enumerate(("hardlink", "copy", "copy"), start=1):
+        for attempt_index in range(1, max_attempts + 1):
             with tempfile.TemporaryDirectory(dir=output_root.parent, prefix=f".{safe_prefix}.tmp.") as temp_dir_str:
                 temp_dir = Path(temp_dir_str)
                 raw_payload_dir = temp_dir / "raw_payload"
                 raw_payload_dir.mkdir()
                 raw_cabs_dir = temp_dir / "raw_cabs"
                 raw_cabs_dir.mkdir()
+                extractor_name, extract_command, alias_modes = build_cab_extract_command(raw_payload_dir)
+                alias_mode = alias_modes[min(attempt_index - 1, len(alias_modes) - 1)]
 
                 print(
-                    f"Rebuilding raw CAB volumes from installer (attempt {attempt_index}/3)"
+                    f"Rebuilding raw CAB volumes from installer (attempt {attempt_index}/{max_attempts})"
                 )
                 cab_count = reconstruct_raw_cabs(metadata, raw_cabs_dir)
                 print(f"Rebuilt {cab_count} CAB volumes")
@@ -395,15 +415,15 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
                 if attempt_index > 1:
                     time.sleep(attempt_index - 1)
 
-                print("Extracting numbered payload with 7z")
+                print(f"Extracting numbered payload with {extractor_name}")
                 try:
-                    run_command([seven_zip, "x", "./0000.tmp", f"-o{raw_payload_dir}", "-y"], cwd=raw_cabs_dir)
+                    run_command(extract_command, cwd=raw_cabs_dir)
                 except subprocess.CalledProcessError as exc:
                     last_error = exc
-                    if attempt_index == 3:
+                    if attempt_index == max_attempts:
                         break
                     print(
-                        f"7z extraction attempt {attempt_index} failed, retrying in a fresh workspace"
+                        f"{extractor_name} extraction attempt {attempt_index} failed, retrying in a fresh workspace"
                     )
                     continue
 
