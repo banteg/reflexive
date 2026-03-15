@@ -306,7 +306,12 @@ def create_volume_aliases(raw_cabs_dir: Path, installer_stem: str) -> None:
             alias_path = raw_cabs_dir / alias
             if alias_path.exists() or alias_path.is_symlink():
                 alias_path.unlink()
-            alias_path.symlink_to(cab_path.name)
+            try:
+                os.link(cab_path, alias_path)
+            except OSError as exc:
+                if exc.errno != errno.EXDEV:
+                    raise
+                shutil.copy2(cab_path, alias_path)
 
 
 def materialize_payload(file_names: tuple[str, ...], raw_payload_dir: Path, destination_root: Path) -> None:
@@ -382,7 +387,7 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
             create_volume_aliases(raw_cabs_dir, installer_path.stem)
 
             print("Extracting numbered payload with 7z")
-            run_command([seven_zip, "x", "Disk1", f"-o{raw_payload_dir}", "-y"], cwd=raw_cabs_dir)
+            run_command([seven_zip, "x", "./Disk1", f"-o{raw_payload_dir}", "-y"], cwd=raw_cabs_dir)
         else:
             print("Extracting uncompressed numbered payload directly")
             extract_uncompressed_payload(metadata, raw_payload_dir)
