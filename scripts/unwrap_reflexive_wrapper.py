@@ -112,9 +112,12 @@ def load_wrapper_scan_module() -> Any:
     return module
 
 
-def build_scan(extracted_root: Path) -> dict[str, Any]:
+def build_scan(extracted_root: Path, selected_roots: Iterable[str] | None = None) -> dict[str, Any]:
     module = load_wrapper_scan_module()
-    return module.build_scan(extracted_root)
+    wrapper_roots = None
+    if selected_roots is not None:
+        wrapper_roots = [(extracted_root / Path(root)).resolve() for root in selected_roots]
+    return module.build_scan(extracted_root, wrapper_roots=wrapper_roots)
 
 
 def choose_static_wrapper(record: dict[str, Any], wrapper_root: Path) -> Path | None:
@@ -660,10 +663,9 @@ def main() -> int:
     args = parse_args()
     extracted_root = args.extracted_root.resolve()
     output_root = args.output_root.resolve()
-    inventory = build_scan(extracted_root)
-    records = effective_records(inventory["roots"])
-
     selected = {normalize_target(target, extracted_root) for target in args.targets} if args.targets else None
+    inventory = build_scan(extracted_root, selected)
+    records = effective_records(inventory["roots"])
     if selected is not None:
         records = [record for record in records if record["root"] in selected]
 

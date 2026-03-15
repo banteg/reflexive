@@ -122,10 +122,13 @@ def layout_label(wrapper_root: Path) -> str:
 
 def pe_section_hashes(path: Path, section_names: tuple[str, ...]) -> dict[str, str | None]:
     pe = pefile.PE(str(path), fast_load=True)
-    sections = {
-        section.Name.rstrip(b"\x00").decode("ascii", "ignore"): sha256_bytes(section.get_data())
-        for section in pe.sections
-    }
+    try:
+        sections = {
+            section.Name.rstrip(b"\x00").decode("ascii", "ignore"): sha256_bytes(section.get_data())
+            for section in pe.sections
+        }
+    finally:
+        pe.close()
     return {name: sections.get(name) for name in section_names}
 
 
@@ -133,18 +136,21 @@ def scan_binary(path: Path, role: str) -> dict[str, object]:
     data = path.read_bytes()
     markers = {name: marker in data for name, marker in WRAPPER_MARKERS.items()}
     pe = pefile.PE(str(path), fast_load=True)
-    return {
-        "role": role,
-        "path": display_path(path),
-        "name": path.name,
-        "size": path.stat().st_size,
-        "sha256": sha256_file(path),
-        "timestamp": pe.FILE_HEADER.TimeDateStamp,
-        "timestamp_utc": utc_timestamp(pe.FILE_HEADER.TimeDateStamp),
-        "builds": sorted({int(match.group(1)) for match in BUILD_STRING_RE.finditer(data)}),
-        "wrapper_markers": markers,
-        "looks_like_wrapper_binary": any(markers.values()),
-    }
+    try:
+        return {
+            "role": role,
+            "path": display_path(path),
+            "name": path.name,
+            "size": path.stat().st_size,
+            "sha256": sha256_file(path),
+            "timestamp": pe.FILE_HEADER.TimeDateStamp,
+            "timestamp_utc": utc_timestamp(pe.FILE_HEADER.TimeDateStamp),
+            "builds": sorted({int(match.group(1)) for match in BUILD_STRING_RE.finditer(data)}),
+            "wrapper_markers": markers,
+            "looks_like_wrapper_binary": any(markers.values()),
+        }
+    finally:
+        pe.close()
 
 
 def choose_primary_wrapper_binary(candidates: list[dict[str, object]]) -> dict[str, object] | None:
@@ -159,16 +165,21 @@ def choose_primary_wrapper_binary(candidates: list[dict[str, object]]) -> dict[s
 def support_dll_record(path: Path) -> dict[str, object]:
     hashes = pe_section_hashes(path, DLL_SECTION_NAMES)
     hash_key = (hashes[".text"], hashes[".data"])
-    return {
-        "path": display_path(path),
-        "size": path.stat().st_size,
-        "sha256": sha256_file(path),
-        "timestamp": pefile.PE(str(path), fast_load=True).FILE_HEADER.TimeDateStamp,
-        "timestamp_utc": utc_timestamp(pefile.PE(str(path), fast_load=True).FILE_HEADER.TimeDateStamp),
-        "section_hashes": hashes,
-        "major_version": DLL_MAJOR_BY_SECTION_HASH.get(hash_key),
-        "major_version_source": "verified representative family in Binja" if hash_key in DLL_MAJOR_BY_SECTION_HASH else None,
-    }
+    pe = pefile.PE(str(path), fast_load=True)
+    try:
+        timestamp = pe.FILE_HEADER.TimeDateStamp
+        return {
+            "path": display_path(path),
+            "size": path.stat().st_size,
+            "sha256": sha256_file(path),
+            "timestamp": timestamp,
+            "timestamp_utc": utc_timestamp(timestamp),
+            "section_hashes": hashes,
+            "major_version": DLL_MAJOR_BY_SECTION_HASH.get(hash_key),
+            "major_version_source": "verified representative family in Binja" if hash_key in DLL_MAJOR_BY_SECTION_HASH else None,
+        }
+    finally:
+        pe.close()
 
 
 def top_level_executable_candidates(wrapper_root: Path) -> list[Path]:
@@ -179,47 +190,53 @@ def top_level_executable_candidates(wrapper_root: Path) -> list[Path]:
     )
 
 
-def build_scan(extracted_root: Path) -> dict[str, object]:
+def build_record(wrapper_root: Path, extracted_root: Path) -> dict[str, object]:
+    record: dict[str, object] = {
+        "root": str(wrapper_root.relative_to(extracted_root)),
+        "layout_label": layout_label(wrapper_root),
+        "support_dll": None,
+        "binary_candidates": [],
+        "primary_wrapper_binary": None,
+        "notes": [],
+    }
+
+    support_dll = wrapper_root / "ReflexiveArcade" / "ReflexiveArcade.dll"
+    if support_dll.is_file():
+        record["support_dll"] = support_dll_record(support_dll)
+
+    candidates: list[dict[str, object]] = []
+    support_exe = wrapper_root / "ReflexiveArcade.exe"
+    if support_exe.is_file():
+        candidates.append(scan_binary(support_exe, "support_exe"))
+
+    for path in sorted(wrapper_root.glob("*.exe.BAK")):
+        candidates.append(scan_binary(path, "launcher_bak"))
+
+    for path in top_level_executable_candidates(wrapper_root):
+        candidates.append(scan_binary(path, "top_level_exe"))
+
+    record["binary_candidates"] = candidates
+    primary = choose_primary_wrapper_binary(candidates)
+    record["primary_wrapper_binary"] = primary
+
+    if primary is not None and primary["role"] == "support_exe":
+        if any(candidate["role"] == "launcher_bak" for candidate in candidates):
+            record["notes"].append("support_exe_is_wrapper_entrypoint")
+        if any(candidate["role"] == "launcher_bak" and not candidate["looks_like_wrapper_binary"] for candidate in candidates):
+            record["notes"].append("launcher_bak_is_not_wrapper_binary")
+    if primary is None:
+        record["notes"].append("no_wrapper_entry_binary_detected")
+
+    return record
+
+
+def build_scan(extracted_root: Path, wrapper_roots: list[Path] | None = None) -> dict[str, object]:
     roots: list[dict[str, object]] = []
 
-    for wrapper_root in discover_wrapper_roots(extracted_root):
-        record: dict[str, object] = {
-            "root": str(wrapper_root.relative_to(extracted_root)),
-            "layout_label": layout_label(wrapper_root),
-            "support_dll": None,
-            "binary_candidates": [],
-            "primary_wrapper_binary": None,
-            "notes": [],
-        }
+    selected_roots = discover_wrapper_roots(extracted_root) if wrapper_roots is None else sorted(path.resolve() for path in wrapper_roots)
 
-        support_dll = wrapper_root / "ReflexiveArcade" / "ReflexiveArcade.dll"
-        if support_dll.is_file():
-            record["support_dll"] = support_dll_record(support_dll)
-
-        candidates: list[dict[str, object]] = []
-        support_exe = wrapper_root / "ReflexiveArcade.exe"
-        if support_exe.is_file():
-            candidates.append(scan_binary(support_exe, "support_exe"))
-
-        for path in sorted(wrapper_root.glob("*.exe.BAK")):
-            candidates.append(scan_binary(path, "launcher_bak"))
-
-        for path in top_level_executable_candidates(wrapper_root):
-            candidates.append(scan_binary(path, "top_level_exe"))
-
-        record["binary_candidates"] = candidates
-        primary = choose_primary_wrapper_binary(candidates)
-        record["primary_wrapper_binary"] = primary
-
-        if primary is not None and primary["role"] == "support_exe":
-            if any(candidate["role"] == "launcher_bak" for candidate in candidates):
-                record["notes"].append("support_exe_is_wrapper_entrypoint")
-            if any(candidate["role"] == "launcher_bak" and not candidate["looks_like_wrapper_binary"] for candidate in candidates):
-                record["notes"].append("launcher_bak_is_not_wrapper_binary")
-        if primary is None:
-            record["notes"].append("no_wrapper_entry_binary_detected")
-
-        roots.append(record)
+    for wrapper_root in selected_roots:
+        roots.append(build_record(wrapper_root, extracted_root))
 
     dll_major_counter: Counter[int | None] = Counter()
     role_build_counter: Counter[tuple[str, bool]] = Counter()
