@@ -1,7 +1,7 @@
 # Repack Attribution
 
-These installers should not be described as generic "Smart Install Maker" packages only.
-Smart Install Maker is the packaging tool. The repack attribution is much narrower.
+These installers are not generic "Smart Install Maker" packages only. Smart Install Maker is the
+packaging tool. The repack attribution is narrower.
 
 ## Attribution
 
@@ -10,10 +10,6 @@ unofficial third-party repack set attributed inside the installers to:
 
 - `Florian`
 - `www.TopBancuri.ro`
-
-Recommended wording:
-
-- `unofficial Florian / TopBancuri.ro Reflexive Arcade Games Collection repacks`
 
 ## Local evidence
 
@@ -28,7 +24,7 @@ The outer installer version info is branded as `Reflexive Arcade`, but that bran
 the repack wrapper and should not be treated as proof that the installers are official publisher
 releases.
 
-## Why they are clearly unofficial
+## Unofficial modifications
 
 The extracted installs include paired launcher files such as `Ingenious.exe` and
 `Ingenious.exe.BAK`. In the locally extracted `Reflexive Arcade I` bundle, the launcher and its
@@ -42,18 +38,20 @@ installers.
 
 The installer metadata stamps the bundles with `By Florian 07.12.2008`.
 
-A public torrent listing for `REFLEXIVE ARCADE GAMES COLLECTION - 1100 Games` was uploaded on
-`2008-12-21` by `florian_g` and described the bundle as `patched and working`, which matches the
-local installer metadata and the patched launcher backups:
+A local copy of the torrent `REFLEXIVE ARCADE GAMES COLLECTION - 1100 Games` with info hash
+`78DFF22C325815C46F26DC2A275B879B1BFB3947` matches the Archive.org mirror on every installer file
+name and byte length:
 
-- <https://tpb.party/torrent/4593872/REFLEXIVE_ARCADE_GAMES_COLLECTION_-_1100_Games>
+- the torrent contains the same `26` `Reflexive Arcade *.exe` installers
+- every installer size matches the Archive.org mirror exactly
+- the torrent additionally contains `--- ReadMe ---.txt`
+- the Archive.org mirror additionally contains Archive.org metadata files and the mirrored
+  `.torrent`
+
+The corresponding Pirate Bay description page is:
+
+- <https://thepiratebay.org/description.php?id=4591769>
 
 The Archive.org item is a later mirror, not the original repack source:
 
 - <https://archive.org/download/reflexivearcadegamescollection>
-
-## Bottom line
-
-These should be described as unofficial 2008 Florian / TopBancuri.ro repacks of Reflexive games,
-later mirrored on Archive.org, not as official Reflexive installers and not merely as anonymous
-Smart Install Maker archives.
