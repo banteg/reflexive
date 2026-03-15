@@ -241,22 +241,6 @@ def run_command(command: list[str], *, cwd: Path | None = None) -> None:
     print("+", " ".join(command))
     subprocess.run(command, cwd=cwd, check=True)
 
-
-def try_command(command: list[str], *, cwd: Path | None = None, quiet: bool = False) -> bool:
-    print("+", " ".join(command))
-    if quiet:
-        result = subprocess.run(command, cwd=cwd, capture_output=True, text=True)
-        if result.returncode != 0:
-            if result.stdout:
-                sys.stderr.write(result.stdout)
-            if result.stderr:
-                sys.stderr.write(result.stderr)
-        return result.returncode == 0
-
-    result = subprocess.run(command, cwd=cwd)
-    return result.returncode == 0
-
-
 def reconstruct_raw_cabs(metadata: InstallerMetadata, raw_cabs_dir: Path) -> int:
     if not metadata.one_volume:
         raise ValueError("external Smart Install Maker volumes are not supported")
@@ -316,13 +300,6 @@ def sorted_cab_files(raw_cabs_dir: Path, installer_stem: str) -> list[Path]:
     return sorted(cabs, key=disk_number)
 
 
-def clear_volume_aliases(raw_cabs_dir: Path, installer_stem: str) -> None:
-    for index, _cab_path in enumerate(sorted_cab_files(raw_cabs_dir, installer_stem), start=1):
-        alias_path = raw_cabs_dir / f"{index - 1:04d}.tmp"
-        if alias_path.exists() or alias_path.is_symlink():
-            alias_path.unlink()
-
-
 def create_volume_aliases(raw_cabs_dir: Path, installer_stem: str, *, mode: str = "hardlink") -> None:
     for index, cab_path in enumerate(sorted_cab_files(raw_cabs_dir, installer_stem), start=1):
         alias_path = raw_cabs_dir / f"{index - 1:04d}.tmp"
@@ -337,10 +314,6 @@ def create_volume_aliases(raw_cabs_dir: Path, installer_stem: str, *, mode: str 
             if exc.errno != errno.EXDEV:
                 raise
             shutil.copy2(cab_path, alias_path)
-
-
-def preflight_volume_set(seven_zip: str, raw_cabs_dir: Path) -> bool:
-    return try_command([seven_zip, "l", "./0000.tmp"], cwd=raw_cabs_dir, quiet=True)
 
 
 def materialize_payload(file_names: tuple[str, ...], raw_payload_dir: Path, destination_root: Path) -> None:
@@ -398,34 +371,57 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
 
     safe_prefix = re.sub(r"[^A-Za-z0-9._-]+", "-", installer_path.stem).strip("-") or "reflexive"
 
-    with tempfile.TemporaryDirectory(dir=output_root.parent, prefix=f".{safe_prefix}.tmp.") as temp_dir_str:
-        temp_dir = Path(temp_dir_str)
-        raw_payload_dir = temp_dir / "raw_payload"
-        raw_payload_dir.mkdir()
+    if metadata.compressed:
+        seven_zip = require_command("7z")
+        last_error: subprocess.CalledProcessError | None = None
 
-        if metadata.compressed:
-            seven_zip = require_command("7z")
-            raw_cabs_dir = temp_dir / "raw_cabs"
-            raw_cabs_dir.mkdir()
+        for attempt_index, alias_mode in enumerate(("hardlink", "copy", "copy"), start=1):
+            with tempfile.TemporaryDirectory(dir=output_root.parent, prefix=f".{safe_prefix}.tmp.") as temp_dir_str:
+                temp_dir = Path(temp_dir_str)
+                raw_payload_dir = temp_dir / "raw_payload"
+                raw_payload_dir.mkdir()
+                raw_cabs_dir = temp_dir / "raw_cabs"
+                raw_cabs_dir.mkdir()
 
-            print("Rebuilding raw CAB volumes from installer")
-            cab_count = reconstruct_raw_cabs(metadata, raw_cabs_dir)
-            print(f"Rebuilt {cab_count} CAB volumes")
+                print(
+                    f"Rebuilding raw CAB volumes from installer (attempt {attempt_index}/3)"
+                )
+                cab_count = reconstruct_raw_cabs(metadata, raw_cabs_dir)
+                print(f"Rebuilt {cab_count} CAB volumes")
 
-            print("Creating numbered CAB volume aliases")
-            create_volume_aliases(raw_cabs_dir, installer_path.stem)
+                print(f"Creating numbered CAB volume aliases ({alias_mode})")
+                create_volume_aliases(raw_cabs_dir, installer_path.stem, mode=alias_mode)
 
-            if not preflight_volume_set(seven_zip, raw_cabs_dir):
-                print("7z preflight failed, rebuilding aliases as copied files")
-                clear_volume_aliases(raw_cabs_dir, installer_path.stem)
-                create_volume_aliases(raw_cabs_dir, installer_path.stem, mode="copy")
-                time.sleep(1)
-                if not preflight_volume_set(seven_zip, raw_cabs_dir):
-                    raise ValueError("7z could not open the reconstructed multi-volume CAB set")
+                if attempt_index > 1:
+                    time.sleep(attempt_index - 1)
 
-            print("Extracting numbered payload with 7z")
-            run_command([seven_zip, "x", "./0000.tmp", f"-o{raw_payload_dir}", "-y"], cwd=raw_cabs_dir)
-        else:
+                print("Extracting numbered payload with 7z")
+                try:
+                    run_command([seven_zip, "x", "./0000.tmp", f"-o{raw_payload_dir}", "-y"], cwd=raw_cabs_dir)
+                except subprocess.CalledProcessError as exc:
+                    last_error = exc
+                    if attempt_index == 3:
+                        break
+                    print(
+                        f"7z extraction attempt {attempt_index} failed, retrying in a fresh workspace"
+                    )
+                    continue
+
+                print("Materializing final payload tree")
+                output_root.mkdir(parents=True, exist_ok=True)
+                materialize_payload(metadata.file_names, raw_payload_dir, output_root)
+                print(f"Materialized payload written to {output_root}")
+                return output_root
+
+        if last_error is not None:
+            raise last_error
+        raise RuntimeError("compressed payload extraction failed without a captured subprocess error")
+    else:
+        with tempfile.TemporaryDirectory(dir=output_root.parent, prefix=f".{safe_prefix}.tmp.") as temp_dir_str:
+            temp_dir = Path(temp_dir_str)
+            raw_payload_dir = temp_dir / "raw_payload"
+            raw_payload_dir.mkdir()
+
             print("Extracting uncompressed numbered payload directly")
             extract_uncompressed_payload(metadata, raw_payload_dir)
 
