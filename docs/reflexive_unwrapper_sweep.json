@@ -1,0 +1,5449 @@
+{
+  "generated_from": "/Users/banteg/dev/banteg/reflexive/artifacts/extracted",
+  "output_root": "/Users/banteg/dev/banteg/reflexive/artifacts/unwrapped",
+  "mode": "probe",
+  "summary": {
+    "effective_root_count": 1083,
+    "ok_count": 994,
+    "not_decryptable_count": 89,
+    "unsupported_count": 26,
+    "error_count": 63,
+    "ok_by_strategy": [
+      {
+        "strategy": "direct",
+        "count": 46
+      },
+      {
+        "strategy": "static",
+        "count": 948
+      }
+    ],
+    "error_by_strategy": [
+      {
+        "strategy": "static",
+        "count": 63
+      }
+    ]
+  },
+  "ok_roots": [
+    {
+      "root": "Reflexive Arcade 0-9/10 Days Under The Sea",
+      "strategy": "static",
+      "output_executable": "10DaysUnderTheSea.exe"
+    },
+    {
+      "root": "Reflexive Arcade 0-9/10 Talismans",
+      "strategy": "static",
+      "output_executable": "10talismans.exe"
+    },
+    {
+      "root": "Reflexive Arcade 0-9/4 Elements",
+      "strategy": "static",
+      "output_executable": "4 Elements.exe"
+    },
+    {
+      "root": "Reflexive Arcade 0-9/5 Card Slingo",
+      "strategy": "static",
+      "output_executable": "FiveCardSlingo.exe"
+    },
+    {
+      "root": "Reflexive Arcade 0-9/5 Realms Of Cards",
+      "strategy": "static",
+      "output_executable": "Realms.exe"
+    },
+    {
+      "root": "Reflexive Arcade 0-9/5 Spots",
+      "strategy": "static",
+      "output_executable": "5_spots.exe"
+    },
+    {
+      "root": "Reflexive Arcade 0-9/5 Spots II",
+      "strategy": "static",
+      "output_executable": "5spots2.exe"
+    },
+    {
+      "root": "Reflexive Arcade 0-9/7 Wonders",
+      "strategy": "static",
+      "output_executable": "Wonders.exe"
+    },
+    {
+      "root": "Reflexive Arcade 0-9/7 Wonders II",
+      "strategy": "static",
+      "output_executable": "7 Wonders II.exe"
+    },
+    {
+      "root": "Reflexive Arcade 0-9/80 Days",
+      "strategy": "static",
+      "output_executable": "80days.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/A Pirates Legend",
+      "strategy": "static",
+      "output_executable": "APiratesLegend.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/ABC Island",
+      "strategy": "static",
+      "output_executable": "Abc Island.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Abra Academy",
+      "strategy": "static",
+      "output_executable": "AbraAcademy.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Abra Academy Returning Cast",
+      "strategy": "static",
+      "output_executable": "AbraAcademy2.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Absolute Blue",
+      "strategy": "static",
+      "output_executable": "AbsoluteBlue.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Abundante",
+      "strategy": "static",
+      "output_executable": "abundante!.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Acropolis",
+      "strategy": "static",
+      "output_executable": "Acropolis.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Action Ball Deluxe",
+      "strategy": "static",
+      "output_executable": "actionball.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Action Memory",
+      "strategy": "static",
+      "output_executable": "ActionMemory.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Adventure Ball",
+      "strategy": "static",
+      "output_executable": "AdventureBall.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Adventure Inlay",
+      "strategy": "static",
+      "output_executable": "AdventureInlay.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Adventure Inlay Safari Edition",
+      "strategy": "static",
+      "output_executable": "AdventureInlaySafari.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aerial Antics",
+      "strategy": "static",
+      "output_executable": "AerialAntics.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aerial MahJong",
+      "strategy": "static",
+      "output_executable": "Aerial MahJong.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/African War",
+      "strategy": "static",
+      "output_executable": "AfricanWar_Full.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/After The End",
+      "strategy": "static",
+      "output_executable": "AfterTheEnd.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Agatha Christie Peril At End House",
+      "strategy": "static",
+      "output_executable": "endhouse.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Age Of Emerald",
+      "strategy": "static",
+      "output_executable": "AgeOfEmerald.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Age Of Japan",
+      "strategy": "static",
+      "output_executable": "AgeOfJapan.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Age Of Japan 2",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Age of Castles",
+      "strategy": "static",
+      "output_executable": "Age-of-Castles.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Air Strike 2",
+      "strategy": "direct",
+      "output_executable": "AirStrike3D II.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Air Strike II Gulf Thunder",
+      "strategy": "static",
+      "output_executable": "AirStrike3D II - Gulf.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Airport Mania",
+      "strategy": "static",
+      "output_executable": "AirportMania.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Alices Magical Mahjong",
+      "strategy": "static",
+      "output_executable": "AlicesMagicalMahjong.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Alien Abduction",
+      "strategy": "static",
+      "output_executable": "AlienAbduction.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Alien Defense",
+      "strategy": "static",
+      "output_executable": "AD.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Alien Outbreak 2 Invasion",
+      "strategy": "static",
+      "output_executable": "AlienOutbreak2.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Alien Shooter",
+      "strategy": "static",
+      "output_executable": "AlienShooter.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Alien Sky",
+      "strategy": "direct",
+      "output_executable": "SendBugReport.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Alien Stars",
+      "strategy": "static",
+      "output_executable": "AlienStars.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aloha Solitaire",
+      "strategy": "static",
+      "output_executable": "AlohaSolitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aloha Tripeaks",
+      "strategy": "static",
+      "output_executable": "AlohaTriPeaks.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Alpha Ball/bin",
+      "strategy": "static",
+      "output_executable": "AlphaBall.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Amazing Adventures The Lost Tomb",
+      "strategy": "static",
+      "output_executable": "AmazingAdventures.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Amazon Quest",
+      "strategy": "static",
+      "output_executable": "AQuest.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Amazonia",
+      "strategy": "static",
+      "output_executable": "Amazonia.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Amulet Of Tricolor",
+      "strategy": "static",
+      "output_executable": "Game.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Ancient Hearts And Spades",
+      "strategy": "static",
+      "output_executable": "AncientHandS.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Ancient Mosaic",
+      "strategy": "static",
+      "output_executable": "AncientMosaic.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Ancient Quest Of Saqqarah",
+      "strategy": "static",
+      "output_executable": "Saqqarah.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Ancient Spider Solitaire",
+      "strategy": "static",
+      "output_executable": "Spider.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Ancient Sudoku",
+      "strategy": "static",
+      "output_executable": "Sudoku.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Ancient Trijong",
+      "strategy": "static",
+      "output_executable": "TriJong.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Ancient Tripeaks",
+      "strategy": "static",
+      "output_executable": "Ancient_Tripeaks.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Ancient Tripeaks II",
+      "strategy": "static",
+      "output_executable": "Tripeaks2.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Angkor",
+      "strategy": "static",
+      "output_executable": "AngkorRelease.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Animal Empire",
+      "strategy": "static",
+      "output_executable": "AnimalEmpire.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Anime Bowling Babes",
+      "strategy": "static",
+      "output_executable": "Bowling.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Ant War",
+      "strategy": "static",
+      "output_executable": "AntWar.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aqua Bubble",
+      "strategy": "direct",
+      "output_executable": "AquaBubble.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aqua Bubble 2",
+      "strategy": "direct",
+      "output_executable": "AquaBubble2.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aqua Pearls",
+      "strategy": "static",
+      "output_executable": "pearls.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aqua Slider",
+      "strategy": "static",
+      "output_executable": "AquaSlider.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aqua Words",
+      "strategy": "direct",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aquaball",
+      "strategy": "static",
+      "output_executable": "AquaBall.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aquabble Avalanche",
+      "strategy": "static",
+      "output_executable": "aquabbles.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aquabble Quest",
+      "strategy": "static",
+      "output_executable": "Aquabble Quest.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aquacade",
+      "strategy": "static",
+      "output_executable": "Aquacade.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aquatic of Sherwood",
+      "strategy": "static",
+      "output_executable": "jb.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Arcalands",
+      "strategy": "static",
+      "output_executable": "al.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/ArchMage",
+      "strategy": "static",
+      "output_executable": "archmage.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Archipelago",
+      "strategy": "static",
+      "output_executable": "Archipelago.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Arctic Quest",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Arctic Quest 2",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Arklight",
+      "strategy": "static",
+      "output_executable": "ArkLight.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Armada Tanks",
+      "strategy": "static",
+      "output_executable": "Armada Tanks.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Armado",
+      "strategy": "static",
+      "output_executable": "Armado.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Around The World",
+      "strategy": "static",
+      "output_executable": "swg4.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Around The World In 80 Days",
+      "strategy": "static",
+      "output_executable": "Around the World in 80 Days.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Arxon",
+      "strategy": "static",
+      "output_executable": "arxon.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Asea",
+      "strategy": "static",
+      "output_executable": "Asea.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Ashley Jones",
+      "strategy": "static",
+      "output_executable": "HrtEgypt.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Astral Masters",
+      "strategy": "static",
+      "output_executable": "masters.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Astro Avenger 2",
+      "strategy": "static",
+      "output_executable": "AstroAvenger2.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Astro Fury",
+      "strategy": "static",
+      "output_executable": "AstroFury.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Astrobatics",
+      "strategy": "static",
+      "output_executable": "Astrobatics.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Atlantis",
+      "strategy": "static",
+      "output_executable": "Atlantis.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Atlantis Adventure",
+      "strategy": "static",
+      "output_executable": "Atlantis.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Atlantis Quest",
+      "strategy": "static",
+      "output_executable": "Atlantis.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Atlantis Sky Patrol",
+      "strategy": "static",
+      "output_executable": "AtlantisSkyPatrol.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Atomaders",
+      "strategy": "direct",
+      "output_executable": "SendBugReport.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Auto Cross Racing",
+      "strategy": "static",
+      "output_executable": "Auto Cross Racing.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Avalanche",
+      "strategy": "static",
+      "output_executable": "avalanche.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Avernum IV",
+      "strategy": "static",
+      "output_executable": "Avernum 4.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aveyond",
+      "strategy": "static",
+      "output_executable": "Aveyond.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aveyond 2",
+      "strategy": "static",
+      "output_executable": "Aveyond 2.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Azada",
+      "strategy": "static",
+      "output_executable": "Azada.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Azkend",
+      "strategy": "static",
+      "output_executable": "Azkend.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aztec Ball",
+      "strategy": "static",
+      "output_executable": "AztecBall.exe"
+    },
+    {
+      "root": "Reflexive Arcade A/Aztec Bricks",
+      "strategy": "static",
+      "output_executable": "Aztec Bricks.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Babel Deluxe",
+      "strategy": "static",
+      "output_executable": "Babel.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Ball 7",
+      "strategy": "static",
+      "output_executable": "ball7.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Ballhalla",
+      "strategy": "static",
+      "output_executable": "Ballhalla.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Band Of Bugs",
+      "strategy": "static",
+      "output_executable": "BoB.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Barrel Mania",
+      "strategy": "static",
+      "output_executable": "bmania.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Battle Castles",
+      "strategy": "static",
+      "output_executable": "BattleCastles.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Battleship",
+      "strategy": "static",
+      "output_executable": "BattleshipSA.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Beach Party Craze",
+      "strategy": "static",
+      "output_executable": "Beach Party Craze.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Beads",
+      "strategy": "static",
+      "output_executable": "Beads.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Beeline",
+      "strategy": "direct",
+      "output_executable": "Beeline.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Beetle Bomp",
+      "strategy": "static",
+      "output_executable": "BeetleBomp.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bejeweled 2 Deluxe",
+      "strategy": "static",
+      "output_executable": "WinBej2.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Believe In Santa",
+      "strategy": "static",
+      "output_executable": "BelieveInSanta.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Best Gift",
+      "strategy": "static",
+      "output_executable": "BestGift.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Betrapped",
+      "strategy": "static",
+      "output_executable": "BeTrapped.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Betty's Beer Bar",
+      "strategy": "static",
+      "output_executable": "bbb.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Big City Adventure San Francisco",
+      "strategy": "static",
+      "output_executable": "BigCityAdventureSF.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Big City Adventure Sydney Australia",
+      "strategy": "static",
+      "output_executable": "BigCityAdventureSyd.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Big Island Blends",
+      "strategy": "static",
+      "output_executable": "BigIslandBlends.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Birdies",
+      "strategy": "static",
+      "output_executable": "Birdies.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Birds On A Wire",
+      "strategy": "static",
+      "output_executable": "birds.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bistro Stars",
+      "strategy": "static",
+      "output_executable": "BistroStars.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Blast Miner",
+      "strategy": "static",
+      "output_executable": "blastminer.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Blokus World Tour",
+      "strategy": "static",
+      "output_executable": "Blokus.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Blood Ties",
+      "strategy": "static",
+      "output_executable": "BloodTies.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bloom",
+      "strategy": "static",
+      "output_executable": "Bloom.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Blox World",
+      "strategy": "direct",
+      "output_executable": "BloxWorld.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Boggle",
+      "strategy": "static",
+      "output_executable": "BoggleSA.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bombard Deluxe",
+      "strategy": "static",
+      "output_executable": "Bombard.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bonnie's Bookstore",
+      "strategy": "static",
+      "output_executable": "Bonnie's Bookstore.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Book Bind",
+      "strategy": "static",
+      "output_executable": "Book Bind.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bookworm Adventures Deluxe",
+      "strategy": "static",
+      "output_executable": "BookwormAdventures.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bookworm Deluxe",
+      "strategy": "static",
+      "output_executable": "BookWorm.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Boom Voyage",
+      "strategy": "static",
+      "output_executable": "BoomVoyage.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Boorps Balls",
+      "strategy": "static",
+      "output_executable": "Boorp's Balls.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Boulder Dash",
+      "strategy": "direct",
+      "output_executable": "bdtp.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bounty Special Edition",
+      "strategy": "static",
+      "output_executable": "game(patched).exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Brain Booster",
+      "strategy": "static",
+      "output_executable": "brainbooster.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Brave Dwarves 2",
+      "strategy": "static",
+      "output_executable": "BraveDwarves2.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Brave Dwarves Back For Treasures",
+      "strategy": "static",
+      "output_executable": "Gnomes.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Breaking News",
+      "strategy": "static",
+      "output_executable": "bn.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Brick Journey",
+      "strategy": "static",
+      "output_executable": "BrickJourney.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Brickquest",
+      "strategy": "static",
+      "output_executable": "brickquest.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bricks Of Egypt 2",
+      "strategy": "static",
+      "output_executable": "BricksOfEgypt2.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bricks of Atlantis",
+      "strategy": "static",
+      "output_executable": "BricksOfAtlantis.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Brickshooter Egypt",
+      "strategy": "static",
+      "output_executable": "BrickShooter.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bricktopia",
+      "strategy": "static",
+      "output_executable": "Bricktopia.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Brixquest",
+      "strategy": "static",
+      "output_executable": "BrixQuest.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bubble Bay",
+      "strategy": "static",
+      "output_executable": "bubblebay.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bubble Odyssey",
+      "strategy": "static",
+      "output_executable": "odyssey.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bubble Shooter Premium Edition",
+      "strategy": "static",
+      "output_executable": "Bubblez.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bubblefish Bob",
+      "strategy": "static",
+      "output_executable": "bob.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bugatron",
+      "strategy": "direct",
+      "output_executable": "Bugatron.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bugatron Worlds",
+      "strategy": "static",
+      "output_executable": "BugatronWorlds.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Build in Time",
+      "strategy": "static",
+      "output_executable": "BuildInTime.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Buildalot",
+      "strategy": "static",
+      "output_executable": "Buildalot.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Buildalot 2 Town Of The Year",
+      "strategy": "static",
+      "output_executable": "Buildalot2.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bullet Candy",
+      "strategy": "static",
+      "output_executable": "BulletCandyV2.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Bunny Bounce Deluxe",
+      "strategy": "static",
+      "output_executable": "BunnyBounce.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Burger Island",
+      "strategy": "static",
+      "output_executable": "bi.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Burger Rush",
+      "strategy": "static",
+      "output_executable": "BurgerRush.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Burger Shop",
+      "strategy": "static",
+      "output_executable": "BurgerShop.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Butterflight",
+      "strategy": "static",
+      "output_executable": "butterflight.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Butterfly Escape",
+      "strategy": "static",
+      "output_executable": "ButterflyEscape.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Buzzword",
+      "strategy": "static",
+      "output_executable": "Buzzword.exe"
+    },
+    {
+      "root": "Reflexive Arcade B/Buzzy Bumble",
+      "strategy": "static",
+      "output_executable": "BuzzyBumble.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/CLUE Classic",
+      "strategy": "static",
+      "output_executable": "CLUE Classic.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cafe Mahjongg",
+      "strategy": "static",
+      "output_executable": "cafe mahjongg.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cake Mania",
+      "strategy": "static",
+      "output_executable": "CakeMania.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cake Mania 2",
+      "strategy": "static",
+      "output_executable": "CakeMania2.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cake Mania 3",
+      "strategy": "static",
+      "output_executable": "CakeMania3.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Can You See What I See",
+      "strategy": "static",
+      "output_executable": "CanYouSee.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Candy Can",
+      "strategy": "static",
+      "output_executable": "candycan.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cannon Blast",
+      "strategy": "static",
+      "output_executable": "CannonBlast.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Capitalism II",
+      "strategy": "static",
+      "output_executable": "cap2.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Captain BubbleBeards Treasure",
+      "strategy": "static",
+      "output_executable": "BubbleBeard.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Caramba",
+      "strategy": "static",
+      "output_executable": "Caramba.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Caribbean Hideaway",
+      "strategy": "static",
+      "output_executable": "CaribbeanHideaway.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Caribbean Mah Jong",
+      "strategy": "static",
+      "output_executable": "CaribbeanMahJong.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Caribbean Treasures",
+      "strategy": "static",
+      "output_executable": "CaribbeanTreasures.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Carl The Caveman",
+      "strategy": "static",
+      "output_executable": "Caveman.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cash Out",
+      "strategy": "static",
+      "output_executable": "CashOut.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Casino Island To Go",
+      "strategy": "static",
+      "output_executable": "CasinoIsland.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Castle of Cards",
+      "strategy": "static",
+      "output_executable": "castleofcards.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cate West The Vanishing Files",
+      "strategy": "static",
+      "output_executable": "CateWestVanishing.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cathys Caribbean Club",
+      "strategy": "static",
+      "output_executable": "ccc.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cave Days",
+      "strategy": "static",
+      "output_executable": "cavedays.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chainz",
+      "strategy": "static",
+      "output_executable": "chainz.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chainz 2",
+      "strategy": "static",
+      "output_executable": "Chainz 2.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chaks Temple",
+      "strategy": "static",
+      "output_executable": "ChakTemple.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chameleon Gems",
+      "strategy": "static",
+      "output_executable": "ChameleonGems.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Charlottes Web Word Rescue",
+      "strategy": "static",
+      "output_executable": "CharlottesWeb.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Charm Solitaire",
+      "strategy": "static",
+      "output_executable": "CharmSolitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Charm Tale",
+      "strategy": "static",
+      "output_executable": "CharmTale.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Charm Tale 2 Mermaid Lagoon",
+      "strategy": "static",
+      "output_executable": "CharmTale2.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Charma",
+      "strategy": "static",
+      "output_executable": "Charma.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/CheboMan",
+      "strategy": "static",
+      "output_executable": "CheboMan.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chessmaster Challenge",
+      "strategy": "static",
+      "output_executable": "chess.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chicken Chase",
+      "strategy": "static",
+      "output_executable": "chicken_chase.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chicken Invaders 2",
+      "strategy": "static",
+      "output_executable": "ChickenInvaders2.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chicken Invaders 3",
+      "strategy": "static",
+      "output_executable": "CI3.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chicken Village",
+      "strategy": "static",
+      "output_executable": "chicken.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chocolate Castle",
+      "strategy": "static",
+      "output_executable": "choc.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chocolatier",
+      "strategy": "static",
+      "output_executable": "Chocolatier.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chocolatier 2",
+      "strategy": "static",
+      "output_executable": "chocotwo.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Christmasville",
+      "strategy": "static",
+      "output_executable": "Christmasville.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chromadrome 2",
+      "strategy": "static",
+      "output_executable": "Chromadrome2.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Chuzzle Deluxe",
+      "strategy": "static",
+      "output_executable": "Chuzzle.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cindys Sundaes",
+      "strategy": "static",
+      "output_executable": "cindyssundaes.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cinema Tycoon 2 Movie Mania",
+      "strategy": "static",
+      "output_executable": "CinemaTycoon2MovieMania.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cinema Tycoon Gold",
+      "strategy": "static",
+      "output_executable": "CinemaTycoon.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Circulate",
+      "strategy": "static",
+      "output_executable": "Circulate.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/City Magnate",
+      "strategy": "static",
+      "output_executable": "CityMagnate.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Clash N Slash",
+      "strategy": "static",
+      "output_executable": "Clash N Slash.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Clash N Slash Worlds Away",
+      "strategy": "static",
+      "output_executable": "Clash N Slash Worlds Away.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Clayside",
+      "strategy": "static",
+      "output_executable": "Clayside.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Click O Pack",
+      "strategy": "static",
+      "output_executable": "Click-O-Pack.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Coffee Rush",
+      "strategy": "static",
+      "output_executable": "CoffeeRush.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Coffee Tycoon",
+      "strategy": "static",
+      "output_executable": "CoffeeTycoon.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Concentration",
+      "strategy": "static",
+      "output_executable": "Concentration.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cooking Academy",
+      "strategy": "static",
+      "output_executable": "CookingAcademy.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cooking Dash",
+      "strategy": "static",
+      "output_executable": "cookingdash.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cosmic Stacker",
+      "strategy": "static",
+      "output_executable": "CosmicStacker.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cradle Of Persia",
+      "strategy": "static",
+      "output_executable": "CradleOfPersia.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cradle Of Rome",
+      "strategy": "static",
+      "output_executable": "CradleOfRome.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Crazy Eggs",
+      "strategy": "static",
+      "output_executable": "CrazyEggs.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cribbage Quest",
+      "strategy": "static",
+      "output_executable": "CribbageQuest.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Crime Puzzle",
+      "strategy": "static",
+      "output_executable": "CrimePuzzle.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Crimsonland",
+      "strategy": "direct",
+      "output_executable": "crimsonland.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Crumb",
+      "strategy": "static",
+      "output_executable": "Crumb.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Crusaders Of Space 2",
+      "strategy": "static",
+      "output_executable": "Cos2.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Crusaders of Space Open Range",
+      "strategy": "static",
+      "output_executable": "Cos.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Crystalix",
+      "strategy": "static",
+      "output_executable": "Crystalix.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cubis Gold 2",
+      "strategy": "static",
+      "output_executable": "cubis2.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cubology",
+      "strategy": "static",
+      "output_executable": "Cubology.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cubozoid",
+      "strategy": "static",
+      "output_executable": "Cubozoid.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Cute Knight",
+      "strategy": "static",
+      "output_executable": "kishi.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Super Collapse",
+      "strategy": "direct",
+      "output_executable": "Collapse.exe"
+    },
+    {
+      "root": "Reflexive Arcade C/Super Collapse II",
+      "strategy": "direct",
+      "output_executable": "relapse.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/DDD Pool",
+      "strategy": "static",
+      "output_executable": "DDDPool.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/DNA",
+      "strategy": "static",
+      "output_executable": "D.N.A.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Da Vincis Secret",
+      "strategy": "static",
+      "output_executable": "DaVincisSecret.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dairy Dash",
+      "strategy": "static",
+      "output_executable": "dairydash.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dangerous High School Girls In Trouble/prog",
+      "strategy": "static",
+      "output_executable": "brigiton.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dark Archon",
+      "strategy": "static",
+      "output_executable": "Dark Archon.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Darkside",
+      "strategy": "static",
+      "output_executable": "DarkSide.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Daycare Nightmare",
+      "strategy": "static",
+      "output_executable": "DaycareNightmare.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Death On The Nile",
+      "strategy": "static",
+      "output_executable": "DeathOnTheNile.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Deep Blue Sea",
+      "strategy": "static",
+      "output_executable": "Deep Blue Sea.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Deep Quest",
+      "strategy": "static",
+      "output_executable": "DeepQuest.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Deep Sea Tycoon",
+      "strategy": "static",
+      "output_executable": "ut.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Deep Sea Tycoon 2",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Delicious 2 Deluxe",
+      "strategy": "static",
+      "output_executable": "Delicious2.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Delicious Deluxe",
+      "strategy": "static",
+      "output_executable": "Delicious.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Delivery King",
+      "strategy": "static",
+      "output_executable": "Delivery King.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Democracy",
+      "strategy": "static",
+      "output_executable": "Democracy.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/DemonStar Classic",
+      "strategy": "static",
+      "output_executable": "ds.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Depths Of Peril",
+      "strategy": "static",
+      "output_executable": "DepthsOfPeril.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Desperate Space",
+      "strategy": "static",
+      "output_executable": "Desperate.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Devastation Zone Troopers",
+      "strategy": "static",
+      "output_executable": "dzt.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Diamond Detective",
+      "strategy": "static",
+      "output_executable": "DiamondDetective.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Diamond Drop",
+      "strategy": "static",
+      "output_executable": "DiamondDrop.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Diner Dash",
+      "strategy": "static",
+      "output_executable": "Diner Dash.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Diner Dash 2",
+      "strategy": "static",
+      "output_executable": "dinerdash2.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Diner Dash Flo On The Go",
+      "strategy": "static",
+      "output_executable": "Diner Dash - Flo On The Go.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Diner Dash Seasonal Snack Pack",
+      "strategy": "static",
+      "output_executable": "Diner Dash - Seasonal Snack Pack.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Discord Times",
+      "strategy": "static",
+      "output_executable": "DiscordTimes.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Discovering Nature",
+      "strategy": "static",
+      "output_executable": "DiscoveringNature.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Discovery A Seek And Find Adventure",
+      "strategy": "static",
+      "output_executable": "Discovery.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Doggie Dash",
+      "strategy": "static",
+      "output_executable": "doggiedash.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dr Daisy Pet Vet",
+      "strategy": "static",
+      "output_executable": "daisy.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dr Germ",
+      "strategy": "static",
+      "output_executable": "DrGerm.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dr Lynch Grave Secrets",
+      "strategy": "static",
+      "output_executable": "gravesecrets.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dracula Twins",
+      "strategy": "static",
+      "output_executable": "DraculaTwins.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dragon Ball",
+      "strategy": "static",
+      "output_executable": "DragonBall.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dragons Abode",
+      "strategy": "static",
+      "output_executable": "DA.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dream Chronicles",
+      "strategy": "static",
+      "output_executable": "dream.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dream Chronicles 2",
+      "strategy": "static",
+      "output_executable": "dream2.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dream Day Wedding",
+      "strategy": "static",
+      "output_executable": "DreamDayWedding.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dream Vacation Solitaire",
+      "strategy": "static",
+      "output_executable": "Dream Vacation Solitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dress Shop Hop",
+      "strategy": "static",
+      "output_executable": "DressShopHop.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dress Up Rush",
+      "strategy": "static",
+      "output_executable": "Dress_Up_Rush.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Drop",
+      "strategy": "static",
+      "output_executable": "Drop.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Drop Em Deluxe",
+      "strategy": "static",
+      "output_executable": "DropEm.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Drop! 2",
+      "strategy": "static",
+      "output_executable": "DropExtreme.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Druids Battle Of Magic",
+      "strategy": "static",
+      "output_executable": "TheDruids.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dungeon Scroll Gold Edition",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade D/Dynasty",
+      "strategy": "static",
+      "output_executable": "Dynasty.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Double Trump/Electric",
+      "strategy": "direct",
+      "output_executable": "Electric.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Easter Bonus",
+      "strategy": "static",
+      "output_executable": "easterbonus.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Eets/Bin",
+      "strategy": "static",
+      "output_executable": "Eets.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Egg vs. Chicken",
+      "strategy": "static",
+      "output_executable": "Egg vs Chicken.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Egyptoid",
+      "strategy": "static",
+      "output_executable": "Egyptoid.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/El Dorado Quest",
+      "strategy": "static",
+      "output_executable": "ElDoradoQuest.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Electra",
+      "strategy": "static",
+      "output_executable": "Electra.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Elemental",
+      "strategy": "static",
+      "output_executable": "elemental.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Elements",
+      "strategy": "static",
+      "output_executable": "elements.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Elf Bowling The Last Insult",
+      "strategy": "static",
+      "output_executable": "ElfBowling.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Elias The Mighty",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Elite Mahjong",
+      "strategy": "static",
+      "output_executable": "elitemahjong.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Elythril The Elf Treasure",
+      "strategy": "static",
+      "output_executable": "Elythril.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Emerald Tale",
+      "strategy": "static",
+      "output_executable": "Emerald Tale.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Emperors Mahjong",
+      "strategy": "static",
+      "output_executable": "Mahjong.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Empires And Dungeons",
+      "strategy": "static",
+      "output_executable": "EmpiresDungeons.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Enchanted Gardens",
+      "strategy": "static",
+      "output_executable": "EnchantedGardens.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Escape From Paradise",
+      "strategy": "static",
+      "output_executable": "Escape.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Escape The Museum",
+      "strategy": "static",
+      "output_executable": "Museum.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Eschalon Book 1",
+      "strategy": "static",
+      "output_executable": "Eschalon Book I.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Etch A Sketch",
+      "strategy": "static",
+      "output_executable": "EtchASketch.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Evil Invasion",
+      "strategy": "static",
+      "output_executable": "EvilInvasion.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Exocubes",
+      "strategy": "static",
+      "output_executable": "Exocubes.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Eye For Design",
+      "strategy": "static",
+      "output_executable": "EyeForDesign.exe"
+    },
+    {
+      "root": "Reflexive Arcade E/Playtonium Jigsaw Enchanted Forest",
+      "strategy": "direct",
+      "output_executable": "PtJigsaw.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fab Fashion",
+      "strategy": "static",
+      "output_executable": "FabFashion.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fairies",
+      "strategy": "static",
+      "output_executable": "fairies.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fairway Solitaire",
+      "strategy": "static",
+      "output_executable": "FairwaySolitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fairy Godmother Tycoon",
+      "strategy": "static",
+      "output_executable": "fgt_nt.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fairy Treasure",
+      "strategy": "static",
+      "output_executable": "FairyTreasure.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fairy Words",
+      "strategy": "static",
+      "output_executable": "words.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Family Feud Dream Home",
+      "strategy": "static",
+      "output_executable": "FamilyFeud3.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Family Feud Hollywood",
+      "strategy": "static",
+      "output_executable": "FamilyFeud.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Family Feud II",
+      "strategy": "static",
+      "output_executable": "FamilyFeud.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Farm Frenzy",
+      "strategy": "static",
+      "output_executable": "farm.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Farm Frenzy 2",
+      "strategy": "static",
+      "output_executable": "farm2.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fashion Boutique",
+      "strategy": "static",
+      "output_executable": "FashionBoutique.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fashion Craze",
+      "strategy": "static",
+      "output_executable": "FashionCraze.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fashion Dash",
+      "strategy": "static",
+      "output_executable": "fashiondash.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fashion Fits",
+      "strategy": "static",
+      "output_executable": "FashionFits.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fashion Solitaire",
+      "strategy": "static",
+      "output_executable": "Fashion.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fashionista",
+      "strategy": "static",
+      "output_executable": "Fashionista.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fatal Hearts",
+      "strategy": "static",
+      "output_executable": "Fatal Hearts.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fatman Adventures",
+      "strategy": "direct",
+      "output_executable": "fatman.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Feed The Snake",
+      "strategy": "direct",
+      "output_executable": "fsnake.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Feeding Frenzy",
+      "strategy": "static",
+      "output_executable": "FeedingFrenzy.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Feeding Frenzy 2",
+      "strategy": "static",
+      "output_executable": "Feeding Frenzy 2.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Feelers",
+      "strategy": "static",
+      "output_executable": "Feelers.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fever Frenzy",
+      "strategy": "static",
+      "output_executable": "Fever Frenzy.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Feyruna Fairy Forest",
+      "strategy": "static",
+      "output_executable": "Feyruna.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fiber Twig",
+      "strategy": "static",
+      "output_executable": "FiberTwig.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fiber Twig 2",
+      "strategy": "static",
+      "output_executable": "FiberTwig2.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Filler",
+      "strategy": "static",
+      "output_executable": "filler_release_full.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Finders Keepers",
+      "strategy": "static",
+      "output_executable": "Finders Keepers.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fireworks Extravaganza",
+      "strategy": "static",
+      "output_executable": "fireworks.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/First Class Flurry",
+      "strategy": "static",
+      "output_executable": "firstclassflurry.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fish Tales",
+      "strategy": "static",
+      "output_executable": "FishTales.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fish Tycoon",
+      "strategy": "static",
+      "output_executable": "FishTycoon.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/FishCo",
+      "strategy": "static",
+      "output_executable": "FishCo.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fishing Craze",
+      "strategy": "static",
+      "output_executable": "FishingCraze.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fishing Trip",
+      "strategy": "static",
+      "output_executable": "fishingtrip.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fitness Frenzy",
+      "strategy": "static",
+      "output_executable": "FitnessFrenzy.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fizzball",
+      "strategy": "static",
+      "output_executable": "FizzBall.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Flatspace II",
+      "strategy": "static",
+      "output_executable": "FlatspaceII.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Flip Wit!",
+      "strategy": "direct",
+      "output_executable": "FlipWit.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Flip Words 2",
+      "strategy": "static",
+      "output_executable": "FlipWords2.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Flip or Flop",
+      "strategy": "static",
+      "output_executable": "FlipOrFlop.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Flower Quest",
+      "strategy": "static",
+      "output_executable": "FlowerQuest.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Flower Shop Big City Break",
+      "strategy": "static",
+      "output_executable": "FlowerShop.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Flower Stand Tycoon",
+      "strategy": "static",
+      "output_executable": "FlowerStandTycoon.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Flowery Vale",
+      "strategy": "static",
+      "output_executable": "Flowery Vale.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fluff 'Em Up",
+      "strategy": "static",
+      "output_executable": "fluffemup.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Flying Doughman",
+      "strategy": "static",
+      "output_executable": "doughman.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Flying Leo",
+      "strategy": "static",
+      "output_executable": "FlyingLeo.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Forgotten Riddles The Mayan Princess",
+      "strategy": "static",
+      "output_executable": "ForgottenRiddles_v113.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Four Houses",
+      "strategy": "static",
+      "output_executable": "FourHouses.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fresco Wizard",
+      "strategy": "static",
+      "output_executable": "FrescoWizard.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Froggy Castle 2",
+      "strategy": "static",
+      "output_executable": "FC2.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Froggy's Adventures",
+      "strategy": "static",
+      "output_executable": "froggy.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fruit Fall",
+      "strategy": "static",
+      "output_executable": "fruitfall_vanilla_no_urls.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fruit Lockers",
+      "strategy": "static",
+      "output_executable": "Lockers.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Full Circle",
+      "strategy": "static",
+      "output_executable": "FullCircle.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Funky Farm",
+      "strategy": "static",
+      "output_executable": "Funky Farm.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Funny Creatures",
+      "strategy": "static",
+      "output_executable": "FunnyCreatures.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Fusion",
+      "strategy": "direct",
+      "output_executable": "Fusion.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/G2 Geeks Unleashed",
+      "strategy": "static",
+      "output_executable": "GeeksPC.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/GHOST Hunters The Haunting Of Majesty Manor",
+      "strategy": "static",
+      "output_executable": "GHOST Hunters.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Galapago",
+      "strategy": "static",
+      "output_executable": "Galapago.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gamehouse Sudoku",
+      "strategy": "static",
+      "output_executable": "GHSudoku.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gamehouse Word Collection",
+      "strategy": "static",
+      "output_executable": "WordCollection.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gamino",
+      "strategy": "static",
+      "output_executable": "Gamino.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Garden Defense",
+      "strategy": "static",
+      "output_executable": "GardenDefense.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Garden Dreams",
+      "strategy": "static",
+      "output_executable": "GardenDreams.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Garfield Goes to Pieces",
+      "strategy": "direct",
+      "output_executable": "PtJigsaw.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gazillionaire III",
+      "strategy": "static",
+      "output_executable": "GAZ3.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gem Ball",
+      "strategy": "static",
+      "output_executable": "_GemBall.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gem Shop",
+      "strategy": "static",
+      "output_executable": "GemShop.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gem Slider Deluxe",
+      "strategy": "static",
+      "output_executable": "gs.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gemsweeper",
+      "strategy": "static",
+      "output_executable": "Gemsweeper.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Genius Move",
+      "strategy": "static",
+      "output_executable": "genius_move.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Geom",
+      "strategy": "static",
+      "output_executable": "framework.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gift Shop",
+      "strategy": "static",
+      "output_executable": "GiftShop.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gish",
+      "strategy": "static",
+      "output_executable": "gish.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Global Defense Network",
+      "strategy": "direct",
+      "output_executable": "DisplayConfig_GDN_Client.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Glow Worm",
+      "strategy": "static",
+      "output_executable": "Glorm.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Glyph",
+      "strategy": "static",
+      "output_executable": "glyph.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Glyph 2",
+      "strategy": "static",
+      "output_executable": "Glyph2.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Go Go Gourmet",
+      "strategy": "static",
+      "output_executable": "Go Go Gourmet.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Go Go Gourmet Chef Of The Year",
+      "strategy": "static",
+      "output_executable": "Go-Go Gourmet 2.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gold Fever",
+      "strategy": "static",
+      "output_executable": "GoldFever.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gold Miner",
+      "strategy": "direct",
+      "output_executable": "GoldMinerRA.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gold Miner Joe",
+      "strategy": "static",
+      "output_executable": "Gold Miner Joe.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gold Miner Special Edition",
+      "strategy": "static",
+      "output_executable": "GMSE_Reflexive2.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gold Miner Vegas",
+      "strategy": "static",
+      "output_executable": "GoldMinerVegas.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gold Rush Treasure Hunt",
+      "strategy": "static",
+      "output_executable": "GoldRushTreasureHunt.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gold Sprinter",
+      "strategy": "direct",
+      "output_executable": "GoldSprinter.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Granny In Paradise",
+      "strategy": "static",
+      "output_executable": "granny_download.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gravity Drive",
+      "strategy": "static",
+      "output_executable": "GravityDrive.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Great Escapes Solitaire",
+      "strategy": "static",
+      "output_executable": "solitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Great Secrets Da Vinci",
+      "strategy": "static",
+      "output_executable": "davinci.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Greedy Words",
+      "strategy": "static",
+      "output_executable": "GreedyWords.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Grimms Hatchery",
+      "strategy": "static",
+      "output_executable": "Grimms_Hatchery.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Grump",
+      "strategy": "direct",
+      "output_executable": "Grump.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Guardian",
+      "strategy": "static",
+      "output_executable": "Guardian.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gumboy Crazy Adventures",
+      "strategy": "static",
+      "output_executable": "GumboyCrazyAdventures.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gunner 2",
+      "strategy": "static",
+      "output_executable": "G2Game.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Gutterball 2",
+      "strategy": "static",
+      "output_executable": "Gutterball2.exe"
+    },
+    {
+      "root": "Reflexive Arcade G/Super Glinx",
+      "strategy": "direct",
+      "output_executable": "Glinx.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hammer Heads Deluxe",
+      "strategy": "static",
+      "output_executable": "HammerHeads.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hamster Blocks",
+      "strategy": "static",
+      "output_executable": "Hamsters.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hamsterball",
+      "strategy": "static",
+      "output_executable": "Hamsterball.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/HangStan",
+      "strategy": "direct",
+      "output_executable": "HangStanRA.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hangman Wild West 2",
+      "strategy": "direct",
+      "output_executable": "Hangman.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hap Hazard",
+      "strategy": "static",
+      "output_executable": "HapHazard.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Happy Hour",
+      "strategy": "static",
+      "output_executable": "Happy Hour 1.0.1.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Harvest Mania To Go",
+      "strategy": "static",
+      "output_executable": "HarvestMania.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Harvest Massive Encounter",
+      "strategy": "static",
+      "output_executable": "Harvest.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hawaiian Explorer Pearl Harbor",
+      "strategy": "static",
+      "output_executable": "Hawaiian Explorer Pearl Harbor.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hawaiian Explorer The Lost Island",
+      "strategy": "static",
+      "output_executable": "LostIsland.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Heavy Weapon",
+      "strategy": "static",
+      "output_executable": "Heavy Weapon Deluxe.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hells Kitchen",
+      "strategy": "static",
+      "output_executable": "Hell's Kitchen.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Heroes Of Hellas",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hexalot",
+      "strategy": "static",
+      "output_executable": "Hexalot.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hidden Expedition Amazon",
+      "strategy": "static",
+      "output_executable": "Hidden Expedition Amazon.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hidden Expedition Titanic",
+      "strategy": "static",
+      "output_executable": "HidExpTitanic.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hidden Relics",
+      "strategy": "static",
+      "output_executable": "Hidden Relics.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hidden Secrets The Nightmare",
+      "strategy": "static",
+      "output_executable": "Nightmare_1_0_4.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hidden Wonders Of The Depths",
+      "strategy": "static",
+      "output_executable": "HWD.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hide And Secret",
+      "strategy": "static",
+      "output_executable": "Hide-and-Secret.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hide And Secret 2",
+      "strategy": "static",
+      "output_executable": "Hide-and-Secret2.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Holiday Bonus",
+      "strategy": "static",
+      "output_executable": "HolidayBonus.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Holiday Gift",
+      "strategy": "static",
+      "output_executable": "HollydayGift.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Holly A Christmas Tale",
+      "strategy": "static",
+      "output_executable": "Holly.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Home Sweet Home",
+      "strategy": "static",
+      "output_executable": "HomeSweetHome_EN.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Home Sweet Home 2 Kitchens And Baths",
+      "strategy": "static",
+      "output_executable": "Home Sweet Home 2.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hoteis Jewels",
+      "strategy": "static",
+      "output_executable": "HoteisJewels.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hotel Mahjong Deluxe",
+      "strategy": "static",
+      "output_executable": "HotelMahjong.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hotel Solitaire",
+      "strategy": "static",
+      "output_executable": "hotelsolitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hoyle Miami Solitaire",
+      "strategy": "static",
+      "output_executable": "HoyleMiamiSolitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hyperballoid 2",
+      "strategy": "static",
+      "output_executable": "Hyperballoid2.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hyperballoid Golden Pack",
+      "strategy": "static",
+      "output_executable": "Hyperballoid.exe"
+    },
+    {
+      "root": "Reflexive Arcade H/Hyperspace Invader",
+      "strategy": "static",
+      "output_executable": "Invader.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Ice Age",
+      "strategy": "direct",
+      "output_executable": "IceAge.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Ice Cream Dee Lites",
+      "strategy": "static",
+      "output_executable": "Ice Cream Dee Lites.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Ice Cream Mania",
+      "strategy": "static",
+      "output_executable": "IceCream_Mania.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Ice Cream Tycoon",
+      "strategy": "static",
+      "output_executable": "ICT.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Ice Puzzle Deluxe",
+      "strategy": "static",
+      "output_executable": "IcePuzzleDeluxe.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Icy Spell",
+      "strategy": "static",
+      "output_executable": "IcySpell.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/InSpheration",
+      "strategy": "static",
+      "output_executable": "InSpheration.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Inca Ball",
+      "strategy": "static",
+      "output_executable": "IncaBall.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Inca Quest",
+      "strategy": "static",
+      "output_executable": "IncaQuest.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Incadia",
+      "strategy": "static",
+      "output_executable": "Incadia.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Incrediball - The Seven Sapphires",
+      "strategy": "static",
+      "output_executable": "Incrediball_Release.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Ingenious",
+      "strategy": "static",
+      "output_executable": "Ingenious.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Inspector Parker",
+      "strategy": "static",
+      "output_executable": "Parker.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Invadazoid",
+      "strategy": "static",
+      "output_executable": "Invadazoid.exe"
+    },
+    {
+      "root": "Reflexive Arcade I/Island Wars 2",
+      "strategy": "static",
+      "output_executable": "IslandWars2.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jackpot Matchup",
+      "strategy": "static",
+      "output_executable": "Jackpot_Match-Up.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jam XM",
+      "strategy": "static",
+      "output_executable": "jamxm.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Janes Hotel",
+      "strategy": "static",
+      "output_executable": "Jane's Hotel.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Janes Realty",
+      "strategy": "static",
+      "output_executable": "Reality.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jeez",
+      "strategy": "static",
+      "output_executable": "Jeez!.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jet Jumper",
+      "strategy": "static",
+      "output_executable": "JJ-Game.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jets N Guns GOLD",
+      "strategy": "static",
+      "output_executable": "JnG.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Craft",
+      "strategy": "static",
+      "output_executable": "JewelCraft.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Match",
+      "strategy": "static",
+      "output_executable": "jewel.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Match 2",
+      "strategy": "static",
+      "output_executable": "JewelMatch2.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Match Winter Wonderland",
+      "strategy": "static",
+      "output_executable": "JewelMatch_WinterWonderland.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Miner",
+      "strategy": "static",
+      "output_executable": "JewelMiner.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Of Atlantis",
+      "strategy": "static",
+      "output_executable": "Jewel of Atlantis.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Quest 2",
+      "strategy": "static",
+      "output_executable": "JewelQuest2.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Quest III",
+      "strategy": "static",
+      "output_executable": "JewelQuest3.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Quest Mysteries",
+      "strategy": "static",
+      "output_executable": "EmeraldTear.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Quest Solitaire",
+      "strategy": "static",
+      "output_executable": "JQSolitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Quest Solitaire II",
+      "strategy": "static",
+      "output_executable": "JQSolitaire2.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewelix",
+      "strategy": "static",
+      "output_executable": "Jewelix.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewelleria",
+      "strategy": "static",
+      "output_executable": "Jewelleria.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewels of Cleopatra",
+      "strategy": "static",
+      "output_executable": "joc.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jezzonix",
+      "strategy": "static",
+      "output_executable": "Jezzonix.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jig Art Quest",
+      "strategy": "static",
+      "output_executable": "Jig Art Quest.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jig Words",
+      "strategy": "static",
+      "output_executable": "JigWords.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jigsaw365",
+      "strategy": "direct",
+      "output_executable": "Jigsaw365.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jojos Fashion Show",
+      "strategy": "static",
+      "output_executable": "JojosFashionShow.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jojos Fashion Show 2",
+      "strategy": "static",
+      "output_executable": "JojosFashionShow2.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jump Jump Jelly Reactor",
+      "strategy": "static",
+      "output_executable": "JJJR.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jungle Heart",
+      "strategy": "static",
+      "output_executable": "JungleHeart.exe"
+    },
+    {
+      "root": "Reflexive Arcade J/Jurassic Realm",
+      "strategy": "static",
+      "output_executable": "Jurassic Realm.exe"
+    },
+    {
+      "root": "Reflexive Arcade K/Karu",
+      "strategy": "static",
+      "output_executable": "karu.exe"
+    },
+    {
+      "root": "Reflexive Arcade K/Kennys Adventure",
+      "strategy": "static",
+      "output_executable": "Game.exe"
+    },
+    {
+      "root": "Reflexive Arcade K/Kick Shot Pool",
+      "strategy": "static",
+      "output_executable": "Pool.exe"
+    },
+    {
+      "root": "Reflexive Arcade K/King Kong Skull Island Adventure",
+      "strategy": "static",
+      "output_executable": "Kong.exe"
+    },
+    {
+      "root": "Reflexive Arcade K/KingMania",
+      "strategy": "static",
+      "output_executable": "kingmania.exe"
+    },
+    {
+      "root": "Reflexive Arcade K/Koi Solitaire",
+      "strategy": "static",
+      "output_executable": "KoiSolitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade K/Kudos",
+      "strategy": "static",
+      "output_executable": "Kudos.exe"
+    },
+    {
+      "root": "Reflexive Arcade K/Kudos Rock Legend",
+      "strategy": "static",
+      "output_executable": "KudosRockLegend.exe"
+    },
+    {
+      "root": "Reflexive Arcade K/Kungfu Master",
+      "strategy": "static",
+      "output_executable": "kfm.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/LEGO Builder Bots",
+      "strategy": "static",
+      "output_executable": "LEGO Builder Bots.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/LEGO Chic Boutique",
+      "strategy": "static",
+      "output_executable": "LEGO Chic Boutique.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/LEGO Fever",
+      "strategy": "static",
+      "output_executable": "LEGOFever.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Larva Mortus",
+      "strategy": "static",
+      "output_executable": "larvamortus.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Laser Dolphin",
+      "strategy": "static",
+      "output_executable": "laserdolphin.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Last Galaxy Hero",
+      "strategy": "static",
+      "output_executable": "LastGalaxyHero.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Laura Jones And The Gates Of Good And Evil",
+      "strategy": "static",
+      "output_executable": "Detective.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Law And Order The Vengeful Heart",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Legend of Aladdin",
+      "strategy": "static",
+      "output_executable": "LegendOfAladdin.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Lemonade Tycoon",
+      "strategy": "static",
+      "output_executable": "Lemonade.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Lemonade Tycoon 2",
+      "strategy": "static",
+      "output_executable": "Lemonade2.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Letter Lab",
+      "strategy": "static",
+      "output_executable": "Letter Lab.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Liong The Dragon Dance",
+      "strategy": "static",
+      "output_executable": "liong.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Little Farm",
+      "strategy": "static",
+      "output_executable": "LittleFarm.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Little Shop City Lights",
+      "strategy": "static",
+      "output_executable": "LittleShopOfTreasures3.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Little Shop Of Treasures",
+      "strategy": "static",
+      "output_executable": "LittleShopOfTreasures.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Loco",
+      "strategy": "static",
+      "output_executable": "Loco.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Lost Treasures Of El Dorado",
+      "strategy": "static",
+      "output_executable": "eldorado.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Lottso Deluxe",
+      "strategy": "static",
+      "output_executable": "Lottso2.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Lotus Deluxe",
+      "strategy": "static",
+      "output_executable": "Lotus.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Luck Charm Deluxe",
+      "strategy": "static",
+      "output_executable": "LuckCharmDeluxe.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Lucky Clover",
+      "strategy": "static",
+      "output_executable": "LuckyClover.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Luckys Rainbow",
+      "strategy": "static",
+      "output_executable": "Lucky.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Lucy Q Deluxe",
+      "strategy": "static",
+      "output_executable": "LucyQ.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Luxor",
+      "strategy": "static",
+      "output_executable": "Luxor.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Luxor 2",
+      "strategy": "static",
+      "output_executable": "luxor2.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Luxor 3",
+      "strategy": "static",
+      "output_executable": "Luxor3.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Luxor Amun Rising",
+      "strategy": "static",
+      "output_executable": "Luxor AR.exe"
+    },
+    {
+      "root": "Reflexive Arcade L/Luxor Mah Jong",
+      "strategy": "static",
+      "output_executable": "Luxor Mahjong.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mad Cars",
+      "strategy": "direct",
+      "output_executable": "madcars.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Academy",
+      "strategy": "static",
+      "output_executable": "academy.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Ball 2",
+      "strategy": "static",
+      "output_executable": "MagicBall2.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Ball 2 New Worlds",
+      "strategy": "static",
+      "output_executable": "MagicBall2.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Ball 3",
+      "strategy": "static",
+      "output_executable": "Magic Ball 3.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Blast",
+      "strategy": "static",
+      "output_executable": "MagicBlast.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Encyclopedia",
+      "strategy": "static",
+      "output_executable": "magic.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Farm",
+      "strategy": "static",
+      "output_executable": "magic_farm.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Gem",
+      "strategy": "static",
+      "output_executable": "magicgem.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Inlay",
+      "strategy": "static",
+      "output_executable": "MagicInlay.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Lanterns",
+      "strategy": "static",
+      "output_executable": "magic_lanterns.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Match",
+      "strategy": "static",
+      "output_executable": "MagicMatch.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Match Adventures",
+      "strategy": "static",
+      "output_executable": "MagicMatchAdventures.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Match The Genies Journey",
+      "strategy": "static",
+      "output_executable": "Magic Match 2.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Seeds",
+      "strategy": "static",
+      "output_executable": "MagicSeeds.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Shop",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Stones",
+      "strategy": "static",
+      "output_executable": "Magic Stones.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Tale",
+      "strategy": "static",
+      "output_executable": "MagicTale.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Tea",
+      "strategy": "static",
+      "output_executable": "MagicTea.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Vines",
+      "strategy": "static",
+      "output_executable": "Magic Vines.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Magus In Search Of Adventure",
+      "strategy": "static",
+      "output_executable": "Magus.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mah Jomino",
+      "strategy": "static",
+      "output_executable": "mahjomino.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mah Jong Adventures",
+      "strategy": "static",
+      "output_executable": "MahJongAdventures.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mah Jong Quest 3",
+      "strategy": "static",
+      "output_executable": "MahjongQuest3.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mah Jong Quest II",
+      "strategy": "static",
+      "output_executable": "MahjongQuest2.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong Escape",
+      "strategy": "static",
+      "output_executable": "MahjongEscape.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong Escape Ancient Japan",
+      "strategy": "static",
+      "output_executable": "MahjongEscapeAJ.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong Fortuna 2 Deluxe",
+      "strategy": "static",
+      "output_executable": "MahjongFortuna2.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong Garden To Go",
+      "strategy": "static",
+      "output_executable": "Mahjong.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong Holidays 2005",
+      "strategy": "static",
+      "output_executable": "MH2005.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong Mania Deluxe",
+      "strategy": "static",
+      "output_executable": "Mahjong.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong Match",
+      "strategy": "static",
+      "output_executable": "Mahjong.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong Roadshow",
+      "strategy": "static",
+      "output_executable": "MahjongRoadshow.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong Tales Ancient Wisdom",
+      "strategy": "static",
+      "output_executable": "MahjongTalesAncientWisdom.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong The Endless Journey",
+      "strategy": "static",
+      "output_executable": "MahjongTEJ.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong Towers Eternity",
+      "strategy": "static",
+      "output_executable": "mte.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong Towers II",
+      "strategy": "direct",
+      "output_executable": "Mahjong Towers II.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjong World",
+      "strategy": "static",
+      "output_executable": "Mahjong World.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjongg Artifacts",
+      "strategy": "static",
+      "output_executable": "mahjongg_artifacts.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjongg Artifacts Chapter 2",
+      "strategy": "static",
+      "output_executable": "mahjong_artifacts2.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mahjongg Investigations",
+      "strategy": "static",
+      "output_executable": "MahjonggInvestigations.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Marblez",
+      "strategy": "static",
+      "output_executable": "Marblez.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mariposa",
+      "strategy": "static",
+      "output_executable": "Mariposa.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Master of Defense",
+      "strategy": "static",
+      "output_executable": "Main.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Maui And The Big Fish",
+      "strategy": "static",
+      "output_executable": "maui.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Maui Wowee",
+      "strategy": "static",
+      "output_executable": "MauiWowee.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mayawaka",
+      "strategy": "static",
+      "output_executable": "MayaWaka.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Memory Loops",
+      "strategy": "static",
+      "output_executable": "MemoryLoops.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Merriam Websters Spell Jam",
+      "strategy": "static",
+      "output_executable": "SPELL-JAM.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Merv Griffins Crosswords",
+      "strategy": "static",
+      "output_executable": "MervGriffinCrosswords.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Meteor",
+      "strategy": "static",
+      "output_executable": "Meteor.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mexican Motor Mafia",
+      "strategy": "static",
+      "output_executable": "FlatEngine.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Microblots",
+      "strategy": "static",
+      "output_executable": "microblots.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mighty Rodent",
+      "strategy": "static",
+      "output_executable": "MightyRodent.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mind Machine",
+      "strategy": "static",
+      "output_executable": "mind_machine.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mind Your Marbles Christmas Edition",
+      "strategy": "static",
+      "output_executable": "Mind Your Marbles.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mini Golf Pro",
+      "strategy": "static",
+      "output_executable": "MiniGolfPro_Reflexive.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Miriel The Magical Merchant",
+      "strategy": "static",
+      "output_executable": "Miriel.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mirror Magic",
+      "strategy": "static",
+      "output_executable": "mirrormagic.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mirror Mixup",
+      "strategy": "static",
+      "output_executable": "MirrorMixup.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Miss Management",
+      "strategy": "static",
+      "output_executable": "Miss Management.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Miss Teri Tale",
+      "strategy": "static",
+      "output_executable": "MissTeriTale.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Money Tree",
+      "strategy": "static",
+      "output_executable": "money tree.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Monster Mash",
+      "strategy": "static",
+      "output_executable": "MonsterMash.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mortimer Beckett And The Secrets Of Spooky Manor",
+      "strategy": "static",
+      "output_executable": "MortimerSpookyManor.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mr Robot",
+      "strategy": "static",
+      "output_executable": "MrRobot.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mr Smoozles Goes Nutso",
+      "strategy": "static",
+      "output_executable": "Nutso_Merscom.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Music Catch",
+      "strategy": "static",
+      "output_executable": "MusicCatch.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Musikapa",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/My Farm",
+      "strategy": "static",
+      "output_executable": "My Farm.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mysteries Of Horus",
+      "strategy": "static",
+      "output_executable": "MysteriesOfHorus.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mystery Case Files Huntsville",
+      "strategy": "static",
+      "output_executable": "MysteryCaseFiles.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mystery Case Files Madame Fate",
+      "strategy": "static",
+      "output_executable": "Madame Fate.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mystery Case Files Prime Suspects",
+      "strategy": "static",
+      "output_executable": "PrimeSuspects.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mystery Case Files Ravenhearst",
+      "strategy": "static",
+      "output_executable": "Ravenhearst.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mystery Cookbook",
+      "strategy": "static",
+      "output_executable": "mystery_cookbook.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mystery In London",
+      "strategy": "static",
+      "output_executable": "MysteryInLondon.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mystery Of Shark Island",
+      "strategy": "static",
+      "output_executable": "Mystery of Shark Island.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mystery PI The Lottery Ticket",
+      "strategy": "static",
+      "output_executable": "MysteryPI.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mystery PI The Vegas Heist",
+      "strategy": "static",
+      "output_executable": "MysteryPIVegas.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mystery Solitaire Secret Island",
+      "strategy": "static",
+      "output_executable": "MysterySolitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mysteryville",
+      "strategy": "static",
+      "output_executable": "Mysteryville.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mysteryville 2",
+      "strategy": "static",
+      "output_executable": "Mysteryville2.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mystic Inn",
+      "strategy": "static",
+      "output_executable": "MysticInn.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mythic Marbles",
+      "strategy": "static",
+      "output_executable": "mythicmarbles.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Mythic Pearls",
+      "strategy": "static",
+      "output_executable": "MythicPearls.exe"
+    },
+    {
+      "root": "Reflexive Arcade M/Super Mahjong",
+      "strategy": "direct",
+      "output_executable": "mahjong.exe"
+    },
+    {
+      "root": "Reflexive Arcade N/NBC Heads Up Poker",
+      "strategy": "static",
+      "output_executable": "Poker3DClient.exe"
+    },
+    {
+      "root": "Reflexive Arcade N/Napad",
+      "strategy": "static",
+      "output_executable": "Napad.exe"
+    },
+    {
+      "root": "Reflexive Arcade N/Navigatris",
+      "strategy": "static",
+      "output_executable": "Navigatris.exe"
+    },
+    {
+      "root": "Reflexive Arcade N/Neon Wars",
+      "strategy": "static",
+      "output_executable": "neonwars.exe"
+    },
+    {
+      "root": "Reflexive Arcade N/Neptunes Secret",
+      "strategy": "static",
+      "output_executable": "NeptunesSecret.exe"
+    },
+    {
+      "root": "Reflexive Arcade N/Nertz Solitaire",
+      "strategy": "static",
+      "output_executable": "Nertz.exe"
+    },
+    {
+      "root": "Reflexive Arcade N/Newspaper Puzzle Challenge",
+      "strategy": "static",
+      "output_executable": "Newspaper Puzzle Challenge.exe"
+    },
+    {
+      "root": "Reflexive Arcade N/Nuclear Ball",
+      "strategy": "static",
+      "output_executable": "_NuclearBall.exe"
+    },
+    {
+      "root": "Reflexive Arcade N/Nuclear Ball 2",
+      "strategy": "static",
+      "output_executable": "_NuclearBall2.exe"
+    },
+    {
+      "root": "Reflexive Arcade O/Oasis",
+      "strategy": "static",
+      "output_executable": "Oasis.exe"
+    },
+    {
+      "root": "Reflexive Arcade O/Ocean Diver",
+      "strategy": "static",
+      "output_executable": "OceanDiver.exe"
+    },
+    {
+      "root": "Reflexive Arcade O/Ocean Express",
+      "strategy": "static",
+      "output_executable": "OceanExpress.exe"
+    },
+    {
+      "root": "Reflexive Arcade O/Off Road Arena",
+      "strategy": "static",
+      "output_executable": "Off-Road Arena.exe"
+    },
+    {
+      "root": "Reflexive Arcade O/Ouba The Great Journey",
+      "strategy": "static",
+      "output_executable": "Ouba.exe"
+    },
+    {
+      "root": "Reflexive Arcade O/Out Of Your Mind",
+      "strategy": "static",
+      "output_executable": "Out Of Your Mind.exe"
+    },
+    {
+      "root": "Reflexive Arcade O/Outpost Kaloki",
+      "strategy": "static",
+      "output_executable": "OutpostK.exe"
+    },
+    {
+      "root": "Reflexive Arcade O/Oval Office",
+      "strategy": "static",
+      "output_executable": "OvalOffice.exe"
+    },
+    {
+      "root": "Reflexive Arcade O/Ozzy Bubbles",
+      "strategy": "static",
+      "output_executable": "OzzyBubbles.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pacific Heroes",
+      "strategy": "static",
+      "output_executable": "pacific.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Panda Craze",
+      "strategy": "static",
+      "output_executable": "PandaCraze.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Paparazzi",
+      "strategy": "static",
+      "output_executable": "Paparazzi.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Paradoxion",
+      "strategy": "static",
+      "output_executable": "Paradoxion.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Parking Dash",
+      "strategy": "static",
+      "output_executable": "Parking Dash.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pastime Puzzles",
+      "strategy": "static",
+      "output_executable": "PastimePuzzles.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pastry Passion",
+      "strategy": "static",
+      "output_executable": "PastryPassion.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pat Sajak's Lucky Letters",
+      "strategy": "direct",
+      "output_executable": "LuckyLetters100.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pat Sajaks Lucky Letters TV Guide Edition",
+      "strategy": "static",
+      "output_executable": "Lucky_Letters_TVG.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pat Sajaks Trivia Gems",
+      "strategy": "static",
+      "output_executable": "TriviaGems.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pathstorm",
+      "strategy": "static",
+      "output_executable": "Pathstorm.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Peggle Deluxe",
+      "strategy": "static",
+      "output_executable": "Peggle.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Peggle Nights",
+      "strategy": "static",
+      "output_executable": "PeggleNights.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Penguins Journey",
+      "strategy": "static",
+      "output_executable": "Penguins.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pet Shop Hop",
+      "strategy": "static",
+      "output_executable": "Pet Shop Hop.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Phantasia",
+      "strategy": "static",
+      "output_executable": "phantasia.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Phantasia 2",
+      "strategy": "static",
+      "output_executable": "phantasia2.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pharaoh's Curse Gold",
+      "strategy": "static",
+      "output_executable": "PCurse-Reflexive.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Phlinx To Go",
+      "strategy": "static",
+      "output_executable": "PhlinxToGo.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/PictoWords",
+      "strategy": "static",
+      "output_executable": "PictoWords.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pigllionaire",
+      "strategy": "static",
+      "output_executable": "pig.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pingo Pango",
+      "strategy": "static",
+      "output_executable": "PingoPango_Full.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pipeline",
+      "strategy": "static",
+      "output_executable": "Pipeline.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pirate Stories Kit And Ellis",
+      "strategy": "static",
+      "output_executable": "KitAndEllis.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pirates Of The Atlantic",
+      "strategy": "static",
+      "output_executable": "Pirates of the Atlantic.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pirates Plunder",
+      "strategy": "static",
+      "output_executable": "PiratesPlunder_Oberon_358.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pirates of Treasure Island",
+      "strategy": "static",
+      "output_executable": "Pirates of Treasure Island.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pirateville",
+      "strategy": "static",
+      "output_executable": "Pirateville.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pizza Chef",
+      "strategy": "static",
+      "output_executable": "PizzaChef.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pizza Frenzy",
+      "strategy": "static",
+      "output_executable": "PizzaFrenzy.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pizza Panic",
+      "strategy": "static",
+      "output_executable": "PizzaPanic.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Plantasia",
+      "strategy": "static",
+      "output_executable": "plantasia.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Platypus",
+      "strategy": "static",
+      "output_executable": "platypus.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Platypus II",
+      "strategy": "static",
+      "output_executable": "Platypus2.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Plumeboom The First Chapter",
+      "strategy": "static",
+      "output_executable": "FirstChapter.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Plummit",
+      "strategy": "static",
+      "output_executable": "Plummit.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Poker Pop",
+      "strategy": "static",
+      "output_executable": "pokerpop.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Poker Superstars II",
+      "strategy": "static",
+      "output_executable": "PokerSuperstars2.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Poker Superstars III",
+      "strategy": "static",
+      "output_executable": "Poker3.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Polly Pride Pet Detective",
+      "strategy": "static",
+      "output_executable": "PollyPride.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/PopATronic",
+      "strategy": "static",
+      "output_executable": "Popatronic.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Poppit To Go",
+      "strategy": "static",
+      "output_executable": "Poppit.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Posh Boutique",
+      "strategy": "static",
+      "output_executable": "PoshBoutique.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Posh Shop",
+      "strategy": "static",
+      "output_executable": "PoshShop.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Private Eye Greatest Unsolved Mysteries",
+      "strategy": "static",
+      "output_executable": "Private Eye.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Professor Fizzwizzle",
+      "strategy": "static",
+      "output_executable": "Professor.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Professor Fizzwizzle And The Molten Mystery",
+      "strategy": "static",
+      "output_executable": "PFMM.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Profitville",
+      "strategy": "static",
+      "output_executable": "Profitville.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Project Xenoclone",
+      "strategy": "static",
+      "output_executable": "ProjectXenoclone.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Psychoballs",
+      "strategy": "static",
+      "output_executable": "PsychoBalls.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Pulsarius",
+      "strategy": "static",
+      "output_executable": "Pulsarius.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Puppy Luv",
+      "strategy": "static",
+      "output_executable": "Puppy Luv.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Purrfect Pet Shop",
+      "strategy": "static",
+      "output_executable": "ps.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Puzzle City",
+      "strategy": "static",
+      "output_executable": "pc.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Puzzle Detective",
+      "strategy": "static",
+      "output_executable": "PuzzleDetective.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Puzzle Hero",
+      "strategy": "static",
+      "output_executable": "PuzzleHero.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Puzzle Mania",
+      "strategy": "static",
+      "output_executable": "Puzzle Mania.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Puzzle Myth",
+      "strategy": "direct",
+      "output_executable": "PuzzleMyth.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/Puzzle Word",
+      "strategy": "direct",
+      "output_executable": "PuzzleWord.exe"
+    },
+    {
+      "root": "Reflexive Arcade P/PyraCubes",
+      "strategy": "static",
+      "output_executable": "PyraCubes.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/RIP",
+      "strategy": "static",
+      "output_executable": "RIP.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/RIP 3 The Last Hero",
+      "strategy": "static",
+      "output_executable": "RIP3.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/RIP Strike Back",
+      "strategy": "static",
+      "output_executable": "RIP.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/RSVP",
+      "strategy": "static",
+      "output_executable": "RSVP.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Race Cars The Extreme Rally",
+      "strategy": "static",
+      "output_executable": "Race Cars.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rack Em Up Roadtrip",
+      "strategy": "static",
+      "output_executable": "RackEmUpRoadTrip.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rage Of Magic 2",
+      "strategy": "static",
+      "output_executable": "Rage of Magic II.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rainbow Mystery",
+      "strategy": "static",
+      "output_executable": "RainbowMystery.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rainbow Web",
+      "strategy": "static",
+      "output_executable": "RainbowWeb.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rainbow Web 2",
+      "strategy": "static",
+      "output_executable": "RainbowWeb2.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rainforest Adventure",
+      "strategy": "static",
+      "output_executable": "RainforestCascade.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rally Racers",
+      "strategy": "static",
+      "output_executable": "rallyrac_reflexive.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Ranch Rush",
+      "strategy": "static",
+      "output_executable": "RanchRush.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Reader's Digest Super Word Power",
+      "strategy": "static",
+      "output_executable": "WordPower.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Reaktor",
+      "strategy": "static",
+      "output_executable": "Reaktor.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Real Estate Empire",
+      "strategy": "static",
+      "output_executable": "RealE$tateEmpire.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Real Jigsaw Puzzle",
+      "strategy": "static",
+      "output_executable": "rjpuzzle.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Realms Of Gold",
+      "strategy": "static",
+      "output_executable": "RealmsOfGold.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Reaxxion",
+      "strategy": "static",
+      "output_executable": "Reaxxion.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Recyclorama",
+      "strategy": "static",
+      "output_executable": "Recyclorama.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Redisruption",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Restaurant Empire",
+      "strategy": "static",
+      "output_executable": "re.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Restaurant Rush",
+      "strategy": "static",
+      "output_executable": "RestaurantRush.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rhombis",
+      "strategy": "static",
+      "output_executable": "Rhombis.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Ricochet Lost Worlds Recharged",
+      "strategy": "direct",
+      "output_executable": "Ricochet.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Ricochet Xtreme",
+      "strategy": "static",
+      "output_executable": "Ricochet.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Righteous Kill",
+      "strategy": "static",
+      "output_executable": "Righteous Kill.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rikki And Mikki To The Rescue",
+      "strategy": "static",
+      "output_executable": "rikkiandmikki.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Riotball",
+      "strategy": "static",
+      "output_executable": "reflexive_rball.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Risk",
+      "strategy": "static",
+      "output_executable": "RiskSA.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Risk II",
+      "strategy": "static",
+      "output_executable": "RiskII.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rival Ball Tournament",
+      "strategy": "static",
+      "output_executable": "RB Tournament.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Robbox",
+      "strategy": "static",
+      "output_executable": "Robbox.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Roboball",
+      "strategy": "static",
+      "output_executable": "roboball.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rock Frenzy",
+      "strategy": "static",
+      "output_executable": "rf.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rocket Mania Deluxe",
+      "strategy": "static",
+      "output_executable": "RocketMania.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Roller Rush",
+      "strategy": "static",
+      "output_executable": "RollerRush.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Roman Bowl",
+      "strategy": "static",
+      "output_executable": "RomanBowl.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Rotate Mania Deluxe",
+      "strategy": "static",
+      "output_executable": "rmaniadeluxe.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Runes Of Avalon 2",
+      "strategy": "static",
+      "output_executable": "Runes of Avalon 2.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Runic",
+      "strategy": "static",
+      "output_executable": "Runic.exe"
+    },
+    {
+      "root": "Reflexive Arcade R/Runic One",
+      "strategy": "static",
+      "output_executable": "RunicOne.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Chomp! Chomp! Safari",
+      "strategy": "direct",
+      "output_executable": "ChompChompSafari.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/SKIPBO Castaway Caper",
+      "strategy": "static",
+      "output_executable": "SKIP-BO Castaway Caper.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Safari Island Deluxe",
+      "strategy": "static",
+      "output_executable": "SafariIsland.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Saints & Sinners Bowling",
+      "strategy": "static",
+      "output_executable": "Bowlmore.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Saints And Sinners Bingo",
+      "strategy": "static",
+      "output_executable": "SSBingo.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sallys Salon",
+      "strategy": "static",
+      "output_executable": "SallysSalon.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sallys Spa",
+      "strategy": "static",
+      "output_executable": "SallysSpa.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Samantha Swift",
+      "strategy": "static",
+      "output_executable": "SamanthaSwift.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/SandScript",
+      "strategy": "static",
+      "output_executable": "sandscript.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Santas Super Friends",
+      "strategy": "static",
+      "output_executable": "Santas Super Friends.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Scarabs Of Pharaoh",
+      "strategy": "static",
+      "output_executable": "ScarabsOfPharaoh.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Scavenger",
+      "strategy": "static",
+      "output_executable": "Scavenger.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Scrapbook Paige",
+      "strategy": "static",
+      "output_executable": "Scrapbook Paige.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Season Match",
+      "strategy": "static",
+      "output_executable": "_SeasonMatch.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Secrets Of Great Art",
+      "strategy": "static",
+      "output_executable": "SecretsOfGreatArt.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Secrets Of Olympus",
+      "strategy": "static",
+      "output_executable": "Olympus.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Secrets Of The Seas",
+      "strategy": "static",
+      "output_executable": "Secrets.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Serpengo",
+      "strategy": "static",
+      "output_executable": "serpengo.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sewer Run",
+      "strategy": "static",
+      "output_executable": "sewerrun.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Shape Shifter",
+      "strategy": "static",
+      "output_executable": "Shape.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sheeplings",
+      "strategy": "static",
+      "output_executable": "Sheeplings.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Shoot-n-Roll",
+      "strategy": "static",
+      "output_executable": "Shoot-n-Roll.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Shopmania",
+      "strategy": "static",
+      "output_executable": "Shopmania.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Shopping Blocks",
+      "strategy": "static",
+      "output_executable": "ShoppingBlocks.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Shopping Marathon",
+      "strategy": "static",
+      "output_executable": "ShoppingMarathon.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sky Bubbles Deluxe",
+      "strategy": "static",
+      "output_executable": "SkyBubbles.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Slingo",
+      "strategy": "static",
+      "output_executable": "Slingo.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Slingo Casino Pak",
+      "strategy": "static",
+      "output_executable": "SlingoCasinoPak.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Slingo Quest",
+      "strategy": "static",
+      "output_executable": "SlingoQuest.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Slingo Quest Hawaii",
+      "strategy": "static",
+      "output_executable": "SlingoQuest2.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Slingo Supreme",
+      "strategy": "static",
+      "output_executable": "SlingoSupreme.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Slot Words",
+      "strategy": "static",
+      "output_executable": "slotwords.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Slyder Adventures",
+      "strategy": "static",
+      "output_executable": "sad.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Snapshot Adventures",
+      "strategy": "static",
+      "output_executable": "Snap.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Snowy Lunch Rush",
+      "strategy": "static",
+      "output_executable": "LunchRush.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Snowy Puzzle Islands",
+      "strategy": "static",
+      "output_executable": "PuzzleIslands.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Snowy Treasure Hunter",
+      "strategy": "static",
+      "output_executable": "TreasureHunter.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Snowy Treasure Hunter 2",
+      "strategy": "static",
+      "output_executable": "TreasureHunter2.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Snowy Treasure Hunter 3",
+      "strategy": "static",
+      "output_executable": "TreasureHunter3.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Solitaire",
+      "strategy": "direct",
+      "output_executable": "solitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Solitaire Pop",
+      "strategy": "static",
+      "output_executable": "solitairepop.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Space Skramble",
+      "strategy": "static",
+      "output_executable": "space_skramble_particles_Reflexive.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Space Strike",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Spacebound",
+      "strategy": "static",
+      "output_executable": "SPACEBOUND.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Spandex Force",
+      "strategy": "static",
+      "output_executable": "Spandex Force.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sparkle",
+      "strategy": "static",
+      "output_executable": "Sparkle.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Speed",
+      "strategy": "direct",
+      "output_executable": "Speed.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Spellagories",
+      "strategy": "static",
+      "output_executable": "Spellagories.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Spellunker",
+      "strategy": "static",
+      "output_executable": "Spellunker.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Spin & Play",
+      "strategy": "static",
+      "output_executable": "SpinAndPlay.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Spirit Of Wandering The Legend",
+      "strategy": "static",
+      "output_executable": "SpiritOfWandering.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Splash",
+      "strategy": "static",
+      "output_executable": "Splash.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sprill",
+      "strategy": "static",
+      "output_executable": "Sprill.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sprill The Mystery Of The Bermuda Triangle",
+      "strategy": "static",
+      "output_executable": "SprillBermude.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Spring Sprang Sprung",
+      "strategy": "static",
+      "output_executable": "SpringSprangSprung.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sproink",
+      "strategy": "static",
+      "output_executable": "Sproink.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Stand O Food",
+      "strategy": "static",
+      "output_executable": "StandOFood.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Stand O Food 2",
+      "strategy": "static",
+      "output_executable": "StandOFood2.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Star Defender 2",
+      "strategy": "static",
+      "output_executable": "StarDefender2.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Star Defender 3",
+      "strategy": "static",
+      "output_executable": "StarDefender3.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Star Defender 4",
+      "strategy": "static",
+      "output_executable": "StarDefender4.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Starcrossed",
+      "strategy": "static",
+      "output_executable": "Starcrossed.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Starscape",
+      "strategy": "static",
+      "output_executable": "Starscape.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Steam",
+      "strategy": "static",
+      "output_executable": "Steam.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Steam Brigade",
+      "strategy": "static",
+      "output_executable": "SteamBrigade.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Stone Jong",
+      "strategy": "static",
+      "output_executable": "Stone-Jong.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Stone Of Destiny",
+      "strategy": "static",
+      "output_executable": "StoneOfDestiny.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/StoneLoops Of Jurassica",
+      "strategy": "static",
+      "output_executable": "StoneLoops.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Stones Of Khufu",
+      "strategy": "static",
+      "output_executable": "StonesOfKhufu.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Story Of Fairy Place",
+      "strategy": "static",
+      "output_executable": "Story of Fairy Place.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Strike Ball",
+      "strategy": "static",
+      "output_executable": "strikeball.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Strike Ball 2",
+      "strategy": "static",
+      "output_executable": "StrikeBall2.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Styrateg",
+      "strategy": "static",
+      "output_executable": "styrateg.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Subway Scramble",
+      "strategy": "static",
+      "output_executable": "subwayscramble.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sudoku Maya Gold",
+      "strategy": "static",
+      "output_executable": "SudokuMaya.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sudoku Pagoda",
+      "strategy": "static",
+      "output_executable": "sudoku pagoda.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sunset Studio Deluxe",
+      "strategy": "static",
+      "output_executable": "SunsetStudio.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Super Collapse 3",
+      "strategy": "static",
+      "output_executable": "SuperCollapseIII.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Super Collapse Puzzle Gallery",
+      "strategy": "static",
+      "output_executable": "CollapsePuzzle.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Super Collapse Puzzle Gallery 2",
+      "strategy": "static",
+      "output_executable": "CollapsePuzzle2.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Super Cooper Revenge",
+      "strategy": "static",
+      "output_executable": "SuperCooperRevenge.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Super Cubes",
+      "strategy": "static",
+      "output_executable": "SuperCubes.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Super Granny 3",
+      "strategy": "static",
+      "output_executable": "SuperGranny3.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Super Granny 4",
+      "strategy": "static",
+      "output_executable": "SuperGranny4.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Super Slyder",
+      "strategy": "static",
+      "output_executable": "SuperSlyder_release.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Supercow",
+      "strategy": "static",
+      "output_executable": "supercow.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Superstar Chefs",
+      "strategy": "static",
+      "output_executable": "Superstar Chefs.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sushi Frenzy",
+      "strategy": "static",
+      "output_executable": "SushiFrenzy.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Svetlograd",
+      "strategy": "static",
+      "output_executable": "Svetlograd.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Swap & Fall 2",
+      "strategy": "static",
+      "output_executable": "swapfall2.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Swarm Gold",
+      "strategy": "static",
+      "output_executable": "Swarm Gold.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/Sweetopia",
+      "strategy": "static",
+      "output_executable": "Sweetopia.exe"
+    },
+    {
+      "root": "Reflexive Arcade S/System Mania",
+      "strategy": "static",
+      "output_executable": "SystemMania.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Super Text Twist",
+      "strategy": "direct",
+      "output_executable": "TextTwist.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tablut",
+      "strategy": "direct",
+      "output_executable": "main.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Talismania",
+      "strategy": "static",
+      "output_executable": "Talismania.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tank O Box",
+      "strategy": "static",
+      "output_executable": "Tanks.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Taskforce",
+      "strategy": "static",
+      "output_executable": "Taskforce.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tasty Planet",
+      "strategy": "static",
+      "output_executable": "tastyplanet.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/TeamUp",
+      "strategy": "static",
+      "output_executable": "TeamUp.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Teddy Factory",
+      "strategy": "static",
+      "output_executable": "TeddyFactory.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Telltale Texas Hold'Em",
+      "strategy": "static",
+      "output_executable": "Texas HoldEm.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Temple Of Tangram",
+      "strategy": "static",
+      "output_executable": "TempleOfTangram.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Temple of Bricks",
+      "strategy": "static",
+      "output_executable": "TempleofBricks.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Temple of Jewels",
+      "strategy": "static",
+      "output_executable": "Temple-of-Jewels.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tennis Titans",
+      "strategy": "static",
+      "output_executable": "Tennis Titans.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Texas Hold 'Em Championship",
+      "strategy": "static",
+      "output_executable": "poker.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Text Express 2",
+      "strategy": "static",
+      "output_executable": "TextExpress2.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The 80s Game",
+      "strategy": "static",
+      "output_executable": "T8G_Release.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Amazing Brain Train",
+      "strategy": "static",
+      "output_executable": "BrainTrain.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Apprentice",
+      "strategy": "static",
+      "output_executable": "Apprentice.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Apprentice Los Angeles",
+      "strategy": "static",
+      "output_executable": "TheApprenticeLosAngeles.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Clumsys",
+      "strategy": "static",
+      "output_executable": "theclumsys.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Count Of Monte Cristo",
+      "strategy": "static",
+      "output_executable": "MONTECRISTO.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Cursed Wheel",
+      "strategy": "static",
+      "output_executable": "tcw.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Dark Legions",
+      "strategy": "static",
+      "output_executable": "TheDarkLegions.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Game Of LIFE PTS",
+      "strategy": "static",
+      "output_executable": "THE GAME OF LIFE - Path to Success.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Great Chocolate Chase",
+      "strategy": "static",
+      "output_executable": "GreatChocolateChase.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Great Mahjong",
+      "strategy": "static",
+      "output_executable": "Mahjong.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Great Tree",
+      "strategy": "static",
+      "output_executable": "GreatTree.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Great Wall Of Words",
+      "strategy": "static",
+      "output_executable": "GreatWallOfWords.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Hidden Object Show",
+      "strategy": "static",
+      "output_executable": "THOS.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Legend Of El Dorado",
+      "strategy": "static",
+      "output_executable": "LegendOfElDorado.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Lost Cases Of Sherlock Holmes",
+      "strategy": "static",
+      "output_executable": "sherlock.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Lost City of Gold",
+      "strategy": "static",
+      "output_executable": "LostCityOfGold.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Lost Treasures Of Alexandria",
+      "strategy": "static",
+      "output_executable": "TheLostTreasuresOfAlexandria.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Magicians Handbook Cursed Valley",
+      "strategy": "static",
+      "output_executable": "The Magicians Handbook Cursed Valley.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Mystery Of The Crystal Portal",
+      "strategy": "static",
+      "output_executable": "MysteryOfTheCrystalPortal.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Nightshift Code",
+      "strategy": "static",
+      "output_executable": "nightshiftcode.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Odyssey Winds Of Athena",
+      "strategy": "static",
+      "output_executable": "Odyssey.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Pini Society",
+      "strategy": "static",
+      "output_executable": "ThePiniSociety.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Poppit Show",
+      "strategy": "static",
+      "output_executable": "Poppit3.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Race",
+      "strategy": "static",
+      "output_executable": "TheRace.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Scruffs",
+      "strategy": "static",
+      "output_executable": "TheScruffs.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Treasures Of Montezuma",
+      "strategy": "static",
+      "output_executable": "TheTreasuresofMontezuma.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Tuttles",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/The Wonderful Wizard Of Oz",
+      "strategy": "static",
+      "output_executable": "Oz.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Theseus Return of the Hero",
+      "strategy": "static",
+      "output_executable": "Theseus.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Thomas And The Magical Words",
+      "strategy": "static",
+      "output_executable": "thomaswords.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/ThwartPoker",
+      "strategy": "static",
+      "output_executable": "ThwartPoker.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tic A Tac Royale",
+      "strategy": "static",
+      "output_executable": "TicATac_Royale.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tiks Texas Hold Em",
+      "strategy": "static",
+      "output_executable": "HoldEm.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tile Quest",
+      "strategy": "static",
+      "output_executable": "TileQuest.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Time Breaker",
+      "strategy": "static",
+      "output_executable": "TimeBreaker.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Timeline",
+      "strategy": "static",
+      "output_executable": "Timeline.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tinos Fruit Stand",
+      "strategy": "static",
+      "output_executable": "FruitStand.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tiny Worlds",
+      "strategy": "static",
+      "output_executable": "TinyWorlds.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Titan Attacks",
+      "strategy": "static",
+      "output_executable": "TitanAttacksReflexive.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Totem Quest",
+      "strategy": "static",
+      "output_executable": "TotemQuest.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Totem Treasure",
+      "strategy": "static",
+      "output_executable": "PokieMagic_TotemTreasure_BFG.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tradewinds 2",
+      "strategy": "static",
+      "output_executable": "tw2_vista.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tradewinds Caravans",
+      "strategy": "static",
+      "output_executable": "TradewindsCaravans.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tradewinds Legends",
+      "strategy": "static",
+      "output_executable": "tw3_0123.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Traffic Jam Extreme",
+      "strategy": "static",
+      "output_executable": "tjx.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Travelogue 360 Paris",
+      "strategy": "static",
+      "output_executable": "TraveLogue-Paris.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Travelogue 360 Rome",
+      "strategy": "static",
+      "output_executable": "Travelogue360.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Treasure Fall",
+      "strategy": "static",
+      "output_executable": "tf.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Treasure Island",
+      "strategy": "static",
+      "output_executable": "treasureisland.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Treasure Machine",
+      "strategy": "static",
+      "output_executable": "Tmachine.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Treasure Masters",
+      "strategy": "static",
+      "output_executable": "TMInc.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Treasure Of Persia",
+      "strategy": "static",
+      "output_executable": "persia.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Treasure Pyramid",
+      "strategy": "static",
+      "output_executable": "TreasurePyramid.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Treasures Of The Ancient Cavern",
+      "strategy": "static",
+      "output_executable": "Game.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/TriPeaks Solitaire To Go",
+      "strategy": "static",
+      "output_executable": "TriPeaks.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Triptych",
+      "strategy": "direct",
+      "output_executable": "hwconfig.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/TriviaNet Challenge",
+      "strategy": "static",
+      "output_executable": "Trivia.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tropicabana",
+      "strategy": "static",
+      "output_executable": "Tropicabana.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tropico Jong",
+      "strategy": "static",
+      "output_executable": "TropicoJong.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tropix",
+      "strategy": "static",
+      "output_executable": "Tropix.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tropix 2 Quest For The Golden Banana",
+      "strategy": "static",
+      "output_executable": "Tropix2.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Truffle Tray",
+      "strategy": "direct",
+      "output_executable": "Truffle Tray.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tube Twist",
+      "strategy": "static",
+      "output_executable": "tubetwist.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tumble Bugs",
+      "strategy": "static",
+      "output_executable": "Tumblebugs.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Tumblebugs 2",
+      "strategy": "static",
+      "output_executable": "Tumblebugs2.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Turbo Fiesta",
+      "strategy": "static",
+      "output_executable": "TurboFiesta.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Turbo Gems",
+      "strategy": "static",
+      "output_executable": "TurboGemsRelease.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Turbo Subs",
+      "strategy": "static",
+      "output_executable": "TurboSubs.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Turtix",
+      "strategy": "static",
+      "output_executable": "Turtix.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Turtle Bay",
+      "strategy": "static",
+      "output_executable": "TurtleBay.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Turtle Odyssey 2",
+      "strategy": "static",
+      "output_executable": "Arcade.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Twinxoid",
+      "strategy": "static",
+      "output_executable": "Twinxoid.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Twistingo",
+      "strategy": "static",
+      "output_executable": "twistingo.exe"
+    },
+    {
+      "root": "Reflexive Arcade T/Twisty Tracks",
+      "strategy": "static",
+      "output_executable": "tt.exe"
+    },
+    {
+      "root": "Reflexive Arcade U/UNO Undercover",
+      "strategy": "static",
+      "output_executable": "UNO Undercover.exe"
+    },
+    {
+      "root": "Reflexive Arcade U/Ultratron",
+      "strategy": "static",
+      "output_executable": "UltratronReflexive.exe"
+    },
+    {
+      "root": "Reflexive Arcade U/Universal Boxing Manager",
+      "strategy": "static",
+      "output_executable": "game.exe"
+    },
+    {
+      "root": "Reflexive Arcade V/Valentines Gift",
+      "strategy": "static",
+      "output_executable": "ValentinesGift.exe"
+    },
+    {
+      "root": "Reflexive Arcade V/Varmintz Deluxe",
+      "strategy": "static",
+      "output_executable": "Varmintz.exe"
+    },
+    {
+      "root": "Reflexive Arcade V/Venice",
+      "strategy": "static",
+      "output_executable": "Venice.exe"
+    },
+    {
+      "root": "Reflexive Arcade V/Venice Mystery",
+      "strategy": "static",
+      "output_executable": "VeniceMystery_v1.12.exe"
+    },
+    {
+      "root": "Reflexive Arcade V/Venture Arctic",
+      "strategy": "static",
+      "output_executable": "VentureArctic.exe"
+    },
+    {
+      "root": "Reflexive Arcade V/Virble",
+      "strategy": "static",
+      "output_executable": "VirbleReflexive.exe"
+    },
+    {
+      "root": "Reflexive Arcade V/Virticon Millennium",
+      "strategy": "static",
+      "output_executable": "virticon.exe"
+    },
+    {
+      "root": "Reflexive Arcade V/Virtual Farm",
+      "strategy": "static",
+      "output_executable": "VirtualFarm.exe"
+    },
+    {
+      "root": "Reflexive Arcade V/Virtual Villagers",
+      "strategy": "static",
+      "output_executable": "VirtualVillagers.exe"
+    },
+    {
+      "root": "Reflexive Arcade V/Vogue Tales",
+      "strategy": "static",
+      "output_executable": "VogueTales.exe"
+    },
+    {
+      "root": "Reflexive Arcade V/Void War",
+      "strategy": "direct",
+      "output_executable": "Launch Void War.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/War Chess",
+      "strategy": "static",
+      "output_executable": "WarChess.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/War On Folvos",
+      "strategy": "static",
+      "output_executable": "Game.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Warblade",
+      "strategy": "static",
+      "output_executable": "warblade.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Warkanoid 2",
+      "strategy": "static",
+      "output_executable": "Warkanoid2.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Water Bugs",
+      "strategy": "static",
+      "output_executable": "waterbugs.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Waterscape Solitaire American Falls",
+      "strategy": "static",
+      "output_executable": "WaterscapeSolitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Wedding Dash",
+      "strategy": "static",
+      "output_executable": "Wedding Dash.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Wedding Dash 2",
+      "strategy": "static",
+      "output_executable": "weddingdash2.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Westward",
+      "strategy": "static",
+      "output_executable": "WestwardVistaFinal.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Westward II Heroes Of The Frontier",
+      "strategy": "static",
+      "output_executable": "Westward_II.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Wik and the Fable of Souls",
+      "strategy": "static",
+      "output_executable": "Wik.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Wild West Billy",
+      "strategy": "static",
+      "output_executable": "WWB.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Wild West Quest",
+      "strategy": "static",
+      "output_executable": "WildWestQuest.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Wobbly Bobbly",
+      "strategy": "static",
+      "output_executable": "WobblyBobbly.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Womens Murder Club Death In Scarlet",
+      "strategy": "static",
+      "output_executable": "WMC.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Wonderland",
+      "strategy": "direct",
+      "output_executable": "Wonderland.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Wonderland Adventures",
+      "strategy": "static",
+      "output_executable": "Wonderland.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Wonderland Secret Worlds",
+      "strategy": "static",
+      "output_executable": "Wonderland.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Wonderlines",
+      "strategy": "static",
+      "output_executable": "wonderlines.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Word Blitz Deluxe",
+      "strategy": "direct",
+      "output_executable": "WordBlitz.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Word Craft",
+      "strategy": "static",
+      "output_executable": "WordCraft.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Word Emperor",
+      "strategy": "static",
+      "output_executable": "WordEmperor.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Word Harmony",
+      "strategy": "static",
+      "output_executable": "WordHarmony.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Word Krispies",
+      "strategy": "static",
+      "output_executable": "WordKrispies.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Word Monaco",
+      "strategy": "static",
+      "output_executable": "WordMonaco.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Word Search Deluxe",
+      "strategy": "static",
+      "output_executable": "Word Search Deluxe.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Word Slinger",
+      "strategy": "static",
+      "output_executable": "WordSlinger.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Word Whacky",
+      "strategy": "static",
+      "output_executable": "wordWhacky_RXA_001.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Word Whomp To Go",
+      "strategy": "static",
+      "output_executable": "WordWhomp.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/Word Wizard Deluxe",
+      "strategy": "static",
+      "output_executable": "Word Wizard.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/WordJong",
+      "strategy": "static",
+      "output_executable": "WordJong.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/World Class Solitaire",
+      "strategy": "static",
+      "output_executable": "WorldClassSolitaire.exe"
+    },
+    {
+      "root": "Reflexive Arcade W/World Mosaics",
+      "strategy": "static",
+      "output_executable": "WorldMosaics.exe"
+    },
+    {
+      "root": "Reflexive Arcade X/XAvenger",
+      "strategy": "static",
+      "output_executable": "X-Avenger.exe"
+    },
+    {
+      "root": "Reflexive Arcade X/Xango Tango",
+      "strategy": "static",
+      "output_executable": "XangoTango.exe"
+    },
+    {
+      "root": "Reflexive Arcade X/Xmas Bonus",
+      "strategy": "static",
+      "output_executable": "xmasbonus.exe"
+    },
+    {
+      "root": "Reflexive Arcade Y/Yahtzee",
+      "strategy": "static",
+      "output_executable": "Yahtzee.exe"
+    },
+    {
+      "root": "Reflexive Arcade Y/Yahtzee Texas Hold Em",
+      "strategy": "static",
+      "output_executable": "YahtzeeTexasHoldEm.exe"
+    },
+    {
+      "root": "Reflexive Arcade Y/Yard Sale Junkie",
+      "strategy": "static",
+      "output_executable": "Yard Sale Junkie.exe"
+    },
+    {
+      "root": "Reflexive Arcade Y/Yummy Drink Factory",
+      "strategy": "static",
+      "output_executable": "Yummy Drink Factory.exe"
+    },
+    {
+      "root": "Reflexive Arcade Y/Yumsters",
+      "strategy": "static",
+      "output_executable": "Yumsters.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zak And Jack",
+      "strategy": "static",
+      "output_executable": "ZakAndJack.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zam BeeZee",
+      "strategy": "static",
+      "output_executable": "Zam BeeZee.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zen Fashion",
+      "strategy": "static",
+      "output_executable": "Zen Fashion.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zen Puzzle Garden",
+      "strategy": "static",
+      "output_executable": "zen.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/ZenGems",
+      "strategy": "static",
+      "output_executable": "zengems.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zenerchi",
+      "strategy": "static",
+      "output_executable": "Zenerchi.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zero Count",
+      "strategy": "static",
+      "output_executable": "Zero Count.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zodiac",
+      "strategy": "static",
+      "output_executable": "Zodiac.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zodiac Tower",
+      "strategy": "static",
+      "output_executable": "Zodiac Tower.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zombie Shooter",
+      "strategy": "static",
+      "output_executable": "ZombieShooter.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zombie Smashers X2",
+      "strategy": "static",
+      "output_executable": "zsx2.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zoo Vet",
+      "strategy": "static",
+      "output_executable": "zoovet.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/ZoomBook The Temple Of The Sun",
+      "strategy": "static",
+      "output_executable": "zoombook.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zulu Gems",
+      "strategy": "static",
+      "output_executable": "zulu_gems.exe"
+    },
+    {
+      "root": "Reflexive Arcade Z/Zzed",
+      "strategy": "static",
+      "output_executable": "Zzed.exe"
+    }
+  ],
+  "unsupported_roots": [
+    {
+      "root": "Reflexive Arcade B/Bud Redhead",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade C/Cash Cow/bin",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for other"
+    },
+    {
+      "root": "Reflexive Arcade C/Colony",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade D/Digby's Donuts",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade D/Docker Sokoban",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade F/Five Card Deluxe",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade F/Flip Words",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade H/Holiday Express",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade I/Ice Breaker",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade J/The Walls of Jericho",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade L/Live Billiards",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade L/Lucky Streak Poker",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade M/Magic Ball",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade M/MaxGammon",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade O/Orbz",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for other"
+    },
+    {
+      "root": "Reflexive Arcade P/PacQuest 3D",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade P/Puzzle Express",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade R/Ricochet Lost Worlds",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade S/Sea War The Battles 2",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade S/Secret Chamber",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade S/Snowy The Bears Adventure",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade S/Solitaire 2",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for other"
+    },
+    {
+      "root": "Reflexive Arcade S/Sportball Challenge",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade T/Think Tanks",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for other"
+    },
+    {
+      "root": "Reflexive Arcade T/Trivia Machine",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    },
+    {
+      "root": "Reflexive Arcade W/Wild West Wendy",
+      "strategy": "unsupported",
+      "reason": "no safe unwrap strategy for dll_only_with_application_dat"
+    }
+  ],
+  "error_roots": [
+    {
+      "root": "Reflexive Arcade A/AquaPOP",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade A/AquaPOP/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade A/Asianata",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade A/Asianata/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade A/AstroAvenger",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade A/AstroAvenger/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Ballistik",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Ballistik/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Balloon Blast",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Balloon Blast/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Barnyard Invasion",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Barnyard Invasion/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Battleship Chess",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Battleship Chess/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Beesly's Buzzwords",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Beesly's Buzzwords/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Big Kahuna Reef",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Big Kahuna Reef/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Big Kahuna Reef 2",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Big Kahuna Reef 2/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Big Kahuna Words",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Big Kahuna Words/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Brave Piglet",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Brave Piglet/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Break Ball 2 Gold",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Break Ball 2 Gold/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Break Quest",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Break Quest/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Bricks of Camelot",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Bricks of Camelot/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Bricks of Egypt",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Bricks of Egypt/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/BrixFormer",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/BrixFormer/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade B/Brixout XP",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade B/Brixout XP/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade C/Carls Classics",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade C/Carls Classics/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade C/Cookie Chef",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade C/Cookie Chef/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade C/Cosmic Bugs",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade C/Cosmic Bugs/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade D/Deep Sea Adventures",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade D/Deep Sea Adventures/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade D/Digi Pool",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade D/Digi Pool/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade D/Dr Blobs Organism",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade D/Dr Blobs Organism/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade F/Family Feud",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade F/Family Feud/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade F/FastCrawl",
+      "strategy": "static",
+      "error": ".NET child payloads are not implemented yet for /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade F/FastCrawl/FastCrawl.RWG"
+    },
+    {
+      "root": "Reflexive Arcade F/Funny Faces",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade F/Funny Faces/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade G/Gem Mine",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade G/Gem Mine/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade G/Golf Adventure Galaxy",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade G/Golf Adventure Galaxy/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade G/Gravity Gems",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade G/Gravity Gems/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade J/Jets N Guns",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade J/Jets N Guns/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade J/Jewel Quest",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade J/Jewel Quest/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade L/LexiCastle",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade L/LexiCastle/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade M/Machine Hell",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Machine Hell/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade M/MadCaps",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/MadCaps/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade M/Mah Jong Medley",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mah Jong Medley/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade M/Mah Jong Quest",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mah Jong Quest/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade M/Mind Your Marbles",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mind Your Marbles/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade M/Monarch The Butterfly King",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Monarch The Butterfly King/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade M/Mortimer and the Enchanted Castle",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mortimer and the Enchanted Castle/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade M/Mosaic Tomb of Mystery",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mosaic Tomb of Mystery/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade M/Mutant Storm",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade M/Mutant Storm/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade N/Naval Strike",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade N/Naval Strike/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade P/Passage 3",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade P/Passage 3/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade P/Puzzle Blast",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade P/Puzzle Blast/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade R/Rainbow Drops Buster",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/Rainbow Drops Buster/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade R/Ricochet Infinity",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/Ricochet Infinity/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade R/River Raider II",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/River Raider II/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade R/Rocket Bowl",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade R/Rocket Bowl/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade S/Shape Solitaire",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Shape Solitaire/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade S/Slickball",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Slickball/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade S/Snail Mail",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Snail Mail/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade S/Snow Ball",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Snow Ball/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade S/Snowy Space Trip",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Snowy Space Trip/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade S/Soda Pipes",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Soda Pipes/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade S/Space Taxi 2",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Space Taxi 2/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade S/Spin & Win",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Spin & Win/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade S/Super Bounce Out",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Super Bounce Out/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade S/Super Spongebob Collapse",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade S/Super Spongebob Collapse/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade T/Troll",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade T/Troll/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade T/Turtle Odyssey",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade T/Turtle Odyssey/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade W/Weave Words",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade W/Weave Words/ReflexiveArcade/RAW_002.wdt"
+    },
+    {
+      "root": "Reflexive Arcade X/Xeno Assault II",
+      "strategy": "static",
+      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade X/Xeno Assault II/ReflexiveArcade/RAW_002.wdt"
+    }
+  ]
+}

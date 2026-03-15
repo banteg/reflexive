@@ -49,14 +49,16 @@ TOP_LEVEL_WRAPPER_SIDECARS = {
 }
 RAW2_FILENAMES = ("RAW_002.wdt", "RAW_002.dat")
 RAW1_FILENAMES = ("RAW_001.exe", "RAW_001.dat")
-KNOWN_SEED_DEPENDENCY_NAMES = {
+PRIMARY_SEED_DEPENDENCY_NAMES = {
     "background.jpg",
     "button_hover.jpg",
     "button_normal.jpg",
     "button_pressed.jpg",
-    "channel.dat",
     "raw_003.dat",
     "raw_003.wdt",
+}
+SECONDARY_SEED_DEPENDENCY_NAMES = PRIMARY_SEED_DEPENDENCY_NAMES | {
+    "channel.dat",
     "raw_004.dat",
     "raw_004.wdt",
 }
@@ -381,7 +383,7 @@ def candidate_seed_dependency_files(wrapper_root: Path, config_path: Path, child
     def sort_key(path: Path) -> tuple[int, int, int, str]:
         lower_name = path.name.lower()
         same_dir_penalty = 0 if path.parent == config_path.parent else 1
-        known_name_penalty = 0 if lower_name in KNOWN_SEED_DEPENDENCY_NAMES else 1
+        known_name_penalty = 0 if lower_name in SECONDARY_SEED_DEPENDENCY_NAMES else 1
         return (same_dir_penalty, known_name_penalty, path.stat().st_size, lower_name)
 
     candidates.sort(key=sort_key)
@@ -392,25 +394,36 @@ def derive_seed_material(config_path: Path, child_payload: Path, wrapper_root: P
     encrypted_config = config_path.read_bytes()
     child_size = child_payload.stat().st_size
     candidates = candidate_seed_dependency_files(wrapper_root, config_path, child_payload)
-    max_subset_size = min(6, len(candidates))
-    valid_by_seed: dict[int, SeedMaterial] = {}
 
-    for subset_size in range(max_subset_size + 1):
-        for subset in itertools.combinations(candidates, subset_size):
-            seed1 = (child_size + sum(path.stat().st_size for path in subset)) & MASK32
-            if seed1 in valid_by_seed:
-                continue
+    candidate_pools: list[list[Path]] = []
+    primary_candidates = [path for path in candidates if path.name.lower() in PRIMARY_SEED_DEPENDENCY_NAMES]
+    secondary_candidates = [path for path in candidates if path.name.lower() in SECONDARY_SEED_DEPENDENCY_NAMES]
+    for pool in (primary_candidates, secondary_candidates, candidates):
+        if pool and pool not in candidate_pools:
+            candidate_pools.append(pool)
 
-            decrypted = decrypt_with_stream(encrypted_config, seed1)
-            if looks_like_decrypted_config(decrypted):
-                valid_by_seed[seed1] = SeedMaterial(seed1, subset, decrypted)
+    for pool in candidate_pools:
+        max_subset_size = min(6, len(pool))
+        valid_by_seed: dict[int, SeedMaterial] = {}
 
-    if not valid_by_seed:
-        raise RuntimeError(f"unable to derive RAW_002 seed from {config_path}")
-    if len(valid_by_seed) != 1:
-        seeds = ", ".join(str(seed) for seed in sorted(valid_by_seed))
-        raise RuntimeError(f"ambiguous RAW_002 seed candidates for {config_path}: {seeds}")
-    return next(iter(valid_by_seed.values()))
+        for subset_size in range(max_subset_size + 1):
+            for subset in itertools.combinations(pool, subset_size):
+                seed1 = (child_size + sum(path.stat().st_size for path in subset)) & MASK32
+                if seed1 in valid_by_seed:
+                    continue
+
+                decrypted = decrypt_with_stream(encrypted_config, seed1)
+                if looks_like_decrypted_config(decrypted):
+                    valid_by_seed[seed1] = SeedMaterial(seed1, subset, decrypted)
+
+        if not valid_by_seed:
+            continue
+        if len(valid_by_seed) != 1:
+            seeds = ", ".join(str(seed) for seed in sorted(valid_by_seed))
+            raise RuntimeError(f"ambiguous RAW_002 seed candidates for {config_path}: {seeds}")
+        return next(iter(valid_by_seed.values()))
+
+    raise RuntimeError(f"unable to derive RAW_002 seed from {config_path}")
 
 
 def derive_seed2(encrypted_config: bytes) -> int:
@@ -448,10 +461,9 @@ def native_encrypted_region(pe: pefile.PE, short_fixed: bool) -> tuple[int, int]
     raise RuntimeError("unable to locate entrypoint section for child payload")
 
 
-def static_unwrap_child(wrapper_root: Path, strategy: Strategy, output_executable: Path) -> dict[str, Any]:
+def decrypt_static_child(wrapper_root: Path, strategy: Strategy) -> tuple[bytes, dict[str, Any]]:
     assert strategy.child_payload is not None
     assert strategy.config_path is not None
-    assert strategy.wrapper_binary is not None
 
     seed_material = derive_seed_material(strategy.config_path, strategy.child_payload, wrapper_root)
     config = parse_config(seed_material.decrypted_config)
@@ -465,7 +477,25 @@ def static_unwrap_child(wrapper_root: Path, strategy: Strategy, output_executabl
     seed2 = derive_seed2(encrypted_config)
     decrypted_region = decrypt_with_stream(bytes(child_bytes[region_start : region_start + region_length]), seed2)
     child_bytes[region_start : region_start + region_length] = decrypted_region
+    return bytes(child_bytes), {
+        "seed1": seed_material.seed1,
+        "seed2": seed2,
+        "dependency_paths": [str(path) for path in seed_material.dependency_paths],
+        "child_payload": str(strategy.child_payload),
+        "config_path": str(strategy.config_path),
+        "region_start": region_start,
+        "region_length": region_length,
+    }
 
+
+def probe_static_child(wrapper_root: Path, strategy: Strategy) -> dict[str, Any]:
+    _, summary = decrypt_static_child(wrapper_root, strategy)
+    return summary
+
+
+def static_unwrap_child(wrapper_root: Path, strategy: Strategy, output_executable: Path) -> dict[str, Any]:
+    assert strategy.wrapper_binary is not None
+    child_bytes, summary = decrypt_static_child(wrapper_root, strategy)
     output_executable.write_bytes(child_bytes)
 
     try:
@@ -473,13 +503,7 @@ def static_unwrap_child(wrapper_root: Path, strategy: Strategy, output_executabl
     except OSError:
         pass
 
-    return {
-        "seed1": seed_material.seed1,
-        "seed2": seed2,
-        "dependency_paths": [str(path) for path in seed_material.dependency_paths],
-        "child_payload": str(strategy.child_payload),
-        "config_path": str(strategy.config_path),
-    }
+    return summary
 
 
 def materialize_record(record: dict[str, Any], extracted_root: Path, output_root: Path, force: bool) -> dict[str, Any]:
