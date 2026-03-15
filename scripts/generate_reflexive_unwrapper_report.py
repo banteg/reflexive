@@ -1,0 +1,283 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# dependencies = ["pefile"]
+# ///
+
+from __future__ import annotations
+
+import argparse
+import importlib.util
+import json
+import sys
+from collections import Counter, defaultdict
+from pathlib import Path
+from typing import Any
+
+
+def repo_root() -> Path:
+    return Path(__file__).resolve().parent.parent
+
+
+def default_extracted_root() -> Path:
+    return repo_root() / "artifacts" / "extracted"
+
+
+def default_markdown_path() -> Path:
+    return repo_root() / "docs" / "reflexive_unwrapper.md"
+
+
+def default_json_path() -> Path:
+    return repo_root() / "docs" / "reflexive_unwrapper.json"
+
+
+def display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(repo_root()))
+    except ValueError:
+        return str(path)
+
+
+def load_module(path: Path, name: str) -> Any:
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"unable to load {path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def child_type(wrapper_root: Path) -> str | None:
+    if (wrapper_root / "RAW_001.exe").is_file():
+        return "raw_001"
+    if any(wrapper_root.glob("*.RWG")):
+        return "rwg"
+    return None
+
+
+def build_report(extracted_root: Path) -> dict[str, Any]:
+    module = load_module(repo_root() / "scripts" / "unwrap_reflexive_wrapper.py", "reflexive_unwrapper")
+    inventory = module.build_scan(extracted_root)
+    records = module.effective_records(inventory["roots"])
+
+    strategy_counter: Counter[str] = Counter()
+    layout_strategy_counter: Counter[tuple[str, str]] = Counter()
+    layout_examples: dict[tuple[str, str], str] = {}
+    child_type_counter: Counter[str] = Counter()
+    strategy_examples: dict[str, str] = {}
+    unsupported_roots: list[dict[str, Any]] = []
+    per_root: list[dict[str, Any]] = []
+
+    for record in records:
+        wrapper_root = extracted_root / record["root"]
+        strategy = module.choose_strategy(record, wrapper_root)
+        kind = strategy.kind
+        layout = str(record["layout_label"])
+        primary = record["primary_wrapper_binary"]
+        child_kind = child_type(wrapper_root)
+
+        strategy_counter[kind] += 1
+        layout_strategy_counter[(layout, kind)] += 1
+        layout_examples.setdefault((layout, kind), str(record["root"]))
+        strategy_examples.setdefault(kind, str(record["root"]))
+        if child_kind is not None and kind == "runtime":
+            child_type_counter[child_kind] += 1
+
+        entry = {
+            "root": str(record["root"]),
+            "layout_label": layout,
+            "strategy": kind,
+            "reason": strategy.reason,
+            "wrapper_binary": None if strategy.wrapper_binary is None else display_path(strategy.wrapper_binary),
+            "direct_executable": None if strategy.direct_executable is None else display_path(strategy.direct_executable),
+            "output_executable_name": strategy.output_executable_name,
+            "primary_wrapper_role": None if primary is None else primary["role"],
+            "primary_wrapper_path": None if primary is None else primary["path"],
+            "child_type": child_kind,
+        }
+        per_root.append(entry)
+
+        if kind == "unsupported":
+            unsupported_roots.append(
+                {
+                    "root": str(record["root"]),
+                    "layout_label": layout,
+                    "reason": strategy.reason,
+                    "primary_wrapper_role": None if primary is None else primary["role"],
+                    "primary_wrapper_path": None if primary is None else primary["path"],
+                }
+            )
+
+    return {
+        "generated_from": str(extracted_root),
+        "methodology": {
+            "runtime_strategy": "For wrapper roots that still carry an encrypted child file (*.RWG or RAW_001.exe), run the patched Reflexive launcher under a debugger, capture the child path from CreateProcessA, capture the decrypted write buffer from WriteProcessMemory, and patch that buffer back into the child PE on disk.",
+            "direct_strategy": "For helper and dll-only layouts where a non-wrapper game executable is already present at the top level, carry that executable forward and drop Reflexive wrapper artifacts.",
+            "output_shape": "Materialize wrapper-free trees under artifacts/unwrapped by removing ReflexiveArcade/ content, wrapper launcher copies, encrypted child blobs, and wrapper-only sidecar files such as wraperr.log.",
+        },
+        "summary": {
+            "effective_root_count": len(records),
+            "strategy_counts": [{"strategy": key, "count": strategy_counter[key]} for key in sorted(strategy_counter)],
+            "runtime_child_types": [{"child_type": key, "count": child_type_counter[key]} for key in sorted(child_type_counter)],
+        },
+        "layout_strategy_counts": [
+            {
+                "layout_label": layout,
+                "strategy": strategy,
+                "count": count,
+                "example": layout_examples[(layout, strategy)],
+            }
+            for (layout, strategy), count in sorted(layout_strategy_counter.items())
+        ],
+        "validated_examples": [
+            {
+                "root": "Reflexive Arcade 0-9/10 Days Under The Sea",
+                "strategy": "runtime",
+                "child_type": "rwg",
+                "output_executable": "10DaysUnderTheSea.exe",
+            },
+            {
+                "root": "Reflexive Arcade A/A Pirates Legend",
+                "strategy": "runtime",
+                "child_type": "raw_001",
+                "output_executable": "APiratesLegend.exe",
+            },
+            {
+                "root": "Reflexive Arcade E/Double Trump/Electric",
+                "strategy": "direct",
+                "child_type": None,
+                "output_executable": "Electric.exe",
+            },
+            {
+                "root": "Reflexive Arcade C/Crimsonland",
+                "strategy": "direct",
+                "child_type": None,
+                "output_executable": "crimsonland.exe",
+            },
+        ],
+        "unsupported_roots": unsupported_roots,
+        "roots": per_root,
+    }
+
+
+def render_markdown(report: dict[str, Any]) -> str:
+    summary = report["summary"]
+    lines: list[str] = [
+        "# Reflexive Unwrapper",
+        "",
+        "Generated from the extracted Reflexive Arcade corpus under `artifacts/extracted`.",
+        "",
+        "## Methodology",
+        "",
+        f"- Runtime strategy: {report['methodology']['runtime_strategy']}",
+        f"- Direct strategy: {report['methodology']['direct_strategy']}",
+        f"- Output shape: {report['methodology']['output_shape']}",
+        "",
+        "## Summary",
+        "",
+        f"- Effective wrapper roots scanned: {summary['effective_root_count']}",
+    ]
+
+    for item in summary["strategy_counts"]:
+        lines.append(f"- `{item['strategy']}` roots: {item['count']}")
+
+    if summary["runtime_child_types"]:
+        lines.append("- Runtime child types:")
+        for item in summary["runtime_child_types"]:
+            lines.append(f"  - `{item['child_type']}`: {item['count']}")
+
+    lines.extend(
+        [
+            "",
+            "## Layout Strategy Counts",
+            "",
+            "| Layout | Strategy | Roots | Example |",
+            "| --- | --- | ---: | --- |",
+        ]
+    )
+
+    for item in report["layout_strategy_counts"]:
+        lines.append(
+            f"| `{item['layout_label']}` | `{item['strategy']}` | {item['count']} | `{item['example']}` |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "## Validated Examples",
+            "",
+            "| Root | Strategy | Child Type | Output Executable |",
+            "| --- | --- | --- | --- |",
+        ]
+    )
+
+    for item in report["validated_examples"]:
+        child_type_display = "-" if item["child_type"] is None else f"`{item['child_type']}`"
+        lines.append(
+            f"| `{item['root']}` | `{item['strategy']}` | {child_type_display} | `{item['output_executable']}` |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "## Unsupported Roots",
+            "",
+            "| Root | Layout | Primary Wrapper Role | Example Wrapper |",
+            "| --- | --- | --- | --- |",
+        ]
+    )
+
+    for item in report["unsupported_roots"]:
+        role = "-" if item["primary_wrapper_role"] is None else f"`{item['primary_wrapper_role']}`"
+        path = "-" if item["primary_wrapper_path"] is None else f"`{item['primary_wrapper_path']}`"
+        lines.append(f"| `{item['root']}` | `{item['layout_label']}` | {role} | {path} |")
+
+    lines.append("")
+    return "\n".join(lines)
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Generate a support report for the current universal Reflexive unwrapper."
+    )
+    parser.add_argument(
+        "extracted_root",
+        nargs="?",
+        type=Path,
+        default=default_extracted_root(),
+        help="Root containing extracted Reflexive Arcade directories.",
+    )
+    parser.add_argument(
+        "--markdown-out",
+        type=Path,
+        default=default_markdown_path(),
+        help="Markdown output path.",
+    )
+    parser.add_argument(
+        "--json-out",
+        type=Path,
+        default=default_json_path(),
+        help="JSON output path.",
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    extracted_root = args.extracted_root.resolve()
+    markdown_out = args.markdown_out.resolve()
+    json_out = args.json_out.resolve()
+    report = build_report(extracted_root)
+
+    markdown_out.parent.mkdir(parents=True, exist_ok=True)
+    json_out.parent.mkdir(parents=True, exist_ok=True)
+    markdown_out.write_text(render_markdown(report) + "\n", encoding="utf-8")
+    json_out.write_text(json.dumps(report, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+
+    print(f"Wrote {markdown_out}")
+    print(f"Wrote {json_out}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
