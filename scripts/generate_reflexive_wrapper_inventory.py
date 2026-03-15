@@ -9,6 +9,8 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import re
+import subprocess
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -28,6 +30,10 @@ LAYOUT_FLAG_ORDER = (
     "has_reflexive_exe",
     "has_rwg",
 )
+LAUNCHER_BUILD_RE = re.compile(rb"Build\s+(\d{2,4})")
+VERSION_NUMBER_RE = re.compile(r"Version Number=(\d+)")
+INFO_STRING_RE = re.compile(r"Info String=([^\r\n]+)")
+MANAGER_INFO_VERSION_RE = re.compile(r"Manager Information Version=(\d+)")
 
 
 def repo_root() -> Path:
@@ -97,6 +103,48 @@ def pe_summary(path: Path, section_names: tuple[str, ...]) -> dict[str, object]:
     }
 
 
+def extract_archive_member(archive_path: Path, member_path: str) -> str | None:
+    try:
+        return subprocess.check_output(
+            ["bsdtar", "-xOf", str(archive_path), member_path],
+            text=True,
+            stderr=subprocess.DEVNULL,
+        )
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        return None
+
+
+def parse_asset_version(archive_path: Path, member_path: str) -> dict[str, object] | None:
+    text = extract_archive_member(archive_path, member_path)
+    if text is None:
+        return None
+
+    version_match = VERSION_NUMBER_RE.search(text)
+    info_match = INFO_STRING_RE.search(text)
+    if version_match is None:
+        return None
+
+    return {
+        "version_number": int(version_match.group(1)),
+        "info_string": info_match.group(1) if info_match is not None else None,
+    }
+
+
+def parse_manager_info_version(archive_path: Path, member_path: str) -> int | None:
+    text = extract_archive_member(archive_path, member_path)
+    if text is None:
+        return None
+
+    version_match = MANAGER_INFO_VERSION_RE.search(text)
+    if version_match is None:
+        return None
+    return int(version_match.group(1))
+
+
+def extract_launcher_builds(path: Path) -> list[int]:
+    return sorted({int(match.group(1)) for match in LAUNCHER_BUILD_RE.finditer(path.read_bytes())})
+
+
 def layout_flags(wrapper_root: Path) -> dict[str, bool]:
     reflexive_dir = wrapper_root / "ReflexiveArcade"
     return {
@@ -159,6 +207,10 @@ def root_record(extracted_root: Path, wrapper_root: Path) -> dict[str, object]:
         "support_dll": None,
         "support_exe": None,
         "launcher_bak": None,
+        "launcher_builds": [],
+        "application_asset_version": None,
+        "arcade_asset_version": None,
+        "manager_info_version": None,
     }
 
     flags = layout_flags(wrapper_root)
@@ -178,6 +230,25 @@ def root_record(extracted_root: Path, wrapper_root: Path) -> dict[str, object]:
     launcher_baks = sorted(wrapper_root.glob("*.exe.BAK"))
     if launcher_baks:
         record["launcher_bak"] = pe_summary(launcher_baks[0], EXE_SECTION_NAMES)
+        record["launcher_builds"] = extract_launcher_builds(launcher_baks[0])
+
+    application_dat = reflexive_dir / "Application.dat"
+    if application_dat.is_file():
+        record["application_asset_version"] = parse_asset_version(
+            application_dat,
+            "Resources/Application.version.txt",
+        )
+
+    arcade_dat = reflexive_dir / "Arcade.dat"
+    if arcade_dat.is_file():
+        record["arcade_asset_version"] = parse_asset_version(
+            arcade_dat,
+            "Resources/Arcade.version.txt",
+        )
+        record["manager_info_version"] = parse_manager_info_version(
+            arcade_dat,
+            "Resources/RAManagerData.managerinfo.txt",
+        )
 
     return record
 
@@ -251,6 +322,13 @@ def build_inventory(extracted_root: Path) -> dict[str, object]:
             }
             size_values = sorted({int(value["size"]) for value in source_values})
             timestamp_values = sorted({int(value["timestamp"]) for value in source_values})
+            observed_builds = sorted(
+                {
+                    build
+                    for record in members
+                    for build in record["launcher_builds"]
+                }
+            )
             families.append(
                 {
                     "id": family_id,
@@ -265,6 +343,7 @@ def build_inventory(extracted_root: Path) -> dict[str, object]:
                     "timestamps": timestamp_values,
                     "timestamps_utc": [utc_timestamp(value) for value in timestamp_values],
                     "example_root": members[0]["root"],
+                    "observed_builds": observed_builds,
                     "matches_prior_v5_sample": (
                         family_id == xeno_record.get("support_dll_family")
                         if source_key == "support_dll"
@@ -297,6 +376,48 @@ def build_inventory(extracted_root: Path) -> dict[str, object]:
         pair = (record["support_dll_family"], record["launcher_family"])
         pair_counter[pair] += 1
         pair_examples.setdefault(pair, str(record["root"]))
+
+    launcher_build_counter: Counter[tuple[int, ...]] = Counter()
+    launcher_build_examples: dict[tuple[int, ...], str] = {}
+    launcher_build_families: defaultdict[tuple[int, ...], set[str]] = defaultdict(set)
+    for record in records:
+        if record["launcher_bak"] is None:
+            continue
+        build_key = tuple(record["launcher_builds"])
+        launcher_build_counter[build_key] += 1
+        launcher_build_examples.setdefault(build_key, str(record["root"]))
+        if record["launcher_family"] is not None:
+            launcher_build_families[build_key].add(str(record["launcher_family"]))
+
+    application_asset_counter: Counter[tuple[int, str | None]] = Counter()
+    application_asset_examples: dict[tuple[int, str | None], str] = {}
+    arcade_asset_counter: Counter[tuple[int, str | None]] = Counter()
+    arcade_asset_examples: dict[tuple[int, str | None], str] = {}
+    manager_info_counter: Counter[int] = Counter()
+    manager_info_examples: dict[int, str] = {}
+    for record in records:
+        application_asset_version = record["application_asset_version"]
+        if application_asset_version is not None:
+            app_key = (
+                int(application_asset_version["version_number"]),
+                str(application_asset_version["info_string"]) if application_asset_version["info_string"] is not None else None,
+            )
+            application_asset_counter[app_key] += 1
+            application_asset_examples.setdefault(app_key, str(record["root"]))
+
+        arcade_asset_version = record["arcade_asset_version"]
+        if arcade_asset_version is not None:
+            arcade_key = (
+                int(arcade_asset_version["version_number"]),
+                str(arcade_asset_version["info_string"]) if arcade_asset_version["info_string"] is not None else None,
+            )
+            arcade_asset_counter[arcade_key] += 1
+            arcade_asset_examples.setdefault(arcade_key, str(record["root"]))
+
+        manager_info_version = record["manager_info_version"]
+        if manager_info_version is not None:
+            manager_info_counter[int(manager_info_version)] += 1
+            manager_info_examples.setdefault(int(manager_info_version), str(record["root"]))
 
     inventory = {
         "generated_from": str(extracted_root),
@@ -353,6 +474,44 @@ def build_inventory(extracted_root: Path) -> dict[str, object]:
             "support_exe",
             "support_exe_family",
         ),
+        "launcher_build_summary": [
+            {
+                "builds": list(build_key),
+                "count": count,
+                "launcher_families": sorted(launcher_build_families[build_key]),
+                "example_root": launcher_build_examples[build_key],
+            }
+            for build_key, count in sorted(
+                launcher_build_counter.items(),
+                key=lambda item: (item[0] == (), item[0]),
+            )
+        ],
+        "application_asset_version_summary": [
+            {
+                "version_number": key[0],
+                "info_string": key[1],
+                "count": count,
+                "example_root": application_asset_examples[key],
+            }
+            for key, count in sorted(application_asset_counter.items())
+        ],
+        "arcade_asset_version_summary": [
+            {
+                "version_number": key[0],
+                "info_string": key[1],
+                "count": count,
+                "example_root": arcade_asset_examples[key],
+            }
+            for key, count in sorted(arcade_asset_counter.items())
+        ],
+        "manager_info_version_summary": [
+            {
+                "version_number": version_number,
+                "count": count,
+                "example_root": manager_info_examples[version_number],
+            }
+            for version_number, count in sorted(manager_info_counter.items())
+        ],
         "pair_summary": [
             {
                 "count": count,
@@ -394,6 +553,10 @@ def render_markdown(inventory: dict[str, object], extracted_root: Path) -> str:
     launcher_families = inventory["launcher_families"]
     support_exe_families = inventory["support_exe_families"]
     layout_summary = inventory["layout_summary"]
+    launcher_build_summary = inventory["launcher_build_summary"]
+    application_asset_version_summary = inventory["application_asset_version_summary"]
+    arcade_asset_version_summary = inventory["arcade_asset_version_summary"]
+    manager_info_version_summary = inventory["manager_info_version_summary"]
     pair_summary = inventory["pair_summary"]
 
     lines = [
@@ -415,6 +578,55 @@ def render_markdown(inventory: dict[str, object], extracted_root: Path) -> str:
     for item in layout_summary:
         assert isinstance(item, dict)
         lines.append(f"- `{item['label']}`: {item['count']} roots. Example: `{item['example_root']}`")
+
+    lines.extend(
+        [
+            "",
+            "## Wrapper Asset Versions",
+            "",
+            "| Asset | Version | Roots | Info String | Example |",
+            "| --- | ---: | ---: | --- | --- |",
+        ]
+    )
+
+    for item in application_asset_version_summary:
+        assert isinstance(item, dict)
+        lines.append(
+            f"| `Application.version.txt` | `{item['version_number']}` | {item['count']} | "
+            f"`{item['info_string'] or '-'}` | `{item['example_root']}` |"
+        )
+
+    for item in arcade_asset_version_summary:
+        assert isinstance(item, dict)
+        lines.append(
+            f"| `Arcade.version.txt` | `{item['version_number']}` | {item['count']} | "
+            f"`{item['info_string'] or '-'}` | `{item['example_root']}` |"
+        )
+
+    for item in manager_info_version_summary:
+        assert isinstance(item, dict)
+        lines.append(
+            f"| `RAManagerData.managerinfo.txt` | `{item['version_number']}` | {item['count']} | "
+            f"`-` | `{item['example_root']}` |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "## Launcher Build Strings",
+            "",
+            "| Build | Roots | Launcher Families | Example |",
+            "| --- | ---: | --- | --- |",
+        ]
+    )
+
+    for item in launcher_build_summary:
+        assert isinstance(item, dict)
+        build_label = ", ".join(str(value) for value in item["builds"]) if item["builds"] else "-"
+        launcher_families_display = ", ".join(f"`{family}`" for family in item["launcher_families"]) or "`-`"
+        lines.append(
+            f"| `{build_label}` | {item['count']} | {launcher_families_display} | `{item['example_root']}` |"
+        )
 
     lines.extend(
         [
@@ -442,8 +654,8 @@ def render_markdown(inventory: dict[str, object], extracted_root: Path) -> str:
             "",
             "## Launcher Families",
             "",
-            "| Family | Roots | .text | .rdata | Timestamp | Example | Note |",
-            "| --- | ---: | --- | --- | --- | --- | --- |",
+            "| Family | Roots | Builds | .text | .rdata | Timestamp | Example | Note |",
+            "| --- | ---: | --- | --- | --- | --- | --- | --- |",
         ]
     )
 
@@ -452,8 +664,9 @@ def render_markdown(inventory: dict[str, object], extracted_root: Path) -> str:
         section_hashes = family["section_hashes"]
         assert isinstance(section_hashes, dict)
         note = "Matches prior Xeno/Xango/XAvenger/Xmas v5 sample" if family["matches_prior_v5_sample"] else ""
+        builds_display = ", ".join(str(value) for value in family["observed_builds"]) if family["observed_builds"] else "-"
         lines.append(
-            f"| `{family['id']}` | {family['count']} | `{short_hash(str(section_hashes['.text']))}` | "
+            f"| `{family['id']}` | {family['count']} | `{builds_display}` | `{short_hash(str(section_hashes['.text']))}` | "
             f"`{short_hash(str(section_hashes['.rdata']))}` | `{family['timestamps_utc'][0]}` | "
             f"`{family['example_root']}` | {note} |"
         )
@@ -500,9 +713,10 @@ def render_markdown(inventory: dict[str, object], extracted_root: Path) -> str:
             "",
             "## Binja Priorities",
             "",
-            "- Start with the dominant pair `dll_family_01` + `launcher_family_01`. It covers 993 wrapper roots and matches the already-studied Xeno/Xango/XAvenger/Xmas sample.",
+            "- The patcher README's `167-184` wording lines up with launcher build strings, not the coarse DLL export major. The corpus is overwhelmingly `Build 173`, with smaller `Build 172` and `Build 167` pockets still inside that range.",
+            "- Start with the dominant pair `dll_family_01` + `launcher_family_01`. It covers 993 wrapper roots, reports `Build 173`, and matches the already-studied Xeno/Xango/XAvenger/Xmas sample.",
             "- Then look at the three one-off DLL outliers: `dll_family_02` (`Alpha Ball/bin`), `dll_family_03` (`Home Sweet Home`), and `dll_family_04` (`Turtle Bay`).",
-            "- After that, inspect the small launcher outliers that still use `dll_family_01`, because they may be title-specific wrapper revisions rather than a new DLL generation.",
+            "- After that, inspect the small launcher outliers that still use `dll_family_01`, because they may be title-specific wrapper revisions rather than a new DLL generation. The four best targets are the no-literal-build launchers: `Orbz`, `Solitaire 2`, `Tablut`, and `Think Tanks`.",
             "- Use the JSON inventory for exact full hashes and per-root mapping.",
             "",
         ]
