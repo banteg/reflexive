@@ -309,13 +309,13 @@ def create_volume_aliases(raw_cabs_dir: Path, installer_stem: str) -> None:
             alias_path.symlink_to(cab_path.name)
 
 
-def materialize_payload(file_names: tuple[str, ...], raw_payload_dir: Path, materialized_dir: Path) -> None:
+def materialize_payload(file_names: tuple[str, ...], raw_payload_dir: Path, destination_root: Path) -> None:
     for index, relative_name in enumerate(file_names):
         source = raw_payload_dir / str(index)
         if not source.is_file():
             raise FileNotFoundError(f"missing extracted payload file: {source}")
 
-        destination = materialized_dir / relative_name
+        destination = destination_root / relative_name
         destination.parent.mkdir(parents=True, exist_ok=True)
 
         try:
@@ -351,7 +351,6 @@ def clear_output_root(output_root: Path, *, force: bool) -> None:
 def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -> Path:
     installer_path = installer_path.resolve()
     output_root = output_root.resolve()
-    materialized_dir = output_root / "materialized_payload"
 
     clear_output_root(output_root, force=force)
     output_root.parent.mkdir(parents=True, exist_ok=True)
@@ -389,18 +388,18 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
             extract_uncompressed_payload(metadata, raw_payload_dir)
 
         print("Materializing final payload tree")
-        materialized_dir.mkdir(parents=True, exist_ok=True)
-        materialize_payload(metadata.file_names, raw_payload_dir, materialized_dir)
+        output_root.mkdir(parents=True, exist_ok=True)
+        materialize_payload(metadata.file_names, raw_payload_dir, output_root)
 
-    print(f"Materialized payload written to {materialized_dir}")
-    return materialized_dir
+    print(f"Materialized payload written to {output_root}")
+    return output_root
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Extract a Smart Install Maker Reflexive Arcade installer into a final "
-            "materialized_payload tree without keeping intermediate CAB/raw directories."
+            "payload tree without keeping intermediate CAB/raw directories."
         )
     )
     parser.add_argument("installer", type=Path, help="Path to the Smart Install Maker installer EXE.")
@@ -409,7 +408,7 @@ def parse_args() -> argparse.Namespace:
         nargs="?",
         type=Path,
         help=(
-            "Directory that will receive materialized_payload/. "
+            "Directory that will receive the extracted files directly. "
             "Defaults to artifacts/extracted/<installer stem>."
         ),
     )
