@@ -42,6 +42,8 @@ TOKEN_REPLACEMENTS = {
     "@$&%17": "%SYSTEMDRIVE%",
     "@$&%18": "%CURRENTDIR%",
 }
+LAUNCHER_PATCH_OLD = bytes.fromhex("84c0740e8bce")
+LAUNCHER_PATCH_NEW = bytes.fromhex("84c090908bce")
 
 
 @dataclass(frozen=True)
@@ -334,14 +336,55 @@ def create_volume_aliases(raw_cabs_dir: Path, installer_stem: str, *, mode: str 
             shutil.copy2(cab_path, alias_path)
 
 
+def synthesize_patched_launcher(raw_payload_dir: Path, source_index: int) -> Path | None:
+    source = raw_payload_dir / str(source_index)
+    if not source.is_file():
+        return None
+
+    original = source.read_bytes()
+    hits = [offset for offset in range(len(original) - len(LAUNCHER_PATCH_OLD) + 1) if original[offset : offset + len(LAUNCHER_PATCH_OLD)] == LAUNCHER_PATCH_OLD]
+    if len(hits) != 1:
+        return None
+
+    offset = hits[0]
+    patched = source.with_name(f".synthesized-{source_index}")
+    patched.write_bytes(
+        original[:offset] + LAUNCHER_PATCH_NEW + original[offset + len(LAUNCHER_PATCH_OLD) :]
+    )
+    return patched
+
+
+def resolve_materialized_source(
+    file_names: tuple[str, ...],
+    name_to_index: dict[str, int],
+    raw_payload_dir: Path,
+    index: int,
+    relative_name: str,
+) -> tuple[Path, str | None]:
+    source = raw_payload_dir / str(index)
+    if source.is_file():
+        return source, None
+
+    if relative_name.lower().endswith(".exe"):
+        backup_index = name_to_index.get(f"{relative_name}.BAK")
+        if backup_index is not None:
+            synthesized = synthesize_patched_launcher(raw_payload_dir, backup_index)
+            if synthesized is not None:
+                return synthesized, f"synthesized from payload {backup_index} ({relative_name}.BAK)"
+
+    raise FileNotFoundError(f"missing extracted payload file: {source}")
+
+
 def materialize_payload(file_names: tuple[str, ...], raw_payload_dir: Path, destination_root: Path) -> None:
+    name_to_index = {relative_name: index for index, relative_name in enumerate(file_names)}
     for index, relative_name in enumerate(file_names):
-        source = raw_payload_dir / str(index)
-        if not source.is_file():
-            raise FileNotFoundError(f"missing extracted payload file: {source}")
+        source, note = resolve_materialized_source(file_names, name_to_index, raw_payload_dir, index, relative_name)
 
         destination = destination_root / relative_name
         destination.parent.mkdir(parents=True, exist_ok=True)
+
+        if note is not None:
+            print(f"Using fallback for {relative_name}: {note}")
 
         try:
             os.link(source, destination)
