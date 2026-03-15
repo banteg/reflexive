@@ -49,7 +49,9 @@ def load_module(path: Path, name: str) -> Any:
 
 def child_type(wrapper_root: Path) -> str | None:
     if (wrapper_root / "RAW_001.exe").is_file():
-        return "raw_001"
+        return "raw_001_exe"
+    if (wrapper_root / "RAW_001.dat").is_file():
+        return "raw_001_dat"
     if any(wrapper_root.glob("*.RWG")):
         return "rwg"
     return None
@@ -80,7 +82,7 @@ def build_report(extracted_root: Path) -> dict[str, Any]:
         layout_strategy_counter[(layout, kind)] += 1
         layout_examples.setdefault((layout, kind), str(record["root"]))
         strategy_examples.setdefault(kind, str(record["root"]))
-        if child_kind is not None and kind == "runtime":
+        if child_kind is not None and kind == "static":
             child_type_counter[child_kind] += 1
 
         entry = {
@@ -111,14 +113,15 @@ def build_report(extracted_root: Path) -> dict[str, Any]:
     return {
         "generated_from": str(extracted_root),
         "methodology": {
-            "runtime_strategy": "For wrapper roots that still carry an encrypted child file (*.RWG or RAW_001.exe), run the patched Reflexive launcher under a debugger, capture the child path from CreateProcessA, capture the decrypted write buffer from WriteProcessMemory, and patch that buffer back into the child PE on disk.",
+            "static_strategy": "For wrapper roots that carry an encrypted child file (*.RWG, RAW_001.exe, or RAW_001.dat), derive the RAW_002 config seed from the wrapper-side dependency file sizes, decrypt RAW_002 statically, derive the child-payload seed from the encrypted RAW_002 header, and patch the decrypted entrypoint-to-section-end span back into the child PE on disk.",
             "direct_strategy": "For helper and dll-only layouts where a non-wrapper game executable is already present at the top level, carry that executable forward and drop Reflexive wrapper artifacts.",
-            "output_shape": "Materialize wrapper-free trees under artifacts/unwrapped by removing ReflexiveArcade/ content, wrapper launcher copies, encrypted child blobs, and wrapper-only sidecar files such as wraperr.log.",
+            "output_shape": "Materialize wrapper-free trees under artifacts/unwrapped by removing ReflexiveArcade/ content, wrapper launcher copies, encrypted child blobs, RAW_002/RAW_003 wrapper sidecars, and wrapper-only top-level assets such as Background.jpg, button_*.jpg, and wraperr.log.",
+            "validation": "The static decryptor matches the earlier runtime-captured outputs byte-for-byte on eight cross-family roots: 10 Days Under The Sea, A Pirates Legend, Diamond Drop, Emperors Mahjong, Home Sweet Home, Astrobatics, Ice Cream Tycoon, and Alpha Ball/bin.",
         },
         "summary": {
             "effective_root_count": len(records),
             "strategy_counts": [{"strategy": key, "count": strategy_counter[key]} for key in sorted(strategy_counter)],
-            "runtime_child_types": [{"child_type": key, "count": child_type_counter[key]} for key in sorted(child_type_counter)],
+            "static_child_types": [{"child_type": key, "count": child_type_counter[key]} for key in sorted(child_type_counter)],
         },
         "layout_strategy_counts": [
             {
@@ -132,15 +135,27 @@ def build_report(extracted_root: Path) -> dict[str, Any]:
         "validated_examples": [
             {
                 "root": "Reflexive Arcade 0-9/10 Days Under The Sea",
-                "strategy": "runtime",
+                "strategy": "static",
                 "child_type": "rwg",
                 "output_executable": "10DaysUnderTheSea.exe",
             },
             {
                 "root": "Reflexive Arcade A/A Pirates Legend",
-                "strategy": "runtime",
-                "child_type": "raw_001",
+                "strategy": "static",
+                "child_type": "raw_001_exe",
                 "output_executable": "APiratesLegend.exe",
+            },
+            {
+                "root": "Reflexive Arcade D/Diamond Drop",
+                "strategy": "static",
+                "child_type": "raw_001_dat",
+                "output_executable": "DiamondDrop.exe",
+            },
+            {
+                "root": "Reflexive Arcade E/Emperors Mahjong",
+                "strategy": "static",
+                "child_type": "rwg",
+                "output_executable": "Mahjong.exe",
             },
             {
                 "root": "Reflexive Arcade E/Double Trump/Electric",
@@ -169,9 +184,10 @@ def render_markdown(report: dict[str, Any]) -> str:
         "",
         "## Methodology",
         "",
-        f"- Runtime strategy: {report['methodology']['runtime_strategy']}",
+        f"- Static strategy: {report['methodology']['static_strategy']}",
         f"- Direct strategy: {report['methodology']['direct_strategy']}",
         f"- Output shape: {report['methodology']['output_shape']}",
+        f"- Validation: {report['methodology']['validation']}",
         "",
         "## Summary",
         "",
@@ -181,9 +197,9 @@ def render_markdown(report: dict[str, Any]) -> str:
     for item in summary["strategy_counts"]:
         lines.append(f"- `{item['strategy']}` roots: {item['count']}")
 
-    if summary["runtime_child_types"]:
-        lines.append("- Runtime child types:")
-        for item in summary["runtime_child_types"]:
+    if summary["static_child_types"]:
+        lines.append("- Static child types:")
+        for item in summary["static_child_types"]:
             lines.append(f"  - `{item['child_type']}`: {item['count']}")
 
     lines.extend(
@@ -238,7 +254,7 @@ def render_markdown(report: dict[str, Any]) -> str:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Generate a support report for the current universal Reflexive unwrapper."
+        description="Generate a support report for the current static Reflexive unwrapper."
     )
     parser.add_argument(
         "extracted_root",

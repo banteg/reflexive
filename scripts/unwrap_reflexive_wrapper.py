@@ -7,15 +7,19 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
+import itertools
 import os
 import shutil
-import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
+
+import pefile
 
 
+MASK32 = 0xFFFFFFFF
+STATE_WORDS = 250
 UTILITY_EXE_NAMES = {
     "controls.exe",
     "config.exe",
@@ -26,9 +30,35 @@ UTILITY_EXE_NAMES = {
     "unins000.exe",
 }
 TOP_LEVEL_WRAPPER_JUNK = {
-    "RA_games.png",
+    "ra_games.png",
     "ra_trial_dialog.png",
     "wraperr.log",
+}
+TOP_LEVEL_WRAPPER_SIDECARS = {
+    "background.jpg",
+    "button_hover.jpg",
+    "button_normal.jpg",
+    "button_pressed.jpg",
+    "channel.dat",
+    "raw_002.dat",
+    "raw_002.wdt",
+    "raw_003.dat",
+    "raw_003.wdt",
+    "raw_004.dat",
+    "raw_004.wdt",
+}
+RAW2_FILENAMES = ("RAW_002.wdt", "RAW_002.dat")
+RAW1_FILENAMES = ("RAW_001.exe", "RAW_001.dat")
+KNOWN_SEED_DEPENDENCY_NAMES = {
+    "background.jpg",
+    "button_hover.jpg",
+    "button_normal.jpg",
+    "button_pressed.jpg",
+    "channel.dat",
+    "raw_003.dat",
+    "raw_003.wdt",
+    "raw_004.dat",
+    "raw_004.wdt",
 }
 
 
@@ -39,6 +69,15 @@ class Strategy:
     wrapper_binary: Path | None = None
     direct_executable: Path | None = None
     output_executable_name: str | None = None
+    child_payload: Path | None = None
+    config_path: Path | None = None
+
+
+@dataclass(frozen=True)
+class SeedMaterial:
+    seed1: int
+    dependency_paths: tuple[Path, ...]
+    decrypted_config: bytes
 
 
 def repo_root() -> Path:
@@ -51,14 +90,6 @@ def default_extracted_root() -> Path:
 
 def default_output_root() -> Path:
     return repo_root() / "artifacts" / "unwrapped"
-
-
-def helper_source_path() -> Path:
-    return repo_root() / "scripts" / "reflexive_runtime_unwrapper.c"
-
-
-def helper_binary_path() -> Path:
-    return repo_root() / "artifacts" / "tools" / "reflexive_runtime_unwrapper.exe"
 
 
 def display_path(path: Path) -> str:
@@ -84,7 +115,7 @@ def build_scan(extracted_root: Path) -> dict[str, Any]:
     return module.build_scan(extracted_root)
 
 
-def choose_runtime_wrapper(record: dict[str, Any], wrapper_root: Path) -> Path | None:
+def choose_static_wrapper(record: dict[str, Any], wrapper_root: Path) -> Path | None:
     candidates: list[tuple[int, Path]] = []
 
     for candidate in record["binary_candidates"]:
@@ -109,7 +140,6 @@ def choose_runtime_wrapper(record: dict[str, Any], wrapper_root: Path) -> Path |
     candidates.sort(key=lambda item: (item[0], item[1].name.lower()))
     chosen = candidates[0][1]
 
-    # Prefer the patched top-level wrapper over the preserved .BAK copy when both exist.
     if chosen.name.lower().endswith(".exe.bak"):
         patched = wrapper_root / chosen.name[:-4]
         if patched.is_file():
@@ -144,7 +174,31 @@ def choose_direct_executable(record: dict[str, Any], wrapper_root: Path) -> Path
     return candidates[0]
 
 
-def runtime_output_name(wrapper_binary: Path) -> str:
+def choose_child_payload(wrapper_root: Path) -> Path | None:
+    explicit_candidates = [wrapper_root / name for name in RAW1_FILENAMES]
+    for candidate in explicit_candidates:
+        if candidate.is_file():
+            return candidate
+
+    rwg_files = sorted(wrapper_root.glob("*.RWG"))
+    if len(rwg_files) == 1:
+        return rwg_files[0]
+    if len(rwg_files) > 1:
+        raise RuntimeError(f"multiple RWG payloads found under {wrapper_root}")
+    return None
+
+
+def choose_config_path(wrapper_root: Path) -> Path | None:
+    search_roots = [wrapper_root / "ReflexiveArcade", wrapper_root]
+    for search_root in search_roots:
+        for name in RAW2_FILENAMES:
+            candidate = search_root / name
+            if candidate.is_file():
+                return candidate
+    return None
+
+
+def static_output_name(wrapper_binary: Path) -> str:
     name = wrapper_binary.name
     if name.lower().endswith(".exe.bak"):
         return name[:-4]
@@ -153,16 +207,19 @@ def runtime_output_name(wrapper_binary: Path) -> str:
 
 def choose_strategy(record: dict[str, Any], wrapper_root: Path) -> Strategy:
     primary = record["primary_wrapper_binary"]
-    runtime_wrapper = choose_runtime_wrapper(record, wrapper_root)
+    static_wrapper = choose_static_wrapper(record, wrapper_root)
     direct_executable = choose_direct_executable(record, wrapper_root)
-    has_runtime_child = any(wrapper_root.glob("*.RWG")) or (wrapper_root / "RAW_001.exe").is_file()
+    child_payload = choose_child_payload(wrapper_root)
+    config_path = choose_config_path(wrapper_root)
 
-    if has_runtime_child and runtime_wrapper is not None:
+    if child_payload is not None and config_path is not None and static_wrapper is not None:
         return Strategy(
-            kind="runtime",
+            kind="static",
             reason=f"{record['layout_label']} with encrypted child payload",
-            wrapper_binary=runtime_wrapper,
-            output_executable_name=runtime_output_name(runtime_wrapper),
+            wrapper_binary=static_wrapper,
+            output_executable_name=static_output_name(static_wrapper),
+            child_payload=child_payload,
+            config_path=config_path,
         )
 
     if direct_executable is not None and (
@@ -192,40 +249,6 @@ def effective_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return filtered
 
 
-def ensure_runtime_helper() -> Path:
-    source = helper_source_path()
-    binary = helper_binary_path()
-    binary.parent.mkdir(parents=True, exist_ok=True)
-
-    if binary.exists() and binary.stat().st_mtime >= source.stat().st_mtime:
-        return binary
-
-    subprocess.run(
-        [
-            "i686-w64-mingw32-gcc",
-            "-O2",
-            "-Wall",
-            "-Wextra",
-            "-std=c11",
-            str(source),
-            "-limagehlp",
-            "-o",
-            str(binary),
-        ],
-        check=True,
-    )
-    return binary
-
-
-def wine_path(path: Path) -> str:
-    return subprocess.run(
-        ["winepath", "-w", str(path)],
-        check=True,
-        text=True,
-        capture_output=True,
-    ).stdout.strip()
-
-
 def hardlink_or_copy(source: Path, dest: Path) -> None:
     dest.parent.mkdir(parents=True, exist_ok=True)
     try:
@@ -236,17 +259,25 @@ def hardlink_or_copy(source: Path, dest: Path) -> None:
         shutil.copy2(source, dest)
 
 
+def is_top_level_wrapper_sidecar(relative_path: Path) -> bool:
+    if len(relative_path.parts) != 1:
+        return False
+    return relative_path.name.lower() in TOP_LEVEL_WRAPPER_SIDECARS
+
+
 def should_skip_path(path: Path, relative_path: Path, strategy: Strategy, wrapper_paths: set[Path]) -> bool:
     if relative_path.parts and relative_path.parts[0] == "ReflexiveArcade":
         return True
     if path in wrapper_paths:
         return True
-    if path.name in TOP_LEVEL_WRAPPER_JUNK:
+    if path.name.lower() in TOP_LEVEL_WRAPPER_JUNK:
         return True
-    if strategy.kind == "runtime":
-        if path.name == "RAW_001.exe":
+    if strategy.kind == "static":
+        if is_top_level_wrapper_sidecar(relative_path):
             return True
-        if path.suffix.lower() == ".rwg":
+        if strategy.child_payload is not None and path == strategy.child_payload:
+            return True
+        if strategy.config_path is not None and path == strategy.config_path:
             return True
     return False
 
@@ -263,27 +294,192 @@ def copy_support_tree(source_root: Path, dest_root: Path, strategy: Strategy, wr
             hardlink_or_copy(path, destination)
 
 
-def run_runtime_helper(wrapper_binary: Path, output_executable: Path) -> str:
-    helper = ensure_runtime_helper()
-    env = os.environ.copy()
-    env.setdefault("WINEDEBUG", "-all")
-    env.setdefault("MVK_CONFIG_LOG_LEVEL", "0")
-    result = subprocess.run(
-        [
-            "wine",
-            str(helper),
-            wine_path(wrapper_binary),
-            wine_path(output_executable),
-        ],
-        env=env,
-        text=True,
-        capture_output=True,
-    )
-    if result.returncode != 0:
-        raise RuntimeError(result.stderr.strip() or result.stdout.strip() or "runtime helper failed")
-    if not output_executable.is_file():
-        raise RuntimeError("runtime helper exited successfully but did not create the output executable")
-    return result.stdout.strip()
+def initialize_stream(seed: int) -> tuple[list[int], int, int]:
+    state = [0] * STATE_WORDS
+    current = seed & MASK32
+
+    for index in range(STATE_WORDS - 1, -1, -1):
+        product = (current * 0x41C64E6D + 0x3039) & 0xFFFFFFFFFFFFFFFF
+        current = product & MASK32
+        state[index] = (product >> 16) & MASK32
+
+    clear_mask = MASK32
+    bit = 0x80000000
+    index = 3
+    while bit != 0:
+        state[index] = (state[index] & clear_mask) | bit
+        clear_mask >>= 1
+        bit >>= 1
+        index += 7
+
+    return state, 0, 0x67
+
+
+def stream_next_byte(state: list[int], a: int, b: int) -> tuple[int, int, int]:
+    state[a] = (state[a] ^ state[b]) & MASK32
+    value = state[a] & 0xFF
+    a = (a + 1) % STATE_WORDS
+    b = (b + 1) % STATE_WORDS
+    return value, a, b
+
+
+def decrypt_with_stream(data: bytes, seed: int) -> bytes:
+    state, a, b = initialize_stream(seed)
+    output = bytearray(len(data))
+
+    for index, value in enumerate(data):
+        key, a, b = stream_next_byte(state, a, b)
+        output[index] = (value - key) & 0xFF
+
+    return bytes(output)
+
+
+def looks_like_decrypted_config(data: bytes) -> bool:
+    return data.startswith(b"Application Name=") and b"Demo Time Seconds=" in data
+
+
+def parse_config(data: bytes) -> dict[str, str]:
+    text = data.decode("latin-1", errors="ignore")
+    config: dict[str, str] = {}
+    for line in text.splitlines():
+        if "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        config[key.strip()] = value.strip()
+    return config
+
+
+def config_flag(config: dict[str, str], key: str) -> bool:
+    value = config.get(key, "").strip().lower()
+    return value in {"1", "true", "yes"}
+
+
+def unique_immediate_files(root: Path) -> list[Path]:
+    if not root.is_dir():
+        return []
+    return sorted(path for path in root.iterdir() if path.is_file())
+
+
+def candidate_seed_dependency_files(wrapper_root: Path, config_path: Path, child_payload: Path) -> list[Path]:
+    seen: set[Path] = set()
+    candidates: list[Path] = []
+
+    for search_root in (config_path.parent, wrapper_root / "ReflexiveArcade", wrapper_root):
+        for path in unique_immediate_files(search_root):
+            resolved = path.resolve()
+            if resolved in seen:
+                continue
+            seen.add(resolved)
+
+            lower_name = path.name.lower()
+            if path == config_path or path == child_payload:
+                continue
+            if lower_name.endswith(".exe") or lower_name.endswith(".exe.bak") or lower_name.endswith(".dll"):
+                continue
+            candidates.append(path)
+
+    def sort_key(path: Path) -> tuple[int, int, int, str]:
+        lower_name = path.name.lower()
+        same_dir_penalty = 0 if path.parent == config_path.parent else 1
+        known_name_penalty = 0 if lower_name in KNOWN_SEED_DEPENDENCY_NAMES else 1
+        return (same_dir_penalty, known_name_penalty, path.stat().st_size, lower_name)
+
+    candidates.sort(key=sort_key)
+    return candidates
+
+
+def derive_seed_material(config_path: Path, child_payload: Path, wrapper_root: Path) -> SeedMaterial:
+    encrypted_config = config_path.read_bytes()
+    child_size = child_payload.stat().st_size
+    candidates = candidate_seed_dependency_files(wrapper_root, config_path, child_payload)
+    max_subset_size = min(6, len(candidates))
+    valid_by_seed: dict[int, SeedMaterial] = {}
+
+    for subset_size in range(max_subset_size + 1):
+        for subset in itertools.combinations(candidates, subset_size):
+            seed1 = (child_size + sum(path.stat().st_size for path in subset)) & MASK32
+            if seed1 in valid_by_seed:
+                continue
+
+            decrypted = decrypt_with_stream(encrypted_config, seed1)
+            if looks_like_decrypted_config(decrypted):
+                valid_by_seed[seed1] = SeedMaterial(seed1, subset, decrypted)
+
+    if not valid_by_seed:
+        raise RuntimeError(f"unable to derive RAW_002 seed from {config_path}")
+    if len(valid_by_seed) != 1:
+        seeds = ", ".join(str(seed) for seed in sorted(valid_by_seed))
+        raise RuntimeError(f"ambiguous RAW_002 seed candidates for {config_path}: {seeds}")
+    return next(iter(valid_by_seed.values()))
+
+
+def derive_seed2(encrypted_config: bytes) -> int:
+    dword_count = len(encrypted_config) & 3
+    total = 0
+    for index in range(dword_count):
+        start = index * 4
+        total = (total + int.from_bytes(encrypted_config[start : start + 4], "little")) & MASK32
+    return total
+
+
+def native_encrypted_region(pe: pefile.PE, short_fixed: bool) -> tuple[int, int]:
+    entrypoint = pe.OPTIONAL_HEADER.AddressOfEntryPoint
+
+    for section in pe.sections:
+        virtual_address = section.VirtualAddress
+        virtual_size = int(section.Misc_VirtualSize)
+        raw_size = int(section.SizeOfRawData)
+        section_span = max(virtual_size, raw_size)
+
+        if not (virtual_address <= entrypoint < virtual_address + section_span):
+            continue
+
+        usable_size = min(virtual_size, raw_size)
+        offset_in_section = entrypoint - virtual_address
+        if offset_in_section > usable_size:
+            raise RuntimeError("entrypoint falls outside the section's usable raw range")
+
+        raw_start = int(section.PointerToRawData) + offset_in_section
+        decrypt_length = usable_size - offset_in_section
+        if short_fixed:
+            decrypt_length = min(decrypt_length, 0x80)
+        return raw_start, decrypt_length
+
+    raise RuntimeError("unable to locate entrypoint section for child payload")
+
+
+def static_unwrap_child(wrapper_root: Path, strategy: Strategy, output_executable: Path) -> dict[str, Any]:
+    assert strategy.child_payload is not None
+    assert strategy.config_path is not None
+    assert strategy.wrapper_binary is not None
+
+    seed_material = derive_seed_material(strategy.config_path, strategy.child_payload, wrapper_root)
+    config = parse_config(seed_material.decrypted_config)
+    if config_flag(config, "Is .NET Executable"):
+        raise RuntimeError(f".NET child payloads are not implemented yet for {strategy.child_payload}")
+
+    child_bytes = bytearray(strategy.child_payload.read_bytes())
+    pe = pefile.PE(data=bytes(child_bytes), fast_load=True)
+    region_start, region_length = native_encrypted_region(pe, config_flag(config, "Game Needs Short Fixed Encryption"))
+    encrypted_config = strategy.config_path.read_bytes()
+    seed2 = derive_seed2(encrypted_config)
+    decrypted_region = decrypt_with_stream(bytes(child_bytes[region_start : region_start + region_length]), seed2)
+    child_bytes[region_start : region_start + region_length] = decrypted_region
+
+    output_executable.write_bytes(child_bytes)
+
+    try:
+        output_executable.chmod(strategy.wrapper_binary.stat().st_mode)
+    except OSError:
+        pass
+
+    return {
+        "seed1": seed_material.seed1,
+        "seed2": seed2,
+        "dependency_paths": [str(path) for path in seed_material.dependency_paths],
+        "child_payload": str(strategy.child_payload),
+        "config_path": str(strategy.config_path),
+    }
 
 
 def materialize_record(record: dict[str, Any], extracted_root: Path, output_root: Path, force: bool) -> dict[str, Any]:
@@ -316,15 +512,14 @@ def materialize_record(record: dict[str, Any], extracted_root: Path, output_root
     destination_root.mkdir(parents=True, exist_ok=True)
     copy_support_tree(wrapper_root, destination_root, strategy, wrapper_paths)
 
-    if strategy.kind == "runtime":
-        assert strategy.wrapper_binary is not None
+    if strategy.kind == "static":
         assert strategy.output_executable_name is not None
         output_executable = destination_root / strategy.output_executable_name
-        helper_stdout = run_runtime_helper(strategy.wrapper_binary, output_executable)
+        static_summary = static_unwrap_child(wrapper_root, strategy, output_executable)
         summary["status"] = "ok"
-        summary["wrapper_binary"] = str(strategy.wrapper_binary)
+        summary["wrapper_binary"] = None if strategy.wrapper_binary is None else str(strategy.wrapper_binary)
         summary["output_executable"] = str(output_executable)
-        summary["helper_stdout"] = helper_stdout
+        summary.update(static_summary)
         return summary
 
     assert strategy.direct_executable is not None
