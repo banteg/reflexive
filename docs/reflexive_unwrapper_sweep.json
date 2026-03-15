@@ -4,10 +4,10 @@
   "mode": "probe",
   "summary": {
     "effective_root_count": 1083,
-    "ok_count": 1056,
-    "not_decryptable_count": 27,
+    "ok_count": 1057,
+    "not_decryptable_count": 26,
     "unsupported_count": 26,
-    "error_count": 1,
+    "error_count": 0,
     "ok_by_strategy": [
       {
         "strategy": "direct",
@@ -15,15 +15,10 @@
       },
       {
         "strategy": "static",
-        "count": 1010
+        "count": 1011
       }
     ],
-    "error_by_strategy": [
-      {
-        "strategy": "static",
-        "count": 1
-      }
-    ]
+    "error_by_strategy": []
   },
   "ok_roots": [
     {
@@ -1745,6 +1740,11 @@
       "root": "Reflexive Arcade F/Fairy Words",
       "strategy": "static",
       "output_executable": "words.exe"
+    },
+    {
+      "root": "Reflexive Arcade F/Family Feud",
+      "strategy": "static",
+      "output_executable": "FamilyFeud.exe"
     },
     {
       "root": "Reflexive Arcade F/Family Feud Dream Home",
@@ -5439,11 +5439,5 @@
       "reason": "no safe unwrap strategy for dll_only_with_application_dat"
     }
   ],
-  "error_roots": [
-    {
-      "root": "Reflexive Arcade F/Family Feud",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade F/Family Feud/ReflexiveArcade/RAW_002.wdt"
-    }
-  ]
+  "error_roots": []
 }

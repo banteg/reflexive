@@ -225,6 +225,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Run the Reflexive unwrapper across the full extracted corpus and write a sweep report."
     )
+    parser.set_defaults(probe_only=True)
     parser.add_argument(
         "--extracted-root",
         type=Path,
@@ -255,9 +256,15 @@ def parse_args() -> argparse.Namespace:
         help="Replace existing per-root outputs.",
     )
     parser.add_argument(
+        "--materialize",
+        dest="probe_only",
+        action="store_false",
+        help="Materialize wrapper-free outputs instead of running a probe-only decryptability sweep.",
+    )
+    parser.add_argument(
         "--probe-only",
         action="store_true",
-        help="Validate decryptability without materializing support trees.",
+        help="Validate decryptability without materializing support trees (default).",
     )
     return parser.parse_args()
 

@@ -5,14 +5,12 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 ## Summary
 
 - Effective wrapper roots scanned: 1083
-- Successful roots: 1056
-- Not yet decryptable roots: 27
+- Successful roots: 1057
+- Not yet decryptable roots: 26
 - Reported unsupported: 26
-- Execution errors: 1
+- Execution errors: 0
 - Successful `direct` roots: 46
-- Successful `static` roots: 1010
-- Error roots by predicted strategy:
-  - `static`: 1
+- Successful `static` roots: 1011
 
 ## Decryptable Roots
 
@@ -362,6 +360,7 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 | `Reflexive Arcade F/Fairy Godmother Tycoon` | `static` | `fgt_nt.exe` |
 | `Reflexive Arcade F/Fairy Treasure` | `static` | `FairyTreasure.exe` |
 | `Reflexive Arcade F/Fairy Words` | `static` | `words.exe` |
+| `Reflexive Arcade F/Family Feud` | `static` | `FamilyFeud.exe` |
 | `Reflexive Arcade F/Family Feud Dream Home` | `static` | `FamilyFeud3.exe` |
 | `Reflexive Arcade F/Family Feud Hollywood` | `static` | `FamilyFeud.exe` |
 | `Reflexive Arcade F/Family Feud II` | `static` | `FamilyFeud.exe` |
@@ -1110,5 +1109,4 @@ Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `pr
 
 | Root | Strategy | Error |
 | --- | --- | --- |
-| `Reflexive Arcade F/Family Feud` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/Reflexive Arcade F/Family Feud/ReflexiveArcade/RAW_002.wdt` |
 

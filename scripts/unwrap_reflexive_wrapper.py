@@ -340,6 +340,18 @@ def looks_like_decrypted_config(data: bytes) -> bool:
     return b"Application Name=" in data and b"Demo Time Seconds=" in data
 
 
+def looks_like_native_entrypoint(data: bytes) -> bool:
+    if len(data) < 16:
+        return False
+    if data[0] not in {0x51, 0x53, 0x55, 0x56, 0x57, 0x6A, 0x81, 0x83, 0x8B}:
+        return False
+    if 0xE8 not in data[:16]:
+        return False
+    if not any(opcode in data[:32] for opcode in (0x74, 0x75, 0x84, 0x85)):
+        return False
+    return True
+
+
 def parse_config(data: bytes) -> dict[str, str]:
     text = data.decode("latin-1", errors="ignore")
     config: dict[str, str] = {}
@@ -484,9 +496,35 @@ def dotnet_encrypted_region(pe: pefile.PE) -> tuple[int, int]:
     return region_start, region_length
 
 
+def decrypt_empty_config_child(strategy: Strategy) -> tuple[bytes, dict[str, Any]]:
+    assert strategy.child_payload is not None
+    assert strategy.config_path is not None
+
+    child_bytes = bytearray(strategy.child_payload.read_bytes())
+    pe = pefile.PE(data=bytes(child_bytes), fast_load=True)
+    region_start, region_length = native_encrypted_region(pe, False)
+    decrypted_region = decrypt_with_stream(bytes(child_bytes[region_start : region_start + region_length]), 0)
+    if not looks_like_native_entrypoint(decrypted_region[:64]):
+        raise RuntimeError(f"empty RAW_002 fallback did not yield a plausible entrypoint for {strategy.child_payload}")
+    child_bytes[region_start : region_start + region_length] = decrypted_region
+    return bytes(child_bytes), {
+        "seed1": None,
+        "seed2": 0,
+        "dependency_paths": [],
+        "child_payload": str(strategy.child_payload),
+        "config_path": str(strategy.config_path),
+        "region_start": region_start,
+        "region_length": region_length,
+        "config_fallback": "empty_raw_002_seed0_native",
+    }
+
+
 def decrypt_static_child(wrapper_root: Path, strategy: Strategy) -> tuple[bytes, dict[str, Any]]:
     assert strategy.child_payload is not None
     assert strategy.config_path is not None
+
+    if strategy.config_path.stat().st_size == 0:
+        return decrypt_empty_config_child(strategy)
 
     seed_material = derive_seed_material(strategy.config_path, strategy.child_payload, wrapper_root)
     config = parse_config(seed_material.decrypted_config)
