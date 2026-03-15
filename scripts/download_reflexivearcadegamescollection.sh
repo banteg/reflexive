@@ -60,6 +60,7 @@ mkdir -p "${dest_dir}"
 
 jq -r --arg download_base "${download_base}" --arg dir "${dest_dir}" '
   .files[]
+  | select(.name | endswith(".torrent") | not)
   | "\($download_base)/\(.name | @uri)\n dir=\($dir)\n out=\(.name)\n"
 ' <<<"${metadata_json}" > "${manifest_path}"
 
@@ -73,6 +74,8 @@ exec aria2c \
   --allow-overwrite=false \
   --auto-file-renaming=false \
   --file-allocation=none \
+  --follow-torrent=false \
+  --follow-metalink=false \
   --remote-time=true \
   --summary-interval="${ARIA2_SUMMARY_INTERVAL:-30}" \
   --max-concurrent-downloads="${ARIA2_MAX_CONCURRENT_DOWNLOADS:-4}" \
