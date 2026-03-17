@@ -78,6 +78,42 @@ What is not confirmed yet:
 - publisher signatures or PE version metadata
 - overlap or divergence relative to the `archive` source
 
+## Quick Triage
+
+The torrent manifest confirms that this source is broader than the name `Игры от Reflexive
+Entertainment` suggests.
+
+Compared against the current `archive` extracted corpus:
+
+- the torrent contains `1696` setup executables
+- the `archive` source currently materializes `1086` extracted top-level game directories
+- a quick normalized-name comparison matches `1058` archive titles directly to rutracker setup
+  installers
+- the rutracker manifest still has `638` additional setup installers beyond that overlap
+- the residual `28` archive-side misses are a small tail dominated by naming variance, split/mixed
+  layouts, and a few non-game or helper entries
+
+The extra catalog is clearly not limited to Reflexive-developed titles. The manifest includes
+well-known series associated with several other casual-game publishers and portals, for example:
+
+- PopCap-style catalog: `Bejeweled2Setup.exe`, `BejeweledTwistSetup.exe`,
+  `BookwormAdventuresDeluxeSetup.exe`, `PeggleDeluxeSetup.exe`, `ZumaDeluxeSetup.exe`
+- GameHouse / PlayFirst / Slingo-style catalog: `DinerDashSetup.exe`, `CollapseSetup.exe`,
+  `5CardSlingoSetup.exe`, `JewelQuestSetup.exe`
+- Big Fish-style catalog: `MysteryCaseFilesHuntsvilleSetup.exe`, `MysteryCaseFilesRavenhearstSetup.exe`,
+  `HiddenExpeditionEverestSetup.exe`, `AzadaSetup.exe`
+- MumboJumbo-style catalog: `LuxorSetup.exe`, `Luxor3Setup.exe`, `RicochetSetup.exe`,
+  `7WondersTreasuresOfSevenSetup.exe`
+- iWin-style catalog: `FamilyFeudSetup.exe`, `FamilyFeudHollywoodSetup.exe`,
+  `JojosFashionShowSetup.exe`
+
+So the current best framing is:
+
+- `archive` = a narrower unofficial repack snapshot centered on what looks like a Reflexive portal
+  collection
+- `rutracker` = a much larger flat installer anthology that spans Reflexive plus many third-party
+  casual-game lines distributed through the same broader ecosystem
+
 ## Working Implications
 
 This source is no longer just a placeholder. The torrent manifest confirms a much larger flat
