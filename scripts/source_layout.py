@@ -18,6 +18,10 @@ def artifacts_root() -> Path:
     return repo_root() / "artifacts"
 
 
+def source_root(source_id: str = DEFAULT_SOURCE_ID) -> Path:
+    return artifacts_root() / "sources" / source_id
+
+
 def extracted_root(source_id: str = DEFAULT_SOURCE_ID) -> Path:
     return artifacts_root() / "extracted" / source_id
 
@@ -32,11 +36,10 @@ def source_label(source_id: str) -> str:
 
 def infer_source_id_from_installer_path(installer_path: Path) -> str:
     path = installer_path.resolve()
-    repo = repo_root()
     candidates = {
-        repo / "artifacts" / "sources" / "archive": "archive",
-        repo / "artifacts" / "archive" / "reflexivearcadegamescollection": "archive",
-        repo / "artifacts" / "sources" / "rutracker": "rutracker",
+        source_root("archive"): "archive",
+        repo_root() / "artifacts" / "archive" / "reflexivearcadegamescollection": "archive",
+        source_root("rutracker"): "rutracker",
     }
 
     for root, source_id in candidates.items():

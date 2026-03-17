@@ -13,10 +13,12 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from source_layout import extracted_root as source_extracted_root
+from source_layout import source_root as source_source_root
 
 
 OUTER_MAGIC = 0xFE03D185
 ENTRY_MAGIC = 0x10B3AF52
+RUTRACKER_INSTALLER_GLOB = "*Setup.exe"
 
 
 @dataclass(frozen=True)
@@ -26,13 +28,12 @@ class OuterEntry:
     size: int
     record_size: int
 
-
-def repo_root() -> Path:
-    return Path(__file__).resolve().parent.parent
-
-
 def default_archive_extracted_root() -> Path:
-    return repo_root() / "artifacts" / "extracted" / "archive"
+    return source_extracted_root("archive")
+
+
+def default_rutracker_source_root() -> Path:
+    return source_source_root("rutracker")
 
 
 def normalize_title(value: str) -> str:
@@ -187,16 +188,106 @@ def materialize_inno_extract(temp_extract_dir: Path, output_root: Path, force: b
     move_tree_contents(source_dir, output_root, force=force)
 
 
+def extract_installer(
+    installer_path: Path,
+    output_root: Path,
+    *,
+    force: bool,
+    archive_titles: dict[str, str] | None = None,
+) -> Path:
+    installer_path = installer_path.resolve()
+    output_root = output_root.resolve()
+    archive_titles = archive_titles or {}
+
+    data, entries = parse_outer_entries(installer_path)
+
+    with tempfile.TemporaryDirectory(prefix="rutracker_outer_") as outer_temp, tempfile.TemporaryDirectory(
+        prefix="rutracker_inno_"
+    ) as inno_temp:
+        outer_dir = Path(outer_temp)
+        inno_dir = Path(inno_temp)
+        write_outer_members(data, entries, outer_dir)
+        inner_installer = choose_inner_installer(installer_path, outer_dir)
+        run_innoextract(inner_installer, inno_dir)
+        materialize_inno_extract(inno_dir, output_root, force=force)
+        embedded_installer_name = inner_installer.name
+
+    title = canonical_title(installer_path, archive_titles)
+    print(f"Outer installer: {installer_path}")
+    print(f"Title: {title}")
+    print(f"Output root: {output_root}")
+    print(f"Outer members: {len(entries)}")
+    print(f"Embedded installer: {embedded_installer_name}")
+    return output_root
+
+
+def collect_batch_installers(installers_root: Path) -> list[Path]:
+    if not installers_root.is_dir():
+        raise FileNotFoundError(f"rutracker source directory does not exist: {installers_root}")
+
+    installers = sorted(path for path in installers_root.glob(RUTRACKER_INSTALLER_GLOB) if path.is_file())
+    if not installers:
+        raise FileNotFoundError(
+            f"no rutracker installers matching {RUTRACKER_INSTALLER_GLOB!r} found in {installers_root}"
+        )
+    return installers
+
+
+def extract_all_installers(
+    installers_root: Path,
+    output_root: Path,
+    *,
+    force: bool,
+    archive_titles: dict[str, str],
+) -> int:
+    installers_root = installers_root.resolve()
+    output_root = output_root.resolve()
+    installers = collect_batch_installers(installers_root)
+    output_root.mkdir(parents=True, exist_ok=True)
+
+    print(f"Source directory: {installers_root}")
+    print(f"Output root: {output_root}")
+    print(f"Installers: {len(installers)}")
+
+    for installer_path in installers:
+        title = canonical_title(installer_path, archive_titles)
+        destination = output_root / title
+        print(f"\n[{installer_path.stem}] {title}")
+        extract_installer(installer_path, destination, force=force, archive_titles=archive_titles)
+
+    return len(installers)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Extract a RuTracker Reflexive outer installer into an installed game tree."
+        description="Extract one or more RuTracker Reflexive outer installers into installed game trees."
     )
-    parser.add_argument("installer", type=Path, help="Path to the outer RuTracker setup executable.")
+    parser.add_argument(
+        "input_path",
+        nargs="?",
+        type=Path,
+        help=(
+            "Single mode: path to the outer RuTracker setup executable. "
+            "Batch mode (--all): directory containing the RuTracker installer corpus."
+        ),
+    )
     parser.add_argument(
         "output_root",
         nargs="?",
         type=Path,
-        help="Directory to write the extracted installed tree into. Defaults to artifacts/extracted/rutracker/<title>.",
+        help=(
+            "Single mode: directory to write the extracted installed tree into. "
+            "Defaults to artifacts/extracted/rutracker/<title>. "
+            "Batch mode (--all): extracted root that will receive one directory per installer."
+        ),
+    )
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help=(
+            "Extract every RuTracker installer matching "
+            f"{RUTRACKER_INSTALLER_GLOB!r}. Defaults to artifacts/sources/rutracker."
+        ),
     )
     parser.add_argument("--force", action="store_true", help="Replace an existing output directory.")
     parser.add_argument(
@@ -210,31 +301,42 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    installer_path = args.installer.resolve()
     archive_titles = collect_archive_titles(args.archive_extracted_root.resolve())
 
-    if args.output_root is None:
-        title = canonical_title(installer_path, archive_titles)
-        output_root = (source_extracted_root("rutracker") / title).resolve()
-    else:
-        output_root = args.output_root.resolve()
-
-    data, entries = parse_outer_entries(installer_path)
-
-    with tempfile.TemporaryDirectory(prefix="rutracker_outer_") as outer_temp, tempfile.TemporaryDirectory(
-        prefix="rutracker_inno_"
-    ) as inno_temp:
-        outer_dir = Path(outer_temp)
-        inno_dir = Path(inno_temp)
-        write_outer_members(data, entries, outer_dir)
-        inner_installer = choose_inner_installer(installer_path, outer_dir)
-        run_innoextract(inner_installer, inno_dir)
-        materialize_inno_extract(inno_dir, output_root, force=args.force)
-
-    print(f"Outer installer: {installer_path}")
-    print(f"Output root: {output_root}")
-    print(f"Outer members: {len(entries)}")
-    print(f"Embedded installer: {choose_inner_installer(installer_path, Path(tempfile.gettempdir())) if False else inner_installer.name}")
+    try:
+        if args.all:
+            installers_root = (
+                args.input_path.resolve() if args.input_path else default_rutracker_source_root().resolve()
+            )
+            if installers_root.is_file():
+                raise ValueError(f"expected a rutracker source directory for --all, got file: {installers_root}")
+            output_root = args.output_root.resolve() if args.output_root else source_extracted_root("rutracker")
+            extract_all_installers(
+                installers_root,
+                output_root,
+                force=args.force,
+                archive_titles=archive_titles,
+            )
+        else:
+            if args.input_path is None:
+                raise ValueError("missing installer path; pass a setup EXE or use --all")
+            installer_path = args.input_path.resolve()
+            if installer_path.is_dir():
+                raise ValueError(f"expected a setup EXE, got directory: {installer_path}")
+            if args.output_root is None:
+                title = canonical_title(installer_path, archive_titles)
+                output_root = (source_extracted_root("rutracker") / title).resolve()
+            else:
+                output_root = args.output_root.resolve()
+            extract_installer(
+                installer_path,
+                output_root,
+                force=args.force,
+                archive_titles=archive_titles,
+            )
+    except (FileNotFoundError, FileExistsError, RuntimeError, ValueError) as exc:
+        print(f"error: {exc}")
+        return 1
     return 0
 
 

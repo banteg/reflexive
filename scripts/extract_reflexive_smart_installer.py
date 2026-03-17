@@ -20,11 +20,13 @@ from pathlib import Path
 
 from source_layout import extracted_root as source_extracted_root
 from source_layout import infer_source_id_from_installer_path
+from source_layout import source_root as source_source_root
 
 
 SMART_INSTALL_MAKER_SIGNATURE = b"Smart Install Maker v"
 CAB_HEADER_STRUCT = struct.Struct("<4sIIIII BB HHHHH")
 DISK_NAME_RE = re.compile(r"_Disk(\d+)\.cab$")
+ARCHIVE_INSTALLER_GLOB = "Reflexive Arcade *.exe"
 TOKEN_REPLACEMENTS = {
     "@$&%01": "%PROGRAMFILES%",
     "@$&%02": "%WINDOWSDIR%",
@@ -402,6 +404,10 @@ def default_output_root(installer_path: Path) -> Path:
     return source_extracted_root(source_id) / installer_path.stem
 
 
+def default_batch_installers_root() -> Path:
+    return source_source_root("archive")
+
+
 def clear_output_root(output_root: Path, *, force: bool) -> None:
     if not output_root.exists():
         return
@@ -499,22 +505,69 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
     return output_root
 
 
+def collect_batch_installers(installers_root: Path) -> list[Path]:
+    if not installers_root.is_dir():
+        raise FileNotFoundError(f"archive directory does not exist: {installers_root}")
+
+    installers = sorted(path for path in installers_root.glob(ARCHIVE_INSTALLER_GLOB) if path.is_file())
+    if not installers:
+        raise FileNotFoundError(
+            f"no Smart Install Maker installers matching {ARCHIVE_INSTALLER_GLOB!r} found in {installers_root}"
+        )
+    return installers
+
+
+def extract_all_installers(installers_root: Path, output_root: Path, *, force: bool) -> int:
+    installers_root = installers_root.resolve()
+    output_root = output_root.resolve()
+    installers = collect_batch_installers(installers_root)
+    output_root.mkdir(parents=True, exist_ok=True)
+
+    print(f"Archive directory: {installers_root}")
+    print(f"Output root: {output_root}")
+    print(f"Installers: {len(installers)}")
+
+    for installer_path in installers:
+        destination = output_root / installer_path.stem
+        print(f"\n[{time.strftime('%H:%M:%S')}] {installer_path.stem}")
+        extract_installer(installer_path, destination, force=force)
+
+    return len(installers)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Extract one of the unofficial Reflexive Arcade Games Collection repack "
-            "installers into a final payload tree without keeping intermediate "
+            "Extract the unofficial Reflexive Arcade Games Collection repack "
+            "installers into final payload trees without keeping intermediate "
             "CAB/raw directories."
         )
     )
-    parser.add_argument("installer", type=Path, help="Path to the Smart Install Maker installer EXE.")
+    parser.add_argument(
+        "input_path",
+        nargs="?",
+        type=Path,
+        help=(
+            "Single mode: path to the Smart Install Maker installer EXE. "
+            "Batch mode (--all): directory containing the archive installer set."
+        ),
+    )
     parser.add_argument(
         "output_root",
         nargs="?",
         type=Path,
         help=(
-            "Directory that will receive the extracted files directly. "
-            "Defaults to artifacts/extracted/<source_id>/<installer stem>."
+            "Single mode: directory that will receive the extracted files directly. "
+            "Defaults to artifacts/extracted/<source_id>/<installer stem>. "
+            "Batch mode (--all): extracted root that will receive one directory per installer."
+        ),
+    )
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help=(
+            "Extract every archive installer matching "
+            f"{ARCHIVE_INSTALLER_GLOB!r}. Defaults to artifacts/sources/archive."
         ),
     )
     parser.add_argument(
@@ -527,11 +580,24 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    installer_path = args.installer.resolve()
-    output_root = args.output_root.resolve() if args.output_root else default_output_root(installer_path)
 
     try:
-        extract_installer(installer_path, output_root, force=args.force)
+        if args.all:
+            installers_root = (
+                args.input_path.resolve() if args.input_path else default_batch_installers_root().resolve()
+            )
+            if installers_root.is_file():
+                raise ValueError(f"expected an archive directory for --all, got file: {installers_root}")
+            output_root = args.output_root.resolve() if args.output_root else source_extracted_root("archive")
+            extract_all_installers(installers_root, output_root, force=args.force)
+        else:
+            if args.input_path is None:
+                raise ValueError("missing installer path; pass an installer EXE or use --all")
+            installer_path = args.input_path.resolve()
+            if installer_path.is_dir():
+                raise ValueError(f"expected an installer EXE, got directory: {installer_path}")
+            output_root = args.output_root.resolve() if args.output_root else default_output_root(installer_path)
+            extract_installer(installer_path, output_root, force=args.force)
     except (FileNotFoundError, FileExistsError, ValueError, subprocess.CalledProcessError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1

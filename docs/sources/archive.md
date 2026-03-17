@@ -10,6 +10,12 @@
 - Unwrapped root: `artifacts/unwrapped/archive`
 - Game list: `docs/game_lists/archive.md`
 
+## Extraction
+
+- Single installer: `uv run scripts/extract_reflexive_smart_installer.py artifacts/sources/archive/Reflexive\ Arcade\ A.exe`
+- Full source: `uv run scripts/extract_reflexive_smart_installer.py --all`
+- Compatibility wrapper: `./scripts/extract_all_reflexive_smart_installers.sh`
+
 ## Attribution
 
 These installers are not generic "Smart Install Maker" packages only. Smart Install Maker is the

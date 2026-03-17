@@ -28,6 +28,14 @@ What is confirmed so far:
   `_Crack.7z` and `_Recovery.par2`.
 - All `1696` installer stubs are PE executables carrying `Inno Setup Setup Data (5.2.3)`,
   `Inno Setup Messages (5.1.11)`, and `CHANNEL_NAME=Reflexive`.
+- A custom outer-installer extractor now exists in `scripts/extract_rutracker_reflexive_installer.py`.
+
+## Extraction
+
+- Single installer: `uv run scripts/extract_rutracker_reflexive_installer.py artifacts/sources/rutracker/10DaysUnderTheSeaSetup.exe`
+- Full source: `uv run scripts/extract_rutracker_reflexive_installer.py --all`
+- The custom extractor strips the Reflexive `ZipLite` wrapper, recovers the embedded Inno Setup
+  installer, and then delegates to `innoextract` for the inner payload.
 
 ## Attribution
 
@@ -76,7 +84,6 @@ Confirmed from the local torrent metadata:
 What is not confirmed yet:
 
 - publisher signatures or PE version metadata
-- the exact extraction method for this Reflexive-customized Inno variant
 - overlap or divergence relative to the `archive` source after real extraction, rather than by
   filename normalization alone
 
@@ -139,13 +146,12 @@ The extraction blocker is now more specific:
 - where `7z` does return success, it only exposes a trailing branding ZIP rather than the actual
   installer payload
 
-So the next engineering step is not a new wrapper unwrapper yet. It is a custom extractor for this
-Reflexive-branded Inno Setup variant, after which the existing wrapper scanner and unwrapper should
-cover most of the archive-overlap cohort immediately.
+So the remaining engineering step is not outer installer extraction anymore. It is adapting the
+existing unwrapper to the original installer variant after extraction, especially around `RAW_002`
+seed derivation for original wrapper trees.
 
 ## Next Steps
 
-- build an extractor for the Reflexive-customized Inno Setup stub used across the corpus
 - validate that extracted overlap titles materialize into the same wrapper layouts seen under
   `archive`
 - feed extracted overlap trees through the existing wrapper scanner and unwrapper
