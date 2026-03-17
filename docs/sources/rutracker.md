@@ -7,7 +7,7 @@
 - Original path: `/Users/banteg/Downloads/Reflexive`
 - Repo-local torrent: `artifacts/rutracker-3687027.torrent`
 - Source type: torrent-backed installer corpus
-- Status: manifest parsed, directory intake still blocked
+- Status: probed
 - Planned extracted root: `artifacts/extracted/rutracker`
 - Planned unwrapped root: `artifacts/unwrapped/rutracker`
 - Game list: `docs/game_lists/rutracker.md`
@@ -22,11 +22,12 @@ distributed installers.
 
 What is confirmed so far:
 
-- `/Users/banteg/Downloads/Reflexive` exists and is a directory.
-- A repo-local symlink at `artifacts/sources/rutracker` points to that location.
+- `artifacts/sources/rutracker` is now a readable repo-local directory with `1698` hardlinked files.
 - The repo-local torrent copy at `artifacts/rutracker-3687027.torrent` is readable and parses cleanly.
-- The current process still cannot enumerate the directory contents. Both shell `ls` and Python
-  `Path.iterdir()` fail with `Operation not permitted`.
+- The live source contents match the torrent-level shape: `1696` `.exe` installers plus
+  `_Crack.7z` and `_Recovery.par2`.
+- All `1696` installer stubs are PE executables carrying `Inno Setup Setup Data (5.2.3)`,
+  `Inno Setup Messages (5.1.11)`, and `CHANNEL_NAME=Reflexive`.
 
 ## Attribution
 
@@ -74,11 +75,10 @@ Confirmed from the local torrent metadata:
 
 What is not confirmed yet:
 
-- whether the files currently present in `/Users/banteg/Downloads/Reflexive` match the torrent
-  manifest exactly
-- installer technologies across the corpus
 - publisher signatures or PE version metadata
-- overlap or divergence relative to the `archive` source
+- the exact extraction method for this Reflexive-customized Inno variant
+- overlap or divergence relative to the `archive` source after real extraction, rather than by
+  filename normalization alone
 
 ## Quick Triage
 
@@ -131,15 +131,24 @@ understood on the wrapper side once extraction works:
 - the remaining known overlap-side post-extraction gaps are the `20` integrated-wrapper titles now
   listed in `docs/sources/rutracker_probe.md`
 
-The remaining blocker is only the live directory intake. The symlink gives the repo a stable local
-path for future scripts and notes, but it does not bypass macOS privacy controls on `Downloads`.
+The extraction blocker is now more specific:
 
-## Next Steps Once Readable
+- standard `innoextract` rejects representative overlap and non-overlap installers as `Not a
+  supported Inno Setup installer!`
+- `7z` also fails on most samples
+- where `7z` does return success, it only exposes a trailing branding ZIP rather than the actual
+  installer payload
 
-- inventory filenames, extensions, and hashes
-- compare the live directory against the confirmed torrent manifest
-- compare title coverage against the `archive` source and extracted game list
-- classify installer technologies such as MSI, Inno Setup, InstallShield, NSIS, or custom
-  Reflexive stubs
-- extract signer, version, and timestamp metadata from representative installers
-- prioritize titles that can improve the remaining unsupported unwrapper cases
+So the next engineering step is not a new wrapper unwrapper yet. It is a custom extractor for this
+Reflexive-branded Inno Setup variant, after which the existing wrapper scanner and unwrapper should
+cover most of the archive-overlap cohort immediately.
+
+## Next Steps
+
+- build an extractor for the Reflexive-customized Inno Setup stub used across the corpus
+- validate that extracted overlap titles materialize into the same wrapper layouts seen under
+  `archive`
+- feed extracted overlap trees through the existing wrapper scanner and unwrapper
+- prioritize the `20` known integrated-wrapper overlap titles for post-extraction reversing
+- sample non-overlap families after extraction to see how much of the broader portal catalog still
+  lands in Reflexive-style wrapper trees

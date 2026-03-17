@@ -8,6 +8,8 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import shutil
+import subprocess
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -20,7 +22,7 @@ from source_layout import repo_root
 
 INSTALLER_MARKERS: tuple[tuple[str, str, tuple[bytes, ...]], ...] = (
     ("smart_install_maker", "Smart Install Maker", (b"smart install maker v",)),
-    ("inno_setup", "Inno Setup", (b"inno setup setup data", b"inno setup")),
+    ("inno_setup", "Inno Setup signature", (b"inno setup setup data", b"inno setup")),
     ("nsis", "NSIS", (b"nullsoftinst", b"nsis error")),
     ("installshield", "InstallShield", (b"installshield",)),
     ("wise", "Wise Installer", (b"wise installation wizard", b"wise installer")),
@@ -30,6 +32,11 @@ INSTALLER_MARKERS: tuple[tuple[str, str, tuple[bytes, ...]], ...] = (
 )
 OLE_MAGIC = b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1"
 PE_MAGIC = b"MZ"
+MARKER_NEEDLES: tuple[bytes, ...] = (
+    b"Inno Setup Setup Data (5.2.3)",
+    b"Inno Setup Messages (5.1.11)",
+    b"CHANNEL_NAME=Reflexive",
+)
 
 
 def default_source_root() -> Path:
@@ -377,6 +384,125 @@ def probe_live_source(
     }
 
 
+def locate_marker_offsets(path: Path) -> list[dict[str, object]]:
+    data = path.read_bytes()
+    markers: list[dict[str, object]] = []
+    for needle in MARKER_NEEDLES:
+        offset = data.find(needle)
+        markers.append({"marker": needle.decode("latin1"), "offset": offset if offset >= 0 else None})
+    return markers
+
+
+def command_summary(completed: subprocess.CompletedProcess[str]) -> str:
+    chunks: list[str] = []
+    for stream in (completed.stdout, completed.stderr):
+        for line in stream.splitlines():
+            stripped = line.strip()
+            if stripped:
+                chunks.append(stripped)
+    if not chunks:
+        return f"exit {completed.returncode}"
+    return " | ".join(chunks[:4])
+
+
+def run_tool_probe(command: list[str]) -> dict[str, object]:
+    try:
+        completed = subprocess.run(
+            command,
+            check=False,
+            capture_output=True,
+            text=True,
+            errors="replace",
+        )
+    except FileNotFoundError:
+        return {"available": False, "ok": False, "exit_code": None, "summary": "tool not installed"}
+
+    return {
+        "available": True,
+        "ok": completed.returncode == 0,
+        "exit_code": completed.returncode,
+        "summary": command_summary(completed),
+    }
+
+
+def run_seven_zip_probe(seven_zip: str, path: Path) -> dict[str, object]:
+    completed = subprocess.run(
+        [seven_zip, "l", "-slt", str(path)],
+        check=False,
+        capture_output=True,
+        text=True,
+        errors="replace",
+    )
+    archive_type = None
+    files = None
+    warnings = None
+    data_after_archive = False
+
+    for line in completed.stdout.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("Type = "):
+            archive_type = stripped.split("=", 1)[1].strip()
+        elif stripped.startswith("Files = "):
+            files = stripped.split("=", 1)[1].strip()
+        elif stripped.startswith("Warnings: "):
+            warnings = stripped.split(":", 1)[1].strip()
+    combined = completed.stdout + "\n" + completed.stderr
+    if "There are data after the end of archive" in combined:
+        data_after_archive = True
+
+    if completed.returncode == 0 and archive_type == "zip" and data_after_archive:
+        summary = f"tail zip only (files={files or '?'}, warnings={warnings or '1'})"
+    else:
+        summary = command_summary(completed)
+
+    return {
+        "available": True,
+        "ok": completed.returncode == 0,
+        "exit_code": completed.returncode,
+        "summary": summary,
+        "archive_type": archive_type,
+        "files": files,
+        "warnings": warnings,
+        "data_after_archive": data_after_archive,
+    }
+
+
+def sample_extraction_probe(source_root: Path, sample_names: list[str]) -> dict[str, Any]:
+    innoextract = shutil.which("innoextract")
+    seven_zip = shutil.which("7z")
+    records: list[dict[str, Any]] = []
+
+    for file_name in sample_names:
+        path = source_root / file_name
+        if not path.is_file():
+            continue
+
+        marker_offsets = locate_marker_offsets(path)
+        inno_result = (
+            run_tool_probe([innoextract, "-i", str(path)]) if innoextract is not None else {"available": False, "ok": False, "exit_code": None, "summary": "tool not installed"}
+        )
+        seven_zip_result = (
+            run_seven_zip_probe(seven_zip, path)
+            if seven_zip is not None
+            else {"available": False, "ok": False, "exit_code": None, "summary": "tool not installed"}
+        )
+
+        records.append(
+            {
+                "file_name": file_name,
+                "size": path.stat().st_size,
+                "marker_offsets": marker_offsets,
+                "innoextract": inno_result,
+                "seven_zip": seven_zip_result,
+            }
+        )
+
+    return {
+        "sample_count": len(records),
+        "records": records,
+    }
+
+
 def choose_priority_samples(attribution_report: dict[str, Any], overlap_analysis: dict[str, Any]) -> dict[str, list[str]]:
     entry_by_family: dict[str, list[str]] = defaultdict(list)
     for entry in attribution_report["entries"]:
@@ -440,7 +566,11 @@ def choose_priority_samples(attribution_report: dict[str, Any], overlap_analysis
     }
 
 
-def build_plan(overlap_analysis: dict[str, Any], live_probe: dict[str, Any]) -> list[str]:
+def build_plan(
+    overlap_analysis: dict[str, Any],
+    live_probe: dict[str, Any],
+    extraction_probe: dict[str, Any] | None,
+) -> list[str]:
     summary = overlap_analysis["summary"]
     lines = [
         (
@@ -473,6 +603,22 @@ def build_plan(overlap_analysis: dict[str, Any], live_probe: dict[str, Any]) -> 
             "Once the live source is readable, extractor work should be split by detected installer technology rather "
             f"than by publisher guesswork. Current top observed technologies: {technologies}."
         )
+        if extraction_probe is not None and extraction_probe["records"]:
+            tail_zip_samples = [
+                row["file_name"]
+                for row in extraction_probe["records"]
+                if row["seven_zip"].get("data_after_archive")
+            ]
+            lines.append(
+                "Representative overlap and non-overlap samples all expose Reflexive-branded Inno Setup markers, but "
+                "standard `innoextract` and `7z` fail on those same installers, so the first new script should target "
+                "this Reflexive-customized Inno variant rather than a new wrapper decryption family."
+            )
+            if tail_zip_samples:
+                lines.append(
+                    "Where `7z` does succeed, it only reveals a trailing branding ZIP rather than the installer "
+                    f"payload itself, as seen in {', '.join(tail_zip_samples[:3])}."
+                )
     else:
         lines.append(
             "The live `rutracker` source is still unreadable through the Downloads symlink, so byte-level installer "
@@ -497,7 +643,14 @@ def build_report(
     overlap_analysis = collect_overlap_analysis(attribution_report, sweep, wrapper_report, title_to_root)
     live_probe = probe_live_source(source_root, attribution_report, title_to_root, live_probe_limit)
     priority_samples = choose_priority_samples(attribution_report, overlap_analysis)
-    plan = build_plan(overlap_analysis, live_probe)
+    extraction_probe_names = (
+        priority_samples["known_overlap_supported"][:2]
+        + priority_samples["known_overlap_unsupported"][:2]
+        + priority_samples["non_overlap_publishers"][:3]
+    )
+    extraction_probe_names = list(dict.fromkeys(extraction_probe_names))
+    extraction_probe = sample_extraction_probe(source_root, extraction_probe_names) if live_probe["status"] == "readable" else None
+    plan = build_plan(overlap_analysis, live_probe, extraction_probe)
 
     return {
         "source_id": "rutracker",
@@ -516,6 +669,7 @@ def build_report(
             "stub_probe": "When the live rutracker source is readable, classify installer stubs from their container header, embedded marker strings, and PE version metadata.",
         },
         "live_source_probe": live_probe,
+        "sample_extraction_probe": extraction_probe,
         "archive_overlap_analysis": overlap_analysis,
         "priority_samples": priority_samples,
         "plan": plan,
@@ -528,6 +682,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     manifest_summary = report["manifest_summary"]
     overlap_summary = report["archive_overlap_analysis"]["summary"]
     live_probe = report["live_source_probe"]
+    extraction_probe = report["sample_extraction_probe"]
     priority_samples = report["priority_samples"]
 
     lines = [
@@ -564,6 +719,28 @@ def render_markdown(report: dict[str, Any]) -> str:
             lines.extend(["", "### Top PE Company Names", "", "| Company | Count |", "| --- | ---: |"])
             for item in live_probe["summary"]["company_counts"]:
                 lines.append(f"| `{item['company_name']}` | {item['count']} |")
+
+        if extraction_probe is not None:
+            lines.extend(
+                [
+                    "",
+                    "### Sample Extraction Results",
+                    "",
+                    "| Installer | Inno markers | `innoextract -i` | `7z l` |",
+                    "| --- | --- | --- | --- |",
+                ]
+            )
+            for item in extraction_probe["records"]:
+                markers = ", ".join(
+                    f"`{marker['marker']}`@{marker['offset']}"
+                    for marker in item["marker_offsets"]
+                    if marker["offset"] is not None
+                )
+                inno_summary = str(item["innoextract"]["summary"]).replace("|", "\\|")
+                seven_zip_summary = str(item["seven_zip"]["summary"]).replace("|", "\\|")
+                lines.append(
+                    f"| `{item['file_name']}` | {markers} | `{inno_summary}` | `{seven_zip_summary}` |"
+                )
     else:
         lines.extend(
             [

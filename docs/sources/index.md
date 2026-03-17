@@ -13,7 +13,7 @@ This project now tracks external inputs as named sources. Each source gets:
 | --- | --- | --- | --- |
 | `archive` | `artifacts/sources/archive` | analyzed | Unofficial 2008 repack mirror of the `Reflexive Arcade Games Collection` bundles. |
 | `rutracker_patches` | `artifacts/rutracker/patches` | analyzed | Auxiliary patch/reference corpus used for wrapper build attribution and historical crack context. |
-| `rutracker` | `artifacts/sources/rutracker` | manifest parsed | Primary source linked to the RuTracker anthology release; torrent manifest confirmed locally, installer directory still blocked by macOS Downloads permissions. |
+| `rutracker` | `artifacts/sources/rutracker` | probed | Primary source linked to the RuTracker anthology release; live installer bytes are readable and probe as a Reflexive-branded Inno Setup corpus that needs a custom extractor. |
 
 ## Notes
 

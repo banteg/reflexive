@@ -1,7 +1,7 @@
 # RuTracker Probe
 
 - Source id: `rutracker`
-- Source root: `/Users/banteg/Downloads/Reflexive`
+- Source root: `artifacts/sources/rutracker`
 - Torrent manifest: `artifacts/rutracker-3687027.torrent`
 - Archive comparison root: `artifacts/extracted/archive`
 - Archive unwrapper sweep: `docs/reflexive_unwrapper_sweep.json`
@@ -9,9 +9,27 @@
 
 ## Live Source Status
 
-- Live rutracker source status: `blocked`
-- Probe error: `[Errno 1] Operation not permitted: '/Users/banteg/Downloads/Reflexive'`
-- Byte-level installer classification is deferred until the source becomes readable through a repo-local copy or a permission change.
+- Live rutracker source is readable.
+- Installer stubs scanned: 1696
+- Stubs with explicit Reflexive markers: 1696
+
+### Installer Technology Summary
+
+| Technology | Count |
+| --- | ---: |
+| `Inno Setup signature` | 1696 |
+
+### Sample Extraction Results
+
+| Installer | Inno markers | `innoextract -i` | `7z l` |
+| --- | --- | --- | --- |
+| `10DaysUnderTheSeaSetup.exe` | `Inno Setup Setup Data (5.2.3)`@216972, `Inno Setup Messages (5.1.11)`@217036, `CHANNEL_NAME=Reflexive`@36320821 | `Done with 1 error. \| Not a supported Inno Setup installer!` | `7-Zip [64] 17.05 : Copyright (c) 1999-2021 Igor Pavlov : 2017-08-28 \| p7zip Version 17.05 (locale=utf8,Utf16=on,HugeFiles=on,64 bits,10 CPUs LE) \| Scanning the drive for archives: \| 1 file, 36341341 bytes (35 MiB)` |
+| `AlienShooterSetup.exe` | `Inno Setup Setup Data (5.2.3)`@216972, `Inno Setup Messages (5.1.11)`@217036, `CHANNEL_NAME=Reflexive`@21765111 | `Done with 1 error. \| Not a supported Inno Setup installer!` | `7-Zip [64] 17.05 : Copyright (c) 1999-2021 Igor Pavlov : 2017-08-28 \| p7zip Version 17.05 (locale=utf8,Utf16=on,HugeFiles=on,64 bits,10 CPUs LE) \| Scanning the drive for archives: \| 1 file, 21785626 bytes (21 MiB)` |
+| `BudRedheadSetup.exe` | `Inno Setup Setup Data (5.2.3)`@216972, `Inno Setup Messages (5.1.11)`@217036, `CHANNEL_NAME=Reflexive`@7663567 | `Done with 1 error. \| Not a supported Inno Setup installer!` | `tail zip only (files=?, warnings=1)` |
+| `DigbysDonutsSetup.exe` | `Inno Setup Setup Data (5.2.3)`@216972, `Inno Setup Messages (5.1.11)`@217036, `CHANNEL_NAME=Reflexive`@8718033 | `Done with 1 error. \| Not a supported Inno Setup installer!` | `7-Zip [64] 17.05 : Copyright (c) 1999-2021 Igor Pavlov : 2017-08-28 \| p7zip Version 17.05 (locale=utf8,Utf16=on,HugeFiles=on,64 bits,10 CPUs LE) \| Scanning the drive for archives: \| 1 file, 8738548 bytes (8534 KiB)` |
+| `Bejeweled2DeluxeSetup.exe` | `Inno Setup Setup Data (5.2.3)`@216972, `Inno Setup Messages (5.1.11)`@217036, `CHANNEL_NAME=Reflexive`@9254017 | `Done with 1 error. \| Not a supported Inno Setup installer!` | `7-Zip [64] 17.05 : Copyright (c) 1999-2021 Igor Pavlov : 2017-08-28 \| p7zip Version 17.05 (locale=utf8,Utf16=on,HugeFiles=on,64 bits,10 CPUs LE) \| Scanning the drive for archives: \| 1 file, 9274536 bytes (9058 KiB)` |
+| `DinerDashSetup.exe` | `Inno Setup Setup Data (5.2.3)`@216972, `Inno Setup Messages (5.1.11)`@217036, `CHANNEL_NAME=Reflexive`@9532131 | `Done with 1 error. \| Not a supported Inno Setup installer!` | `7-Zip [64] 17.05 : Copyright (c) 1999-2021 Igor Pavlov : 2017-08-28 \| p7zip Version 17.05 (locale=utf8,Utf16=on,HugeFiles=on,64 bits,10 CPUs LE) \| Scanning the drive for archives: \| 1 file, 9552643 bytes (9329 KiB)` |
+| `MysteryCaseFilesHuntsvilleSetup.exe` | `Inno Setup Setup Data (5.2.3)`@216972, `Inno Setup Messages (5.1.11)`@217036, `CHANNEL_NAME=Reflexive`@23949712 | `Done with 1 error. \| Not a supported Inno Setup installer!` | `7-Zip [64] 17.05 : Copyright (c) 1999-2021 Igor Pavlov : 2017-08-28 \| p7zip Version 17.05 (locale=utf8,Utf16=on,HugeFiles=on,64 bits,10 CPUs LE) \| Scanning the drive for archives: \| 1 file, 23970241 bytes (23 MiB)` |
 
 ## Archive Overlap Readiness
 
@@ -107,4 +125,6 @@ Non-overlap titles worth sampling to see whether rutracker also carries non-Refl
 - The existing static/direct unwrapper path should remain the default for extracted trees that contain `RAW_001*`, `RAW_002*`, `*.RWG`, or familiar `ReflexiveArcade.dll` layouts.
 - The main new engineering work is likely installer extraction rather than new decryption logic: we need to detect the original portal installer families first, then feed their extracted output into the current wrapper scanner and unwrapper.
 - The currently known archive-side gaps are concentrated in the integrated-wrapper cohort, so titles that line up with those roots should be treated as likely post-extraction reversing targets rather than simple extractor work.
-- The live `rutracker` source is still unreadable through the Downloads symlink, so byte-level installer technology clustering remains blocked until the source is copied repo-local or this app gets access.
+- Once the live source is readable, extractor work should be split by detected installer technology rather than by publisher guesswork. Current top observed technologies: Inno Setup signature (1696).
+- Representative overlap and non-overlap samples all expose Reflexive-branded Inno Setup markers, but standard `innoextract` and `7z` fail on those same installers, so the first new script should target this Reflexive-customized Inno variant rather than a new wrapper decryption family.
+- Where `7z` does succeed, it only reveals a trailing branding ZIP rather than the installer payload itself, as seen in BudRedheadSetup.exe.

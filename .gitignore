@@ -1,4 +1,3 @@
 artifacts/*
 !artifacts/sources/
 artifacts/sources/*
-!artifacts/sources/rutracker
