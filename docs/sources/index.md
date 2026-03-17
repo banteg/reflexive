@@ -13,7 +13,7 @@ This project now tracks external inputs as named sources. Each source gets:
 | --- | --- | --- | --- |
 | `archive` | `artifacts/sources/archive` | analyzed | Unofficial 2008 repack mirror of the `Reflexive Arcade Games Collection` bundles. |
 | `rutracker_patches` | `artifacts/rutracker/patches` | analyzed | Auxiliary patch/reference corpus used for wrapper build attribution and historical crack context. |
-| `rutracker` | `artifacts/sources/rutracker` | probed | Primary source linked to the RuTracker anthology release; live installer bytes are readable, a custom outer extractor exists, and the remaining blocker is adapting the unwrapper to the original installer variant. |
+| `rutracker` | `artifacts/sources/rutracker` | extracted | Primary source linked to the RuTracker anthology release; the full corpus is extracted and the current unwrapper sweep covers `1660/1697` effective roots, with `Scrubbles` as the only remaining static error. |
 
 ## Notes
 
@@ -22,3 +22,4 @@ This project now tracks external inputs as named sources. Each source gets:
 - [rutracker.md](rutracker.md)
 - [rutracker_publisher_attribution.md](rutracker_publisher_attribution.md)
 - [rutracker_probe.md](rutracker_probe.md)
+- [rutracker_unwrapper_sweep.md](rutracker_unwrapper_sweep.md)

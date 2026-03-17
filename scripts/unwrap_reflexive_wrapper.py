@@ -11,6 +11,7 @@ import itertools
 import os
 import shutil
 import sys
+import zlib
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
@@ -52,6 +53,7 @@ TOP_LEVEL_WRAPPER_SIDECARS = {
     "raw_004.wdt",
 }
 RAW2_FILENAMES = ("RAW_002.wdt", "RAW_002.dat")
+RAW3_FILENAMES = ("RAW_003.wdt", "RAW_003.dat")
 RAW1_FILENAMES = ("RAW_001.exe", "RAW_001.dat")
 PRIMARY_SEED_DEPENDENCY_NAMES = {
     "background.jpg",
@@ -84,6 +86,7 @@ class SeedMaterial:
     seed1: int
     dependency_paths: tuple[Path, ...]
     decrypted_config: bytes
+    method: str
 
 
 def repo_root() -> Path:
@@ -412,10 +415,80 @@ def candidate_seed_dependency_files(wrapper_root: Path, config_path: Path, child
     return candidates
 
 
-def derive_seed_material(config_path: Path, child_payload: Path, wrapper_root: Path) -> SeedMaterial:
+def locate_named_file(root: Path, names: Iterable[str]) -> Path | None:
+    lowered = {name.lower() for name in names}
+    for candidate in unique_immediate_files(root):
+        if candidate.name.lower() in lowered:
+            return candidate
+    return None
+
+
+def crc32_pe_sections(path: Path, crc: int) -> int:
+    data = path.read_bytes()
+    pe = pefile.PE(str(path), fast_load=True)
+    for section in pe.sections:
+        start = int(section.PointerToRawData)
+        size = int(section.SizeOfRawData)
+        crc = zlib.crc32(data[start : start + size], crc)
+    return crc
+
+
+def original_seed_material(
+    config_path: Path,
+    wrapper_root: Path,
+    wrapper_binary: Path | None,
+) -> SeedMaterial | None:
+    if wrapper_binary is None or not wrapper_binary.is_file():
+        return None
+
+    reflexive_dir = wrapper_root / "ReflexiveArcade"
+    raw3_path = locate_named_file(reflexive_dir, RAW3_FILENAMES)
+    if raw3_path is None:
+        return None
+
+    image_names = (
+        "background.jpg",
+        "button_normal.jpg",
+        "button_hover.jpg",
+        "button_pressed.jpg",
+    )
+    image_paths: list[Path] = []
+    for image_name in image_names:
+        image_path = locate_named_file(reflexive_dir, (image_name,))
+        if image_path is None:
+            return None
+        image_paths.append(image_path)
+
+    crc = 0
+    crc = crc32_pe_sections(wrapper_binary, crc)
+    crc = crc32_pe_sections(raw3_path, crc)
+    for image_path in image_paths:
+        crc = zlib.crc32(int(image_path.stat().st_size).to_bytes(4, "little"), crc)
+
+    decrypted = decrypt_with_stream(config_path.read_bytes(), crc)
+    if not looks_like_decrypted_config(decrypted):
+        return None
+
+    return SeedMaterial(
+        seed1=crc,
+        dependency_paths=(wrapper_binary, raw3_path, *image_paths),
+        decrypted_config=decrypted,
+        method="original_crc32_sections_and_sizes",
+    )
+
+
+def derive_seed_material(
+    config_path: Path,
+    child_payload: Path,
+    wrapper_root: Path,
+    wrapper_binary: Path | None = None,
+) -> SeedMaterial:
     encrypted_config = config_path.read_bytes()
     child_size = child_payload.stat().st_size
     candidates = candidate_seed_dependency_files(wrapper_root, config_path, child_payload)
+    original_candidate = original_seed_material(config_path, wrapper_root, wrapper_binary)
+    if original_candidate is not None:
+        return original_candidate
 
     candidate_pools: list[list[Path]] = []
     primary_candidates = [path for path in candidates if path.name.lower() in PRIMARY_SEED_DEPENDENCY_NAMES]
@@ -436,7 +509,12 @@ def derive_seed_material(config_path: Path, child_payload: Path, wrapper_root: P
 
                 decrypted = decrypt_with_stream(encrypted_config, seed1)
                 if looks_like_decrypted_config(decrypted):
-                    valid_by_seed[seed1] = SeedMaterial(seed1, subset, decrypted)
+                    valid_by_seed[seed1] = SeedMaterial(
+                        seed1=seed1,
+                        dependency_paths=subset,
+                        decrypted_config=decrypted,
+                        method="repack_additive_sizes",
+                    )
 
         if not valid_by_seed:
             continue
@@ -448,8 +526,11 @@ def derive_seed_material(config_path: Path, child_payload: Path, wrapper_root: P
     raise RuntimeError(f"unable to derive RAW_002 seed from {config_path}")
 
 
-def derive_seed2(encrypted_config: bytes) -> int:
-    dword_count = len(encrypted_config) & 3
+def derive_seed2(encrypted_config: bytes, config: dict[str, str]) -> int:
+    if "App Version String" in config:
+        dword_count = len(encrypted_config) // 4
+    else:
+        dword_count = len(encrypted_config) & 3
     total = 0
     for index in range(dword_count):
         start = index * 4
@@ -536,7 +617,12 @@ def decrypt_static_child(wrapper_root: Path, strategy: Strategy) -> tuple[bytes,
     if strategy.config_path.stat().st_size == 0:
         return decrypt_empty_config_child(strategy)
 
-    seed_material = derive_seed_material(strategy.config_path, strategy.child_payload, wrapper_root)
+    seed_material = derive_seed_material(
+        strategy.config_path,
+        strategy.child_payload,
+        wrapper_root,
+        strategy.wrapper_binary,
+    )
     config = parse_config(seed_material.decrypted_config)
 
     child_bytes = bytearray(strategy.child_payload.read_bytes())
@@ -546,13 +632,14 @@ def decrypt_static_child(wrapper_root: Path, strategy: Strategy) -> tuple[bytes,
     else:
         region_start, region_length = native_encrypted_region(pe, config_flag(config, "Game Needs Short Fixed Encryption"))
     encrypted_config = strategy.config_path.read_bytes()
-    seed2 = derive_seed2(encrypted_config)
+    seed2 = derive_seed2(encrypted_config, config)
     decrypted_region = decrypt_with_stream(bytes(child_bytes[region_start : region_start + region_length]), seed2)
     child_bytes[region_start : region_start + region_length] = decrypted_region
     return bytes(child_bytes), {
         "seed1": seed_material.seed1,
         "seed2": seed2,
         "dependency_paths": [str(path) for path in seed_material.dependency_paths],
+        "seed_method": seed_material.method,
         "child_payload": str(strategy.child_payload),
         "config_path": str(strategy.config_path),
         "region_start": region_start,

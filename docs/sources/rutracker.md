@@ -7,12 +7,13 @@
 - Original path: `/Users/banteg/Downloads/Reflexive`
 - Repo-local torrent: `artifacts/rutracker-3687027.torrent`
 - Source type: torrent-backed installer corpus
-- Status: probed
-- Planned extracted root: `artifacts/extracted/rutracker`
-- Planned unwrapped root: `artifacts/unwrapped/rutracker`
+- Status: extracted
+- Extracted root: `artifacts/extracted/rutracker`
+- Unwrapped root: `artifacts/unwrapped/rutracker`
 - Game list: `docs/game_lists/rutracker.md`
 - Publisher attribution report: `docs/sources/rutracker_publisher_attribution.md`
 - Probe report: `docs/sources/rutracker_probe.md`
+- Unwrapper sweep: `docs/sources/rutracker_unwrapper_sweep.md`
 
 ## Initial Analysis
 
@@ -29,6 +30,7 @@ What is confirmed so far:
 - All `1696` installer stubs are PE executables carrying `Inno Setup Setup Data (5.2.3)`,
   `Inno Setup Messages (5.1.11)`, and `CHANNEL_NAME=Reflexive`.
 - A custom outer-installer extractor now exists in `scripts/extract_rutracker_reflexive_installer.py`.
+- The full installer corpus has been extracted under `artifacts/extracted/rutracker`.
 
 ## Extraction
 
@@ -36,6 +38,21 @@ What is confirmed so far:
 - Full source: `uv run scripts/extract_rutracker_reflexive_installer.py --all`
 - The custom extractor strips the Reflexive `ZipLite` wrapper, recovers the embedded Inno Setup
   installer, and then delegates to `innoextract` for the inner payload.
+
+## Unwrapping
+
+- Single root: `uv run scripts/unwrap_reflexive_wrapper.py --extracted-root artifacts/extracted/rutracker --force "10 Days Under The Sea"`
+- Full source sweep: `uv run scripts/generate_reflexive_unwrapper_sweep.py --extracted-root artifacts/extracted/rutracker --output-root artifacts/unwrapped/rutracker --markdown-out docs/sources/rutracker_unwrapper_sweep.md --json-out docs/sources/rutracker_unwrapper_sweep.json`
+- Current sweep summary:
+  - `1697` effective wrapper roots scanned
+  - `1660` successful roots
+  - `1611` successful `static` roots
+  - `49` successful `direct` roots
+  - `36` unsupported roots
+  - `1` remaining execution error: `Scrubbles`
+- The original installer family is now statically handled by deriving the `RAW_002` seed from a
+  CRC32 chain over the wrapper EXE PE sections, `RAW_003`, and the four wrapper button/background
+  asset sizes. The older archive/repack family still uses the existing additive-size seed path.
 
 ## Attribution
 
@@ -83,9 +100,9 @@ Confirmed from the local torrent metadata:
 
 What is not confirmed yet:
 
-- publisher signatures or PE version metadata
-- overlap or divergence relative to the `archive` source after real extraction, rather than by
-  filename normalization alone
+- the remaining `Scrubbles` `RAW_002` seed path
+- whether the unsupported `dll_only_with_application_dat` and integrated `other` layouts can be
+  handled statically, or need a shim/patch strategy instead
 
 ## Quick Triage
 
@@ -146,15 +163,20 @@ The extraction blocker is now more specific:
 - where `7z` does return success, it only exposes a trailing branding ZIP rather than the actual
   installer payload
 
-So the remaining engineering step is not outer installer extraction anymore. It is adapting the
-existing unwrapper to the original installer variant after extraction, especially around `RAW_002`
-seed derivation for original wrapper trees.
+So the outer installer problem is solved. The remaining engineering work is concentrated in the
+tail of wrapper layouts that are still unsupported after extraction:
+
+- `36` unsupported roots, dominated by integrated launchers and `dll_only_with_application_dat`
+  layouts
+- `1` remaining static miss, `Scrubbles`, whose original-installer `RAW_002` seed path does not yet
+  match the known original or repack families
 
 ## Next Steps
 
-- validate that extracted overlap titles materialize into the same wrapper layouts seen under
-  `archive`
-- feed extracted overlap trees through the existing wrapper scanner and unwrapper
-- prioritize the `20` known integrated-wrapper overlap titles for post-extraction reversing
-- sample non-overlap families after extraction to see how much of the broader portal catalog still
-  lands in Reflexive-style wrapper trees
+- reduce the remaining `36` unsupported roots, starting with integrated launchers and
+  `dll_only_with_application_dat` layouts
+- reverse `Scrubbles` as the only remaining static error in the rutracker sweep
+- compare unsupported rutracker layouts against the existing archive-side unsupported set to decide
+  whether one shared shim strategy can cover both sources
+- sample non-overlap families to see which third-party portal installers still land in
+  Reflexive-style wrapper trees after extraction
