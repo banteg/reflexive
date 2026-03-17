@@ -11,6 +11,7 @@
 - Planned extracted root: `artifacts/extracted/rutracker`
 - Planned unwrapped root: `artifacts/unwrapped/rutracker`
 - Game list: `docs/game_lists/rutracker.md`
+- Publisher attribution report: `docs/sources/rutracker_publisher_attribution.md`
 
 ## Initial Analysis
 
