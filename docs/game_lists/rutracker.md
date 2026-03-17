@@ -1,7 +1,7 @@
 # RuTracker Game List
 
 - Source id: `rutracker`
-- Generated from the live source files under `artifacts/sources/rutracker`.
+- Generated from the live source files under `/Volumes/puka/Software/reflexive/artifacts/sources/rutracker`.
 - Verified against the torrent manifest at `artifacts/rutracker-3687027.torrent`.
 
 - Source files: 1698
@@ -48,9 +48,9 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Abra Academy (`AbraAcademySetup.exe`)
 - Abra Academy Returning Cast (`AbraAcademyReturningCastSetup.exe`)
 - Absolute Blue (`AbsoluteBlueSetup.exe`)
-- Abundante
+- Abundante (`AbundanteSetup.exe`)
 - Academy Of Magic Word Spells (`AcademyOfMagicWordSpellsSetup.exe`)
-- Acropolis
+- Acropolis (`AcropolisSetup.exe`)
 - Action Ball (`ActionBallSetup.exe`)
 - Action Ball Deluxe (`ActionBallDeluxeSetup.exe`)
 - Action Ball2 (`ActionBall2Setup.exe`)
@@ -97,7 +97,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Amazing Adventures The Lost Tomb (`AmazingAdventuresTheLostTombSetup.exe`)
 - Amazing Heists Dillinger (`AmazingHeistsDillingerSetup.exe`)
 - Amazon Quest (`AmazonQuestSetup.exe`)
-- Amazonia
+- Amazonia (`AmazoniaSetup.exe`)
 - Amelies Cafe (`AmeliesCafeSetup.exe`)
 - Amulet Of Tricolor (`AmuletOfTricolorSetup.exe`)
 - Ancient Hearts And Spades (`AncientHeartsAndSpadesSetup.exe`)
@@ -112,7 +112,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Ancient Tripeaks II (`AncientTripeaksIISetup.exe`)
 - Angela Young2 Escapethe Dreamscape (`AngelaYoung2EscapetheDreamscapeSetup.exe`)
 - Angela Youngs Dream Adventure (`AngelaYoungsDreamAdventureSetup.exe`)
-- Angkor
+- Angkor (`AngkorSetup.exe`)
 - Animal Empire (`AnimalEmpireSetup.exe`)
 - Animals Of Africa (`AnimalsOfAfricaSetup.exe`)
 - Anime Bowling Babes (`AnimeBowlingBabesSetup.exe`)
@@ -124,104 +124,104 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Aqua Pearls (`AquaPearlsSetup.exe`)
 - Aqua Slider (`AquaSliderSetup.exe`)
 - Aqua Words (`AquaWordsSetup.exe`)
-- Aquaball
+- Aquaball (`AquaballSetup.exe`)
 - Aquabble Avalanche (`AquabbleAvalancheSetup.exe`)
 - Aquabble Quest (`AquabbleQuestSetup.exe`)
-- Aquacade
-- Aquapolis
-- AquaPOP
+- Aquacade (`AquacadeSetup.exe`)
+- Aquapolis (`AquapolisSetup.exe`)
+- AquaPOP (`AquaPOPSetup.exe`)
 - Aquatic of Sherwood (`AquaticOfSherwoodSetup.exe`)
-- Arcalands
+- Arcalands (`ArcalandsSetup.exe`)
 - Archibalds Adventures (`ArchibaldsAdventuresSetup.exe`)
-- Archipelago
+- Archipelago (`ArchipelagoSetup.exe`)
 - Architect Episode1 (`ArchitectEpisode1Setup.exe`)
-- ArchMage
+- ArchMage (`ArchMageSetup.exe`)
 - Arctic Quest (`ArcticQuestSetup.exe`)
 - Arctic Quest 2 (`ArcticQuest2Setup.exe`)
-- Arklight
+- Arklight (`ArklightSetup.exe`)
 - Arkout3 D (`Arkout3DSetup.exe`)
 - Armada Tanks (`ArmadaTanksSetup.exe`)
-- Armado
+- Armado (`ArmadoSetup.exe`)
 - Around The World (`AroundTheWorldSetup.exe`)
 - Around The World In 80 Days (`AroundTheWorldIn80DaysSetup.exe`)
 - Around3 D (`Around3DSetup.exe`)
-- Arxon
-- Asea
+- Arxon (`ArxonSetup.exe`)
+- Asea (`AseaSetup.exe`)
 - Ashley Jones (`AshleyJonesSetup.exe`)
 - Ashtons Family Resort (`AshtonsFamilyResortSetup.exe`)
-- Asianata
-- Astariel
+- Asianata (`AsianataSetup.exe`)
+- Astariel (`AstarielSetup.exe`)
 - Astral Masters (`AstralMastersSetup.exe`)
 - Astro Avenger 2 (`AstroAvenger2Setup.exe`)
 - Astro Fury (`AstroFurySetup.exe`)
-- AstroAvenger
-- Astrobatics
+- AstroAvenger (`AstroAvengerSetup.exe`)
+- Astrobatics (`AstrobaticsSetup.exe`)
 - Atlantic Lighthouses (`AtlanticLighthousesSetup.exe`)
-- Atlantis
+- Atlantis (`AtlantisSetup.exe`)
 - Atlantis Adventure (`AtlantisAdventureSetup.exe`)
 - Atlantis Bundle (`AtlantisBundleSetup.exe`)
 - Atlantis Quest (`AtlantisQuestSetup.exe`)
 - Atlantis Sky Patrol (`AtlantisSkyPatrolSetup.exe`)
-- Atomaders
+- Atomaders (`AtomadersSetup.exe`)
 - Auto Cross Racing (`AutoCrossRacingSetup.exe`)
-- Avalanche
-- Avalon
-- Avast
+- Avalanche (`AvalancheSetup.exe`)
+- Avalon (`AvalonSetup.exe`)
+- Avast (`AvastSetup.exe`)
 - Avenue Flo (`AvenueFloSetup.exe`)
 - Avernum IV (`AvernumIVSetup.exe`)
-- Avernum5
-- Avernum6
-- Aveyond
+- Avernum5 (`Avernum5Setup.exe`)
+- Avernum6 (`Avernum6Setup.exe`)
+- Aveyond (`AveyondSetup.exe`)
 - Aveyond 2 (`Aveyond2Setup.exe`)
 - Aveyond Gatesof Night (`AveyondGatesofNightSetup.exe`)
 - Aveyond Lordof Twilight (`AveyondLordofTwilightSetup.exe`)
 - Aveyond The Lost Orb (`AveyondTheLostOrbSetup.exe`)
 - Awakening The Dreamless Castle (`AwakeningTheDreamlessCastleSetup.exe`)
-- Azada
+- Azada (`AzadaSetup.exe`)
 - Azada - Ancient Magic (`AzadaAncientMagicSetup.exe`)
-- Azkend
+- Azkend (`AzkendSetup.exe`)
 - Aztec Ball (`AztecBallSetup.exe`)
 - Aztec Bricks (`AztecBricksSetup.exe`)
 - Aztec Tribe (`AztecTribeSetup.exe`)
-- Azteca
+- Azteca (`AztecaSetup.exe`)
 
 ## B (122)
 
 - Babel Deluxe (`BabelDeluxeSetup.exe`)
 - Baby Luv (`BabyLuvSetup.exe`)
-- Babylonia
+- Babylonia (`BabyloniaSetup.exe`)
 - Babysitting Mania (`BabysittingManiaSetup.exe`)
 - Ball 7 (`Ball7Setup.exe`)
 - Ball Game (`BallGameSetup.exe`)
-- Ballhalla
-- Ballistik
+- Ballhalla (`BallhallaSetup.exe`)
+- Ballistik (`BallistikSetup.exe`)
 - Balloon Blast (`BalloonBlastSetup.exe`)
-- Bamboozle
+- Bamboozle (`BamboozleSetup.exe`)
 - Band Of Bugs (`BandOfBugsSetup.exe`)
 - Barnyard Invasion (`BarnyardInvasionSetup.exe`)
 - Barrel Mania (`BarrelManiaSetup.exe`)
 - Battle Castles (`BattleCastlesSetup.exe`)
-- Battleship
+- Battleship (`BattleshipSetup.exe`)
 - Battleship Chess (`BattleshipChessSetup.exe`)
 - BC Kings (`BCKingsSetup.exe`)
 - Be A King (`BeAKingSetup.exe`)
 - Be Rich (`BeRichSetup.exe`)
 - Be Richer (`BeRicherSetup.exe`)
 - Beach Party Craze (`BeachPartyCrazeSetup.exe`)
-- Beads
+- Beads (`BeadsSetup.exe`)
 - Becky Brogan The Mysteryof Meane Manor (`BeckyBroganTheMysteryofMeaneManorSetup.exe`)
-- Beeline
+- Beeline (`BeelineSetup.exe`)
 - Beesly's Buzzwords (`BeeslysBuzzwordsSetup.exe`)
 - Beetle Bomp (`BeetleBompSetup.exe`)
 - Beetle Bug2 (`BeetleBug2Setup.exe`)
 - Beetle Bug3 (`BeetleBug3Setup.exe`)
 - Bejeweled 2 Deluxe (`Bejeweled2DeluxeSetup.exe`)
 - Bejeweled Twist (`BejeweledTwistSetup.exe`)
-- Bejeweled2
+- Bejeweled2 (`Bejeweled2Setup.exe`)
 - Believe In Santa (`BelieveInSantaSetup.exe`)
 - Bengal Gameof Gods (`BengalGameofGodsSetup.exe`)
 - Best Gift (`BestGiftSetup.exe`)
-- Betrapped
+- Betrapped (`BetrappedSetup.exe`)
 - Betty's Beer Bar (`BettysBeerBarSetup.exe`)
 - Between The Worlds (`BetweenTheWorldsSetup.exe`)
 - Big City Adventure San Francisco (`BigCityAdventureSanFranciscoSetup.exe`)
@@ -234,19 +234,19 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Bilbo The Four Cornersofthe World (`BilboTheFourCornersoftheWorldSetup.exe`)
 - Bipo Mysteryofthe Red Panda (`BipoMysteryoftheRedPandaSetup.exe`)
 - Bird Pirates (`BirdPiratesSetup.exe`)
-- Birdies
+- Birdies (`BirdiesSetup.exe`)
 - Birds On A Wire (`BirdsOnAWireSetup.exe`)
 - Bistro Stars (`BistroStarsSetup.exe`)
 - Blast Miner (`BlastMinerSetup.exe`)
 - Block Out (`BlockOutSetup.exe`)
 - Blokus World Tour (`BlokusWorldTourSetup.exe`)
 - Blood Ties (`BloodTiesSetup.exe`)
-- Bloom
-- Blowfish
+- Bloom (`BloomSetup.exe`)
+- Blowfish (`BlowfishSetup.exe`)
 - Blox World (`BloxWorldSetup.exe`)
 - Bobthe Builder Can Do Carnival (`BobtheBuilderCanDoCarnivalSetup.exe`)
 - Bobthe Builder Can Do Zoo (`BobtheBuilderCanDoZooSetup.exe`)
-- Boggle
+- Boggle (`BoggleSetup.exe`)
 - Bombard Deluxe (`BombardDeluxeSetup.exe`)
 - Bonnie's Bookstore (`BonniesBookstoreSetup.exe`)
 - Book Bind (`BookBindSetup.exe`)
@@ -256,7 +256,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Bookworm Adventures Fractured Fairytales (`BookwormAdventuresFracturedFairytalesSetup.exe`)
 - Bookworm Deluxe (`BookwormDeluxeSetup.exe`)
 - Boom Voyage (`BoomVoyageSetup.exe`)
-- Boonka
+- Boonka (`BoonkaSetup.exe`)
 - Boorps Balls (`BoorpsBallsSetup.exe`)
 - Born Into Darkness (`BornIntoDarknessSetup.exe`)
 - Boulder Dash TP (`BoulderDashTPSetup.exe`)
@@ -270,33 +270,33 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Break Quest (`BreakQuestSetup.exe`)
 - Breaking News (`BreakingNewsSetup.exe`)
 - Brick Journey (`BrickJourneySetup.exe`)
-- Brickquest
+- Brickquest (`BrickquestSetup.exe`)
 - Bricks of Atlantis (`BricksOfAtlantisSetup.exe`)
 - Bricks of Camelot (`BricksOfCamelotSetup.exe`)
 - Bricks of Egypt (`BricksOfEgyptSetup.exe`)
 - Bricks Of Egypt 2 (`BricksOfEgypt2Setup.exe`)
 - Brickshooter Egypt (`BrickshooterEgyptSetup.exe`)
-- Bricktopia
-- BrixFormer
+- Bricktopia (`BricktopiaSetup.exe`)
+- BrixFormer (`BrixFormerSetup.exe`)
 - Brixout XP (`BrixoutXPSetup.exe`)
-- Brixquest
+- Brixquest (`BrixquestSetup.exe`)
 - Bubble Bay (`BubbleBaySetup.exe`)
 - Bubble Mayhem (`BubbleMayhemSetup.exe`)
 - Bubble Odyssey (`BubbleOdysseySetup.exe`)
 - Bubble Shooter Premium Edition (`BubbleShooterPremiumEditionSetup.exe`)
 - Bubblefish Bob (`BubblefishBobSetup.exe`)
 - Bud Redhead (`BudRedheadSetup.exe`)
-- Bugatron
+- Bugatron (`BugatronSetup.exe`)
 - Bugatron Worlds (`BugatronWorldsSetup.exe`)
 - Bugix Adventures (`BugixAdventuresSetup.exe`)
 - Build A Lot3 Passport To Europe (`BuildALot3PassportToEuropeSetup.exe`)
 - Build in Time (`BuildInTimeSetup.exe`)
 - Build It Miami Beach Resort (`BuildItMiamiBeachResortSetup.exe`)
-- Buildalot
+- Buildalot (`BuildalotSetup.exe`)
 - Buildalot 2 Town Of The Year (`Buildalot2TownOfTheYearSetup.exe`)
 - Buildalot4 Power Source (`Buildalot4PowerSourceSetup.exe`)
 - Bullet Candy (`BulletCandySetup.exe`)
-- Bumps
+- Bumps (`BumpsSetup.exe`)
 - Bunny Bounce Deluxe (`BunnyBounceDeluxeSetup.exe`)
 - Burger Island (`BurgerIslandSetup.exe`)
 - Burger Island2 (`BurgerIsland2Setup.exe`)
@@ -305,9 +305,9 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Burger Shop2 (`BurgerShop2Setup.exe`)
 - Buriedin Time (`BuriedinTimeSetup.exe`)
 - Bursting Bubbles (`BurstingBubblesSetup.exe`)
-- Butterflight
+- Butterflight (`ButterflightSetup.exe`)
 - Butterfly Escape (`ButterflyEscapeSetup.exe`)
-- Buzzword
+- Buzzword (`BuzzwordSetup.exe`)
 - Buzzy Bumble (`BuzzyBumbleSetup.exe`)
 
 ## C (111)
@@ -328,7 +328,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Cannon Blast (`CannonBlastSetup.exe`)
 - Capitalism II (`CapitalismIISetup.exe`)
 - Captain BubbleBeards Treasure (`CaptainBubbleBeardsTreasureSetup.exe`)
-- Caramba
+- Caramba (`CarambaSetup.exe`)
 - Caribbean Hideaway (`CaribbeanHideawaySetup.exe`)
 - Caribbean Mah Jong (`CaribbeanMahJongSetup.exe`)
 - Caribbean Treasures (`CaribbeanTreasuresSetup.exe`)
@@ -344,7 +344,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Cate West The Velvet Keys (`CateWestTheVelvetKeysSetup.exe`)
 - Cathys Caribbean Club (`CathysCaribbeanClubSetup.exe`)
 - Cave Days (`CaveDaysSetup.exe`)
-- Chainz
+- Chainz (`ChainzSetup.exe`)
 - Chainz 2 (`Chainz2Setup.exe`)
 - Chaks Temple (`ChaksTempleSetup.exe`)
 - Chameleon Gems (`ChameleonGemsSetup.exe`)
@@ -352,8 +352,8 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Charm Solitaire (`CharmSolitaireSetup.exe`)
 - Charm Tale (`CharmTaleSetup.exe`)
 - Charm Tale 2 Mermaid Lagoon (`CharmTale2MermaidLagoonSetup.exe`)
-- Charma
-- CheboMan
+- Charma (`CharmaSetup.exe`)
+- CheboMan (`CheboManSetup.exe`)
 - Chessmaster Challenge (`ChessmasterChallengeSetup.exe`)
 - Chicken Attack Deluxe (`ChickenAttackDeluxeSetup.exe`)
 - Chicken Chase (`ChickenChaseSetup.exe`)
@@ -363,33 +363,33 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Chicken Rush Deluxe (`ChickenRushDeluxeSetup.exe`)
 - Chicken Village (`ChickenVillageSetup.exe`)
 - Chocolate Castle (`ChocolateCastleSetup.exe`)
-- Chocolatier
+- Chocolatier (`ChocolatierSetup.exe`)
 - Chocolatier 2 (`Chocolatier2Setup.exe`)
 - Chocolatier Decadenceby Design (`ChocolatierDecadencebyDesignSetup.exe`)
-- Christmasville
+- Christmasville (`ChristmasvilleSetup.exe`)
 - Chromadrome 2 (`Chromadrome2Setup.exe`)
-- Chuzzle
+- Chuzzle (`ChuzzleSetup.exe`)
 - Chuzzle Deluxe (`ChuzzleDeluxeSetup.exe`)
 - Cindys Sundaes (`CindysSundaesSetup.exe`)
 - Cinema Tycoon 2 Movie Mania (`CinemaTycoon2MovieManiaSetup.exe`)
 - Cinema Tycoon Gold (`CinemaTycoonGoldSetup.exe`)
-- Circulate
+- Circulate (`CirculateSetup.exe`)
 - City Magnate (`CityMagnateSetup.exe`)
 - Clash N Slash (`ClashNSlashSetup.exe`)
 - Clash N Slash Worlds Away (`ClashNSlashWorldsAwaySetup.exe`)
-- Clayside
+- Clayside (`ClaysideSetup.exe`)
 - Click O Pack (`ClickOPackSetup.exe`)
 - CLUE Classic (`CLUEClassicSetup.exe`)
-- Clueless
+- Clueless (`CluelessSetup.exe`)
 - Coconut Queen (`CoconutQueenSetup.exe`)
 - Coffee Rush (`CoffeeRushSetup.exe`)
 - Coffee Tycoon (`CoffeeTycoonSetup.exe`)
-- Collapse
+- Collapse (`CollapseSetup.exe`)
 - Collapse Crunch (`CollapseCrunchSetup.exe`)
-- Collapse2
+- Collapse2 (`Collapse2Setup.exe`)
 - Collapser3 D (`Collapser3DSetup.exe`)
-- Colony
-- Concentration
+- Colony (`ColonySetup.exe`)
+- Concentration (`ConcentrationSetup.exe`)
 - Continental Cafe (`ContinentalCafeSetup.exe`)
 - Cookie Chef (`CookieChefSetup.exe`)
 - Cooking Academy (`CookingAcademySetup.exe`)
@@ -408,17 +408,17 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Create A Mall (`CreateAMallSetup.exe`)
 - Cribbage Quest (`CribbageQuestSetup.exe`)
 - Crime Puzzle (`CrimePuzzleSetup.exe`)
-- Crimsonland
-- Crumb
+- Crimsonland (`CrimsonlandSetup.exe`)
+- Crumb (`CrumbSetup.exe`)
 - Crusaders Of Space 2 (`CrusadersOfSpace2Setup.exe`)
 - Crusaders of Space Open Range (`CrusadersOfSpaceOpenRangeSetup.exe`)
 - Crystal Path (`CrystalPathSetup.exe`)
-- Crystalix
-- Crystals
+- Crystalix (`CrystalixSetup.exe`)
+- Crystals (`CrystalsSetup.exe`)
 - Cubis Gold (`CubisGoldSetup.exe`)
 - Cubis Gold 2 (`CubisGold2Setup.exe`)
-- Cubology
-- Cubozoid
+- Cubology (`CubologySetup.exe`)
+- Cubozoid (`CubozoidSetup.exe`)
 - Curseofthe Pharaoh Napoleons Secret (`CurseofthePharaohNapoleonsSecretSetup.exe`)
 - Curseofthe Pharaoh Tearsof Sekhmet (`CurseofthePharaohTearsofSekhmetSetup.exe`)
 - Curseofthe Pharaoh The Questfor Nefertiti (`CurseofthePharaohTheQuestforNefertitiSetup.exe`)
@@ -432,7 +432,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Dark Archon (`DarkArchonSetup.exe`)
 - Dark Hillsof Cherai (`DarkHillsofCheraiSetup.exe`)
 - Dark Tales Rue Morgue (`DarkTalesRueMorgueSetup.exe`)
-- Darkside
+- Darkside (`DarksideSetup.exe`)
 - Daycare Nightmare (`DaycareNightmareSetup.exe`)
 - Daycare Nightmare Mini Monsters (`DaycareNightmareMiniMonstersSetup.exe`)
 - DDD Pool (`DDDPoolSetup.exe`)
@@ -450,7 +450,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Delicious Emilys Holiday Season (`DeliciousEmilysHolidaySeasonSetup.exe`)
 - Delicious Emilys Tasteof Fame (`DeliciousEmilysTasteofFameSetup.exe`)
 - Delivery King (`DeliveryKingSetup.exe`)
-- Democracy
+- Democracy (`DemocracySetup.exe`)
 - DemonStar Classic (`DemonStarClassicSetup.exe`)
 - Department42 The Mysteryofthe Nine (`Department42TheMysteryoftheNineSetup.exe`)
 - Depths Of Peril (`DepthsOfPerilSetup.exe`)
@@ -462,7 +462,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Diamond Drop2 (`DiamondDrop2Setup.exe`)
 - Diaper Dash (`DiaperDashSetup.exe`)
 - Digby's Donuts (`DigbysDonutsSetup.exe`)
-- Digger
+- Digger (`DiggerSetup.exe`)
 - Digi Pool (`DigiPoolSetup.exe`)
 - Diner Dash (`DinerDashSetup.exe`)
 - Diner Dash 2 (`DinerDash2Setup.exe`)
@@ -474,8 +474,8 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Discord Times (`DiscordTimesSetup.exe`)
 - Discovering Nature (`DiscoveringNatureSetup.exe`)
 - Discovery A Seek And Find Adventure (`DiscoveryASeekAndFindAdventureSetup.exe`)
-- DNA
-- Docker
+- DNA (`DNASetup.exe`)
+- Docker (`DockerSetup.exe`)
 - Doggie Dash (`DoggieDashSetup.exe`)
 - Double Play Family Feudand Family Feud II (`DoublePlayFamilyFeudandFamilyFeudIISetup.exe`)
 - Double Play Jewel Quest2and3 (`DoublePlayJewelQuest2and3Setup.exe`)
@@ -504,14 +504,14 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Dreamsdwell Stories (`DreamsdwellStoriesSetup.exe`)
 - Dress Shop Hop (`DressShopHopSetup.exe`)
 - Dress Up Rush (`DressUpRushSetup.exe`)
-- Drop
+- Drop (`DropSetup.exe`)
 - Drop Em Deluxe (`DropEmDeluxeSetup.exe`)
 - Drop! 2 (`Drop2Setup.exe`)
 - Drop2 GT (`Drop2GTSetup.exe`)
-- Dropheads
+- Dropheads (`DropheadsSetup.exe`)
 - Druids Battle Of Magic (`DruidsBattleOfMagicSetup.exe`)
 - Dungeon Scroll Gold Edition (`DungeonScrollGoldEditionSetup.exe`)
-- Dynasty
+- Dynasty (`DynastySetup.exe`)
 
 ## E (44)
 
@@ -519,16 +519,16 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Easter Bonus (`EasterBonusSetup.exe`)
 - Echoesofthe Past Royal Houseof Stone (`EchoesofthePastRoyalHouseofStoneSetup.exe`)
 - Edens Quest (`EdensQuestSetup.exe`)
-- Eets
+- Eets (`EetsSetup.exe`)
 - Egg vs. Chicken (`EggVsChickenSetup.exe`)
 - Egyptian Dreams4 (`EgyptianDreams4Setup.exe`)
-- Egyptoid
+- Egyptoid (`EgyptoidSetup.exe`)
 - El Dorado Quest (`ElDoradoQuestSetup.exe`)
-- Electra
-- Electric
-- Elemental
+- Electra (`ElectraSetup.exe`)
+- Electric (`ElectricSetup.exe`)
+- Elemental (`ElementalSetup.exe`)
 - Elementals The Magic Key (`ElementalsTheMagicKeySetup.exe`)
-- Elements
+- Elements (`ElementsSetup.exe`)
 - Elf Bowling Hawaiian Vacation (`ElfBowlingHawaiianVacationSetup.exe`)
 - Elf Bowling Holiday Bundle (`ElfBowlingHolidayBundleSetup.exe`)
 - Elf Bowling The Last Insult (`ElfBowlingTheLastInsultSetup.exe`)
@@ -556,8 +556,8 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Eschalon Book 1 (`EschalonBook1Setup.exe`)
 - Etch A Sketch (`EtchASketchSetup.exe`)
 - Evil Invasion (`EvilInvasionSetup.exe`)
-- Evoly
-- Exocubes
+- Evoly (`EvolySetup.exe`)
+- Exocubes (`ExocubesSetup.exe`)
 - Eye For Design (`EyeForDesignSetup.exe`)
 
 ## F (99)
@@ -565,7 +565,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Fab Fashion (`FabFashionSetup.exe`)
 - Fabulous Finds (`FabulousFindsSetup.exe`)
 - Faerie Solitaire (`FaerieSolitaireSetup.exe`)
-- Fairies
+- Fairies (`FairiesSetup.exe`)
 - Fairway Solitaire (`FairwaySolitaireSetup.exe`)
 - Fairy Godmother Tycoon (`FairyGodmotherTycoonSetup.exe`)
 - Fairy Jewels (`FairyJewelsSetup.exe`)
@@ -597,21 +597,21 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Fashion Dash (`FashionDashSetup.exe`)
 - Fashion Fits (`FashionFitsSetup.exe`)
 - Fashion Solitaire (`FashionSolitaireSetup.exe`)
-- Fashionista
-- FastCrawl
+- Fashionista (`FashionistaSetup.exe`)
+- FastCrawl (`FastCrawlSetup.exe`)
 - Fatal Hearts (`FatalHeartsSetup.exe`)
-- Fatman
-- FCF
+- Fatman (`FatmanSetup.exe`)
+- FCF (`FCFSetup.exe`)
 - Feed The Snake (`FeedTheSnakeSetup.exe`)
 - Feeding Frenzy (`FeedingFrenzySetup.exe`)
 - Feeding Frenzy 2 (`FeedingFrenzy2Setup.exe`)
-- Feelers
+- Feelers (`FeelersSetup.exe`)
 - Fever Frenzy (`FeverFrenzySetup.exe`)
 - Feyruna Fairy Forest (`FeyrunaFairyForestSetup.exe`)
 - Fiber Twig (`FiberTwigSetup.exe`)
 - Fiber Twig 2 (`FiberTwig2Setup.exe`)
 - Fiction Fixers Wonderland Premium (`FictionFixersWonderlandPremiumSetup.exe`)
-- Filler
+- Filler (`FillerSetup.exe`)
 - Finders Keepers (`FindersKeepersSetup.exe`)
 - Finding Doggy (`FindingDoggySetup.exe`)
 - Fiona Finchandthe Finest Flowers (`FionaFinchandtheFinestFlowersSetup.exe`)
@@ -619,7 +619,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - First Class Flurry (`FirstClassFlurrySetup.exe`)
 - Fish Tales (`FishTalesSetup.exe`)
 - Fish Tycoon (`FishTycoonSetup.exe`)
-- FishCo
+- FishCo (`FishCoSetup.exe`)
 - Fishdom Frosty Splash (`FishdomFrostySplashSetup.exe`)
 - Fishdom H20 Hidden Odyssey (`FishdomH20HiddenOdysseySetup.exe`)
 - Fishdom Spooky Splash (`FishdomSpookySplashSetup.exe`)
@@ -629,7 +629,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Fitness Dash (`FitnessDashSetup.exe`)
 - Fitness Frenzy (`FitnessFrenzySetup.exe`)
 - Five Card Deluxe (`FiveCardDeluxeSetup.exe`)
-- Fizzball
+- Fizzball (`FizzballSetup.exe`)
 - Flatspace II (`FlatspaceIISetup.exe`)
 - Flip or Flop (`FlipOrFlopSetup.exe`)
 - Flip Wit! (`FlipwitSetup.exe`)
@@ -660,42 +660,42 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Funky Farm (`FunkyFarmSetup.exe`)
 - Funny Creatures (`FunnyCreaturesSetup.exe`)
 - Funny Faces (`FunnyFacesSetup.exe`)
-- Fusion
+- Fusion (`FusionSetup.exe`)
 
 ## G (64)
 
 - G2 Geeks Unleashed (`G2GeeksUnleashedSetup.exe`)
-- Galapago
+- Galapago (`GalapagoSetup.exe`)
 - Gamehouse Sudoku (`GamehouseSudokuSetup.exe`)
 - Gamehouse Word Collection (`GamehouseWordCollectionSetup.exe`)
-- Gamino
+- Gamino (`GaminoSetup.exe`)
 - Garden Defense (`GardenDefenseSetup.exe`)
 - Garden Dreams (`GardenDreamsSetup.exe`)
-- Gardenscapes
+- Gardenscapes (`GardenscapesSetup.exe`)
 - Garfield Goes to Pieces (`GarfieldGoesToPiecesSetup.exe`)
 - Gazillionaire III (`GazillionaireIIISetup.exe`)
 - GDI Test App (`GDITestAppSetup.exe`)
-- Gearz
+- Gearz (`GearzSetup.exe`)
 - Gekko Mahjong (`GekkoMahjongSetup.exe`)
 - Gem Ball (`GemBallSetup.exe`)
 - Gem Mine (`GemMineSetup.exe`)
 - Gem Shop (`GemShopSetup.exe`)
 - Gem Slider Deluxe (`GemSliderDeluxeSetup.exe`)
 - Gemini Lost (`GeminiLostSetup.exe`)
-- Gemsweeper
+- Gemsweeper (`GemsweeperSetup.exe`)
 - Genius Move (`GeniusMoveSetup.exe`)
-- Geom
+- Geom (`GeomSetup.exe`)
 - GHOST Chronicles Phantom Renaissance Faire (`GHOSTChroniclesPhantomRenaissanceFaireSetup.exe`)
 - Ghost Fleet (`GhostFleetSetup.exe`)
 - GHOST Hunters The Haunting Of Majesty Manor (`GHOSTHuntersTheHauntingOfMajestyManorSetup.exe`)
 - Ghost Town Mysteries Bodie (`GhostTownMysteriesBodieSetup.exe`)
 - Ghostinthe Sheet (`GhostintheSheetSetup.exe`)
 - Gift Shop (`GiftShopSetup.exe`)
-- Gish
-- Glinx
+- Gish (`GishSetup.exe`)
+- Glinx (`GlinxSetup.exe`)
 - Global Defense Network (`GlobalDefenseNetworkSetup.exe`)
 - Glow Worm (`GlowWormSetup.exe`)
-- Glyph
+- Glyph (`GlyphSetup.exe`)
 - Glyph 2 (`Glyph2Setup.exe`)
 - Go Go Gourmet (`GoGoGourmetSetup.exe`)
 - Go Go Gourmet Chef Of The Year (`GoGoGourmetChefOfTheYearSetup.exe`)
@@ -710,7 +710,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Golden Sub (`GoldenSubSetup.exe`)
 - Golf Adventure Galaxy (`GolfAdventureGalaxySetup.exe`)
 - Gotcha Celebrity Secrets (`GotchaCelebritySecretsSetup.exe`)
-- Gourmania
+- Gourmania (`GourmaniaSetup.exe`)
 - Governorof Poker (`GovernorofPokerSetup.exe`)
 - Grandmaster Chess Tournament (`GrandmasterChessTournamentSetup.exe`)
 - Granny In Paradise (`GrannyInParadiseSetup.exe`)
@@ -722,8 +722,8 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Green Moon (`GreenMoonSetup.exe`)
 - Green Valley Funonthe Farm (`GreenValleyFunontheFarmSetup.exe`)
 - Grimms Hatchery (`GrimmsHatcherySetup.exe`)
-- Grump
-- Guardian
+- Grump (`GrumpSetup.exe`)
+- Guardian (`GuardianSetup.exe`)
 - Gumboy Crazy Adventures (`GumboyCrazyAdventuresSetup.exe`)
 - Gunner 2 (`Gunner2Setup.exe`)
 - Gutterball 2 (`Gutterball2Setup.exe`)
@@ -732,12 +732,12 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 ## H (68)
 
 - Habitat Rescue Lions Pride (`HabitatRescueLionsPrideSetup.exe`)
-- Hamlet
+- Hamlet (`HamletSetup.exe`)
 - Hammer Heads Deluxe (`HammerHeadsDeluxeSetup.exe`)
 - Hamster Blocks (`HamsterBlocksSetup.exe`)
-- Hamsterball
+- Hamsterball (`HamsterballSetup.exe`)
 - Hangman Wild West 2 (`HangManWildWest2Setup.exe`)
-- HangStan
+- HangStan (`HangStanSetup.exe`)
 - Hap Hazard (`HapHazardSetup.exe`)
 - Happy Hour (`HappyHourSetup.exe`)
 - Harlequin Presents Hidden Objectof Desire (`HarlequinPresentsHiddenObjectofDesireSetup.exe`)
@@ -757,7 +757,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Hells Kitchen (`HellsKitchenSetup.exe`)
 - Heroes Of Hellas (`HeroesOfHellasSetup.exe`)
 - Heroesof Hellas2 Olympia (`HeroesofHellas2OlympiaSetup.exe`)
-- Hexalot
+- Hexalot (`HexalotSetup.exe`)
 - Hidden Expedition Amazon (`HiddenExpeditionAmazonSetup.exe`)
 - Hidden Expedition Devils Triangle (`HiddenExpeditionDevilsTriangleSetup.exe`)
 - Hidden Expedition Everest (`HiddenExpeditionEverestSetup.exe`)
@@ -793,7 +793,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Houseof Wonders Babies Come Home (`HouseofWondersBabiesComeHomeSetup.exe`)
 - Hoyle Miami Solitaire (`HoyleMiamiSolitaireSetup.exe`)
 - Huru Beach Party (`HuruBeachPartySetup.exe`)
-- Hyperballoid
+- Hyperballoid (`HyperballoidSetup.exe`)
 - Hyperballoid 2 (`Hyperballoid2Setup.exe`)
 - Hyperballoid Around The World (`HyperballoidAroundTheWorldSetup.exe`)
 - Hyperballoid Complete (`HyperballoidCompleteSetup.exe`)
@@ -809,24 +809,24 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Ice Cream Mania (`IceCreamManiaSetup.exe`)
 - Ice Cream Tycoon (`IceCreamTycoonSetup.exe`)
 - Ice Puzzle Deluxe (`IcePuzzleDeluxeSetup.exe`)
-- Iceblast
+- Iceblast (`IceblastSetup.exe`)
 - Icy Spell (`IcySpellSetup.exe`)
 - Iggle Pop (`IgglePopSetup.exe`)
 - Immortal Defense (`ImmortalDefenseSetup.exe`)
 - In Living Colors (`InLivingColorsSetup.exe`)
 - Inca Ball (`IncaBallSetup.exe`)
 - Inca Quest (`IncaQuestSetup.exe`)
-- Incadia
+- Incadia (`IncadiaSetup.exe`)
 - Incrediball - The Seven Sapphires (`IncrediballTheSevenSapphiresSetup.exe`)
 - Incredible Ink (`IncredibleInkSetup.exe`)
-- Ingenious
+- Ingenious (`IngeniousSetup.exe`)
 - Insaniquarium Deluxe (`InsaniquariumDeluxeSetup.exe`)
 - Insider Tales The Stolen Venus (`InsiderTalesTheStolenVenusSetup.exe`)
 - Insider Tales Vanishedin Rome (`InsiderTalesVanishedinRomeSetup.exe`)
 - Inspector Parker (`InspectorParkerSetup.exe`)
-- InSpheration
+- InSpheration (`InSpherationSetup.exe`)
 - Interpol The Trail Of Dr Chaos (`InterpolTheTrailOfDrChaosSetup.exe`)
-- Invadazoid
+- Invadazoid (`InvadazoidSetup.exe`)
 - IQ Identity Quest (`IQIdentityQuestSetup.exe`)
 - Iron Roses (`IronRosesSetup.exe`)
 - Island Realms (`IslandRealmsSetup.exe`)
@@ -843,13 +843,13 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Janes Realty2 (`JanesRealty2Setup.exe`)
 - Janes Zoo (`JanesZooSetup.exe`)
 - Jaspers Journeys (`JaspersJourneysSetup.exe`)
-- Jeez
-- Jericho
+- Jeez (`JeezSetup.exe`)
+- Jericho (`JerichoSetup.exe`)
 - Jessicas Cupcake Cafe (`JessicasCupcakeCafeSetup.exe`)
 - Jet Jumper (`JetJumperSetup.exe`)
 - Jets N Guns (`JetsNGunsSetup.exe`)
 - Jets N Guns GOLD (`JetsNGunsGOLDSetup.exe`)
-- Jetsetter
+- Jetsetter (`JetsetterSetup.exe`)
 - Jewel Craft (`JewelCraftSetup.exe`)
 - Jewel Match (`JewelMatchSetup.exe`)
 - Jewel Match 2 (`JewelMatch2Setup.exe`)
@@ -865,13 +865,13 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Jewel Quest Solitaire (`JewelQuestSolitaireSetup.exe`)
 - Jewel Quest Solitaire II (`JewelQuestSolitaireIISetup.exe`)
 - Jewel Quest Solitaire III (`JewelQuestSolitaireIIISetup.exe`)
-- Jewelix
-- Jewelleria
+- Jewelix (`JewelixSetup.exe`)
+- Jewelleria (`JewelleriaSetup.exe`)
 - Jewels of Cleopatra (`JewelsOfCleopatraSetup.exe`)
-- Jezzonix
+- Jezzonix (`JezzonixSetup.exe`)
 - Jig Art Quest (`JigArtQuestSetup.exe`)
 - Jig Words (`JigWordsSetup.exe`)
-- Jigsaw365
+- Jigsaw365 (`Jigsaw365Setup.exe`)
 - Joan Jadeandthe Gatesof Xibalba (`JoanJadeandtheGatesofXibalbaSetup.exe`)
 - Jojos Fashion Show (`JojosFashionShowSetup.exe`)
 - Jojos Fashion Show 2 (`JojosFashionShow2Setup.exe`)
@@ -886,26 +886,26 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 ## K (21)
 
 - Kakuro Epic (`KakuroEpicSetup.exe`)
-- Karu
+- Karu (`KaruSetup.exe`)
 - Kasparov Chessmate (`KasparovChessmateSetup.exe`)
 - Kelly Green Garden Queen (`KellyGreenGardenQueenSetup.exe`)
 - Kennys Adventure (`KennysAdventureSetup.exe`)
 - Kick Shot Pool (`KickShotPoolSetup.exe`)
-- Kindergarten
+- Kindergarten (`KindergartenSetup.exe`)
 - King Kong Skull Island Adventure (`KingKongSkullIslandAdventureSetup.exe`)
 - Kingdom Elemental (`KingdomElementalSetup.exe`)
-- KingMania
+- KingMania (`KingManiaSetup.exe`)
 - Kings Smith (`KingsSmithSetup.exe`)
 - Kitchen Brigade (`KitchenBrigadeSetup.exe`)
 - Kitten Sanctuary (`KittenSanctuarySetup.exe`)
 - Kitty Luv (`KittyLuvSetup.exe`)
 - Kivis Underworld (`KivisUnderworldSetup.exe`)
 - Koi Solitaire (`KoiSolitaireSetup.exe`)
-- Kudos
+- Kudos (`KudosSetup.exe`)
 - Kudos Rock Legend (`KudosRockLegendSetup.exe`)
-- Kudos2
+- Kudos2 (`Kudos2Setup.exe`)
 - Kungfu Master (`KungfuMasterSetup.exe`)
-- Kuros
+- Kuros (`KurosSetup.exe`)
 
 ## L (47)
 
@@ -925,8 +925,8 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Lemonade Tycoon (`LemonadeTycoonSetup.exe`)
 - Lemonade Tycoon 2 (`LemonadeTycoon2Setup.exe`)
 - Letter Lab (`LetterLabSetup.exe`)
-- LexiCastle
-- Library
+- LexiCastle (`LexiCastleSetup.exe`)
+- Library (`LibrarySetup.exe`)
 - Liong The Dragon Dance (`LiongTheDragonDanceSetup.exe`)
 - Liong The Lost Amulets (`LiongTheLostAmuletsSetup.exe`)
 - Little Farm (`LittleFarmSetup.exe`)
@@ -937,18 +937,18 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Little Shop Road Trip (`LittleShopRoadTripSetup.exe`)
 - Little Shop World Traveler (`LittleShopWorldTravelerSetup.exe`)
 - Live Billiards (`LiveBilliardsSetup.exe`)
-- Loco
+- Loco (`LocoSetup.exe`)
 - Lost Realms Legacyofthe Sun Princess (`LostRealmsLegacyoftheSunPrincessSetup.exe`)
 - Lost Treasures Of El Dorado (`LostTreasuresOfElDoradoSetup.exe`)
 - Lottso Deluxe (`LottsoDeluxeSetup.exe`)
 - Lotus Deluxe (`LotusDeluxeSetup.exe`)
 - Loveand Death Bitten (`LoveandDeathBittenSetup.exe`)
-- LSP
+- LSP (`LSPSetup.exe`)
 - Luck Charm Deluxe (`LuckCharmDeluxeSetup.exe`)
 - Lucky Clover (`LuckyCloverSetup.exe`)
 - Luckys Rainbow (`LuckysRainbowSetup.exe`)
 - Lucy Q Deluxe (`LucyQDeluxeSetup.exe`)
-- Luxor
+- Luxor (`LuxorSetup.exe`)
 - Luxor 2 (`Luxor2Setup.exe`)
 - Luxor 3 (`Luxor3Setup.exe`)
 - Luxor Adventures (`LuxorAdventuresSetup.exe`)
@@ -962,7 +962,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Machine Hell (`MachineHellSetup.exe`)
 - Mad Cars (`MadCarsSetup.exe`)
 - Mad Magic (`MadMagicSetup.exe`)
-- MadCaps
+- MadCaps (`MadCapsSetup.exe`)
 - Magic Academy (`MagicAcademySetup.exe`)
 - Magic Academy2 (`MagicAcademy2Setup.exe`)
 - Magic Ball 2 New Worlds (`MagicBall2NewWorldsSetup.exe`)
@@ -989,7 +989,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Mah Jong Quest (`MahJongQuestSetup.exe`)
 - Mah Jong Quest 3 (`MahJongQuest3Setup.exe`)
 - Mah Jong Quest II (`MahJongQuestIISetup.exe`)
-- Mahjong
+- Mahjong (`MahjongSetup.exe`)
 - Mahjong Epic (`MahjongEpicSetup.exe`)
 - Mahjong Escape (`MahjongEscapeSetup.exe`)
 - Mahjong Escape Ancient Japan (`MahjongEscapeAncientJapanSetup.exe`)
@@ -1009,20 +1009,20 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Mahjongg Artifacts Chapter 2 (`MahjonggArtifactsChapter2Setup.exe`)
 - Mahjongg Dimensions Deluxe (`MahjonggDimensionsDeluxeSetup.exe`)
 - Mahjongg Investigations (`MahjonggInvestigationsSetup.exe`)
-- Mandragora
+- Mandragora (`MandragoraSetup.exe`)
 - Manna Munchers (`MannaMunchersSetup.exe`)
 - Many Years Ago (`ManyYearsAgoSetup.exe`)
 - Marble Match (`MarbleMatchSetup.exe`)
-- Marblez
-- Mariposa
-- Marooned
+- Marblez (`MarblezSetup.exe`)
+- Mariposa (`MariposaSetup.exe`)
+- Marooned (`MaroonedSetup.exe`)
 - Master of Defense (`MasterOfDefenseSetup.exe`)
 - Mastersof Mystery Bloodof Betrayal (`MastersofMysteryBloodofBetrayalSetup.exe`)
 - Mastersof Mystery Crimeof Fashion (`MastersofMysteryCrimeofFashionSetup.exe`)
 - Maui And The Big Fish (`MauiAndTheBigFishSetup.exe`)
 - Maui Wowee (`MauiWoweeSetup.exe`)
-- MaxGammon
-- Mayawaka
+- MaxGammon (`MaxGammonSetup.exe`)
+- Mayawaka (`MayawakaSetup.exe`)
 - Mean Girls (`MeanGirlsSetup.exe`)
 - Mega Flexicon (`MegaFlexiconSetup.exe`)
 - Megaplex Madness (`MegaplexMadnessSetup.exe`)
@@ -1030,10 +1030,10 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Memory Loops (`MemoryLoopsSetup.exe`)
 - Merriam Websters Spell Jam (`MerriamWebstersSpellJamSetup.exe`)
 - Merv Griffins Crosswords (`MervGriffinsCrosswordsSetup.exe`)
-- Meteor
+- Meteor (`MeteorSetup.exe`)
 - Mevoand The Grooveriders (`MevoandTheGrooveridersSetup.exe`)
 - Mexican Motor Mafia (`MexicanMotorMafiaSetup.exe`)
-- Microblots
+- Microblots (`MicroblotsSetup.exe`)
 - Mighty Rodent (`MightyRodentSetup.exe`)
 - Millennium A New Hope (`MillenniumANewHopeSetup.exe`)
 - Million Dollar Quest (`MillionDollarQuestSetup.exe`)
@@ -1052,8 +1052,8 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Miss Teri Tale (`MissTeriTaleSetup.exe`)
 - Miss Teri Tale Vote4 Me (`MissTeriTaleVote4MeSetup.exe`)
 - Miss Teri Tale3 Danger Next Door (`MissTeriTale3DangerNextDoorSetup.exe`)
-- Moleculous
-- Monarch
+- Moleculous (`MoleculousSetup.exe`)
+- Monarch (`MonarchSetup.exe`)
 - Money Tree (`MoneyTreeSetup.exe`)
 - Monster Mash (`MonsterMashSetup.exe`)
 - Mortimer and the Enchanted Castle (`MortimerAndTheEnchantedCastleSetup.exe`)
@@ -1067,7 +1067,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Murder She Wrote (`MurderSheWroteSetup.exe`)
 - Mushroom Age (`MushroomAgeSetup.exe`)
 - Music Catch (`MusicCatchSetup.exe`)
-- Musikapa
+- Musikapa (`MusikapaSetup.exe`)
 - Mutant Storm (`MutantStormSetup.exe`)
 - My Farm (`MyFarmSetup.exe`)
 - My Kingdomforthe Princess (`MyKingdomforthePrincessSetup.exe`)
@@ -1096,7 +1096,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Mystery Stories Berlin Nights (`MysteryStoriesBerlinNightsSetup.exe`)
 - Mystery Stories Islandof Hope (`MysteryStoriesIslandofHopeSetup.exe`)
 - Mysteryofthe Lunar Archipelago (`MysteryoftheLunarArchipelagoSetup.exe`)
-- Mysteryville
+- Mysteryville (`MysteryvilleSetup.exe`)
 - Mysteryville 2 (`Mysteryville2Setup.exe`)
 - Mystic Emporium (`MysticEmporiumSetup.exe`)
 - Mystic Inn (`MysticInnSetup.exe`)
@@ -1107,8 +1107,8 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 
 - Nanny Mania (`NannyManiaSetup.exe`)
 - Nanny Mania2 (`NannyMania2Setup.exe`)
-- Nanny911
-- Napad
+- Nanny911 (`Nanny911Setup.exe`)
+- Napad (`NapadSetup.exe`)
 - Nat Geo Adventure Lost Cityof Z (`NatGeoAdventureLostCityofZSetup.exe`)
 - Nat Geo Eco Rescue Rivers (`NatGeoEcoRescueRiversSetup.exe`)
 - Nat Geo Games Mysteryof Cleopatra (`NatGeoGamesMysteryofCleopatraSetup.exe`)
@@ -1118,13 +1118,13 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Natalie Brooks The Treasuresofthe Lost Kingdom (`NatalieBrooksTheTreasuresoftheLostKingdomSetup.exe`)
 - National Geographic Games Herods Lost Tomb (`NationalGeographicGamesHerodsLostTombSetup.exe`)
 - Naval Strike (`NavalStrikeSetup.exe`)
-- Navigatris
+- Navigatris (`NavigatrisSetup.exe`)
 - NBC Heads Up Poker (`NBCHeadsUpPokerSetup.exe`)
 - Neon Wars (`NeonWarsSetup.exe`)
 - Neptunes Secret (`NeptunesSecretSetup.exe`)
-- Neptunia
+- Neptunia (`NeptuniaSetup.exe`)
 - Nertz Solitaire (`NertzSolitaireSetup.exe`)
-- Neverland
+- Neverland (`NeverlandSetup.exe`)
 - Newspaper Puzzle Challenge (`NewspaperPuzzleChallengeSetup.exe`)
 - Nick Chase A Detective Story (`NickChaseADetectiveStorySetup.exe`)
 - Nick Chaseandthe Deadly Diamond (`NickChaseandtheDeadlyDiamondSetup.exe`)
@@ -1136,13 +1136,13 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 
 ## O (13)
 
-- Oasis
+- Oasis (`OasisSetup.exe`)
 - Ocean Diver (`OceanDiverSetup.exe`)
 - Ocean Express (`OceanExpressSetup.exe`)
 - Off Road Arena (`OffRoadArenaSetup.exe`)
 - Operation Mania (`OperationManiaSetup.exe`)
-- Orbz
-- Orchard
+- Orbz (`OrbzSetup.exe`)
+- Orchard (`OrchardSetup.exe`)
 - Oriental Dreams (`OrientalDreamsSetup.exe`)
 - Ouba The Great Journey (`OubaTheGreatJourneySetup.exe`)
 - Out Of Your Mind (`OutOfYourMindSetup.exe`)
@@ -1157,10 +1157,10 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Pageant Princess (`PageantPrincessSetup.exe`)
 - Pahelika Secret Legends (`PahelikaSecretLegendsSetup.exe`)
 - Panda Craze (`PandaCrazeSetup.exe`)
-- Paparazzi
+- Paparazzi (`PaparazziSetup.exe`)
 - Paradise Beach (`ParadiseBeachSetup.exe`)
 - Paradise Pet Salon (`ParadisePetSalonSetup.exe`)
-- Paradoxion
+- Paradoxion (`ParadoxionSetup.exe`)
 - Paranormal Agency (`ParanormalAgencySetup.exe`)
 - Parking Dash (`ParkingDashSetup.exe`)
 - Party Down (`PartyDownSetup.exe`)
@@ -1172,29 +1172,29 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Pat Sajak's Lucky Letters (`PatSajaksLuckyLettersSetup.exe`)
 - Pat Sajaks Lucky Letters TV Guide Edition (`PatSajaksLuckyLettersTVGuideEditionSetup.exe`)
 - Pat Sajaks Trivia Gems (`PatSajaksTriviaGemsSetup.exe`)
-- Pathstorm
+- Pathstorm (`PathstormSetup.exe`)
 - Peggle Deluxe (`PeggleDeluxeSetup.exe`)
 - Peggle Nights (`PeggleNightsSetup.exe`)
 - Penguins Journey (`PenguinsJourneySetup.exe`)
 - Penny Puzzle (`PennyPuzzleSetup.exe`)
 - Pet Shop Hop (`PetShopHopSetup.exe`)
-- Phantasia
+- Phantasia (`PhantasiaSetup.exe`)
 - Phantasia 2 (`Phantasia2Setup.exe`)
 - Pharaoh's Curse Gold (`PharaohsCurseGoldSetup.exe`)
 - Phlinx To Go (`PhlinxToGoSetup.exe`)
-- PictoWords
+- PictoWords (`PictoWordsSetup.exe`)
 - Picture Pyramid (`PicturePyramidSetup.exe`)
 - Pictureka Museum Mayhem (`PicturekaMuseumMayhemSetup.exe`)
 - Piggly Christmas Edition (`PigglyChristmasEditionSetup.exe`)
-- Pigllionaire
+- Pigllionaire (`PigllionaireSetup.exe`)
 - Pingo Pango (`PingoPangoSetup.exe`)
-- Pipeline
+- Pipeline (`PipelineSetup.exe`)
 - Pirate Poppers (`PiratePoppersSetup.exe`)
 - Pirate Stories Kit And Ellis (`PirateStoriesKitAndEllisSetup.exe`)
 - Pirates Of The Atlantic (`PiratesOfTheAtlanticSetup.exe`)
 - Pirates of Treasure Island (`PiratesOfTreasureIslandSetup.exe`)
 - Pirates Plunder (`PiratesPlunderSetup.exe`)
-- Pirateville
+- Pirateville (`PiratevilleSetup.exe`)
 - Pizza Chef (`PizzaChefSetup.exe`)
 - Pizza Frenzy (`PizzaFrenzySetup.exe`)
 - Pizza Panic (`PizzaPanicSetup.exe`)
@@ -1202,18 +1202,18 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - PJ Pride Pet Detectives Destination Europe (`PJPridePetDetectivesDestinationEuropeSetup.exe`)
 - Plan It Green (`PlanItGreenSetup.exe`)
 - Plant Tycoon (`PlantTycoonSetup.exe`)
-- Plantasia
+- Plantasia (`PlantasiaSetup.exe`)
 - Plantsvs Zombies (`PlantsvsZombiesSetup.exe`)
-- Platypus
+- Platypus (`PlatypusSetup.exe`)
 - Platypus II (`PlatypusIISetup.exe`)
 - Plumeboom The First Chapter (`PlumeboomTheFirstChapterSetup.exe`)
-- Plummit
+- Plummit (`PlummitSetup.exe`)
 - Pocahontas Princessofthe Powhatan (`PocahontasPrincessofthePowhatanSetup.exe`)
 - Poker Pop (`PokerPopSetup.exe`)
 - Poker Superstars II (`PokerSuperstarsIISetup.exe`)
 - Poker Superstars III (`PokerSuperstarsIIISetup.exe`)
 - Poker Superstars Invitational (`PokerSuperstarsInvitationalSetup.exe`)
-- PopATronic
+- PopATronic (`PopATronicSetup.exe`)
 - Poppit To Go (`PoppitToGoSetup.exe`)
 - Posh Boutique (`PoshBoutiqueSetup.exe`)
 - Posh Boutique2 (`PoshBoutique2Setup.exe`)
@@ -1223,10 +1223,10 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Private Eye Greatest Unsolved Mysteries (`PrivateEyeGreatestUnsolvedMysteriesSetup.exe`)
 - Professor Fizzwizzle (`ProfessorFizzwizzleSetup.exe`)
 - Professor Fizzwizzle And The Molten Mystery (`ProfessorFizzwizzleAndTheMoltenMysterySetup.exe`)
-- Profitville
+- Profitville (`ProfitvilleSetup.exe`)
 - Project Xenoclone (`ProjectXenocloneSetup.exe`)
-- Psychoballs
-- Pulsarius
+- Psychoballs (`PsychoballsSetup.exe`)
+- Pulsarius (`PulsariusSetup.exe`)
 - Puppet Show Mysteryof Joyville (`PuppetShowMysteryofJoyvilleSetup.exe`)
 - Puppy Luv (`PuppyLuvSetup.exe`)
 - Pure Hidden (`PureHiddenSetup.exe`)
@@ -1242,7 +1242,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Puzzle Quest Updated (`PuzzleQuestUpdatedSetup.exe`)
 - Puzzle Solitaire (`PuzzleSolitaireSetup.exe`)
 - Puzzle Word (`PuzzleWordSetup.exe`)
-- PyraCubes
+- PyraCubes (`PyraCubesSetup.exe`)
 
 ## Q (3)
 
@@ -1264,7 +1264,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Ranch Rush (`RanchRushSetup.exe`)
 - Rasputins Curse (`RasputinsCurseSetup.exe`)
 - Reader's Digest Super Word Power (`ReadersDigestSuperWordPowerSetup.exe`)
-- Reaktor
+- Reaktor (`ReaktorSetup.exe`)
 - Real Ball (`RealBallSetup.exe`)
 - Real Crimes Jackthe Ripper (`RealCrimesJacktheRipperSetup.exe`)
 - Real Crimes The Unicorn Killer (`RealCrimesTheUnicornKillerSetup.exe`)
@@ -1272,20 +1272,20 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Real Estate Empire2 (`RealEstateEmpire2Setup.exe`)
 - Real Jigsaw Puzzle (`RealJigsawPuzzleSetup.exe`)
 - Realms Of Gold (`RealmsOfGoldSetup.exe`)
-- Reaxxion
-- Recharge
-- Recyclorama
-- Redisruption
-- Redrum
+- Reaxxion (`ReaxxionSetup.exe`)
+- Recharge (`RechargeSetup.exe`)
+- Recyclorama (`RecycloramaSetup.exe`)
+- Redisruption (`RedisruptionSetup.exe`)
+- Redrum (`RedrumSetup.exe`)
 - Regal Solitaire (`RegalSolitaireSetup.exe`)
-- Remedy
+- Remedy (`RemedySetup.exe`)
 - Restaurant Empire (`RestaurantEmpireSetup.exe`)
 - Restaurant Rush (`RestaurantRushSetup.exe`)
 - Restoring Rhonda (`RestoringRhondaSetup.exe`)
 - Returnof Monte Cristo (`ReturnofMonteCristoSetup.exe`)
 - Rhianna Fordandthe Da Vinci Letter (`RhiannaFordandtheDaVinciLetterSetup.exe`)
-- Rhombis
-- Ricochet
+- Rhombis (`RhombisSetup.exe`)
+- Ricochet (`RicochetSetup.exe`)
 - Ricochet Infinity (`RicochetInfinitySetup.exe`)
 - Ricochet Lost Worlds (`RicochetLostWorldsSetup.exe`)
 - Ricochet Lost Worlds Coke (`RicochetLostWorldsCokeSetup.exe`)
@@ -1293,17 +1293,17 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Righteous Kill (`RighteousKillSetup.exe`)
 - Righteous Kill Revengeofthe Poet Killer (`RighteousKillRevengeofthePoetKillerSetup.exe`)
 - Rikki And Mikki To The Rescue (`RikkiAndMikkiToTheRescueSetup.exe`)
-- Riotball
-- RIP
+- Riotball (`RiotballSetup.exe`)
+- RIP (`RIPSetup.exe`)
 - RIP 3 The Last Hero (`RIP3TheLastHeroSetup.exe`)
 - RIP Strike Back (`RIPStrikeBackSetup.exe`)
-- Risk
+- Risk (`RiskSetup.exe`)
 - Risk II (`RiskIISetup.exe`)
 - Rival Ball Tournament (`RivalBallTournamentSetup.exe`)
 - River Raider II (`RiverRaiderIISetup.exe`)
 - Robbie Unforgettable Adventures (`RobbieUnforgettableAdventuresSetup.exe`)
-- Robbox
-- Roboball
+- Robbox (`RobboxSetup.exe`)
+- Roboball (`RoboballSetup.exe`)
 - Rock Frenzy (`RockFrenzySetup.exe`)
 - Rocket Bowl (`RocketBowlSetup.exe`)
 - Rocket Mania Deluxe (`RocketManiaDeluxeSetup.exe`)
@@ -1313,14 +1313,14 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Romanceof Rome (`RomanceofRomeSetup.exe`)
 - Rotate Mania Deluxe (`RotateManiaDeluxeSetup.exe`)
 - Royal Envoy (`RoyalEnvoySetup.exe`)
-- RSVP
+- RSVP (`RSVPSetup.exe`)
 - Runes Of Avalon 2 (`RunesOfAvalon2Setup.exe`)
-- Runic
+- Runic (`RunicSetup.exe`)
 - Runic One (`RunicOneSetup.exe`)
 
 ## S (173)
 
-- Safari
+- Safari (`SafariSetup.exe`)
 - Safari Island Deluxe (`SafariIslandDeluxeSetup.exe`)
 - Saints & Sinners Bowling (`SaintsAndSinnersBowlingSetup.exe`)
 - Saints And Sinners Bingo (`SaintsAndSinnersBingoSetup.exe`)
@@ -1330,16 +1330,16 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Samantha Swift (`SamanthaSwiftSetup.exe`)
 - Samantha Swiftandthe Golden Touch (`SamanthaSwiftandtheGoldenTouchSetup.exe`)
 - Samantha Swiftandthe Mysteryfrom Atlantis (`SamanthaSwiftandtheMysteryfromAtlantisSetup.exe`)
-- SandScript
+- SandScript (`SandScriptSetup.exe`)
 - Santas Super Friends (`SantasSuperFriendsSetup.exe`)
 - Sarah Maribuandthe Lost World (`SarahMaribuandtheLostWorldSetup.exe`)
-- Satisfashion
+- Satisfashion (`SatisfashionSetup.exe`)
 - Save Our Spirit (`SaveOurSpiritSetup.exe`)
 - Scarabs Of Pharaoh (`ScarabsOfPharaohSetup.exe`)
-- Scavenger
+- Scavenger (`ScavengerSetup.exe`)
 - Science Girls (`ScienceGirlsSetup.exe`)
 - Scrapbook Paige (`ScrapbookPaigeSetup.exe`)
-- Scrubbles
+- Scrubbles (`ScrubblesSetup.exe`)
 - Sea Journey (`SeaJourneySetup.exe`)
 - Sea War2 (`SeaWar2Setup.exe`)
 - Season Match (`SeasonMatchSetup.exe`)
@@ -1348,25 +1348,25 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Secrets Of Great Art (`SecretsOfGreatArtSetup.exe`)
 - Secrets Of Olympus (`SecretsOfOlympusSetup.exe`)
 - Secrets Of The Seas (`SecretsOfTheSeasSetup.exe`)
-- Serpengo
+- Serpengo (`SerpengoSetup.exe`)
 - Sewer Run (`SewerRunSetup.exe`)
 - Shaman Odyssey Tropic Adventure (`ShamanOdysseyTropicAdventureSetup.exe`)
 - Shape Shifter (`ShapeShifterSetup.exe`)
 - Shape Solitaire (`ShapeSolitaireSetup.exe`)
-- Sheeplings
+- Sheeplings (`SheeplingsSetup.exe`)
 - Shoot-n-Roll (`ShootNRollSetup.exe`)
-- Shopmania
+- Shopmania (`ShopmaniaSetup.exe`)
 - Shopping Blocks (`ShoppingBlocksSetup.exe`)
 - Shopping Marathon (`ShoppingMarathonSetup.exe`)
-- Shroomz
+- Shroomz (`ShroomzSetup.exe`)
 - Shutter Island (`ShutterIslandSetup.exe`)
 - Simplz Zoo (`SimplzZooSetup.exe`)
 - SKIPBO Castaway Caper (`SKIPBOCastawayCaperSetup.exe`)
 - Sky Bubbles Deluxe (`SkyBubblesDeluxeSetup.exe`)
 - Sky Kingdoms (`SkyKingdomsSetup.exe`)
 - Sky Taxi (`SkyTaxiSetup.exe`)
-- Slickball
-- Slingo
+- Slickball (`SlickballSetup.exe`)
+- Slingo (`SlingoSetup.exe`)
 - Slingo Casino Pak (`SlingoCasinoPakSetup.exe`)
 - Slingo Mystery Whos Gold (`SlingoMysteryWhosGoldSetup.exe`)
 - Slingo Quest (`SlingoQuestSetup.exe`)
@@ -1390,31 +1390,31 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Snowy Treasure Hunter 2 (`SnowyTreasureHunter2Setup.exe`)
 - Snowy Treasure Hunter 3 (`SnowyTreasureHunter3Setup.exe`)
 - Soda Pipes (`SodaPipesSetup.exe`)
-- Solitaire
+- Solitaire (`SolitaireSetup.exe`)
 - Solitaire 2 (`Solitaire2Setup.exe`)
 - Solitaire Epic (`SolitaireEpicSetup.exe`)
 - Solitaire Pop (`SolitairePopSetup.exe`)
 - Space Skramble (`SpaceSkrambleSetup.exe`)
 - Space Strike (`SpaceStrikeSetup.exe`)
 - Space Taxi 2 (`SpaceTaxi2Setup.exe`)
-- Spacebound
+- Spacebound (`SpaceboundSetup.exe`)
 - Spandex Force (`SpandexForceSetup.exe`)
-- Sparkle
-- Speed
-- Spellagories
-- Spellunker
-- Spiderz
+- Sparkle (`SparkleSetup.exe`)
+- Speed (`SpeedSetup.exe`)
+- Spellagories (`SpellagoriesSetup.exe`)
+- Spellunker (`SpellunkerSetup.exe`)
+- Spiderz (`SpiderzSetup.exe`)
 - Spin Play (`SpinPlaySetup.exe`)
 - Spin Win (`SpinWinSetup.exe`)
 - Spirit Of Wandering The Legend (`SpiritOfWanderingTheLegendSetup.exe`)
-- Splash
+- Splash (`SplashSetup.exe`)
 - Spooky Spirits (`SpookySpiritsSetup.exe`)
-- Sportball
-- Sprill
+- Sportball (`SportballSetup.exe`)
+- Sprill (`SprillSetup.exe`)
 - Sprill Ritchie Adventuresin Time (`SprillRitchieAdventuresinTimeSetup.exe`)
 - Sprill The Mystery Of The Bermuda Triangle (`SprillTheMysteryOfTheBermudaTriangleSetup.exe`)
 - Spring Sprang Sprung (`SpringSprangSprungSetup.exe`)
-- Sproink
+- Sproink (`SproinkSetup.exe`)
 - Sprouts Adventure (`SproutsAdventureSetup.exe`)
 - Spyde Solitaire (`SpydeSolitaireSetup.exe`)
 - Stand O Food (`StandOFoodSetup.exe`)
@@ -1422,9 +1422,9 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Star Defender 2 (`StarDefender2Setup.exe`)
 - Star Defender 3 (`StarDefender3Setup.exe`)
 - Star Defender 4 (`StarDefender4Setup.exe`)
-- Starcrossed
-- Starscape
-- Steam
+- Starcrossed (`StarcrossedSetup.exe`)
+- Starscape (`StarscapeSetup.exe`)
+- Steam (`SteamSetup.exe`)
 - Steam Brigade (`SteamBrigadeSetup.exe`)
 - Steve The Sheriff (`SteveTheSheriffSetup.exe`)
 - Stevethe Sheriff The Caseofthe Missing Thing (`StevetheSheriffTheCaseoftheMissingThingSetup.exe`)
@@ -1437,8 +1437,8 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Strike Ball (`StrikeBallSetup.exe`)
 - Strike Ball 2 (`StrikeBall2Setup.exe`)
 - Strike Ball3 (`StrikeBall3Setup.exe`)
-- Strimko
-- Styrateg
+- Strimko (`StrimkoSetup.exe`)
+- Styrateg (`StyrategSetup.exe`)
 - Subway Scramble (`SubwayScrambleSetup.exe`)
 - Success Story (`SuccessStorySetup.exe`)
 - Sudoku Epic (`SudokuEpicSetup.exe`)
@@ -1480,35 +1480,35 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Super Text Twist (`SuperTextTwistSetup.exe`)
 - Super What Word (`SuperWhatWordSetup.exe`)
 - Super5 Line Slots (`Super5-LineSlotsSetup.exe`)
-- Supercow
+- Supercow (`SupercowSetup.exe`)
 - Superior Save (`SuperiorSaveSetup.exe`)
 - Supermarket Mania (`SupermarketManiaSetup.exe`)
 - Superstar Chefs (`SuperstarChefsSetup.exe`)
 - Sushi Frenzy (`SushiFrenzySetup.exe`)
 - Sushi To Go Express (`SushiToGoExpressSetup.exe`)
 - Suspectsand Clues (`SuspectsandCluesSetup.exe`)
-- Svetlograd
+- Svetlograd (`SvetlogradSetup.exe`)
 - Swap & Fall 2 (`SwapAndFall2Setup.exe`)
-- Swarm
+- Swarm (`SwarmSetup.exe`)
 - Swarm Gold (`SwarmGoldSetup.exe`)
-- Sweetopia
+- Sweetopia (`SweetopiaSetup.exe`)
 - System Mania (`SystemManiaSetup.exe`)
 
 ## T (155)
 
-- Tablut
+- Tablut (`TablutSetup.exe`)
 - Talesof Monkey Island Chapter1 (`TalesofMonkeyIslandChapter1Setup.exe`)
 - Talesof Monkey Island Chapter2 (`TalesofMonkeyIslandChapter2Setup.exe`)
 - Talesof Monkey Island Chapter3 (`TalesofMonkeyIslandChapter3Setup.exe`)
 - Talesof Monkey Island Chapter4 (`TalesofMonkeyIslandChapter4Setup.exe`)
 - Talesof Monkey Island Chapter5 (`TalesofMonkeyIslandChapter5Setup.exe`)
-- Talismania
+- Talismania (`TalismaniaSetup.exe`)
 - Tank O Box (`TankOBoxSetup.exe`)
 - Tanks Evolution (`TanksEvolutionSetup.exe`)
 - Tapa Jam (`TapaJamSetup.exe`)
-- Taskforce
+- Taskforce (`TaskforceSetup.exe`)
 - Tasty Planet (`TastyPlanetSetup.exe`)
-- TeamUp
+- TeamUp (`TeamUpSetup.exe`)
 - Teddy Factory (`TeddyFactorySetup.exe`)
 - Telltale Texas Hold'Em (`TelltaleTexasHoldEmSetup.exe`)
 - Temple of Bricks (`TempleOfBricksSetup.exe`)
@@ -1583,13 +1583,13 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Theseusandthe Minotaur (`TheseusandtheMinotaurSetup.exe`)
 - Think Tanks (`ThinkTanksSetup.exe`)
 - Thomas And The Magical Words (`ThomasAndTheMagicalWordsSetup.exe`)
-- ThwartPoker
+- ThwartPoker (`ThwartPokerSetup.exe`)
 - Tic A Tac Royale (`TicATacRoyaleSetup.exe`)
 - Tiks Texas Hold Em (`TiksTexasHoldEmSetup.exe`)
 - Tile Quest (`TileQuestSetup.exe`)
 - Time Breaker (`TimeBreakerSetup.exe`)
 - Time Stand Still (`TimeStandStillSetup.exe`)
-- Timeline
+- Timeline (`TimelineSetup.exe`)
 - Tinos Fruit Stand (`TinosFruitStandSetup.exe`)
 - Tiny Worlds (`TinyWorldsSetup.exe`)
 - Titan Attacks (`TitanAttacksSetup.exe`)
@@ -1622,18 +1622,18 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Treasures Of The Ancient Cavern (`TreasuresOfTheAncientCavernSetup.exe`)
 - Treasures Of The Deep (`TreasuresOfTheDeepSetup.exe`)
 - Trickor Treat Smash (`TrickorTreatSmashSetup.exe`)
-- Trijinx
+- Trijinx (`TrijinxSetup.exe`)
 - TriPeaks Solitaire To Go (`TriPeaksSolitaireToGoSetup.exe`)
-- Triptych
+- Triptych (`TriptychSetup.exe`)
 - Trivia Machine (`TriviaMachineSetup.exe`)
 - Trivial Pursuit Bring On The90s (`TrivialPursuitBringOnThe90sSetup.exe`)
 - Trivial Pursuit Silver Screen Edition (`TrivialPursuitSilverScreenEditionSetup.exe`)
 - TriviaNet Challenge (`TriviaNetChallengeSetup.exe`)
-- Troll
-- Tropicabana
+- Troll (`TrollSetup.exe`)
+- Tropicabana (`TropicabanaSetup.exe`)
 - Tropical Farm (`TropicalFarmSetup.exe`)
 - Tropico Jong (`TropicoJongSetup.exe`)
-- Tropix
+- Tropix (`TropixSetup.exe`)
 - Tropix 2 Quest For The Golden Banana (`Tropix2QuestForTheGoldenBananaSetup.exe`)
 - Truffle Tray (`TruffleTraySetup.exe`)
 - Tube Twist (`TubeTwistSetup.exe`)
@@ -1643,18 +1643,18 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Turbo Gems (`TurboGemsSetup.exe`)
 - Turbo Pizza (`TurboPizzaSetup.exe`)
 - Turbo Subs (`TurboSubsSetup.exe`)
-- Turtix
+- Turtix (`TurtixSetup.exe`)
 - Turtix Rescue Adventure (`TurtixRescueAdventureSetup.exe`)
 - Turtle Bay (`TurtleBaySetup.exe`)
 - Turtle Odyssey (`TurtleOdysseySetup.exe`)
 - Turtle Odyssey 2 (`TurtleOdyssey2Setup.exe`)
-- Twinxoid
-- Twistingo
+- Twinxoid (`TwinxoidSetup.exe`)
+- Twistingo (`TwistingoSetup.exe`)
 - Twisty Tracks (`TwistyTracksSetup.exe`)
 
 ## U (4)
 
-- Ultratron
+- Ultratron (`UltratronSetup.exe`)
 - Universal Boxing Manager (`UniversalBoxingManagerSetup.exe`)
 - UNO Undercover (`UNOUndercoverSetup.exe`)
 - Unwell Mel (`UnwellMelSetup.exe`)
@@ -1665,16 +1665,16 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Valentines Gift (`ValentinesGiftSetup.exe`)
 - Valerie Porterandthe Scarlet Scandal (`ValeriePorterandtheScarletScandalSetup.exe`)
 - Vampire Saga Pandoras Box (`VampireSagaPandorasBoxSetup.exe`)
-- Vampireville
+- Vampireville (`VampirevilleSetup.exe`)
 - Vanillaand Chocolate (`VanillaandChocolateSetup.exe`)
-- Varmintz
+- Varmintz (`VarmintzSetup.exe`)
 - Varmintz Deluxe (`VarmintzDeluxeSetup.exe`)
-- Venice
+- Venice (`VeniceSetup.exe`)
 - Venice Mystery (`VeniceMysterySetup.exe`)
 - Venture Arctic (`VentureArcticSetup.exe`)
 - Veronica Rivers Orderof Conspiracy (`VeronicaRiversOrderofConspiracySetup.exe`)
 - Veronica Rivers Portalstothe Unkown (`VeronicaRiversPortalstotheUnkownSetup.exe`)
-- Virble
+- Virble (`VirbleSetup.exe`)
 - Virticon Millennium (`VirticonMillenniumSetup.exe`)
 - Virtual City (`VirtualCitySetup.exe`)
 - Virtual Families (`VirtualFamiliesSetup.exe`)
@@ -1696,7 +1696,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Wandering Willows (`WanderingWillowsSetup.exe`)
 - War Chess (`WarChessSetup.exe`)
 - War On Folvos (`WarOnFolvosSetup.exe`)
-- Warblade
+- Warblade (`WarbladeSetup.exe`)
 - Warkanoid 2 (`Warkanoid2Setup.exe`)
 - Water Bugs (`WaterBugsSetup.exe`)
 - Waterscape Solitaire American Falls (`WaterscapeSolitaireAmericanFallsSetup.exe`)
@@ -1705,7 +1705,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Wedding Dash 2 (`WeddingDash2Setup.exe`)
 - Wedding Dash Ready Aim Love (`WeddingDashReadyAimLoveSetup.exe`)
 - Weekend Party Fashion Show (`WeekendPartyFashionShowSetup.exe`)
-- Westward
+- Westward (`WestwardSetup.exe`)
 - Westward II Heroes Of The Frontier (`WestwardIIHeroesOfTheFrontierSetup.exe`)
 - Westward III Gold Rush (`WestwardIIIGoldRushSetup.exe`)
 - Westward IV All Aboard (`WestwardIVAllAboardSetup.exe`)
@@ -1718,16 +1718,16 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Wild Words (`WildWordsSetup.exe`)
 - Wildlife Tycoon Venture Africa (`WildlifeTycoonVentureAfricaSetup.exe`)
 - Winemaker Extraordinaire (`WinemakerExtraordinaireSetup.exe`)
-- Wisegal
+- Wisegal (`WisegalSetup.exe`)
 - Wizards Hat (`WizardsHatSetup.exe`)
 - Wobbly Bobbly (`WobblyBobblySetup.exe`)
 - Womens Murder Club Death In Scarlet (`WomensMurderClubDeathInScarletSetup.exe`)
-- Wonderburg
-- Wonderland
+- Wonderburg (`WonderburgSetup.exe`)
+- Wonderland (`WonderlandSetup.exe`)
 - Wonderland Adventures (`WonderlandAdventuresSetup.exe`)
 - Wonderland Adventures Mysteriesof Fire Island (`WonderlandAdventuresMysteriesofFireIslandSetup.exe`)
 - Wonderland Secret Worlds (`WonderlandSecretWorldsSetup.exe`)
-- Wonderlines
+- Wonderlines (`WonderlinesSetup.exe`)
 - Word Blitz (`WordBlitzSetup.exe`)
 - Word Craft (`WordCraftSetup.exe`)
 - Word Emperor (`WordEmperorSetup.exe`)
@@ -1742,7 +1742,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Word Whacky (`WordWhackySetup.exe`)
 - Word Whomp To Go (`WordWhompToGoSetup.exe`)
 - Word Wizard (`WordWizardSetup.exe`)
-- WordJong
+- WordJong (`WordJongSetup.exe`)
 - World Class Solitaire (`WorldClassSolitaireSetup.exe`)
 - World Mosaics (`WorldMosaicsSetup.exe`)
 - World Mosaics2 (`WorldMosaics2Setup.exe`)
@@ -1751,14 +1751,14 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 ## X (5)
 
 - Xango Tango (`XangoTangoSetup.exe`)
-- XAvenger
+- XAvenger (`XAvengerSetup.exe`)
 - Xeno Assault II (`XenoAssaultIISetup.exe`)
 - Xmas Bonus (`XmasBonusSetup.exe`)
-- Xplorer
+- Xplorer (`XplorerSetup.exe`)
 
 ## Y (12)
 
-- Yahtzee
+- Yahtzee (`YahtzeeSetup.exe`)
 - Yahtzee Texas Hold Em (`YahtzeeTexasHoldEmSetup.exe`)
 - Yard Sale Junkie (`YardSaleJunkieSetup.exe`)
 - Youda Camper (`YoudaCamperSetup.exe`)
@@ -1769,7 +1769,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Youda Safari (`YoudaSafariSetup.exe`)
 - Youda Sushi Chef (`YoudaSushiChefSetup.exe`)
 - Yummy Drink Factory (`YummyDrinkFactorySetup.exe`)
-- Yumsters
+- Yumsters (`YumstersSetup.exe`)
 
 ## Z (22)
 
@@ -1778,10 +1778,10 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - Zambyandthe Mystical Crystals (`ZambyandtheMysticalCrystalsSetup.exe`)
 - Zen Fashion (`ZenFashionSetup.exe`)
 - Zen Puzzle Garden (`ZenPuzzleGardenSetup.exe`)
-- Zenerchi
-- ZenGems
+- Zenerchi (`ZenerchiSetup.exe`)
+- ZenGems (`ZenGemsSetup.exe`)
 - Zero Count (`ZeroCountSetup.exe`)
-- Zodiac
+- Zodiac (`ZodiacSetup.exe`)
 - Zodiac Tower (`ZodiacTowerSetup.exe`)
 - Zombie Bowl O Rama (`ZombieBowlORamaSetup.exe`)
 - Zombie Shooter (`ZombieShooterSetup.exe`)
@@ -1791,7 +1791,7 @@ Titles below are derived from flat installer filenames by stripping `Setup.exe`,
 - ZoomBook The Temple Of The Sun (`ZoomBookTheTempleOfTheSunSetup.exe`)
 - Zulu Gems (`ZuluGemsSetup.exe`)
 - Zulus Zoo (`ZulusZooSetup.exe`)
-- Zuma
+- Zuma (`ZumaSetup.exe`)
 - Zuma Deluxe (`ZumaDeluxeSetup.exe`)
 - Zumas Revenge Adventure (`ZumasRevengeAdventureSetup.exe`)
-- Zzed
+- Zzed (`ZzedSetup.exe`)

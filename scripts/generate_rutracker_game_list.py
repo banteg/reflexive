@@ -222,10 +222,7 @@ def render_markdown(report: dict[str, object], source_root: Path, torrent_path: 
         lines.append(f"## {group} ({len(entries)})")
         lines.append("")
         for entry in entries:
-            if entry["display_title"] == entry["file_name"].removesuffix("Setup.exe"):
-                lines.append(f"- {entry['display_title']}")
-            else:
-                lines.append(f"- {entry['display_title']} (`{entry['file_name']}`)")
+            lines.append(f"- {entry['display_title']} (`{entry['file_name']}`)")
         lines.append("")
 
     return "\n".join(lines).rstrip() + "\n"
