@@ -1,1 +1,4 @@
-artifacts/
+artifacts/*
+!artifacts/sources/
+artifacts/sources/*
+!artifacts/sources/reflexive_downloads

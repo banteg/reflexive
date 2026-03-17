@@ -1,9 +1,16 @@
-# Repack Attribution
+# Archive.org Repack
+
+## Source Record
+
+- Source id: `archive_org_repack`
+- Repo-local path: `artifacts/archive/reflexivearcadegamescollection`
+- Source type: mirror of a third-party repack set
+- Status: analyzed
+
+## Attribution
 
 These installers are not generic "Smart Install Maker" packages only. Smart Install Maker is the
 packaging tool. The repack attribution is narrower.
-
-## Attribution
 
 The `Reflexive Arcade <letter>.exe` bundles in this collection are consistent with a single
 unofficial third-party repack set attributed inside the installers to:
@@ -11,7 +18,7 @@ unofficial third-party repack set attributed inside the installers to:
 - `Florian`
 - `www.TopBancuri.ro`
 
-## Local evidence
+## Local Evidence
 
 Across the bundles inspected locally, the Smart Install Maker metadata is consistent:
 
@@ -24,7 +31,7 @@ The outer installer version info is branded as `Reflexive Arcade`, but that bran
 the repack wrapper and should not be treated as proof that the installers are official publisher
 releases.
 
-## Unofficial modifications
+## Unofficial Modifications
 
 The extracted installs include paired launcher files such as `Ingenious.exe` and
 `Ingenious.exe.BAK`. In the locally extracted `Reflexive Arcade I` bundle, the launcher and its
@@ -34,7 +41,7 @@ seen in earlier reverse-engineering work on these same repacks.
 That is consistent with pre-cracked third-party redistributions, not original Reflexive
 installers.
 
-## Distribution trail
+## Distribution Trail
 
 The installer metadata stamps the bundles with `By Florian 07.12.2008`.
 
