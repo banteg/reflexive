@@ -5,14 +5,12 @@ Executed against `artifacts/extracted/rutracker` in `probe` mode.
 ## Summary
 
 - Effective wrapper roots scanned: 1697
-- Successful roots: 1660
-- Not yet decryptable roots: 37
+- Successful roots: 1661
+- Not yet decryptable roots: 36
 - Reported unsupported: 36
-- Execution errors: 1
+- Execution errors: 0
 - Successful `direct` roots: 49
-- Successful `static` roots: 1611
-- Error roots by predicted strategy:
-  - `static`: 1
+- Successful `static` roots: 1612
 
 ## Decryptable Roots
 
@@ -1255,6 +1253,7 @@ Executed against `artifacts/extracted/rutracker` in `probe` mode.
 | `Scavenger` | `static` | `Scavenger.exe` |
 | `Science Girls` | `static` | `ScienceGirls!-Reflexive.exe` |
 | `Scrapbook Paige` | `static` | `Scrapbook Paige.exe` |
+| `Scrubbles` | `static` | `Scrubbles.exe` |
 | `Sea Journey` | `static` | `SeaJourney.exe` |
 | `Season Match` | `static` | `_SeasonMatch.exe` |
 | `Season Match 2` | `static` | `_SeasonMatch2.exe` |
@@ -1724,5 +1723,3 @@ Executed against `artifacts/extracted/rutracker` in `probe` mode.
 
 | Root | Strategy | Error |
 | --- | --- | --- |
-| `Scrubbles` | `static` | `unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/rutracker/Scrubbles/ReflexiveArcade/RAW_002.wdt` |
-

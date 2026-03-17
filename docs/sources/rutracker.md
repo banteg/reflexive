@@ -45,14 +45,15 @@ What is confirmed so far:
 - Full source sweep: `uv run scripts/generate_reflexive_unwrapper_sweep.py --extracted-root artifacts/extracted/rutracker --output-root artifacts/unwrapped/rutracker --markdown-out docs/sources/rutracker_unwrapper_sweep.md --json-out docs/sources/rutracker_unwrapper_sweep.json`
 - Current sweep summary:
   - `1697` effective wrapper roots scanned
-  - `1660` successful roots
-  - `1611` successful `static` roots
+  - `1661` successful roots
+  - `1612` successful `static` roots
   - `49` successful `direct` roots
   - `36` unsupported roots
-  - `1` remaining execution error: `Scrubbles`
-- The original installer family is now statically handled by deriving the `RAW_002` seed from a
-  CRC32 chain over the wrapper EXE PE sections, `RAW_003`, and the four wrapper button/background
-  asset sizes. The older archive/repack family still uses the existing additive-size seed path.
+  - `0` remaining execution errors
+- The original installer family is now statically handled by two CRC32 seed modes:
+  - wrapper EXE PE sections + `RAW_003` PE sections + the four wrapper asset sizes
+  - wrapper EXE full bytes + `Background.jpg` + `button_*.jpg` + `RAW_003` full bytes
+- The older archive/repack family still uses the existing additive-size seed path.
 
 ## Attribution
 
@@ -100,7 +101,6 @@ Confirmed from the local torrent metadata:
 
 What is not confirmed yet:
 
-- the remaining `Scrubbles` `RAW_002` seed path
 - whether the unsupported `dll_only_with_application_dat` and integrated `other` layouts can be
   handled statically, or need a shim/patch strategy instead
 
@@ -168,14 +168,12 @@ tail of wrapper layouts that are still unsupported after extraction:
 
 - `36` unsupported roots, dominated by integrated launchers and `dll_only_with_application_dat`
   layouts
-- `1` remaining static miss, `Scrubbles`, whose original-installer `RAW_002` seed path does not yet
-  match the known original or repack families
+- no remaining execution errors in the current static sweep
 
 ## Next Steps
 
 - reduce the remaining `36` unsupported roots, starting with integrated launchers and
   `dll_only_with_application_dat` layouts
-- reverse `Scrubbles` as the only remaining static error in the rutracker sweep
 - compare unsupported rutracker layouts against the existing archive-side unsupported set to decide
   whether one shared shim strategy can cover both sources
 - sample non-overlap families to see which third-party portal installers still land in

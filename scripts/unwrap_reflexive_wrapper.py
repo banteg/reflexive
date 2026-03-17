@@ -433,11 +433,10 @@ def crc32_pe_sections(path: Path, crc: int) -> int:
     return crc
 
 
-def original_seed_material(
-    config_path: Path,
+def original_dependency_paths(
     wrapper_root: Path,
     wrapper_binary: Path | None,
-) -> SeedMaterial | None:
+) -> tuple[Path, Path, tuple[Path, ...]] | None:
     if wrapper_binary is None or not wrapper_binary.is_file():
         return None
 
@@ -459,6 +458,20 @@ def original_seed_material(
             return None
         image_paths.append(image_path)
 
+    return wrapper_binary, raw3_path, tuple(image_paths)
+
+
+def original_seed_material(
+    config_path: Path,
+    wrapper_root: Path,
+    wrapper_binary: Path | None,
+) -> SeedMaterial | None:
+    dependency_paths = original_dependency_paths(wrapper_root, wrapper_binary)
+    if dependency_paths is None:
+        return None
+
+    wrapper_binary, raw3_path, image_paths = dependency_paths
+
     crc = 0
     crc = crc32_pe_sections(wrapper_binary, crc)
     crc = crc32_pe_sections(raw3_path, crc)
@@ -477,6 +490,32 @@ def original_seed_material(
     )
 
 
+def original_full_file_seed_material(
+    config_path: Path,
+    wrapper_root: Path,
+    wrapper_binary: Path | None,
+) -> SeedMaterial | None:
+    dependency_paths = original_dependency_paths(wrapper_root, wrapper_binary)
+    if dependency_paths is None:
+        return None
+
+    wrapper_binary, raw3_path, image_paths = dependency_paths
+    crc = 0
+    for dependency_path in (wrapper_binary, *image_paths, raw3_path):
+        crc = zlib.crc32(dependency_path.read_bytes(), crc)
+
+    decrypted = decrypt_with_stream(config_path.read_bytes(), crc)
+    if not looks_like_decrypted_config(decrypted):
+        return None
+
+    return SeedMaterial(
+        seed1=crc,
+        dependency_paths=(wrapper_binary, raw3_path, *image_paths),
+        decrypted_config=decrypted,
+        method="original_crc32_full_files",
+    )
+
+
 def derive_seed_material(
     config_path: Path,
     child_payload: Path,
@@ -489,6 +528,9 @@ def derive_seed_material(
     original_candidate = original_seed_material(config_path, wrapper_root, wrapper_binary)
     if original_candidate is not None:
         return original_candidate
+    original_full_file_candidate = original_full_file_seed_material(config_path, wrapper_root, wrapper_binary)
+    if original_full_file_candidate is not None:
+        return original_full_file_candidate
 
     candidate_pools: list[list[Path]] = []
     primary_candidates = [path for path in candidates if path.name.lower() in PRIMARY_SEED_DEPENDENCY_NAMES]

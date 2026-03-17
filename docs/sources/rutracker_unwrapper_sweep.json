@@ -4,10 +4,10 @@
   "mode": "probe",
   "summary": {
     "effective_root_count": 1697,
-    "ok_count": 1660,
-    "not_decryptable_count": 37,
+    "ok_count": 1661,
+    "not_decryptable_count": 36,
     "unsupported_count": 36,
-    "error_count": 1,
+    "error_count": 0,
     "ok_by_strategy": [
       {
         "strategy": "direct",
@@ -15,15 +15,10 @@
       },
       {
         "strategy": "static",
-        "count": 1611
+        "count": 1612
       }
     ],
-    "error_by_strategy": [
-      {
-        "strategy": "static",
-        "count": 1
-      }
-    ]
+    "error_by_strategy": []
   },
   "ok_roots": [
     {
@@ -6212,6 +6207,11 @@
       "output_executable": "Scrapbook Paige.exe"
     },
     {
+      "root": "Scrubbles",
+      "strategy": "static",
+      "output_executable": "Scrubbles.exe"
+    },
+    {
       "root": "Sea Journey",
       "strategy": "static",
       "output_executable": "SeaJourney.exe"
@@ -8509,11 +8509,5 @@
       "reason": "no safe unwrap strategy for other"
     }
   ],
-  "error_roots": [
-    {
-      "root": "Scrubbles",
-      "strategy": "static",
-      "error": "unable to derive RAW_002 seed from /Users/banteg/dev/banteg/reflexive/artifacts/extracted/rutracker/Scrubbles/ReflexiveArcade/RAW_002.wdt"
-    }
-  ]
+  "error_roots": []
 }
