@@ -1,7 +1,7 @@
-# Archive.org Repack Game List
+# Archive.org Game List
 
-- Source id: `archive_org_repack`
-- Generated from the extracted top-level game directories under `artifacts/extracted/archive_org_repack`.
+- Source id: `archive`
+- Generated from the extracted top-level game directories under `artifacts/extracted/archive`.
 
 - Archive bundles: 26
 - Extracted game directories: 1086

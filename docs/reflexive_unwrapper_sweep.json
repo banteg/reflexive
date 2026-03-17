@@ -1,6 +1,6 @@
 {
-  "generated_from": "artifacts/extracted/archive_org_repack",
-  "output_root": "artifacts/unwrapped/archive_org_repack",
+  "generated_from": "artifacts/extracted/archive",
+  "output_root": "artifacts/unwrapped/archive",
   "mode": "probe",
   "summary": {
     "effective_root_count": 1083,

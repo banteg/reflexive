@@ -19,7 +19,7 @@ def default_extracted_root() -> Path:
 
 
 def default_output_path() -> Path:
-    return repo_root() / "docs" / "game_lists" / "archive_org_repack.md"
+    return repo_root() / "docs" / "game_lists" / "archive.md"
 
 
 def default_source_id() -> str:

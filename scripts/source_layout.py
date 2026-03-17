@@ -3,10 +3,10 @@ from __future__ import annotations
 from pathlib import Path
 
 
-DEFAULT_SOURCE_ID = "archive_org_repack"
+DEFAULT_SOURCE_ID = "archive"
 SOURCE_LABELS = {
-    "archive_org_repack": "Archive.org Repack",
-    "reflexive_downloads": "Reflexive Downloads",
+    "archive": "Archive.org",
+    "rutracker": "RuTracker",
 }
 
 
@@ -34,8 +34,8 @@ def infer_source_id_from_installer_path(installer_path: Path) -> str:
     path = installer_path.resolve()
     repo = repo_root()
     candidates = {
-        repo / "artifacts" / "archive" / "reflexivearcadegamescollection": "archive_org_repack",
-        repo / "artifacts" / "sources" / "reflexive_downloads": "reflexive_downloads",
+        repo / "artifacts" / "archive" / "reflexivearcadegamescollection": "archive",
+        repo / "artifacts" / "sources" / "rutracker": "rutracker",
     }
 
     for root, source_id in candidates.items():

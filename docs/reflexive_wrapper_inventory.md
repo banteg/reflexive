@@ -1,6 +1,6 @@
 # Reflexive Wrapper Inventory
 
-Generated from wrapper roots discovered under `artifacts/extracted/archive_org_repack`.
+Generated from wrapper roots discovered under `artifacts/extracted/archive`.
 
 - Wrapper roots: 1084
 - `ReflexiveArcade.dll` files: 1084 total / 1084 unique full SHA-256

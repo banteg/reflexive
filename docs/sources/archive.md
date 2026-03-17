@@ -1,14 +1,14 @@
-# Archive.org Repack
+# Archive
 
 ## Source Record
 
-- Source id: `archive_org_repack`
+- Source id: `archive`
 - Repo-local path: `artifacts/archive/reflexivearcadegamescollection`
 - Source type: mirror of a third-party repack set
 - Status: analyzed
-- Extracted root: `artifacts/extracted/archive_org_repack`
-- Unwrapped root: `artifacts/unwrapped/archive_org_repack`
-- Game list: `docs/game_lists/archive_org_repack.md`
+- Extracted root: `artifacts/extracted/archive`
+- Unwrapped root: `artifacts/unwrapped/archive`
+- Game list: `docs/game_lists/archive.md`
 
 ## Attribution
 

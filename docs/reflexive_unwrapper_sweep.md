@@ -1,6 +1,6 @@
 # Reflexive Unwrapper Sweep
 
-Executed against `artifacts/extracted/archive_org_repack` in `probe` mode.
+Executed against `artifacts/extracted/archive` in `probe` mode.
 
 ## Summary
 

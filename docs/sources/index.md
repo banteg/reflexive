@@ -11,12 +11,12 @@ This project now tracks external inputs as named sources. Each source gets:
 
 | Source | Repo-local path | Status | Notes |
 | --- | --- | --- | --- |
-| `archive_org_repack` | `artifacts/archive/reflexivearcadegamescollection` | analyzed | Unofficial 2008 repack mirror of the `Reflexive Arcade Games Collection` bundles. |
+| `archive` | `artifacts/archive/reflexivearcadegamescollection` | analyzed | Unofficial 2008 repack mirror of the `Reflexive Arcade Games Collection` bundles. |
 | `rutracker_patches` | `artifacts/rutracker/patches` | analyzed | Auxiliary patch/reference corpus used for wrapper build attribution and historical crack context. |
-| `reflexive_downloads` | `artifacts/sources/reflexive_downloads` | registered | New source that likely contains original installers; current environment can see the root path but cannot enumerate contents yet. |
+| `rutracker` | `artifacts/sources/rutracker` | registered | New primary source linked to the RuTracker anthology release and local torrent copy. |
 
 ## Notes
 
-- [archive_org_repack.md](archive_org_repack.md)
+- [archive.md](archive.md)
 - [rutracker_patches.md](rutracker_patches.md)
-- [reflexive_downloads.md](reflexive_downloads.md)
+- [rutracker.md](rutracker.md)
