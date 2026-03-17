@@ -36,6 +36,9 @@ What is confirmed so far:
 
 - Single installer: `uv run scripts/extract_rutracker_reflexive_installer.py artifacts/sources/rutracker/10DaysUnderTheSeaSetup.exe`
 - Full source: `uv run scripts/extract_rutracker_reflexive_installer.py --all`
+- Single installer direct to unwrapped: `uv run scripts/extract_rutracker_reflexive_installer.py --unwrap artifacts/sources/rutracker/10DaysUnderTheSeaSetup.exe`
+- Full source direct to unwrapped: `uv run scripts/extract_rutracker_reflexive_installer.py --all --unwrap`
+- Keep the extracted tree while unwrapping: add `--keep-extracted`
 - The custom extractor strips the Reflexive `ZipLite` wrapper, recovers the embedded Inno Setup
   installer, and then delegates to `innoextract` for the inner payload.
 

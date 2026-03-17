@@ -14,6 +14,8 @@
 
 - Single installer: `uv run scripts/extract_reflexive_smart_installer.py artifacts/sources/archive/Reflexive\ Arcade\ A.exe`
 - Full source: `uv run scripts/extract_reflexive_smart_installer.py --all`
+- Single installer direct to unwrapped: `uv run scripts/extract_reflexive_smart_installer.py --unwrap artifacts/sources/archive/Reflexive\ Arcade\ A.exe`
+- Keep the extracted tree while unwrapping: add `--keep-extracted`
 - Compatibility wrapper: `./scripts/extract_all_reflexive_smart_installers.sh`
 
 ## Attribution
