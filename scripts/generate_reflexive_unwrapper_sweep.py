@@ -148,8 +148,7 @@ def build_report(extracted_root: Path, output_root: Path, force: bool, probe_onl
         predicted = module.choose_strategy(record, wrapper_root)
         destination_root = output_root / relative_root
 
-        if index == 1 or index % 50 == 0 or index == total:
-            print(f"[{index}/{total}] {relative_root}")
+        print(f"[{index}/{total}] {relative_root}")
 
         try:
             if probe_only:
