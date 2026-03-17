@@ -426,11 +426,14 @@ def locate_named_file(root: Path, names: Iterable[str]) -> Path | None:
 def crc32_pe_sections(path: Path, crc: int) -> int:
     data = path.read_bytes()
     pe = pefile.PE(str(path), fast_load=True)
-    for section in pe.sections:
-        start = int(section.PointerToRawData)
-        size = int(section.SizeOfRawData)
-        crc = zlib.crc32(data[start : start + size], crc)
-    return crc
+    try:
+        for section in pe.sections:
+            start = int(section.PointerToRawData)
+            size = int(section.SizeOfRawData)
+            crc = zlib.crc32(data[start : start + size], crc)
+        return crc
+    finally:
+        pe.close()
 
 
 def original_dependency_paths(
@@ -635,7 +638,10 @@ def decrypt_empty_config_child(strategy: Strategy) -> tuple[bytes, dict[str, Any
 
     child_bytes = bytearray(strategy.child_payload.read_bytes())
     pe = pefile.PE(data=bytes(child_bytes), fast_load=True)
-    region_start, region_length = native_encrypted_region(pe, False)
+    try:
+        region_start, region_length = native_encrypted_region(pe, False)
+    finally:
+        pe.close()
     decrypted_region = decrypt_with_stream(bytes(child_bytes[region_start : region_start + region_length]), 0)
     if not looks_like_native_entrypoint(decrypted_region[:64]):
         raise RuntimeError(f"empty RAW_002 fallback did not yield a plausible entrypoint for {strategy.child_payload}")
@@ -669,10 +675,15 @@ def decrypt_static_child(wrapper_root: Path, strategy: Strategy) -> tuple[bytes,
 
     child_bytes = bytearray(strategy.child_payload.read_bytes())
     pe = pefile.PE(data=bytes(child_bytes), fast_load=True)
-    if config_flag(config, "Is .NET Executable"):
-        region_start, region_length = dotnet_encrypted_region(pe)
-    else:
-        region_start, region_length = native_encrypted_region(pe, config_flag(config, "Game Needs Short Fixed Encryption"))
+    try:
+        if config_flag(config, "Is .NET Executable"):
+            region_start, region_length = dotnet_encrypted_region(pe)
+        else:
+            region_start, region_length = native_encrypted_region(
+                pe, config_flag(config, "Game Needs Short Fixed Encryption")
+            )
+    finally:
+        pe.close()
     encrypted_config = strategy.config_path.read_bytes()
     seed2 = derive_seed2(encrypted_config, config)
     decrypted_region = decrypt_with_stream(bytes(child_bytes[region_start : region_start + region_length]), seed2)

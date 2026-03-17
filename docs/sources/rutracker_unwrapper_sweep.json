@@ -1,6 +1,6 @@
 {
   "generated_from": "artifacts/extracted/rutracker",
-  "output_root": "/private/tmp/reflexive_unwrapped_rutracker_probe",
+  "output_root": "artifacts/unwrapped/rutracker",
   "mode": "probe",
   "summary": {
     "effective_root_count": 1697,
