@@ -5,8 +5,9 @@
 - Source id: `rutracker`
 - Repo-local path: `artifacts/sources/rutracker`
 - Original path: `/Users/banteg/Downloads/Reflexive`
-- Source type: suspected original installer corpus
-- Status: registered, pending readable access
+- Repo-local torrent: `artifacts/rutracker-3687027.torrent`
+- Source type: torrent-backed installer corpus
+- Status: manifest parsed, directory intake still blocked
 - Planned extracted root: `artifacts/extracted/rutracker`
 - Planned unwrapped root: `artifacts/unwrapped/rutracker`
 - Game list: `docs/game_lists/rutracker.md`
@@ -21,16 +22,9 @@ What is confirmed so far:
 
 - `/Users/banteg/Downloads/Reflexive` exists and is a directory.
 - A repo-local symlink at `artifacts/sources/rutracker` points to that location.
+- The repo-local torrent copy at `artifacts/rutracker-3687027.torrent` is readable and parses cleanly.
 - The current process still cannot enumerate the directory contents. Both shell `ls` and Python
   `Path.iterdir()` fail with `Operation not permitted`.
-
-What is not confirmed yet:
-
-- file count
-- filename scheme
-- installer formats
-- publisher signatures or PE version metadata
-- overlap or divergence relative to the `archive` source
 
 ## Attribution
 
@@ -58,25 +52,46 @@ The visible release metadata on that page states:
 
 There is also a local `.torrent` file whose name matches that thread id:
 
-- `/Users/banteg/Downloads/[DL] [Антология] Игры от Reflexive Entertainment [L] [ENG ENG] (2010, Arcade) [rutracker-3687027].torrent`
+- `/Users/banteg/dev/banteg/reflexive/artifacts/rutracker-3687027.torrent`
 
-What is confirmed locally about that file:
+Confirmed from the local torrent metadata:
 
-- it exists
-- its size is `169865` bytes
-- the current process cannot read its contents because of the same macOS `Downloads` permission
-  boundary affecting the installer directory itself
+- torrent `name`: `Reflexive`
+- comment: `https://rutracker.org/forum/viewtopic.php?t=3687027`
+- announce URL: `http://bt2.t-ru.org/ann`
+- announce list includes `http://bt2.t-ru.org/ann` and `http://retracker.local/announce`
+- info hash: `5DDC17FA07475962A3BCA35E3F145E14ADABD644`
+- created by: `qBittorrent v5.1.4`
+- torrent creation date: `2026-02-12T20:32:41Z`
+- file count: `1698`
+- total size: `64259348595` bytes
+- payload makeup: `1696` `.exe` files, `1` `.7z`, `1` `.par2`
+- file layout is flat rather than nested under subdirectories
+- installer naming is consistent with titles like `10DaysUnderTheSeaSetup.exe`, `4ElementsSetup.exe`,
+  `AbraAcademySetup.exe`, and `20000LeaguesUndertheSeaSetup.exe`
+
+What is not confirmed yet:
+
+- whether the files currently present in `/Users/banteg/Downloads/Reflexive` match the torrent
+  manifest exactly
+- installer technologies across the corpus
+- publisher signatures or PE version metadata
+- overlap or divergence relative to the `archive` source
 
 ## Working Implications
 
-The source should be treated as registered but not yet ingested. The symlink gives the repo a
-stable local path for future scripts and notes, but it does not bypass macOS privacy controls on
-`Downloads`.
+This source is no longer just a placeholder. The torrent manifest confirms a much larger flat
+installer corpus than the `archive` repack source and strongly suggests mostly original
+`*Setup.exe` installers rather than bundled repack volumes.
+
+The remaining blocker is only the live directory intake. The symlink gives the repo a stable local
+path for future scripts and notes, but it does not bypass macOS privacy controls on `Downloads`.
 
 ## Next Steps Once Readable
 
 - inventory filenames, extensions, and hashes
-- compare title coverage against the repack bundles and extracted game list
+- compare the live directory against the confirmed torrent manifest
+- compare title coverage against the `archive` source and extracted game list
 - classify installer technologies such as MSI, Inno Setup, InstallShield, NSIS, or custom
   Reflexive stubs
 - extract signer, version, and timestamp metadata from representative installers
