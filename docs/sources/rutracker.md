@@ -12,6 +12,7 @@
 - Planned unwrapped root: `artifacts/unwrapped/rutracker`
 - Game list: `docs/game_lists/rutracker.md`
 - Publisher attribution report: `docs/sources/rutracker_publisher_attribution.md`
+- Probe report: `docs/sources/rutracker_probe.md`
 
 ## Initial Analysis
 
@@ -120,6 +121,15 @@ So the current best framing is:
 This source is no longer just a placeholder. The torrent manifest confirms a much larger flat
 installer corpus than the `archive` repack source and strongly suggests mostly original
 `*Setup.exe` installers rather than bundled repack volumes.
+
+The current archive overlap also means a large part of the future rutracker intake is already
+understood on the wrapper side once extraction works:
+
+- `1058` rutracker setup names match titles in the current archive corpus
+- `1057` of those map cleanly onto effective archive unwrap roots
+- `1037` of those effective overlap roots are already handled by the current unwrapper
+- the remaining known overlap-side post-extraction gaps are the `20` integrated-wrapper titles now
+  listed in `docs/sources/rutracker_probe.md`
 
 The remaining blocker is only the live directory intake. The symlink gives the repo a stable local
 path for future scripts and notes, but it does not bypass macOS privacy controls on `Downloads`.

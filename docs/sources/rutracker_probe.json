@@ -1,0 +1,341 @@
+{
+  "source_id": "rutracker",
+  "generated_from": {
+    "source_root": "/Users/banteg/Downloads/Reflexive",
+    "torrent_path": "artifacts/rutracker-3687027.torrent",
+    "archive_extracted_root": "artifacts/extracted/archive",
+    "archive_unwrapper_sweep": "docs/reflexive_unwrapper_sweep.json",
+    "archive_wrapper_versions": "docs/reflexive_wrapper_versions.json"
+  },
+  "manifest_summary": {
+    "setup_installer_count": 1696,
+    "archive_overlap_count": 1058,
+    "non_archive_count": 638,
+    "method_counts": [
+      {
+        "method": "archive_overlap",
+        "count": 937
+      },
+      {
+        "method": "fallback",
+        "count": 539
+      },
+      {
+        "method": "series_rule",
+        "count": 220
+      }
+    ]
+  },
+  "methodology": {
+    "manifest": "Use the readable rutracker torrent manifest as the stable installer list and title namespace.",
+    "overlap": "Map manifest installer names onto the current archive extracted corpus by normalized title, then translate those matches onto effective unwrap roots.",
+    "unwrap_readiness": "Use the archive unwrapper sweep to determine whether a matched title is already handled via `static`, `direct`, or remains `unsupported`.",
+    "stub_probe": "When the live rutracker source is readable, classify installer stubs from their container header, embedded marker strings, and PE version metadata."
+  },
+  "live_source_probe": {
+    "status": "blocked",
+    "error": "[Errno 1] Operation not permitted: '/Users/banteg/Downloads/Reflexive'"
+  },
+  "archive_overlap_analysis": {
+    "summary": {
+      "manifest_overlap_count": 1058,
+      "effective_overlap_count": 1057,
+      "ready_now_count": 1037,
+      "strategy_counts": [
+        {
+          "strategy": "direct",
+          "count": 37
+        },
+        {
+          "strategy": "static",
+          "count": 1000
+        },
+        {
+          "strategy": "unsupported",
+          "count": 20
+        }
+      ],
+      "layout_counts": [
+        {
+          "layout": "wrapped_rwg_with_config",
+          "count": 944
+        },
+        {
+          "layout": "wrapped_raw001_with_config",
+          "count": 46
+        },
+        {
+          "layout": "dll_only_with_application_dat",
+          "count": 38
+        },
+        {
+          "layout": "helper_exe_with_application_dat",
+          "count": 15
+        },
+        {
+          "layout": "other",
+          "count": 8
+        },
+        {
+          "layout": "wrapped_rwg_without_raw_002",
+          "count": 6
+        }
+      ],
+      "launcher_build_counts": [
+        {
+          "build": "173",
+          "count": 988
+        },
+        {
+          "build": "none",
+          "count": 56
+        },
+        {
+          "build": "172",
+          "count": 3
+        },
+        {
+          "build": "143",
+          "count": 2
+        },
+        {
+          "build": "145",
+          "count": 1
+        },
+        {
+          "build": "156",
+          "count": 1
+        },
+        {
+          "build": "123",
+          "count": 1
+        },
+        {
+          "build": "167",
+          "count": 1
+        },
+        {
+          "build": "128",
+          "count": 1
+        },
+        {
+          "build": "122",
+          "count": 1
+        },
+        {
+          "build": "124",
+          "count": 1
+        },
+        {
+          "build": "131",
+          "count": 1
+        }
+      ],
+      "dll_major_counts": [
+        {
+          "major_version": "3",
+          "count": 1
+        },
+        {
+          "major_version": "5",
+          "count": 1056
+        }
+      ],
+      "family_counts": [
+        {
+          "family_label": "Reflexive Portal Overlap",
+          "count": 937
+        },
+        {
+          "family_label": "GameHouse",
+          "count": 17
+        },
+        {
+          "family_label": "Alawar",
+          "count": 17
+        },
+        {
+          "family_label": "iWin",
+          "count": 16
+        },
+        {
+          "family_label": "MumboJumbo",
+          "count": 11
+        },
+        {
+          "family_label": "Sandlot",
+          "count": 11
+        },
+        {
+          "family_label": "PopCap",
+          "count": 11
+        },
+        {
+          "family_label": "PlayFirst",
+          "count": 10
+        },
+        {
+          "family_label": "Big Fish Games",
+          "count": 9
+        },
+        {
+          "family_label": "Sigma Team",
+          "count": 8
+        },
+        {
+          "family_label": "Oberon / RealArcade",
+          "count": 7
+        },
+        {
+          "family_label": "Playrix",
+          "count": 2
+        },
+        {
+          "family_label": "Spiderweb Software",
+          "count": 1
+        }
+      ],
+      "unmatched_manifest_overlap_count": 1
+    },
+    "unsupported_titles": [
+      {
+        "file_name": "BudRedheadSetup.exe",
+        "effective_root": "Reflexive Arcade B/Bud Redhead",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "CashCowSetup.exe",
+        "effective_root": "Reflexive Arcade C/Cash Cow/bin",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "ColonySetup.exe",
+        "effective_root": "Reflexive Arcade C/Colony",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "DigbysDonutsSetup.exe",
+        "effective_root": "Reflexive Arcade D/Digby's Donuts",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "FiveCardDeluxeSetup.exe",
+        "effective_root": "Reflexive Arcade F/Five Card Deluxe",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "FlipWordsSetup.exe",
+        "effective_root": "Reflexive Arcade F/Flip Words",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "HolidayExpressSetup.exe",
+        "effective_root": "Reflexive Arcade H/Holiday Express",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "IceBreakerSetup.exe",
+        "effective_root": "Reflexive Arcade I/Ice Breaker",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "LiveBilliardsSetup.exe",
+        "effective_root": "Reflexive Arcade L/Live Billiards",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "MaxGammonSetup.exe",
+        "effective_root": "Reflexive Arcade M/MaxGammon",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "OrbzSetup.exe",
+        "effective_root": "Reflexive Arcade O/Orbz",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "PacQuest3DSetup.exe",
+        "effective_root": "Reflexive Arcade P/PacQuest 3D",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "PuzzleExpressSetup.exe",
+        "effective_root": "Reflexive Arcade P/Puzzle Express",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "RicochetLostWorldsSetup.exe",
+        "effective_root": "Reflexive Arcade R/Ricochet Lost Worlds",
+        "family_label": "MumboJumbo"
+      },
+      {
+        "file_name": "SecretChamberSetup.exe",
+        "effective_root": "Reflexive Arcade S/Secret Chamber",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "SnowyTheBearsAdventureSetup.exe",
+        "effective_root": "Reflexive Arcade S/Snowy The Bears Adventure",
+        "family_label": "Alawar"
+      },
+      {
+        "file_name": "Solitaire2Setup.exe",
+        "effective_root": "Reflexive Arcade S/Solitaire 2",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "ThinkTanksSetup.exe",
+        "effective_root": "Reflexive Arcade T/Think Tanks",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "TriviaMachineSetup.exe",
+        "effective_root": "Reflexive Arcade T/Trivia Machine",
+        "family_label": "Reflexive Portal Overlap"
+      },
+      {
+        "file_name": "WildWestWendySetup.exe",
+        "effective_root": "Reflexive Arcade W/Wild West Wendy",
+        "family_label": "Reflexive Portal Overlap"
+      }
+    ],
+    "unmatched_manifest_overlap": [
+      "AzadaAncientMagicSetup.exe"
+    ]
+  },
+  "priority_samples": {
+    "known_overlap_supported": [
+      "10DaysUnderTheSeaSetup.exe",
+      "AlienShooterSetup.exe",
+      "FamilyFeudSetup.exe",
+      "AbraAcademySetup.exe",
+      "AirportManiaSetup.exe"
+    ],
+    "known_overlap_unsupported": [
+      "BudRedheadSetup.exe",
+      "DigbysDonutsSetup.exe",
+      "OrbzSetup.exe",
+      "Solitaire2Setup.exe",
+      "ThinkTanksSetup.exe"
+    ],
+    "non_overlap_publishers": [
+      "Bejeweled2DeluxeSetup.exe",
+      "DinerDashSetup.exe",
+      "MysteryCaseFilesHuntsvilleSetup.exe",
+      "LuxorSetup.exe",
+      "FarmFrenzySetup.exe"
+    ]
+  },
+  "plan": [
+    "Manifest overlap titles already look favorable: 1037 of 1057 effective overlap roots are already unwrap-capable in the current archive corpus if extraction yields comparable wrapper trees.",
+    "The existing static/direct unwrapper path should remain the default for extracted trees that contain `RAW_001*`, `RAW_002*`, `*.RWG`, or familiar `ReflexiveArcade.dll` layouts.",
+    "The main new engineering work is likely installer extraction rather than new decryption logic: we need to detect the original portal installer families first, then feed their extracted output into the current wrapper scanner and unwrapper.",
+    "The currently known archive-side gaps are concentrated in the integrated-wrapper cohort, so titles that line up with those roots should be treated as likely post-extraction reversing targets rather than simple extractor work.",
+    "The live `rutracker` source is still unreadable through the Downloads symlink, so byte-level installer technology clustering remains blocked until the source is copied repo-local or this app gets access."
+  ],
+  "archive_effective_root_gaps": [
+    "Reflexive Arcade A/Azada - Ancient Magic",
+    "Reflexive Arcade L/Lemmings",
+    "Reflexive Arcade P/OpenAL"
+  ]
+}

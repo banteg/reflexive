@@ -20,3 +20,5 @@ This project now tracks external inputs as named sources. Each source gets:
 - [archive.md](archive.md)
 - [rutracker_patches.md](rutracker_patches.md)
 - [rutracker.md](rutracker.md)
+- [rutracker_publisher_attribution.md](rutracker_publisher_attribution.md)
+- [rutracker_probe.md](rutracker_probe.md)
