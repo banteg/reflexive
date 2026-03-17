@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
-DEFAULT_ARCHIVE_DIR="${REPO_ROOT}/artifacts/archive/reflexivearcadegamescollection"
+DEFAULT_ARCHIVE_DIR="${REPO_ROOT}/artifacts/sources/archive"
 DEFAULT_OUTPUT_ROOT="${REPO_ROOT}/artifacts/extracted/archive"
 EXTRACTOR="${SCRIPT_DIR}/extract_reflexive_smart_installer.py"
 
@@ -15,7 +15,7 @@ Extracts every `Reflexive Arcade *.exe` installer in the archive directory into:
   <output_root>/<installer stem>/
 
 Defaults:
-  archive_dir  = artifacts/archive/reflexivearcadegamescollection
+  archive_dir  = artifacts/sources/archive
   output_root  = artifacts/extracted/archive
 
 Options:

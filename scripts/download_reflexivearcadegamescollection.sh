@@ -4,7 +4,7 @@ set -euo pipefail
 ITEM_ID="reflexivearcadegamescollection"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
-DEFAULT_DEST="${REPO_ROOT}/artifacts/archive/${ITEM_ID}"
+DEFAULT_DEST="${REPO_ROOT}/artifacts/sources/archive"
 
 usage() {
   cat <<'EOF'
@@ -12,7 +12,7 @@ Usage: download_reflexivearcadegamescollection.sh [destination]
 
 Downloads the full Archive.org item `reflexivearcadegamescollection` with aria2.
 If the destination is omitted, files are written to:
-  artifacts/archive/reflexivearcadegamescollection
+  artifacts/sources/archive
 
 Environment overrides:
   ARIA2_MAX_CONCURRENT_DOWNLOADS   Default: 4

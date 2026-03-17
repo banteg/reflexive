@@ -34,6 +34,7 @@ def infer_source_id_from_installer_path(installer_path: Path) -> str:
     path = installer_path.resolve()
     repo = repo_root()
     candidates = {
+        repo / "artifacts" / "sources" / "archive": "archive",
         repo / "artifacts" / "archive" / "reflexivearcadegamescollection": "archive",
         repo / "artifacts" / "sources" / "rutracker": "rutracker",
     }

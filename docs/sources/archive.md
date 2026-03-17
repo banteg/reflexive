@@ -3,7 +3,7 @@
 ## Source Record
 
 - Source id: `archive`
-- Repo-local path: `artifacts/archive/reflexivearcadegamescollection`
+- Repo-local path: `artifacts/sources/archive`
 - Source type: mirror of a third-party repack set
 - Status: analyzed
 - Extracted root: `artifacts/extracted/archive`
