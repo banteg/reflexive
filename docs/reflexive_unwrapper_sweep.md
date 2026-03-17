@@ -1,6 +1,6 @@
 # Reflexive Unwrapper Sweep
 
-Executed against `/Users/banteg/dev/banteg/reflexive/artifacts/extracted` in `probe` mode.
+Executed against `artifacts/extracted/archive_org_repack` in `probe` mode.
 
 ## Summary
 

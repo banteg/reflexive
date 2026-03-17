@@ -13,13 +13,17 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+from source_layout import DEFAULT_SOURCE_ID
+from source_layout import extracted_root as source_extracted_root
+from source_layout import infer_source_id_from_extracted_root
+
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
 
 
 def default_extracted_root() -> Path:
-    return repo_root() / "artifacts" / "extracted"
+    return source_extracted_root(DEFAULT_SOURCE_ID)
 
 
 def default_markdown_path() -> Path:
@@ -61,6 +65,7 @@ def build_report(extracted_root: Path) -> dict[str, Any]:
     module = load_module(repo_root() / "scripts" / "unwrap_reflexive_wrapper.py", "reflexive_unwrapper")
     inventory = module.build_scan(extracted_root)
     records = module.effective_records(inventory["roots"])
+    source_id = infer_source_id_from_extracted_root(extracted_root) or DEFAULT_SOURCE_ID
 
     strategy_counter: Counter[str] = Counter()
     layout_strategy_counter: Counter[tuple[str, str]] = Counter()
@@ -111,11 +116,11 @@ def build_report(extracted_root: Path) -> dict[str, Any]:
             )
 
     return {
-        "generated_from": str(extracted_root),
+        "generated_from": display_path(extracted_root),
         "methodology": {
             "static_strategy": "For wrapper roots that carry an encrypted child file (*.RWG, RAW_001.exe, or RAW_001.dat), derive the RAW_002 config seed from the wrapper-side dependency file sizes, decrypt RAW_002 statically, derive the child-payload seed from the encrypted RAW_002 header, and patch the decrypted entrypoint-to-section-end span back into the child PE on disk.",
             "direct_strategy": "For helper and dll-only layouts where a non-wrapper game executable is already present at the top level, carry that executable forward and drop Reflexive wrapper artifacts.",
-            "output_shape": "Materialize wrapper-free trees under artifacts/unwrapped by removing ReflexiveArcade/ content, wrapper launcher copies, encrypted child blobs, RAW_002/RAW_003 wrapper sidecars, and wrapper-only top-level assets such as Background.jpg, button_*.jpg, and wraperr.log.",
+            "output_shape": f"Materialize wrapper-free trees under artifacts/unwrapped/{source_id} by removing ReflexiveArcade/ content, wrapper launcher copies, encrypted child blobs, RAW_002/RAW_003 wrapper sidecars, and wrapper-only top-level assets such as Background.jpg, button_*.jpg, and wraperr.log.",
             "validation": "The static decryptor matches the earlier runtime-captured outputs byte-for-byte on eight cross-family roots: 10 Days Under The Sea, A Pirates Legend, Diamond Drop, Emperors Mahjong, Home Sweet Home, Astrobatics, Ice Cream Tycoon, and Alpha Ball/bin.",
         },
         "summary": {
@@ -180,7 +185,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     lines: list[str] = [
         "# Reflexive Unwrapper",
         "",
-        "Generated from the extracted Reflexive Arcade corpus under `artifacts/extracted`.",
+        f"Generated from the extracted Reflexive Arcade corpus under `{report['generated_from']}`.",
         "",
         "## Methodology",
         "",

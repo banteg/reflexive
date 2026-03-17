@@ -16,6 +16,10 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import pefile
+from source_layout import DEFAULT_SOURCE_ID
+from source_layout import extracted_root as source_extracted_root
+from source_layout import infer_source_id_from_extracted_root
+from source_layout import unwrapped_root as source_unwrapped_root
 
 
 MASK32 = 0xFFFFFFFF
@@ -87,11 +91,14 @@ def repo_root() -> Path:
 
 
 def default_extracted_root() -> Path:
-    return repo_root() / "artifacts" / "extracted"
+    return source_extracted_root(DEFAULT_SOURCE_ID)
 
 
-def default_output_root() -> Path:
-    return repo_root() / "artifacts" / "unwrapped"
+def default_output_root(extracted_root: Path) -> Path:
+    source_id = infer_source_id_from_extracted_root(extracted_root)
+    if source_id is None:
+        return repo_root() / "artifacts" / "unwrapped"
+    return source_unwrapped_root(source_id)
 
 
 def display_path(path: Path) -> str:
@@ -620,7 +627,7 @@ def materialize_record(record: dict[str, Any], extracted_root: Path, output_root
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Materialize wrapper-free Reflexive game trees under artifacts/unwrapped."
+        description="Materialize wrapper-free Reflexive game trees under source-scoped artifacts/unwrapped roots."
     )
     parser.add_argument(
         "targets",
@@ -636,8 +643,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output-root",
         type=Path,
-        default=default_output_root(),
-        help="Destination root for wrapper-free game trees.",
+        default=None,
+        help="Destination root for wrapper-free game trees. Defaults to artifacts/unwrapped/<source_id>.",
     )
     parser.add_argument(
         "--force",
@@ -662,7 +669,7 @@ def normalize_target(target: str, extracted_root: Path) -> str:
 def main() -> int:
     args = parse_args()
     extracted_root = args.extracted_root.resolve()
-    output_root = args.output_root.resolve()
+    output_root = args.output_root.resolve() if args.output_root else default_output_root(extracted_root)
     selected = {normalize_target(target, extracted_root) for target in args.targets} if args.targets else None
     inventory = build_scan(extracted_root, selected)
     records = effective_records(inventory["roots"])

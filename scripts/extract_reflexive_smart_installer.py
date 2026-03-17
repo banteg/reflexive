@@ -18,6 +18,9 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 
+from source_layout import extracted_root as source_extracted_root
+from source_layout import infer_source_id_from_installer_path
+
 
 SMART_INSTALL_MAKER_SIGNATURE = b"Smart Install Maker v"
 CAB_HEADER_STRUCT = struct.Struct("<4sIIIII BB HHHHH")
@@ -395,8 +398,8 @@ def materialize_payload(file_names: tuple[str, ...], raw_payload_dir: Path, dest
 
 
 def default_output_root(installer_path: Path) -> Path:
-    repo_root = Path(__file__).resolve().parent.parent
-    return repo_root / "artifacts" / "extracted" / installer_path.stem
+    source_id = infer_source_id_from_installer_path(installer_path)
+    return source_extracted_root(source_id) / installer_path.stem
 
 
 def clear_output_root(output_root: Path, *, force: bool) -> None:
@@ -511,7 +514,7 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         help=(
             "Directory that will receive the extracted files directly. "
-            "Defaults to artifacts/extracted/<installer stem>."
+            "Defaults to artifacts/extracted/<source_id>/<installer stem>."
         ),
     )
     parser.add_argument(

@@ -7,6 +7,9 @@
 - Original path: `/Users/banteg/Downloads/Reflexive`
 - Source type: suspected original installer corpus
 - Status: registered, pending readable access
+- Planned extracted root: `artifacts/extracted/reflexive_downloads`
+- Planned unwrapped root: `artifacts/unwrapped/reflexive_downloads`
+- Game list: `docs/game_lists/reflexive_downloads.md`
 
 ## Initial Analysis
 

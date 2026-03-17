@@ -1,6 +1,6 @@
 {
-  "generated_from": "/Users/banteg/dev/banteg/reflexive/artifacts/extracted",
-  "output_root": "/Users/banteg/dev/banteg/reflexive/artifacts/unwrapped",
+  "generated_from": "artifacts/extracted/archive_org_repack",
+  "output_root": "artifacts/unwrapped/archive_org_repack",
   "mode": "probe",
   "summary": {
     "effective_root_count": 1083,

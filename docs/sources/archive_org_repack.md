@@ -6,6 +6,9 @@
 - Repo-local path: `artifacts/archive/reflexivearcadegamescollection`
 - Source type: mirror of a third-party repack set
 - Status: analyzed
+- Extracted root: `artifacts/extracted/archive_org_repack`
+- Unwrapped root: `artifacts/unwrapped/archive_org_repack`
+- Game list: `docs/game_lists/archive_org_repack.md`
 
 ## Attribution
 

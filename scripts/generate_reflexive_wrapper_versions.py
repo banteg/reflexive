@@ -14,6 +14,8 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 import pefile
+from source_layout import DEFAULT_SOURCE_ID
+from source_layout import extracted_root as source_extracted_root
 
 
 DLL_SECTION_NAMES = (".text", ".data")
@@ -50,7 +52,7 @@ def repo_root() -> Path:
 
 
 def default_extracted_root() -> Path:
-    return repo_root() / "artifacts" / "extracted"
+    return source_extracted_root(DEFAULT_SOURCE_ID)
 
 
 def default_markdown_path() -> Path:

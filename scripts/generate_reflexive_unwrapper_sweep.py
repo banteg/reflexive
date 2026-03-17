@@ -14,17 +14,32 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from source_layout import DEFAULT_SOURCE_ID
+from source_layout import extracted_root as source_extracted_root
+from source_layout import infer_source_id_from_extracted_root
+from source_layout import unwrapped_root as source_unwrapped_root
+
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
 
 
+def display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(repo_root()))
+    except ValueError:
+        return str(path)
+
+
 def default_extracted_root() -> Path:
-    return repo_root() / "artifacts" / "extracted"
+    return source_extracted_root(DEFAULT_SOURCE_ID)
 
 
-def default_output_root() -> Path:
-    return repo_root() / "artifacts" / "unwrapped"
+def default_output_root(extracted_root: Path) -> Path:
+    source_id = infer_source_id_from_extracted_root(extracted_root)
+    if source_id is None:
+        return repo_root() / "artifacts" / "unwrapped"
+    return source_unwrapped_root(source_id)
 
 
 def default_markdown_path() -> Path:
@@ -197,8 +212,8 @@ def build_report(extracted_root: Path, output_root: Path, force: bool, probe_onl
     error_roots.sort(key=lambda item: item["root"])
 
     return {
-        "generated_from": str(extracted_root),
-        "output_root": str(output_root),
+        "generated_from": display_path(extracted_root),
+        "output_root": display_path(output_root),
         "mode": "probe" if probe_only else "materialize",
         "summary": {
             "effective_root_count": len(records),
@@ -235,8 +250,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output-root",
         type=Path,
-        default=default_output_root(),
-        help="Destination root for the materialized wrapper-free game trees.",
+        default=None,
+        help="Destination root for the materialized wrapper-free game trees. Defaults to artifacts/unwrapped/<source_id>.",
     )
     parser.add_argument(
         "--markdown-out",
@@ -272,7 +287,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     extracted_root = args.extracted_root.resolve()
-    output_root = args.output_root.resolve()
+    output_root = args.output_root.resolve() if args.output_root else default_output_root(extracted_root)
     markdown_out = args.markdown_out.resolve()
     json_out = args.json_out.resolve()
 

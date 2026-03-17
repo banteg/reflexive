@@ -3,6 +3,7 @@
 This project now tracks external inputs as named sources. Each source gets:
 
 - a stable repo-local artifact path
+- source-scoped extracted and unwrapped roots under `artifacts/extracted/<source_id>` and `artifacts/unwrapped/<source_id>`
 - a dedicated notes page under `docs/sources/`
 - a status label so unpacking and reversing work can distinguish confirmed facts from pending intake
 
