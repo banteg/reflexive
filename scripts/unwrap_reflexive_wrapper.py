@@ -25,6 +25,7 @@ from source_layout import unwrapped_root as source_unwrapped_root
 
 MASK32 = 0xFFFFFFFF
 STATE_WORDS = 250
+NATIVE_ENTRY_SKIP = 5
 UTILITY_EXE_NAMES = {
     "controls.exe",
     "config.exe",
@@ -603,8 +604,12 @@ def native_encrypted_region(pe: pefile.PE, short_fixed: bool) -> tuple[int, int]
         raw_start = int(section.PointerToRawData) + offset_in_section
         decrypt_length = usable_size - offset_in_section
         if short_fixed:
-            decrypt_length = min(decrypt_length, 0x80)
-        return raw_start, decrypt_length
+            if decrypt_length < 0x80:
+                raise RuntimeError("short native encrypted region is smaller than 0x80 bytes")
+            decrypt_length = 0x80
+        if decrypt_length <= NATIVE_ENTRY_SKIP:
+            raise RuntimeError("native encrypted region is too short after entrypoint skip")
+        return raw_start + NATIVE_ENTRY_SKIP, decrypt_length - NATIVE_ENTRY_SKIP
 
     raise RuntimeError("unable to locate entrypoint section for child payload")
 
