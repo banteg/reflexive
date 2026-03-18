@@ -119,6 +119,7 @@ IGNORED_SUBSTRINGS: tuple[str, ...] = (
 COARSE_ASCII_HINTS: tuple[bytes, ...] = tuple(hint.encode("ascii") for hint in TOKEN_HINTS)
 COARSE_UTF16_HINTS: tuple[bytes, ...] = tuple(hint.encode("utf-16le") for hint in TOKEN_HINTS)
 PRINTABLE_ASCII = set(range(0x20, 0x7F))
+MAX_EVIDENCE_LENGTH = 200
 
 
 def repo_root() -> Path:
@@ -203,6 +204,10 @@ def normalize_evidence(value: str) -> str | None:
     lowered = value.casefold()
     if any(ignore in lowered for ignore in IGNORED_SUBSTRINGS):
         return None
+    if len(value) > 400 and value.count("*") > 25:
+        return None
+    if len(value) > MAX_EVIDENCE_LENGTH:
+        return value[: MAX_EVIDENCE_LENGTH - 3].rstrip() + "..."
     return value
 
 
