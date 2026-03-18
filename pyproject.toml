@@ -1,3 +1,7 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "reflexive"
 version = "0.1.0"
@@ -7,5 +11,11 @@ dependencies = [
     "pefile>=2024.8.26",
 ]
 
+[project.scripts]
+reflexive = "reflexive_cli.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["reflexive_cli"]
+
 [tool.uv]
-package = false
+package = true
