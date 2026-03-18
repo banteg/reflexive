@@ -11,9 +11,11 @@
 - Extracted root: `artifacts/extracted/rutracker`
 - Unwrapped root: `artifacts/unwrapped/rutracker`
 - Game list: `docs/generated/rutracker/game_list.md`
+- Native registration scan: `docs/generated/rutracker/native_registration_scan.md`
 - Publisher attribution report: `docs/generated/rutracker/publisher_attribution.md`
 - Probe report: `docs/generated/rutracker/probe.md`
 - Unwrapper sweep: `docs/generated/rutracker/unwrapper_sweep.md`
+- Native registration signal scan: `docs/generated/rutracker/native_registration_scan.md`
 - Historical forum context: `docs/sources/ruboard.md`
 
 ## Initial Analysis
@@ -54,6 +56,10 @@ What is confirmed so far:
   - `49` successful `direct` roots
   - `36` unsupported roots
   - `0` remaining execution errors
+- Native registration scan summary:
+  - `59` high-signal roots whose unwrapped executables still contain explicit registration-code or unlock-style strings
+  - `69` medium-signal roots with trial/demo/full-version wording but less explicit code-entry language
+  - `420` low-signal roots with softer upsell/demo residue
 - The original installer family is now statically handled by two CRC32 seed modes:
   - wrapper EXE PE sections + `RAW_003` PE sections + the four wrapper asset sizes
   - wrapper EXE full bytes + `Background.jpg` + `button_*.jpg` + `RAW_003` full bytes
