@@ -32,7 +32,7 @@ ZERO_BLOCK_SIZE = 0x32
 ZERO_CHECK_OFFSETS = (0x00, 0x0A, 0x14, 0x1E)
 OEP_CODE_CAVE_START_RVA = 0x20010
 OEP_CODE_CAVE_STEP = 0x10
-OEP_PATCH_LEN = 15
+MAX_OEP_PATCH_LEN = 24
 MAX_SUPPORTED_OEP_BUILD = 173
 
 
@@ -42,6 +42,7 @@ class PatchSite:
     string_va: int
     patch_va: int
     patch_offset: int
+    patch_len: int
 
 
 @dataclass(frozen=True)
@@ -150,11 +151,15 @@ def is_eax_test_or_compare(instruction) -> bool:
     return False
 
 
+def writes_eax_result(instruction) -> bool:
+    return instruction.mnemonic == "mov" and instruction.op_str.endswith(", eax")
+
+
 def match_oep_stub_window(instructions: list, start_index: int) -> int | None:
     start_address = instructions[start_index].address
-    saw_call = False
+    call_index: int | None = None
 
-    for index in range(start_index + 1, min(len(instructions), start_index + 8)):
+    for index in range(start_index + 1, min(len(instructions), start_index + 10)):
         instruction = instructions[index]
         span = (instruction.address + instruction.size) - start_address
 
@@ -162,18 +167,31 @@ def match_oep_stub_window(instructions: list, start_index: int) -> int | None:
             return None
 
         if instruction.mnemonic == "call":
-            if saw_call:
+            if call_index is not None:
                 return None
-            saw_call = True
-            continue
+            call_index = index
+            break
 
-        if saw_call:
-            if not is_eax_test_or_compare(instruction):
-                return None
-            return span if span == OEP_PATCH_LEN else None
-
-        if span > OEP_PATCH_LEN:
+        if call_index is None and instruction.mnemonic not in {"push", "mov"}:
             return None
+
+        if span > MAX_OEP_PATCH_LEN:
+            return None
+
+    if call_index is None:
+        return None
+
+    call_instruction = instructions[call_index]
+    patch_len = (call_instruction.address + call_instruction.size) - start_address
+    if patch_len < 5 or patch_len > MAX_OEP_PATCH_LEN:
+        return None
+
+    for index in range(call_index + 1, min(len(instructions), call_index + 5)):
+        instruction = instructions[index]
+        if is_eax_test_or_compare(instruction) or writes_eax_result(instruction):
+            return patch_len
+        if instruction.mnemonic in {"jmp", "je", "jne", "ret", "retn"}:
+            break
 
     return None
 
@@ -194,7 +212,7 @@ def find_oep_patch_site(pe: pefile.PE, data: bytes, symbol_name: str) -> PatchSi
             continue
 
         span = match_oep_stub_window(instructions, index)
-        if span != OEP_PATCH_LEN:
+        if span is None:
             continue
 
         patch_va = instruction.address
@@ -205,12 +223,13 @@ def find_oep_patch_site(pe: pefile.PE, data: bytes, symbol_name: str) -> PatchSi
                 string_va=operand.imm,
                 patch_va=patch_va,
                 patch_offset=patch_offset,
+                patch_len=span,
             )
         )
 
     if not candidates:
         raise ValueError(
-            f"did not find a supported 15-byte GetProcAddress stub for '{symbol_name}'"
+            f"did not find a supported GetProcAddress stub for '{symbol_name}'"
         )
     if len(candidates) > 1:
         locations = ", ".join(hex(candidate.patch_va) for candidate in candidates)
@@ -302,10 +321,10 @@ def patch_oep_family(path: Path, analysis: ExecutableAnalysis, output_path: Path
     patched = bytearray(path.read_bytes())
     patched[analysis.cave_offset : analysis.cave_offset + len(OEP_STUB)] = OEP_STUB
 
-    resolver_stub = bytearray(MOV_EAX_STUB_TEMPLATE)
-    struct.pack_into("<I", resolver_stub, 1, analysis.cave_va)
     for site in analysis.oep_sites:
-        patched[site.patch_offset : site.patch_offset + OEP_PATCH_LEN] = resolver_stub
+        resolver_stub = bytearray(b"\xB8" + struct.pack("<I", analysis.cave_va))
+        resolver_stub.extend(b"\x90" * (site.patch_len - len(resolver_stub)))
+        patched[site.patch_offset : site.patch_offset + site.patch_len] = resolver_stub
 
     destination = output_path or path
     if destination.exists() and destination != path and not force:
