@@ -73,7 +73,7 @@ support cannot be reduced to one fixed unlock algorithm without per-game materia
 - The `list.txt` files should be treated as a community-maintained `(name, game id, modulus, private
   exponent)` database, not just a UI game list.
 - Historical discussion of wrapper-version ranges such as `167-184` is consistent with the
-  launcher-build observations already recorded in `docs/reflexive_wrapper_versions.md`.
+  launcher-build observations already recorded in `docs/generated/archive/wrapper_versions.md`.
 
 ## Current Use In This Repo
 

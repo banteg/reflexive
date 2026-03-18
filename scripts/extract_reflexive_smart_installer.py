@@ -247,9 +247,54 @@ def require_command(name: str) -> str:
     return resolved
 
 
+def format_bytes(value: int) -> str:
+    units = ("B", "KiB", "MiB", "GiB", "TiB")
+    size = float(value)
+    for unit in units:
+        if size < 1024.0 or unit == units[-1]:
+            if unit == "B":
+                return f"{int(size)} {unit}"
+            return f"{size:.1f} {unit}"
+        size /= 1024.0
+    return f"{size:.1f} TiB"
+
+
 def run_command(command: list[str], *, cwd: Path | None = None) -> None:
     print("+", " ".join(command))
-    subprocess.run(command, cwd=cwd, check=True)
+    completed = subprocess.run(command, cwd=cwd, capture_output=True, text=True)
+    if completed.stdout:
+        print(completed.stdout, end="")
+    if completed.stderr:
+        print(completed.stderr, end="", file=sys.stderr)
+    if completed.returncode != 0:
+        raise subprocess.CalledProcessError(
+            completed.returncode,
+            command,
+            output=completed.stdout,
+            stderr=completed.stderr,
+        )
+
+
+def is_no_space_left_error(exc: subprocess.CalledProcessError) -> bool:
+    output = exc.output if isinstance(exc.output, str) else ""
+    stderr = exc.stderr if isinstance(exc.stderr, str) else ""
+    return "No space left on device" in f"{output}\n{stderr}"
+
+
+def raise_no_space_left_error(
+    installer_path: Path,
+    temp_dir: Path,
+    extractor_name: str,
+) -> None:
+    usage = shutil.disk_usage(temp_dir)
+    raise ValueError(
+        (
+            f"{extractor_name} ran out of disk space while expanding {installer_path.name} in {temp_dir}. "
+            "Temporary extraction workspaces are cleaned after each attempt, but compressed installers need "
+            "enough scratch space for reconstructed CAB volumes and the numbered raw payload before the final "
+            f"tree can be materialized. Free space on this filesystem: {format_bytes(usage.free)}."
+        )
+    )
 
 
 def build_cab_extract_command(raw_payload_dir: Path) -> tuple[str, list[str], tuple[str, ...]]:
@@ -432,6 +477,20 @@ def clear_output_root(output_root: Path, *, force: bool) -> None:
         raise FileExistsError(f"output root already exists and is not empty: {output_root}")
 
 
+def cleanup_temp_dir(temp_dir: Path) -> None:
+    for attempt_index in range(3):
+        try:
+            shutil.rmtree(temp_dir)
+            return
+        except FileNotFoundError:
+            return
+        except OSError as exc:
+            if exc.errno != errno.ENOTEMPTY or attempt_index == 2:
+                print(f"warning: failed to remove temporary directory {temp_dir}: {exc}", file=sys.stderr)
+                return
+            time.sleep(0.1 * (attempt_index + 1))
+
+
 def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -> Path:
     installer_path = installer_path.resolve()
     output_root = output_root.resolve()
@@ -453,8 +512,8 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
         max_attempts = 3
 
         for attempt_index in range(1, max_attempts + 1):
-            with tempfile.TemporaryDirectory(dir=output_root.parent, prefix=f".{safe_prefix}.tmp.") as temp_dir_str:
-                temp_dir = Path(temp_dir_str)
+            temp_dir = Path(tempfile.mkdtemp(dir=output_root.parent, prefix=f".{safe_prefix}.tmp."))
+            try:
                 raw_payload_dir = temp_dir / "raw_payload"
                 raw_payload_dir.mkdir()
                 raw_cabs_dir = temp_dir / "raw_cabs"
@@ -478,6 +537,8 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
                 try:
                     run_command(extract_command, cwd=raw_cabs_dir)
                 except subprocess.CalledProcessError as exc:
+                    if is_no_space_left_error(exc):
+                        raise_no_space_left_error(installer_path, temp_dir, extractor_name)
                     last_error = exc
                     if attempt_index == max_attempts:
                         break
@@ -491,22 +552,26 @@ def extract_installer(installer_path: Path, output_root: Path, *, force: bool) -
                 materialize_payload(metadata.file_names, raw_payload_dir, output_root)
                 print(f"Materialized payload written to {output_root}")
                 return output_root
+            finally:
+                cleanup_temp_dir(temp_dir)
 
         if last_error is not None:
             raise last_error
         raise RuntimeError("compressed payload extraction failed without a captured subprocess error")
     else:
-        with tempfile.TemporaryDirectory(dir=output_root.parent, prefix=f".{safe_prefix}.tmp.") as temp_dir_str:
-            temp_dir = Path(temp_dir_str)
+        temp_dir = Path(tempfile.mkdtemp(dir=output_root.parent, prefix=f".{safe_prefix}.tmp."))
+        try:
             raw_payload_dir = temp_dir / "raw_payload"
             raw_payload_dir.mkdir()
 
             print("Extracting uncompressed numbered payload directly")
             extract_uncompressed_payload(metadata, raw_payload_dir)
 
-        print("Materializing final payload tree")
-        output_root.mkdir(parents=True, exist_ok=True)
-        materialize_payload(metadata.file_names, raw_payload_dir, output_root)
+            print("Materializing final payload tree")
+            output_root.mkdir(parents=True, exist_ok=True)
+            materialize_payload(metadata.file_names, raw_payload_dir, output_root)
+        finally:
+            cleanup_temp_dir(temp_dir)
 
     print(f"Materialized payload written to {output_root}")
     return output_root
@@ -539,10 +604,13 @@ def extract_and_optionally_unwrap(
         temp_parent = final_unwrapped_root.parent
         temp_parent.mkdir(parents=True, exist_ok=True)
         safe_prefix = re.sub(r"[^A-Za-z0-9._-]+", "-", installer_path.stem).strip("-") or "reflexive"
-        with tempfile.TemporaryDirectory(prefix=f".{safe_prefix}.unwrap.", dir=temp_parent) as temp_dir_str:
-            temp_extract_root = Path(temp_dir_str) / installer_path.stem
+        temp_dir = Path(tempfile.mkdtemp(prefix=f".{safe_prefix}.unwrap.", dir=temp_parent))
+        try:
+            temp_extract_root = temp_dir / installer_path.stem
             extracted_tree = extract_installer(installer_path, temp_extract_root, force=True)
             unwrap_result = unwrap_extracted_tree(extracted_tree, final_unwrapped_root, force=force)
+        finally:
+            cleanup_temp_dir(temp_dir)
 
     print(f"Unwrapped root: {final_unwrapped_root}")
     print(f"Materialized wrapper roots: {len(unwrap_result.ok_roots)}")

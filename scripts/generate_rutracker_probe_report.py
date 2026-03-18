@@ -52,19 +52,19 @@ def default_archive_extracted_root() -> Path:
 
 
 def default_sweep_json() -> Path:
-    return repo_root() / "docs" / "reflexive_unwrapper_sweep.json"
+    return repo_root() / "docs" / "generated" / "archive" / "unwrapper_sweep.json"
 
 
 def default_wrapper_json() -> Path:
-    return repo_root() / "docs" / "reflexive_wrapper_versions.json"
+    return repo_root() / "docs" / "generated" / "archive" / "wrapper_versions.json"
 
 
 def default_markdown_path() -> Path:
-    return repo_root() / "docs" / "sources" / "rutracker_probe.md"
+    return repo_root() / "docs" / "generated" / "rutracker" / "probe.md"
 
 
 def default_json_path() -> Path:
-    return repo_root() / "docs" / "sources" / "rutracker_probe.json"
+    return repo_root() / "docs" / "generated" / "rutracker" / "probe.json"
 
 
 def display_path(path: Path) -> str:

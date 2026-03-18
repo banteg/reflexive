@@ -8,7 +8,7 @@
 - Status: analyzed
 - Extracted root: `artifacts/extracted/archive`
 - Unwrapped root: `artifacts/unwrapped/archive`
-- Game list: `docs/game_lists/archive.md`
+- Game list: `docs/generated/archive/game_list.md`
 
 ## Extraction
 

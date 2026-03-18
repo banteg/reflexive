@@ -43,11 +43,11 @@ def default_output_root(extracted_root: Path) -> Path:
 
 
 def default_markdown_path() -> Path:
-    return repo_root() / "docs" / "reflexive_unwrapper_sweep.md"
+    return repo_root() / "docs" / "generated" / "archive" / "unwrapper_sweep.md"
 
 
 def default_json_path() -> Path:
-    return repo_root() / "docs" / "reflexive_unwrapper_sweep.json"
+    return repo_root() / "docs" / "generated" / "archive" / "unwrapper_sweep.json"
 
 
 def load_unwrapper_module() -> Any:

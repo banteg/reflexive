@@ -186,11 +186,11 @@ def default_archive_extracted_root() -> Path:
 
 
 def default_markdown_path() -> Path:
-    return repo_root() / "docs" / "sources" / "rutracker_publisher_attribution.md"
+    return repo_root() / "docs" / "generated" / "rutracker" / "publisher_attribution.md"
 
 
 def default_json_path() -> Path:
-    return repo_root() / "docs" / "sources" / "rutracker_publisher_attribution.json"
+    return repo_root() / "docs" / "generated" / "rutracker" / "publisher_attribution.json"
 
 
 def decode_bencode(buf: bytes, index: int = 0):

@@ -27,11 +27,11 @@ def default_extracted_root() -> Path:
 
 
 def default_markdown_path() -> Path:
-    return repo_root() / "docs" / "reflexive_unwrapper.md"
+    return repo_root() / "docs" / "generated" / "archive" / "unwrapper.md"
 
 
 def default_json_path() -> Path:
-    return repo_root() / "docs" / "reflexive_unwrapper.json"
+    return repo_root() / "docs" / "generated" / "archive" / "unwrapper.json"
 
 
 def display_path(path: Path) -> str:

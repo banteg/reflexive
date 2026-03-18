@@ -56,11 +56,11 @@ def default_extracted_root() -> Path:
 
 
 def default_markdown_path() -> Path:
-    return repo_root() / "docs" / "reflexive_wrapper_versions.md"
+    return repo_root() / "docs" / "generated" / "archive" / "wrapper_versions.md"
 
 
 def default_json_path() -> Path:
-    return repo_root() / "docs" / "reflexive_wrapper_versions.json"
+    return repo_root() / "docs" / "generated" / "archive" / "wrapper_versions.json"
 
 
 def sha256_bytes(data: bytes) -> str:

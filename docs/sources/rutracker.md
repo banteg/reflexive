@@ -10,10 +10,10 @@
 - Status: extracted
 - Extracted root: `artifacts/extracted/rutracker`
 - Unwrapped root: `artifacts/unwrapped/rutracker`
-- Game list: `docs/game_lists/rutracker.md`
-- Publisher attribution report: `docs/sources/rutracker_publisher_attribution.md`
-- Probe report: `docs/sources/rutracker_probe.md`
-- Unwrapper sweep: `docs/sources/rutracker_unwrapper_sweep.md`
+- Game list: `docs/generated/rutracker/game_list.md`
+- Publisher attribution report: `docs/generated/rutracker/publisher_attribution.md`
+- Probe report: `docs/generated/rutracker/probe.md`
+- Unwrapper sweep: `docs/generated/rutracker/unwrapper_sweep.md`
 - Historical forum context: `docs/sources/ruboard.md`
 
 ## Initial Analysis
@@ -46,7 +46,7 @@ What is confirmed so far:
 ## Unwrapping
 
 - Single root: `uv run scripts/unwrap_reflexive_wrapper.py --extracted-root artifacts/extracted/rutracker --force "10 Days Under The Sea"`
-- Full source sweep: `uv run scripts/generate_reflexive_unwrapper_sweep.py --extracted-root artifacts/extracted/rutracker --output-root artifacts/unwrapped/rutracker --markdown-out docs/sources/rutracker_unwrapper_sweep.md --json-out docs/sources/rutracker_unwrapper_sweep.json`
+- Full source sweep: `uv run scripts/generate_reflexive_unwrapper_sweep.py --extracted-root artifacts/extracted/rutracker --output-root artifacts/unwrapped/rutracker --markdown-out docs/generated/rutracker/unwrapper_sweep.md --json-out docs/generated/rutracker/unwrapper_sweep.json`
 - Current sweep summary:
   - `1697` effective wrapper roots scanned
   - `1661` successful roots
@@ -157,7 +157,7 @@ understood on the wrapper side once extraction works:
 - `1057` of those map cleanly onto effective archive unwrap roots
 - `1037` of those effective overlap roots are already handled by the current unwrapper
 - the remaining known overlap-side post-extraction gaps are the `20` integrated-wrapper titles now
-  listed in `docs/sources/rutracker_probe.md`
+  listed in `docs/generated/rutracker/probe.md`
 
 The Ru.Board dump now sharpens that picture further:
 

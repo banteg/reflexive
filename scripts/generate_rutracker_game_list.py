@@ -27,7 +27,7 @@ def default_archive_extracted_root() -> Path:
 
 
 def default_output_path() -> Path:
-    return repo_root() / "docs" / "game_lists" / "rutracker.md"
+    return repo_root() / "docs" / "generated" / "rutracker" / "game_list.md"
 
 
 def decode_bencode(buf: bytes, index: int = 0):

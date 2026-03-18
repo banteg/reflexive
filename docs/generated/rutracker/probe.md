@@ -4,8 +4,8 @@
 - Source root: `artifacts/sources/rutracker`
 - Torrent manifest: `artifacts/rutracker-3687027.torrent`
 - Archive comparison root: `artifacts/extracted/archive`
-- Archive unwrapper sweep: `docs/reflexive_unwrapper_sweep.json`
-- Archive wrapper version scan: `docs/reflexive_wrapper_versions.json`
+- Archive unwrapper sweep: `docs/generated/archive/unwrapper_sweep.json`
+- Archive wrapper version scan: `docs/generated/archive/wrapper_versions.json`
 
 ## Live Source Status
 
