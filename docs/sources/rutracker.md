@@ -11,6 +11,7 @@
 - Extracted root: `artifacts/extracted/rutracker`
 - Unwrapped root: `artifacts/unwrapped/rutracker`
 - Game list: `docs/generated/rutracker/game_list.md`
+- Game engine report: `docs/generated/rutracker/game_engines.md`
 - Native registration scan: `docs/generated/rutracker/native_registration_scan.md`
 - Publisher attribution report: `docs/generated/rutracker/publisher_attribution.md`
 - Probe report: `docs/generated/rutracker/probe.md`

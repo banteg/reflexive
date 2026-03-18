@@ -111,6 +111,12 @@ COMMANDS = (
         description="Build the rutracker publisher attribution report.",
         aliases=("generate-rutracker-publisher-attribution",),
     ),
+    Command(
+        name="rutracker-engine-report",
+        module="generate_rutracker_engine_report",
+        description="Build the rutracker game engine report.",
+        aliases=("generate-rutracker-engine-report",),
+    ),
 )
 
 COMMAND_INDEX = {
