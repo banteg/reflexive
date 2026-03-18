@@ -14,6 +14,7 @@
 - Publisher attribution report: `docs/sources/rutracker_publisher_attribution.md`
 - Probe report: `docs/sources/rutracker_probe.md`
 - Unwrapper sweep: `docs/sources/rutracker_unwrapper_sweep.md`
+- Historical forum context: `docs/sources/ruboard.md`
 
 ## Initial Analysis
 
@@ -157,6 +158,16 @@ understood on the wrapper side once extraction works:
 - `1037` of those effective overlap roots are already handled by the current unwrapper
 - the remaining known overlap-side post-extraction gaps are the `20` integrated-wrapper titles now
   listed in `docs/sources/rutracker_probe.md`
+
+The Ru.Board dump now sharpens that picture further:
+
+- `RWG` was historically treated as the real game executable, with the outer Reflexive `.exe`
+  acting as a thin loader and registration shell
+- after the December 2007 protection shift, per-game RSA material in the wrapper/DLL became the
+  reason a universal keygen stopped being sufficient
+- the `listkg_*` family used a shared `name|id|N|D|` database, which matches the recovered local
+  `listkg` artifacts and explains why certain non-unwrapped titles are better modeled as keygen
+  fallbacks than as pure unwrap targets
 
 The extraction blocker is now more specific:
 

@@ -12,6 +12,19 @@ It reproduces the key path recovered from [listkg.unpacked.exe](/Users/banteg/de
 - build the registration code with the same CRC32-based formatting used by the keygen
 - generate the unlock code with the per-game modulus/exponent data from [list.txt](/Users/banteg/dev/banteg/reflexive/artifacts/rutracker/_Crack/listkg_1421_by_russiankid/list.txt)
 
+## Historical Context
+
+The local Ru.Board dump at [artifacts/ruboard](/Users/banteg/dev/banteg/reflexive/artifacts/ruboard) matches the recovered binary well:
+
+- `listkg` belongs to the post-2007 per-game key era, not the older universal-keygen era
+- the shared list format is exactly the structure the binary consumes:
+  - `Game Name|GameID|RSA modulus N|private exponent D|`
+- the later keygen builds added bulk `.reg` generation for all known games, which corresponds to
+  the large-button behavior seen in the unpacked UI and supported by `--all`
+
+This matters because the script is not just emulating one GUI sample. It is implementing the
+community-maintained per-game keygen model described in the historical threads.
+
 Examples:
 
 ```bash
