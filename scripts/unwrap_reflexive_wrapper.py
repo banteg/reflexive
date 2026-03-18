@@ -17,8 +17,6 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import pefile
-from source_layout import DEFAULT_SOURCE_ID
-from source_layout import extracted_root as source_extracted_root
 from source_layout import infer_source_id_from_extracted_root
 from source_layout import unwrapped_root as source_unwrapped_root
 
@@ -94,14 +92,10 @@ def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
 
 
-def default_extracted_root() -> Path:
-    return source_extracted_root(DEFAULT_SOURCE_ID)
-
-
 def default_output_root(extracted_root: Path) -> Path:
     source_id = infer_source_id_from_extracted_root(extracted_root)
     if source_id is None:
-        return repo_root() / "artifacts" / "unwrapped"
+        raise RuntimeError(f"unable to infer source id from {extracted_root}; pass --output-root explicitly")
     return source_unwrapped_root(source_id)
 
 
@@ -770,7 +764,7 @@ def materialize_record(record: dict[str, Any], extracted_root: Path, output_root
     return summary
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Materialize wrapper-free Reflexive game trees under source-scoped artifacts/unwrapped roots."
     )
@@ -782,8 +776,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--extracted-root",
         type=Path,
-        default=default_extracted_root(),
-        help="Root containing extracted Reflexive Arcade directories.",
+        required=True,
+        help="Root containing extracted Reflexive Arcade directories. Required so the source corpus is explicit.",
     )
     parser.add_argument(
         "--output-root",
@@ -801,7 +795,7 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Print unsupported roots after processing.",
     )
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
 def normalize_target(target: str, extracted_root: Path) -> str:
@@ -811,8 +805,8 @@ def normalize_target(target: str, extracted_root: Path) -> str:
     return str(path)
 
 
-def main() -> int:
-    args = parse_args()
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
     extracted_root = args.extracted_root.resolve()
     output_root = args.output_root.resolve() if args.output_root else default_output_root(extracted_root)
     selected = {normalize_target(target, extracted_root) for target in args.targets} if args.targets else None

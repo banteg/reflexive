@@ -66,5 +66,21 @@ class NativeEncryptedRegionTests(unittest.TestCase):
             MODULE.native_encrypted_region(pe, False)
 
 
+class CliBehaviorTests(unittest.TestCase):
+    def test_parse_args_requires_extracted_root(self) -> None:
+        with self.assertRaises(SystemExit):
+            MODULE.parse_args([])
+
+    def test_parse_args_accepts_explicit_extracted_root(self) -> None:
+        args = MODULE.parse_args(["--extracted-root", "artifacts/extracted/rutracker", "--force"])
+
+        self.assertEqual(args.extracted_root, Path("artifacts/extracted/rutracker"))
+        self.assertTrue(args.force)
+
+    def test_default_output_root_requires_source_scoped_root(self) -> None:
+        with self.assertRaisesRegex(RuntimeError, "unable to infer source id"):
+            MODULE.default_output_root(Path("/tmp/reflexive-extracted"))
+
+
 if __name__ == "__main__":
     unittest.main()
