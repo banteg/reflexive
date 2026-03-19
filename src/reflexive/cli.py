@@ -74,6 +74,11 @@ COMMANDS = (
         description="Scan binaries for native registration signals.",
     ),
     Command(
+        name="integrated-wrappers",
+        module="integrated_wrappers",
+        description="Report likely Reflexive wrappers fused into the main EXE.",
+    ),
+    Command(
         name="key-inventory",
         module="key_inventory",
         description="Extract embedded Reflexive RSA key material from branded DLLs.",

@@ -1,0 +1,601 @@
+{
+  "generated_from": "artifacts/extracted/rutracker",
+  "methodology": {
+    "structural_filter": "Select effective unwrap roots where the unwrapper has no safe strategy, the primary wrapper binary is the top-level EXE, there is no Reflexive helper EXE, no launcher .exe.BAK, no encrypted child payload, and no RAW_002 wrapper config.",
+    "binding_filter": "Treat the top-level EXE as an integrated Reflexive wrapper when it carries either a direct Reflexive binding reference (ReflexiveArcade.dll plus one or more radll_* export-name strings) or the stronger dynamic-loader pattern that also references LoadLibrary* and GetProcAddress.",
+    "interpretation": "These roots are not peelable classic wrappers; the game executable itself appears to host the Reflexive binding layer.",
+    "source": "RuTracker"
+  },
+  "summary": {
+    "effective_root_count": 638,
+    "structural_candidate_count": 12,
+    "likely_integrated_count": 12,
+    "uncertain_candidate_count": 0,
+    "layout_counts": [
+      {
+        "layout_label": "dll_only_with_application_dat",
+        "count": 6
+      },
+      {
+        "layout_label": "other",
+        "count": 6
+      }
+    ],
+    "binding_mode_counts": [
+      {
+        "binding_mode": "dynamic_loader",
+        "count": 12
+      }
+    ],
+    "support_dll_counts": [
+      {
+        "name": "with_app_id",
+        "count": 12
+      },
+      {
+        "name": "with_key_revision",
+        "count": 12
+      },
+      {
+        "name": "with_modulus",
+        "count": 12
+      }
+    ]
+  },
+  "likely_integrated_roots": [
+    {
+      "root": "Alien Sky",
+      "layout_label": "other",
+      "primary_executable_path": "artifacts/extracted/rutracker/Alien Sky/AlienSky.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 17,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_EnterMenuSession",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HasTheProductBeenPurchased",
+          "radll_Initialize",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_SetPalette",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/Alien Sky/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 90,
+        "app_id_hex": "0000005A",
+        "key_revision": "A",
+        "modulus_hex": "2C3779B045C8F2A55476DB9EB5FEE9150B1F3D",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/Alien Sky/AlienSky.exe",
+        "artifacts/extracted/rutracker/Alien Sky/SendBugReport.exe"
+      ]
+    },
+    {
+      "root": "Around 3 D",
+      "layout_label": "dll_only_with_application_dat",
+      "primary_executable_path": "artifacts/extracted/rutracker/Around 3 D/around.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 25,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_DrawNextFrameIntoBuffer != NULL",
+          "radll_EnterMenuSession",
+          "radll_EnterMenuSession != NULL",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetNumberOfRectsToUpdate != NULL",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HandleWindowsMessage != NULL",
+          "radll_HasTheProductBeenPurchased",
+          "radll_HasTheProductBeenPurchased != NULL",
+          "radll_Initialize",
+          "radll_Initialize != NULL",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_IsTheMenuSessionComplete != NULL",
+          "radll_SetPalette",
+          "radll_SetPalette != NULL",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/Around 3 D/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 115,
+        "app_id_hex": "00000073",
+        "key_revision": "B",
+        "modulus_hex": "31D40F409841FAB89ACAAF40B30AF9872CBAD5",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/Around 3 D/around.exe"
+      ]
+    },
+    {
+      "root": "Atomaders",
+      "layout_label": "other",
+      "primary_executable_path": "artifacts/extracted/rutracker/Atomaders/Atomaders.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 17,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_EnterMenuSession",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HasTheProductBeenPurchased",
+          "radll_Initialize",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_SetPalette",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/Atomaders/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 60,
+        "app_id_hex": "0000003C",
+        "key_revision": "A",
+        "modulus_hex": "33CB483361482E8D3B7A3F4616B7E96E7CBDAF",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/Atomaders/Atomaders.exe",
+        "artifacts/extracted/rutracker/Atomaders/Language_Selection.exe",
+        "artifacts/extracted/rutracker/Atomaders/SendBugReport.exe"
+      ]
+    },
+    {
+      "root": "Ball Game",
+      "layout_label": "dll_only_with_application_dat",
+      "primary_executable_path": "artifacts/extracted/rutracker/Ball Game/BallGame.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 17,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_EnterMenuSession",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HasTheProductBeenPurchased",
+          "radll_Initialize",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_SetPalette",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/Ball Game/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 45,
+        "app_id_hex": "0000002D",
+        "key_revision": "B",
+        "modulus_hex": "2D3B5B1602F2A205208CAC6FCB0BCC48E61E17",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/Ball Game/BallGame.exe"
+      ]
+    },
+    {
+      "root": "Bugatron",
+      "layout_label": "other",
+      "primary_executable_path": "artifacts/extracted/rutracker/Bugatron/Bug3D.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 17,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_EnterMenuSession",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HasTheProductBeenPurchased",
+          "radll_Initialize",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_SetPalette",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/Bugatron/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 51,
+        "app_id_hex": "00000033",
+        "key_revision": "B",
+        "modulus_hex": "3106BD50B4670A2566D39192EA857934362A09",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/Bugatron/Bug3D.exe",
+        "artifacts/extracted/rutracker/Bugatron/Bugatron.exe"
+      ]
+    },
+    {
+      "root": "Colony",
+      "layout_label": "other",
+      "primary_executable_path": "artifacts/extracted/rutracker/Colony/Colony.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 17,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_EnterMenuSession",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HasTheProductBeenPurchased",
+          "radll_Initialize",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_SetPalette",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/Colony/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 26,
+        "app_id_hex": "0000001A",
+        "key_revision": "A",
+        "modulus_hex": "3389EFDBEB2B7F538C81ACC1149AF299F85685",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/Colony/Colony.exe"
+      ]
+    },
+    {
+      "root": "Crazy Computers",
+      "layout_label": "dll_only_with_application_dat",
+      "primary_executable_path": "artifacts/extracted/rutracker/Crazy Computers/CrazyComputers.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 17,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_EnterMenuSession",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HasTheProductBeenPurchased",
+          "radll_Initialize",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_SetPalette",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/Crazy Computers/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 59,
+        "app_id_hex": "0000003B",
+        "key_revision": "B",
+        "modulus_hex": "2D679BF5D527534AF530C4AAC3059D93D6D4C3",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/Crazy Computers/CrazyComputers.exe"
+      ]
+    },
+    {
+      "root": "Digger",
+      "layout_label": "dll_only_with_application_dat",
+      "primary_executable_path": "artifacts/extracted/rutracker/Digger/digger.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 17,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_EnterMenuSession",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HasTheProductBeenPurchased",
+          "radll_Initialize",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_SetPalette",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/Digger/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 22,
+        "app_id_hex": "00000016",
+        "key_revision": "A",
+        "modulus_hex": "343A575F59F3051ADB598A127744A17167F2C5",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/Digger/digger.exe"
+      ]
+    },
+    {
+      "root": "Docker",
+      "layout_label": "other",
+      "primary_executable_path": "artifacts/extracted/rutracker/Docker/docker.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 17,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_EnterMenuSession",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HasTheProductBeenPurchased",
+          "radll_Initialize",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_SetPalette",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/Docker/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 27,
+        "app_id_hex": "0000001B",
+        "key_revision": "B",
+        "modulus_hex": "341617FA454E1597DEC54EC42EC2186B001499",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/Docker/docker.exe"
+      ]
+    },
+    {
+      "root": "FCF",
+      "layout_label": "dll_only_with_application_dat",
+      "primary_executable_path": "artifacts/extracted/rutracker/FCF/FiveCardFrenzy.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 17,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_EnterMenuSession",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HasTheProductBeenPurchased",
+          "radll_Initialize",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_SetPalette",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/FCF/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 40,
+        "app_id_hex": "00000028",
+        "key_revision": "A",
+        "modulus_hex": "31052FCC573EB4ECF22555B6AC019478B52C59",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/FCF/FiveCardFrenzy.exe"
+      ]
+    },
+    {
+      "root": "Flip Words",
+      "layout_label": "other",
+      "primary_executable_path": "artifacts/extracted/rutracker/Flip Words/FlipWords.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 17,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_EnterMenuSession",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HasTheProductBeenPurchased",
+          "radll_Initialize",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_SetPalette",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/Flip Words/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 91,
+        "app_id_hex": "0000005B",
+        "key_revision": "B",
+        "modulus_hex": "350C571E887A460794E6B2CFF54A3F95EDE1E9",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/Flip Words/FlipWords.exe"
+      ]
+    },
+    {
+      "root": "GDI Test App",
+      "layout_label": "dll_only_with_application_dat",
+      "primary_executable_path": "artifacts/extracted/rutracker/GDI Test App/GDITestApp.exe",
+      "binding": {
+        "binding_mode": "dynamic_loader",
+        "likely_integrated": true,
+        "references_reflexive_dll_string": true,
+        "references_radll_exports": true,
+        "radll_export_count": 18,
+        "radll_export_names": [
+          "radll_DrawNextFrameIntoBuffer",
+          "radll_EnableWindowsMouseCursor",
+          "radll_EnterMenuSession",
+          "radll_GetDLLVersionAsInt",
+          "radll_GetDLLVersionAsString",
+          "radll_GetLastErrorInformation",
+          "radll_GetNumberOfRectsToUpdate",
+          "radll_GetUpdateRect",
+          "radll_GetValueAsFloat",
+          "radll_GetValueAsInt",
+          "radll_GetValueAsString",
+          "radll_HandleWindowsMessage",
+          "radll_HasTheProductBeenPurchased",
+          "radll_Initialize",
+          "radll_IsASystemUpdateRequired",
+          "radll_IsTheMenuSessionComplete",
+          "radll_SetPalette",
+          "radll_ShutDown"
+        ],
+        "references_load_library_name": true,
+        "references_get_proc_address_name": true
+      },
+      "support_dll": {
+        "path": "artifacts/extracted/rutracker/GDI Test App/ReflexiveArcade/ReflexiveArcade.dll",
+        "app_id": 6,
+        "app_id_hex": "00000006",
+        "key_revision": "A",
+        "modulus_hex": "29AD8068061F9314EA49C12981BF5A67ABC8AD",
+        "errors": []
+      },
+      "candidate_exclusion_reasons": [],
+      "top_level_executables": [
+        "artifacts/extracted/rutracker/GDI Test App/GDITestApp.exe"
+      ]
+    }
+  ],
+  "uncertain_roots": []
+}

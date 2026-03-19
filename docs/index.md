@@ -12,5 +12,6 @@ This repository keeps documentation in three buckets:
 - RuTracker source overview: [provenance/rutracker.md](provenance/rutracker.md)
 - Generated report catalog: [generated/index.md](generated/index.md)
 - Recovered RuTracker list: [generated/rutracker/list.txt](generated/rutracker/list.txt)
+- Integrated-wrapper sweep: [generated/rutracker/integrated_wrappers.md](generated/rutracker/integrated_wrappers.md)
 - Embedded-key reconstruction note: [notes/embedded_key_reconstruction.md](notes/embedded_key_reconstruction.md)
 - `keygen` fallback note: [notes/listkg_keygen.md](notes/listkg_keygen.md)
