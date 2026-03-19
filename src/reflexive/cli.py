@@ -69,6 +69,11 @@ COMMANDS = (
         description="Generate a game list from an extracted corpus.",
     ),
     Command(
+        name="installer-snapshot",
+        module="installer_snapshot",
+        description="Snapshot source installers with SHA-256 hashes.",
+    ),
+    Command(
         name="native-registration-scan",
         module="native_registration_scan",
         description="Scan binaries for native registration signals.",

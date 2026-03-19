@@ -81,3 +81,17 @@ def infer_source_id_from_extracted_root(path: Path) -> str | None:
     if not relative.parts:
         return None
     return relative.parts[0]
+
+
+def infer_source_id_from_source_root(path: Path) -> str | None:
+    resolved = path.resolve()
+    sources_parent = artifacts_root() / "sources"
+
+    try:
+        relative = resolved.relative_to(sources_parent.resolve())
+    except ValueError:
+        return None
+
+    if not relative.parts:
+        return None
+    return relative.parts[0]

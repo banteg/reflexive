@@ -1,0 +1,169 @@
+{
+  "source_id": "archive",
+  "source_label": "Archive.org",
+  "generated_from": "artifacts/sources/archive",
+  "summary": {
+    "installer_count": 26,
+    "total_size_bytes": 24353848876,
+    "total_size_human": "22.7 GiB",
+    "glob": "Reflexive Arcade *.exe"
+  },
+  "records": [
+    {
+      "file_name": "Reflexive Arcade 0-9.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade 0-9.exe",
+      "size_bytes": 182862684,
+      "sha256": "df629ffae80f3cf273427d23f876212b72ea99731074e8d7058efa634fb430cb"
+    },
+    {
+      "file_name": "Reflexive Arcade A.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade A.exe",
+      "size_bytes": 1917766518,
+      "sha256": "45f861cd45de88e630e1a664660e429c6028cd7c168b92366fd34e8e57fcdcd8"
+    },
+    {
+      "file_name": "Reflexive Arcade B.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade B.exe",
+      "size_bytes": 1455690949,
+      "sha256": "2fcef13a255b6b8caec086a7ecc5f1374fbbe1a529cd4d7f1f33a1fdfea3be5c"
+    },
+    {
+      "file_name": "Reflexive Arcade C.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade C.exe",
+      "size_bytes": 1541614538,
+      "sha256": "f8e8b09a65431b19363ac6ccb9d9391e70cf91fb18d31c3e2bb2d517c8a75d40"
+    },
+    {
+      "file_name": "Reflexive Arcade D.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade D.exe",
+      "size_bytes": 1337883326,
+      "sha256": "9b800488a024b2d97bbda159675ba45ec42d9f857383e12d3bc12e2034e474ad"
+    },
+    {
+      "file_name": "Reflexive Arcade E.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade E.exe",
+      "size_bytes": 775427766,
+      "sha256": "e0dba1295019be737bf114564e9c5ea264233f52e89d66814cb9ecaf6919dedf"
+    },
+    {
+      "file_name": "Reflexive Arcade F.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade F.exe",
+      "size_bytes": 1290939153,
+      "sha256": "c2f3d7f86bd8f7bbf56bf0fd9d61640049d3264efe81c6d54a4bacb823c74832"
+    },
+    {
+      "file_name": "Reflexive Arcade G.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade G.exe",
+      "size_bytes": 849938201,
+      "sha256": "c7a877c8f01c3cd24a5f06c05bbb2f1928f345206ff7cb3d160f2ecdc5b0dd26"
+    },
+    {
+      "file_name": "Reflexive Arcade H.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade H.exe",
+      "size_bytes": 1193437239,
+      "sha256": "9d4e993f4afc04ae456973e6691823c7299146f46585f72d3642b9b78f9cb2af"
+    },
+    {
+      "file_name": "Reflexive Arcade I.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade I.exe",
+      "size_bytes": 211239352,
+      "sha256": "e6c37fcff3b6c951ffa816079ced9dcae8a94043f4cf8a4799b8afe718d87c5e"
+    },
+    {
+      "file_name": "Reflexive Arcade J.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade J.exe",
+      "size_bytes": 929407500,
+      "sha256": "3d062f15ace697ee072e1e8eb0b45722c4f839499cae3e284c5eb2f787b5e49f"
+    },
+    {
+      "file_name": "Reflexive Arcade K.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade K.exe",
+      "size_bytes": 156126665,
+      "sha256": "efb7f15121a044db22ae70b77fee14e97261e3631fb05795aef4ebdea99aa800"
+    },
+    {
+      "file_name": "Reflexive Arcade L.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade L.exe",
+      "size_bytes": 756144205,
+      "sha256": "1af5bd47746418e1cef605b870e46f21b3c5c4d3af8e7f96b2dd48e6c0b1dbb1"
+    },
+    {
+      "file_name": "Reflexive Arcade M.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade M.exe",
+      "size_bytes": 2238571805,
+      "sha256": "b2703133ecf35ea2530697b087538e41cbf10f419b49b5b3d3e8811d674bd026"
+    },
+    {
+      "file_name": "Reflexive Arcade N.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade N.exe",
+      "size_bytes": 304143562,
+      "sha256": "2e7627fbe1e49478dbece6b37c99572682cf9f830070645d15495cf2ec438309"
+    },
+    {
+      "file_name": "Reflexive Arcade O.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade O.exe",
+      "size_bytes": 251613151,
+      "sha256": "51ddbdc4de7491109e32e4c133ca03578a13e7ceddc17e0ac323accbcf710c4d"
+    },
+    {
+      "file_name": "Reflexive Arcade P.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade P.exe",
+      "size_bytes": 1374264384,
+      "sha256": "999de5f410e24345d8d5ab290b34d431f1a91c568970a85e7e6126932996be9d"
+    },
+    {
+      "file_name": "Reflexive Arcade R.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade R.exe",
+      "size_bytes": 1335026021,
+      "sha256": "bc42c39b1d2989c8519ce20f6d7807cde6867a81eefe9870ac90b565ad7b2caa"
+    },
+    {
+      "file_name": "Reflexive Arcade S.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade S.exe",
+      "size_bytes": 2064652521,
+      "sha256": "1c617ebef41667d0f1516b9ed711ecea9b8f30a49ad30bdc179c15199cf0184a"
+    },
+    {
+      "file_name": "Reflexive Arcade T.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade T.exe",
+      "size_bytes": 2670831339,
+      "sha256": "950c6a78749ac6a4f696a350d7fe3df2fecfe2de28bd57ae39ab73f1f160995c"
+    },
+    {
+      "file_name": "Reflexive Arcade U.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade U.exe",
+      "size_bytes": 67851222,
+      "sha256": "7e8bf92795607d68390445874580e90ea44b4891b151842701155a36499916aa"
+    },
+    {
+      "file_name": "Reflexive Arcade V.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade V.exe",
+      "size_bytes": 214295392,
+      "sha256": "8833e75204710c848c3abbae215ebe225272068eddf0e2a6f6f6002e0040a496"
+    },
+    {
+      "file_name": "Reflexive Arcade W.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade W.exe",
+      "size_bytes": 630352748,
+      "sha256": "d17442f135f30e78240ecfac01ab32664a656a43784fcce915fd0184869cb0f6"
+    },
+    {
+      "file_name": "Reflexive Arcade X.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade X.exe",
+      "size_bytes": 85680039,
+      "sha256": "246818c6e2b1a97d9d52d732710b91f69223ce611bd4259c176a71ff28c19bb0"
+    },
+    {
+      "file_name": "Reflexive Arcade Y.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade Y.exe",
+      "size_bytes": 161016311,
+      "sha256": "654afe49bd2818e92996229115dd2a223438c3fe2b3603a9601915c97effc0ce"
+    },
+    {
+      "file_name": "Reflexive Arcade Z.exe",
+      "path": "artifacts/sources/archive/Reflexive Arcade Z.exe",
+      "size_bytes": 357072285,
+      "sha256": "e0899178b09d3acd311e34d13852b2107acc464f3ebcede8fd497f7267e0d390"
+    }
+  ]
+}

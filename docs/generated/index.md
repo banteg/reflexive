@@ -8,6 +8,7 @@ artifacts are easier to distinguish.
 | Report | Markdown | JSON |
 | --- | --- | --- |
 | Game list | [archive/game_list.md](archive/game_list.md) | |
+| Installer snapshot | [archive/installer_snapshot.md](archive/installer_snapshot.md) | [archive/installer_snapshot.json](archive/installer_snapshot.json) |
 | Unwrapper report | [archive/unwrapper.md](archive/unwrapper.md) | [archive/unwrapper.json](archive/unwrapper.json) |
 | Unwrapper sweep | [archive/unwrapper_sweep.md](archive/unwrapper_sweep.md) | [archive/unwrapper_sweep.json](archive/unwrapper_sweep.json) |
 | Wrapper inventory | [archive/wrapper_inventory.md](archive/wrapper_inventory.md) | [archive/wrapper_inventory.json](archive/wrapper_inventory.json) |
@@ -18,6 +19,7 @@ artifacts are easier to distinguish.
 | Report | Markdown | JSON |
 | --- | --- | --- |
 | Game list | [rutracker/game_list.md](rutracker/game_list.md) | |
+| Installer snapshot | [rutracker/installer_snapshot.md](rutracker/installer_snapshot.md) | [rutracker/installer_snapshot.json](rutracker/installer_snapshot.json) |
 | Recovered key list | [rutracker/list.txt](rutracker/list.txt) | |
 | Integrated wrappers | [rutracker/integrated_wrappers.md](rutracker/integrated_wrappers.md) | [rutracker/integrated_wrappers.json](rutracker/integrated_wrappers.json) |
 | Native registration scan | [rutracker/native_registration_scan.md](rutracker/native_registration_scan.md) | [rutracker/native_registration_scan.json](rutracker/native_registration_scan.json) |
