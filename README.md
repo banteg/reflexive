@@ -29,16 +29,19 @@ uv run reflexive --help
 
 ### Generate registration codes
 
-Given a product code (printed on the game's purchase confirmation or embedded in the wrapper), generate the registration and unlock codes:
+In the Reflexive launcher, click "Already Paid", then choose "I'm not connected to the internet", copy the product code, then run:
 
 ```
-reflexive keygen EACFPXKUCGKWHJGEEKTYAA
+reflexive keygen EAYO-6RIG-MYJ1-1
 ```
 
-Generate keys for every known game at once and export a `.reg` file:
+Then paste the unlock code and press "Submit"
+
+Generate keys for every known game at once and export a `.reg` file.
+Knowing a single product is sufficient to derive unlock codes for the entire collection.
 
 ```
-reflexive keygen EACFPXKUCGKWHJGEEKTYAA --all --reg-out keys.reg
+reflexive keygen EAYO-6RIG-MYJ1-1 --all --reg-out keys.reg
 ```
 
 ### Unwrap a game executable
@@ -49,9 +52,11 @@ Strip the Reflexive wrapper to recover the original game exe. This is the cleane
 reflexive unwrap --extracted-root path/to/extracted/corpus "Game Name"
 ```
 
+Note that several games integrate Reflexive libraries right into the game and this method will not work for them.
+
 ### Patch a wrapper exe
 
-Patch a Reflexive wrapper executable in-place to bypass registration. Use this when unwrapping isn't possible (e.g. integrated wrappers):
+Patch a Reflexive wrapper executable in-place to bypass registration. Use this when unwrapping isn't possible:
 
 ```
 reflexive patch path/to/game.exe
