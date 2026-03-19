@@ -19,3 +19,12 @@ packages = ["src/reflexive"]
 
 [tool.uv]
 package = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "sympy>=1.14.0",
+]
