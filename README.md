@@ -29,16 +29,23 @@ uv run reflexive --help
 
 ### Extract installers
 
-Extract the RuTracker Reflexive installer corpus into installed game trees:
+Extract a single installer into an installed game tree:
 
 ```
-reflexive extract SomeGameSetup.exe
+reflexive extract AlienShooterSetup.exe
 ```
 
 Extract and unwrap in one step:
 
 ```
-reflexive extract SomeGameSetup.exe --unwrap
+reflexive extract AlienShooterSetup.exe --unwrap
+```
+
+Extract the entire corpus:
+
+```
+reflexive extract --all path/to/installers
+reflexive extract --all path/to/installers --unwrap
 ```
 
 ### Generate registration codes
