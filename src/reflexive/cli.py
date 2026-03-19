@@ -10,7 +10,6 @@ class Command:
     name: str
     module: str
     description: str
-    aliases: tuple[str, ...] = ()
 
 
 COMMANDS = (
@@ -18,122 +17,102 @@ COMMANDS = (
         name="patch",
         module="patch",
         description="Patch supported Reflexive wrapper executables.",
-        aliases=("patch-exe", "patch-reflexive-exe"),
     ),
     Command(
         name="unwrap",
         module="unwrap",
         description="Statically unwrap Reflexive wrapper payloads.",
-        aliases=("unwrap-wrapper", "unwrap-reflexive-wrapper"),
     ),
     Command(
         name="keygen",
         module="keygen",
         description="Generate or decode Reflexive registration material.",
-        aliases=("listkg", "reflexive-listkg"),
     ),
     Command(
         name="unpack-mpress",
         module="unpack_mpress",
         description="Dump and rebuild MPRESS-packed PE files.",
-        aliases=("unpack-mpress-pe",),
     ),
     Command(
         name="extract-installer",
         module="extract_installer",
         description="Extract Reflexive smart installers.",
-        aliases=("extract-reflexive-smart-installer",),
     ),
     Command(
         name="extract-rutracker-installer",
         module="extract_rutracker_installer",
         description="Extract the rutracker Reflexive installer corpus.",
-        aliases=("extract-rutracker-reflexive-installer",),
     ),
     Command(
         name="wrapper-versions",
         module="wrapper_versions",
         description="Scan wrapper binaries and summarize version families.",
-        aliases=("generate-reflexive-wrapper-versions",),
     ),
     Command(
         name="wrapper-inventory",
         module="wrapper_inventory",
         description="Build a wrapper inventory for an extracted corpus.",
-        aliases=("generate-reflexive-wrapper-inventory",),
     ),
     Command(
         name="unwrapper-sweep",
         module="unwrapper_sweep",
         description="Run the full static unwrapper sweep.",
-        aliases=("generate-reflexive-unwrapper-sweep",),
     ),
     Command(
         name="unwrapper-report",
         module="unwrapper_report",
         description="Render the unwrapper coverage report.",
-        aliases=("generate-reflexive-unwrapper-report",),
     ),
     Command(
         name="game-list",
         module="game_list",
         description="Generate a game list from an extracted corpus.",
-        aliases=("generate-game-list",),
     ),
     Command(
         name="native-registration-scan",
         module="native_registration_scan",
         description="Scan binaries for native registration signals.",
-        aliases=("generate-native-registration-scan",),
     ),
     Command(
         name="key-inventory",
         module="key_inventory",
         description="Extract embedded Reflexive RSA key material from branded DLLs.",
-        aliases=("generate-reflexive-key-inventory",),
     ),
     Command(
         name="recovered-list",
         module="recovered_list",
         description="Generate a recovered list.txt from a key inventory report.",
-        aliases=("generate-reflexive-recovered-list",),
     ),
     Command(
         name="compare-unwrapped",
         module="compare_unwrapped",
         description="Compare unwrapped corpora across sources.",
-        aliases=("compare-unwrapped-corpus-versions",),
     ),
     Command(
         name="rutracker-game-list",
         module="rutracker_game_list",
         description="Generate the rutracker installer-derived game list.",
-        aliases=("generate-rutracker-game-list",),
     ),
     Command(
         name="rutracker-probe-report",
         module="rutracker_probe_report",
         description="Build the rutracker probe report.",
-        aliases=("generate-rutracker-probe-report",),
     ),
     Command(
         name="rutracker-publisher-attribution",
         module="rutracker_publisher_attribution",
         description="Build the rutracker publisher attribution report.",
-        aliases=("generate-rutracker-publisher-attribution",),
     ),
     Command(
         name="rutracker-engine-report",
         module="rutracker_engine_report",
         description="Build the rutracker game engine report.",
-        aliases=("generate-rutracker-engine-report",),
     ),
 )
 
 COMMAND_INDEX = {
-    alias: command
+    command.name: command
     for command in COMMANDS
-    for alias in (command.name, *command.aliases)
 }
 
 def format_help() -> str:

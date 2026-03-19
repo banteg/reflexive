@@ -12,10 +12,10 @@ def test_help_uses_renamed_primary_commands() -> None:
     assert "listkg" not in help_text
 
 
-def test_old_command_names_remain_supported_as_aliases() -> None:
+def test_only_canonical_command_names_are_registered() -> None:
     assert COMMAND_INDEX["patch"].name == "patch"
-    assert COMMAND_INDEX["patch-exe"].name == "patch"
     assert COMMAND_INDEX["unwrap"].name == "unwrap"
-    assert COMMAND_INDEX["unwrap-wrapper"].name == "unwrap"
     assert COMMAND_INDEX["keygen"].name == "keygen"
-    assert COMMAND_INDEX["listkg"].name == "keygen"
+    assert "patch-exe" not in COMMAND_INDEX
+    assert "unwrap-wrapper" not in COMMAND_INDEX
+    assert "listkg" not in COMMAND_INDEX
