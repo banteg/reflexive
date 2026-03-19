@@ -3,7 +3,6 @@ from __future__ import annotations
 import importlib
 import sys
 from dataclasses import dataclass
-from pathlib import Path
 
 
 @dataclass(frozen=True)
@@ -78,7 +77,7 @@ COMMANDS = (
     Command(
         name="game-list",
         module="generate_game_list",
-        description="Generate the archive-derived game list.",
+        description="Generate a game list from an extracted corpus.",
         aliases=("generate-game-list",),
     ),
     Command(
@@ -125,21 +124,6 @@ COMMAND_INDEX = {
     for alias in (command.name, *command.aliases)
 }
 
-
-def repo_root() -> Path:
-    return Path(__file__).resolve().parent.parent
-
-
-def scripts_dir() -> Path:
-    return repo_root() / "scripts"
-
-
-def ensure_scripts_on_path() -> None:
-    scripts_path = str(scripts_dir())
-    if scripts_path not in sys.path:
-        sys.path.insert(0, scripts_path)
-
-
 def format_help() -> str:
     lines = [
         "Usage: reflexive <command> [args...]",
@@ -165,8 +149,7 @@ def dispatch(command_name: str, argv: list[str]) -> int:
         print(format_help(), file=sys.stderr)
         return 2
 
-    ensure_scripts_on_path()
-    module = importlib.import_module(command.module)
+    module = importlib.import_module(f".{command.module}", package=__package__)
     if not hasattr(module, "main"):
         print(f"error: command module has no main(): {command.module}", file=sys.stderr)
         return 1

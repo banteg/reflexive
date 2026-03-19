@@ -6,7 +6,6 @@
 from __future__ import annotations
 
 import argparse
-import importlib.util
 import itertools
 import os
 import shutil
@@ -17,8 +16,9 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import pefile
-from source_layout import infer_source_id_from_extracted_root
-from source_layout import unwrapped_root as source_unwrapped_root
+from . import generate_reflexive_wrapper_versions
+from .source_layout import infer_source_id_from_extracted_root
+from .source_layout import unwrapped_root as source_unwrapped_root
 
 
 MASK32 = 0xFFFFFFFF
@@ -89,7 +89,7 @@ class SeedMaterial:
 
 
 def repo_root() -> Path:
-    return Path(__file__).resolve().parent.parent
+    return Path(__file__).resolve().parents[2]
 
 
 def default_output_root(extracted_root: Path) -> Path:
@@ -107,14 +107,7 @@ def display_path(path: Path) -> str:
 
 
 def load_wrapper_scan_module() -> Any:
-    module_path = repo_root() / "scripts" / "generate_reflexive_wrapper_versions.py"
-    spec = importlib.util.spec_from_file_location("reflexive_wrapper_versions", module_path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"unable to load {module_path}")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
+    return generate_reflexive_wrapper_versions
 
 
 def build_scan(extracted_root: Path, selected_roots: Iterable[str] | None = None) -> dict[str, Any]:

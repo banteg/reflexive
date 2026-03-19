@@ -7,27 +7,16 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from source_layout import DEFAULT_SOURCE_ID, extracted_root as source_extracted_root, source_label
+from .source_layout import infer_source_id_from_extracted_root
+from .source_layout import source_label
 
 
 def repo_root() -> Path:
-    return Path(__file__).resolve().parent.parent
+    return Path(__file__).resolve().parents[2]
 
 
-def default_extracted_root() -> Path:
-    return source_extracted_root(DEFAULT_SOURCE_ID)
-
-
-def default_output_path() -> Path:
-    return repo_root() / "docs" / "generated" / "archive" / "game_list.md"
-
-
-def default_source_id() -> str:
-    return DEFAULT_SOURCE_ID
-
-
-def default_source_label() -> str:
-    return source_label(DEFAULT_SOURCE_ID)
+def default_output_path(source_id: str) -> Path:
+    return repo_root() / "docs" / "generated" / source_id / "game_list.md"
 
 
 def archive_sort_key(path: Path) -> tuple[int, str]:
@@ -92,27 +81,25 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--source-id",
-        default=default_source_id(),
-        help="Stable source id to include in the generated document.",
+        default=None,
+        help="Stable source id to include in the generated document. Defaults to the id inferred from extracted_root.",
     )
     parser.add_argument(
         "--source-label",
-        default=default_source_label(),
-        help="Human-readable source label for the document title.",
+        default=None,
+        help="Human-readable source label for the document title. Defaults to the label for --source-id.",
     )
     parser.add_argument(
         "extracted_root",
-        nargs="?",
         type=Path,
-        default=default_extracted_root(),
         help="Root containing extracted `Reflexive Arcade *` directories.",
     )
     parser.add_argument(
         "output_path",
         nargs="?",
         type=Path,
-        default=default_output_path(),
-        help="Markdown file to write.",
+        default=None,
+        help="Markdown file to write. Defaults to docs/generated/<source_id>/game_list.md when the source can be inferred.",
     )
     return parser.parse_args()
 
@@ -120,7 +107,11 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     extracted_root = args.extracted_root.resolve()
-    output_path = args.output_path.resolve()
+    source_id = args.source_id or infer_source_id_from_extracted_root(extracted_root)
+    if source_id is None:
+        raise SystemExit(f"unable to infer source id from {extracted_root}; pass --source-id explicitly")
+    source_label_text = args.source_label or source_label(source_id)
+    output_path = args.output_path.resolve() if args.output_path else default_output_path(source_id)
 
     archives = collect_archives(extracted_root)
     if not archives:
@@ -131,8 +122,8 @@ def main() -> int:
         render_markdown(
             archives,
             extracted_root,
-            source_id=args.source_id,
-            source_label=args.source_label,
+            source_id=source_id,
+            source_label=source_label_text,
         ),
         encoding="utf-8",
     )

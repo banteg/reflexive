@@ -12,10 +12,10 @@ dependencies = [
 ]
 
 [project.scripts]
-reflexive = "reflexive_cli.cli:main"
+reflexive = "reflexive.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["reflexive_cli"]
+packages = ["src/reflexive"]
 
 [tool.uv]
 package = true

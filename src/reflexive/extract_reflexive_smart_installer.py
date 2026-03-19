@@ -19,11 +19,11 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 
-from source_layout import extracted_root as source_extracted_root
-from source_layout import infer_source_id_from_installer_path
-from source_layout import source_root as source_source_root
-from source_layout import unwrapped_root as source_unwrapped_root
-from unwrap_installer_tree import unwrap_extracted_tree
+from .source_layout import extracted_root as source_extracted_root
+from .source_layout import infer_source_id_from_installer_path
+from .source_layout import source_root as source_source_root
+from .source_layout import unwrapped_root as source_unwrapped_root
+from .unwrap_installer_tree import unwrap_extracted_tree
 
 
 SMART_INSTALL_MAKER_SIGNATURE = b"Smart Install Maker v"
@@ -449,15 +449,23 @@ def materialize_payload(file_names: tuple[str, ...], raw_payload_dir: Path, dest
 
 def default_output_root(installer_path: Path) -> Path:
     source_id = infer_source_id_from_installer_path(installer_path)
+    if source_id is None:
+        raise ValueError(f"unable to infer source id from {installer_path}; pass --output-root explicitly")
     return source_extracted_root(source_id) / installer_path.stem
 
 
-def default_batch_installers_root() -> Path:
-    return source_source_root("archive")
+def default_batch_output_root(installers_root: Path) -> Path:
+    source_id = infer_source_id_from_installer_path(installers_root)
+    if source_id is None:
+        raise ValueError(f"unable to infer source id from {installers_root}; pass --output-root explicitly")
+    return source_extracted_root(source_id)
 
 
-def default_batch_unwrapped_root() -> Path:
-    return source_unwrapped_root("archive")
+def default_unwrapped_root(input_path: Path) -> Path:
+    source_id = infer_source_id_from_installer_path(input_path)
+    if source_id is None:
+        raise ValueError(f"unable to infer source id from {input_path}; pass --unwrapped-root explicitly")
+    return source_unwrapped_root(source_id)
 
 
 def clear_output_root(output_root: Path, *, force: bool) -> None:
@@ -726,10 +734,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--unwrapped-root",
         type=Path,
-        default=default_batch_unwrapped_root(),
+        default=None,
         help=(
             "Single mode: destination directory for the wrapper-free tree when --unwrap is enabled. "
-            "Batch mode (--all): root that will receive one wrapper-free directory per installer."
+            "Batch mode (--all): root that will receive one wrapper-free directory per installer. "
+            "Defaults to artifacts/unwrapped/<source_id> when the source can be inferred."
         ),
     )
     return parser.parse_args()
@@ -743,19 +752,24 @@ def main() -> int:
 
     try:
         if args.all:
-            installers_root = (
-                args.input_path.resolve() if args.input_path else default_batch_installers_root().resolve()
-            )
+            if args.input_path is None:
+                raise ValueError("missing installers root for --all; pass a source directory explicitly")
+            installers_root = args.input_path.resolve()
             if installers_root.is_file():
                 raise ValueError(f"expected an archive directory for --all, got file: {installers_root}")
-            output_root = args.output_root.resolve() if args.output_root else source_extracted_root("archive")
+            output_root = args.output_root.resolve() if args.output_root else default_batch_output_root(installers_root)
+            unwrapped_root = None
+            if args.unwrap:
+                unwrapped_root = args.unwrapped_root.resolve() if args.unwrapped_root else default_unwrapped_root(
+                    installers_root
+                )
             extract_all_installers(
                 installers_root,
                 output_root,
                 force=args.force,
                 unwrap_after=args.unwrap,
                 keep_extracted=args.keep_extracted,
-                unwrapped_root=args.unwrapped_root.resolve() if args.unwrap else None,
+                unwrapped_root=unwrapped_root,
             )
         else:
             if args.input_path is None:
@@ -764,7 +778,12 @@ def main() -> int:
             if installer_path.is_dir():
                 raise ValueError(f"expected an installer EXE, got directory: {installer_path}")
             output_root = args.output_root.resolve() if args.output_root else default_output_root(installer_path)
-            unwrap_destination = (args.unwrapped_root.resolve() / installer_path.stem) if args.unwrap else None
+            unwrap_root = None
+            if args.unwrap:
+                unwrap_root = args.unwrapped_root.resolve() if args.unwrapped_root else default_unwrapped_root(
+                    installer_path
+                )
+            unwrap_destination = (unwrap_root / installer_path.stem) if unwrap_root else None
             extract_and_optionally_unwrap(
                 installer_path,
                 output_root,

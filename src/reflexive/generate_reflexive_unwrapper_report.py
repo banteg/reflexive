@@ -6,32 +6,25 @@
 from __future__ import annotations
 
 import argparse
-import importlib.util
 import json
-import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
-from source_layout import DEFAULT_SOURCE_ID
-from source_layout import extracted_root as source_extracted_root
-from source_layout import infer_source_id_from_extracted_root
+from . import unwrap_reflexive_wrapper
+from .source_layout import infer_source_id_from_extracted_root
 
 
 def repo_root() -> Path:
-    return Path(__file__).resolve().parent.parent
+    return Path(__file__).resolve().parents[2]
 
 
-def default_extracted_root() -> Path:
-    return source_extracted_root(DEFAULT_SOURCE_ID)
+def default_markdown_path(source_id: str) -> Path:
+    return repo_root() / "docs" / "generated" / source_id / "unwrapper.md"
 
 
-def default_markdown_path() -> Path:
-    return repo_root() / "docs" / "generated" / "archive" / "unwrapper.md"
-
-
-def default_json_path() -> Path:
-    return repo_root() / "docs" / "generated" / "archive" / "unwrapper.json"
+def default_json_path(source_id: str) -> Path:
+    return repo_root() / "docs" / "generated" / source_id / "unwrapper.json"
 
 
 def display_path(path: Path) -> str:
@@ -39,16 +32,6 @@ def display_path(path: Path) -> str:
         return str(path.relative_to(repo_root()))
     except ValueError:
         return str(path)
-
-
-def load_module(path: Path, name: str) -> Any:
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"unable to load {path}")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
 
 
 def child_type(wrapper_root: Path) -> str | None:
@@ -62,10 +45,15 @@ def child_type(wrapper_root: Path) -> str | None:
 
 
 def build_report(extracted_root: Path) -> dict[str, Any]:
-    module = load_module(repo_root() / "scripts" / "unwrap_reflexive_wrapper.py", "reflexive_unwrapper")
+    module = unwrap_reflexive_wrapper
     inventory = module.build_scan(extracted_root)
     records = module.effective_records(inventory["roots"])
-    source_id = infer_source_id_from_extracted_root(extracted_root) or DEFAULT_SOURCE_ID
+    source_id = infer_source_id_from_extracted_root(extracted_root)
+    output_shape = (
+        "Materialize wrapper-free trees under a source-scoped artifacts/unwrapped/<source_id> root by removing ReflexiveArcade/ content, wrapper launcher copies, encrypted child blobs, RAW_002/RAW_003 wrapper sidecars, and wrapper-only top-level assets such as Background.jpg, button_*.jpg, and wraperr.log."
+        if source_id is None
+        else f"Materialize wrapper-free trees under artifacts/unwrapped/{source_id} by removing ReflexiveArcade/ content, wrapper launcher copies, encrypted child blobs, RAW_002/RAW_003 wrapper sidecars, and wrapper-only top-level assets such as Background.jpg, button_*.jpg, and wraperr.log."
+    )
 
     strategy_counter: Counter[str] = Counter()
     layout_strategy_counter: Counter[tuple[str, str]] = Counter()
@@ -120,7 +108,7 @@ def build_report(extracted_root: Path) -> dict[str, Any]:
         "methodology": {
             "static_strategy": "For wrapper roots that carry an encrypted child file (*.RWG, RAW_001.exe, or RAW_001.dat), derive the RAW_002 config seed from the wrapper-side dependency file sizes, decrypt RAW_002 statically, derive the child-payload seed from the encrypted RAW_002 header, and patch the decrypted entrypoint-to-section-end span back into the child PE on disk.",
             "direct_strategy": "For helper and dll-only layouts where a non-wrapper game executable is already present at the top level, carry that executable forward and drop Reflexive wrapper artifacts.",
-            "output_shape": f"Materialize wrapper-free trees under artifacts/unwrapped/{source_id} by removing ReflexiveArcade/ content, wrapper launcher copies, encrypted child blobs, RAW_002/RAW_003 wrapper sidecars, and wrapper-only top-level assets such as Background.jpg, button_*.jpg, and wraperr.log.",
+            "output_shape": output_shape,
             "validation": "The static decryptor matches the earlier runtime-captured outputs byte-for-byte on eight cross-family roots: 10 Days Under The Sea, A Pirates Legend, Diamond Drop, Emperors Mahjong, Home Sweet Home, Astrobatics, Ice Cream Tycoon, and Alpha Ball/bin.",
         },
         "summary": {
@@ -263,22 +251,20 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "extracted_root",
-        nargs="?",
         type=Path,
-        default=default_extracted_root(),
         help="Root containing extracted Reflexive Arcade directories.",
     )
     parser.add_argument(
         "--markdown-out",
         type=Path,
-        default=default_markdown_path(),
-        help="Markdown output path.",
+        default=None,
+        help="Markdown output path. Defaults to docs/generated/<source_id>/unwrapper.md when the source can be inferred.",
     )
     parser.add_argument(
         "--json-out",
         type=Path,
-        default=default_json_path(),
-        help="JSON output path.",
+        default=None,
+        help="JSON output path. Defaults to docs/generated/<source_id>/unwrapper.json when the source can be inferred.",
     )
     return parser.parse_args()
 
@@ -286,8 +272,19 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     extracted_root = args.extracted_root.resolve()
-    markdown_out = args.markdown_out.resolve()
-    json_out = args.json_out.resolve()
+    source_id = infer_source_id_from_extracted_root(extracted_root)
+    if args.markdown_out is not None:
+        markdown_out = args.markdown_out.resolve()
+    else:
+        if source_id is None:
+            raise RuntimeError(f"unable to infer source id from {extracted_root}; pass --markdown-out explicitly")
+        markdown_out = default_markdown_path(source_id)
+    if args.json_out is not None:
+        json_out = args.json_out.resolve()
+    else:
+        if source_id is None:
+            raise RuntimeError(f"unable to infer source id from {extracted_root}; pass --json-out explicitly")
+        json_out = default_json_path(source_id)
     report = build_report(extracted_root)
 
     markdown_out.parent.mkdir(parents=True, exist_ok=True)

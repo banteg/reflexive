@@ -11,8 +11,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from source_layout import repo_root
-from source_layout import unwrapped_root as source_unwrapped_root
+from .source_layout import repo_root
+from .source_layout import unwrapped_root as source_unwrapped_root
 
 
 TEXT_PROBE_EXTENSIONS = {

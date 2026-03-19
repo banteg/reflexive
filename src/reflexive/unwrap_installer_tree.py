@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-import importlib.util
-import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
+from . import unwrap_reflexive_wrapper
 
 
 @dataclass(frozen=True)
@@ -12,20 +12,8 @@ class UnwrapTreeResult:
     ok_roots: tuple[str, ...]
     unsupported_roots: tuple[str, ...]
 
-
-def repo_root() -> Path:
-    return Path(__file__).resolve().parent.parent
-
-
 def load_unwrapper_module() -> Any:
-    module_path = repo_root() / "scripts" / "unwrap_reflexive_wrapper.py"
-    spec = importlib.util.spec_from_file_location("reflexive_unwrapper", module_path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"unable to load {module_path}")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
+    return unwrap_reflexive_wrapper
 
 
 def unwrap_extracted_tree(extracted_tree: Path, output_root: Path, *, force: bool) -> UnwrapTreeResult:

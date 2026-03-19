@@ -8,7 +8,7 @@ import tempfile
 from pathlib import Path
 
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[2]
 DUMPER_SOURCE = REPO_ROOT / "scripts" / "mpress_memory_dumper.c"
 DUMPER_EXE = Path(tempfile.gettempdir()) / "reflexive_mpress_memory_dumper.exe"
 

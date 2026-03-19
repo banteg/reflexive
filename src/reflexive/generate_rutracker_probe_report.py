@@ -6,18 +6,17 @@
 from __future__ import annotations
 
 import argparse
-import importlib.util
 import json
 import shutil
 import subprocess
-import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
 import pefile
 
-from source_layout import repo_root
+from . import generate_rutracker_publisher_attribution
+from .source_layout import repo_root
 
 
 INSTALLER_MARKERS: tuple[tuple[str, str, tuple[bytes, ...]], ...] = (
@@ -74,22 +73,8 @@ def display_path(path: Path) -> str:
         return str(path.resolve())
 
 
-def load_script_module(module_name: str, script_path: Path) -> Any:
-    spec = importlib.util.spec_from_file_location(module_name, script_path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"unable to load {script_path}")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[module_name] = module
-    spec.loader.exec_module(module)
-    return module
-
-
 def load_attribution_report(torrent_path: Path, archive_extracted_root: Path) -> dict[str, Any]:
-    module = load_script_module(
-        "rutracker_publisher_attribution",
-        repo_root() / "scripts" / "generate_rutracker_publisher_attribution.py",
-    )
-    return module.build_report(torrent_path, archive_extracted_root)
+    return generate_rutracker_publisher_attribution.build_report(torrent_path, archive_extracted_root)
 
 
 def load_json(path: Path) -> dict[str, Any]:

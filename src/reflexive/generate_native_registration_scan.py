@@ -8,10 +8,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
-from source_layout import DEFAULT_SOURCE_ID
-from source_layout import repo_root as source_repo_root
-from source_layout import source_label
-from source_layout import unwrapped_root as source_unwrapped_root
+from .source_layout import repo_root as source_repo_root
+from .source_layout import source_label
+from .source_layout import unwrapped_root as source_unwrapped_root
 
 
 @dataclass(frozen=True)
@@ -133,7 +132,7 @@ def display_path(path: Path) -> str:
         return str(path)
 
 
-def infer_source_id_from_sweep(sweep_json_path: Path, report: dict[str, object]) -> str:
+def infer_source_id_from_sweep(sweep_json_path: Path, report: dict[str, object]) -> str | None:
     output_root = report.get("output_root")
     if isinstance(output_root, str):
         output_path = repo_root() / output_root
@@ -156,15 +155,17 @@ def infer_source_id_from_sweep(sweep_json_path: Path, report: dict[str, object])
         except ValueError:
             pass
 
-    return DEFAULT_SOURCE_ID
+    return None
 
 
-def default_sweep_json() -> Path:
-    return repo_root() / "docs" / "generated" / DEFAULT_SOURCE_ID / "unwrapper_sweep.json"
-
-
-def default_unwrapped_root() -> Path:
-    return source_unwrapped_root(DEFAULT_SOURCE_ID)
+def infer_source_id_from_unwrapped_root(path: Path) -> str | None:
+    try:
+        relative = path.resolve().relative_to((repo_root() / "artifacts" / "unwrapped").resolve())
+    except ValueError:
+        return None
+    if not relative.parts:
+        return None
+    return relative.parts[0]
 
 
 def default_markdown_path(source_id: str) -> Path:
@@ -422,7 +423,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--sweep-json",
         type=Path,
-        default=default_sweep_json(),
+        required=True,
         help="Unwrapper sweep JSON that supplies the root list and primary output executable names.",
     )
     parser.add_argument(
@@ -448,14 +449,33 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    sweep = json.loads(args.sweep_json.read_text())
-    source_id = infer_source_id_from_sweep(args.sweep_json, sweep)
+    sweep_json = args.sweep_json.resolve()
+    sweep = json.loads(sweep_json.read_text())
+    source_id = infer_source_id_from_sweep(sweep_json, sweep)
+    if source_id is None and args.unwrapped_root is not None:
+        source_id = infer_source_id_from_unwrapped_root(args.unwrapped_root)
 
-    unwrapped_root = args.unwrapped_root or source_unwrapped_root(source_id)
-    markdown_out = args.markdown_out or default_markdown_path(source_id)
-    json_out = args.json_out or default_json_path(source_id)
+    if args.unwrapped_root is not None:
+        unwrapped_root = args.unwrapped_root.resolve()
+    else:
+        if source_id is None:
+            raise RuntimeError(f"unable to infer source id from {sweep_json}; pass --unwrapped-root explicitly")
+        unwrapped_root = source_unwrapped_root(source_id)
 
-    report = build_report(args.sweep_json, unwrapped_root)
+    if args.markdown_out is not None:
+        markdown_out = args.markdown_out.resolve()
+    else:
+        if source_id is None:
+            raise RuntimeError(f"unable to infer source id from {sweep_json}; pass --markdown-out explicitly")
+        markdown_out = default_markdown_path(source_id)
+    if args.json_out is not None:
+        json_out = args.json_out.resolve()
+    else:
+        if source_id is None:
+            raise RuntimeError(f"unable to infer source id from {sweep_json}; pass --json-out explicitly")
+        json_out = default_json_path(source_id)
+
+    report = build_report(sweep_json, unwrapped_root)
     markdown = render_markdown(report)
 
     markdown_out.parent.mkdir(parents=True, exist_ok=True)

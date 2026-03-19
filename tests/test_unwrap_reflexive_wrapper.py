@@ -1,23 +1,14 @@
-import importlib.util
 import sys
 import unittest
 from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS_DIR = REPO_ROOT / "scripts"
-if str(SCRIPTS_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPTS_DIR))
+SRC_DIR = REPO_ROOT / "src"
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
 
-SPEC = importlib.util.spec_from_file_location(
-    "unwrap_reflexive_wrapper",
-    SCRIPTS_DIR / "unwrap_reflexive_wrapper.py",
-)
-assert SPEC is not None
-assert SPEC.loader is not None
-MODULE = importlib.util.module_from_spec(SPEC)
-sys.modules[SPEC.name] = MODULE
-SPEC.loader.exec_module(MODULE)
+from reflexive import unwrap_reflexive_wrapper as MODULE
 
 
 class FakeOptionalHeader:

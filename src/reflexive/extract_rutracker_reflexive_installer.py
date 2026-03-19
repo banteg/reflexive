@@ -14,10 +14,10 @@ import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
-from source_layout import extracted_root as source_extracted_root
-from source_layout import source_root as source_source_root
-from source_layout import unwrapped_root as source_unwrapped_root
-from unwrap_installer_tree import unwrap_extracted_tree
+from .source_layout import extracted_root as source_extracted_root
+from .source_layout import source_root as source_source_root
+from .source_layout import unwrapped_root as source_unwrapped_root
+from .unwrap_installer_tree import unwrap_extracted_tree
 
 
 OUTER_MAGIC = 0xFE03D185

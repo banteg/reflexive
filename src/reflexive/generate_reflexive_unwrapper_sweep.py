@@ -6,22 +6,19 @@
 from __future__ import annotations
 
 import argparse
-import importlib.util
 import json
 import shutil
-import sys
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from source_layout import DEFAULT_SOURCE_ID
-from source_layout import extracted_root as source_extracted_root
-from source_layout import infer_source_id_from_extracted_root
-from source_layout import unwrapped_root as source_unwrapped_root
+from . import unwrap_reflexive_wrapper
+from .source_layout import infer_source_id_from_extracted_root
+from .source_layout import unwrapped_root as source_unwrapped_root
 
 
 def repo_root() -> Path:
-    return Path(__file__).resolve().parent.parent
+    return Path(__file__).resolve().parents[2]
 
 
 def display_path(path: Path) -> str:
@@ -31,34 +28,23 @@ def display_path(path: Path) -> str:
         return str(path)
 
 
-def default_extracted_root() -> Path:
-    return source_extracted_root(DEFAULT_SOURCE_ID)
-
-
 def default_output_root(extracted_root: Path) -> Path:
     source_id = infer_source_id_from_extracted_root(extracted_root)
     if source_id is None:
-        return repo_root() / "artifacts" / "unwrapped"
+        raise RuntimeError(f"unable to infer source id from {extracted_root}; pass --output-root explicitly")
     return source_unwrapped_root(source_id)
 
 
-def default_markdown_path() -> Path:
-    return repo_root() / "docs" / "generated" / "archive" / "unwrapper_sweep.md"
+def default_markdown_path(source_id: str) -> Path:
+    return repo_root() / "docs" / "generated" / source_id / "unwrapper_sweep.md"
 
 
-def default_json_path() -> Path:
-    return repo_root() / "docs" / "generated" / "archive" / "unwrapper_sweep.json"
+def default_json_path(source_id: str) -> Path:
+    return repo_root() / "docs" / "generated" / source_id / "unwrapper_sweep.json"
 
 
 def load_unwrapper_module() -> Any:
-    module_path = repo_root() / "scripts" / "unwrap_reflexive_wrapper.py"
-    spec = importlib.util.spec_from_file_location("reflexive_unwrapper", module_path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"unable to load {module_path}")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
+    return unwrap_reflexive_wrapper
 
 
 def render_markdown(report: dict[str, Any]) -> str:
@@ -243,7 +229,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--extracted-root",
         type=Path,
-        default=default_extracted_root(),
+        required=True,
         help="Root containing extracted Reflexive Arcade directories.",
     )
     parser.add_argument(
@@ -255,14 +241,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--markdown-out",
         type=Path,
-        default=default_markdown_path(),
-        help="Markdown report output path.",
+        default=None,
+        help="Markdown report output path. Defaults to docs/generated/<source_id>/unwrapper_sweep.md when the source can be inferred.",
     )
     parser.add_argument(
         "--json-out",
         type=Path,
-        default=default_json_path(),
-        help="JSON report output path.",
+        default=None,
+        help="JSON report output path. Defaults to docs/generated/<source_id>/unwrapper_sweep.json when the source can be inferred.",
     )
     parser.add_argument(
         "--force",
@@ -286,9 +272,20 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     extracted_root = args.extracted_root.resolve()
+    source_id = infer_source_id_from_extracted_root(extracted_root)
     output_root = args.output_root.resolve() if args.output_root else default_output_root(extracted_root)
-    markdown_out = args.markdown_out.resolve()
-    json_out = args.json_out.resolve()
+    if args.markdown_out is not None:
+        markdown_out = args.markdown_out.resolve()
+    else:
+        if source_id is None:
+            raise RuntimeError(f"unable to infer source id from {extracted_root}; pass --markdown-out explicitly")
+        markdown_out = default_markdown_path(source_id)
+    if args.json_out is not None:
+        json_out = args.json_out.resolve()
+    else:
+        if source_id is None:
+            raise RuntimeError(f"unable to infer source id from {extracted_root}; pass --json-out explicitly")
+        json_out = default_json_path(source_id)
 
     report = build_report(extracted_root, output_root, force=args.force, probe_only=args.probe_only)
 

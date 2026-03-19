@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Iterable
 
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_LIST_PATH = REPO_ROOT / "artifacts" / "rutracker" / "_Crack" / "listkg_1421_by_russiankid" / "list.txt"
 
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ345679"

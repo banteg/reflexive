@@ -45,7 +45,7 @@ class ExeRecord:
 
 
 def repo_root() -> Path:
-    return Path(__file__).resolve().parent.parent
+    return Path(__file__).resolve().parents[2]
 
 
 def default_archive_root() -> Path:
