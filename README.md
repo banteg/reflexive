@@ -27,6 +27,20 @@ uv run reflexive --help
 
 ## Usage
 
+### Extract installers
+
+Extract the RuTracker Reflexive installer corpus into installed game trees:
+
+```
+reflexive extract SomeGameSetup.exe
+```
+
+Extract and unwrap in one step:
+
+```
+reflexive extract SomeGameSetup.exe --unwrap
+```
+
 ### Generate registration codes
 
 In the Reflexive launcher, click "Already Paid", then choose "I'm not connected to the internet", copy the product code, then run:
