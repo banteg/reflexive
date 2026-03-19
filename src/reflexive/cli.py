@@ -87,6 +87,12 @@ COMMANDS = (
         aliases=("generate-native-registration-scan",),
     ),
     Command(
+        name="key-inventory",
+        module="generate_reflexive_key_inventory",
+        description="Extract embedded Reflexive RSA key material from branded DLLs.",
+        aliases=("generate-reflexive-key-inventory",),
+    ),
+    Command(
         name="compare-unwrapped",
         module="compare_unwrapped_corpus_versions",
         description="Compare unwrapped corpora across sources.",
