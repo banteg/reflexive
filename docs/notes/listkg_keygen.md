@@ -1,6 +1,6 @@
 # listkg keygen fallback
 
-[scripts/reflexive_listkg.py](/Users/banteg/dev/banteg/reflexive/scripts/reflexive_listkg.py) is a pure-Python fallback for the unpacked `listkg` v3.22 `E`-type Reflexive keygen.
+[reflexive_listkg.py](/Users/banteg/dev/banteg/reflexive/src/reflexive/reflexive_listkg.py) is a pure-Python fallback for the unpacked `listkg` v3.22 `E`-type Reflexive keygen.
 
 It reproduces the key path recovered from [listkg.unpacked.exe](/Users/banteg/dev/banteg/reflexive/artifacts/rutracker/_Crack/listkg_1421_by_russiankid/listkg.unpacked.exe):
 
@@ -28,17 +28,23 @@ community-maintained per-game keygen model described in the historical threads.
 Examples:
 
 ```bash
-uv run scripts/reflexive_listkg.py EACFPXKUCGKWHJGEEKTYAA
+uv run reflexive listkg EACFPXKUCGKWHJGEEKTYAA
 ```
 
 ```bash
-uv run scripts/reflexive_listkg.py EACFPXKUCGKWHJGEEKTYAA --all --reg-out /tmp/reflexive.reg
+uv run reflexive listkg EACFPXKUCGKWHJGEEKTYAA --all --reg-out /tmp/reflexive.reg
 ```
 
 Synthetic test code generation:
 
 ```bash
-uv run scripts/reflexive_listkg.py --synthesize --game-id 66 --groups 1,2,3,4,5
+uv run reflexive listkg --synthesize --game-id 66 --groups 1,2,3,4,5
+```
+
+Synthetic `B`-revision product code generation:
+
+```bash
+uv run reflexive listkg --synthesize --game-id 53 --groups 1,2,3,4,5 --revision B
 ```
 
 That synthetic mode is useful for sanity-checking the parser and generator path because the original binary ignores the second character and the final two characters of the typed `E`-type code.

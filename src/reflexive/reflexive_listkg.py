@@ -231,11 +231,25 @@ def parse_product_code(raw_code: str) -> ProductCodeData:
     )
 
 
-def synthesize_product_code(game_id: int, group_values: Iterable[int], middle: str = "1") -> str:
+def normalize_revision_char(revision: str) -> str:
+    if len(revision) != 1:
+        raise ValueError("revision must be a single character")
+    normalized = normalize_payload_char(revision.upper())
+    if normalized not in ALPHABET_INDEX:
+        raise ValueError(f"unsupported revision character: {revision!r}")
+    return normalized
+
+
+def synthesize_product_code(
+    game_id: int,
+    group_values: Iterable[int],
+    middle: str = "1",
+    revision: str = "A",
+) -> str:
     group_digits = "".join(encode_group_value(value) for value in group_values)
     decimal_string = f"{encode_base9(game_id)}0{middle}0{group_digits}0"
     payload = encode_payload_integer(int(decimal_string))
-    return f"EA{payload}AA"
+    return f"E{normalize_revision_char(revision)}{payload}AA"
 
 
 def crc32_text(text: str) -> int:
@@ -349,6 +363,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--synthesize", action="store_true", help="build a synthetic product code for testing instead of decoding one")
     parser.add_argument("--game-id", type=int, help="game id for --synthesize")
     parser.add_argument("--groups", help="comma-separated base-10 group values for --synthesize")
+    parser.add_argument(
+        "--revision",
+        default="A",
+        help="synthetic product-code revision character for --synthesize (typically A or B)",
+    )
     return parser.parse_args()
 
 
@@ -360,7 +379,7 @@ def main() -> int:
         if args.game_id is None or not args.groups:
             raise SystemExit("--synthesize requires --game-id and --groups")
         group_values = [int(part) for part in args.groups.split(",") if part]
-        print(synthesize_product_code(args.game_id, group_values))
+        print(synthesize_product_code(args.game_id, group_values, revision=args.revision))
         return 0
 
     if not args.product_code:
