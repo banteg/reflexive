@@ -45,6 +45,15 @@ class FactorizationResult:
 
 
 @dataclass(frozen=True)
+class HistoricalListEntry:
+    name: str
+    game_id: int
+    modulus_hex: str
+    private_exponent_hex: str
+    source_path: str
+
+
+@dataclass(frozen=True)
 class KeyInventoryRecord:
     game_name_guess: str
     dll_path: str
@@ -57,6 +66,7 @@ class KeyInventoryRecord:
     public_exponent: int | None
     public_exponent_hex: str | None
     private_exponent_hex: str | None
+    private_exponent_source: str | None
     prime_factors_hex: list[str]
     list_name: str | None
     list_modulus_hex: str | None
@@ -83,6 +93,10 @@ def default_markdown_path(source_id: str) -> Path:
 
 def default_json_path(source_id: str) -> Path:
     return repo_root() / "docs" / "generated" / source_id / "key_inventory.json"
+
+
+def default_list_history_root() -> Path:
+    return repo_root() / "artifacts" / "rutracker" / "_Crack"
 
 
 def discover_support_dlls(extracted_root: Path) -> list[Path]:
@@ -280,6 +294,28 @@ def factor_into_primes(value: int, output: list[int]) -> None:
     factor_into_primes(value // divisor, output)
 
 
+def load_historical_private_entries(root: Path) -> dict[tuple[int, str], HistoricalListEntry]:
+    entries: dict[tuple[int, str], HistoricalListEntry] = {}
+    for path in sorted(root.glob("listkg_*_by_russiankid/list.txt")):
+        for raw_line in path.read_text(encoding="latin-1").splitlines():
+            line = raw_line.strip().strip("|")
+            if not line:
+                continue
+            parts = line.split("|")
+            if len(parts) < 4:
+                continue
+            name, game_id_text, modulus_hex, private_exponent_hex = parts[:4]
+            game_id = int(game_id_text)
+            entries[(game_id, modulus_hex.upper())] = HistoricalListEntry(
+                name=name,
+                game_id=game_id,
+                modulus_hex=modulus_hex.upper(),
+                private_exponent_hex=private_exponent_hex.upper(),
+                source_path=display_path(path.resolve()),
+            )
+    return entries
+
+
 @lru_cache(maxsize=None)
 def derive_private_exponent(modulus: int, public_exponent: int) -> FactorizationResult:
     if sympy_factorint is not None:
@@ -299,7 +335,13 @@ def derive_private_exponent(modulus: int, public_exponent: int) -> Factorization
     )
 
 
-def build_record(dll_path: Path, entries_by_id: dict[int, object], derive_private: bool) -> KeyInventoryRecord:
+def build_record(
+    dll_path: Path,
+    entries_by_id: dict[int, object],
+    historical_entries: dict[tuple[int, str], HistoricalListEntry],
+    derive_private: bool,
+    factor_remaining: bool,
+) -> KeyInventoryRecord:
     errors: list[str] = []
     app_id, app_id_errors = extract_app_id(dll_path)
     errors.extend(app_id_errors)
@@ -308,14 +350,22 @@ def build_record(dll_path: Path, entries_by_id: dict[int, object], derive_privat
     errors.extend(key_errors)
 
     private_exponent_hex: str | None = None
+    private_exponent_source: str | None = None
     prime_factors_hex: list[str] = []
-    if key_material is not None and derive_private:
+    historical_entry = None
+    if app_id is not None and key_material is not None:
+        historical_entry = historical_entries.get((app_id, key_material.modulus_hex.upper()))
+    if historical_entry is not None:
+        private_exponent_hex = historical_entry.private_exponent_hex
+        private_exponent_source = "historical_list"
+    elif key_material is not None and derive_private and factor_remaining:
         try:
             factorization = derive_private_exponent(int(key_material.modulus_hex, 16), key_material.public_exponent)
         except ValueError as exc:
             errors.append(f"failed to derive private exponent: {exc}")
         else:
             private_exponent_hex = factorization.private_exponent_hex
+            private_exponent_source = "factored"
             prime_factors_hex = factorization.prime_factors_hex
 
     list_entry = entries_by_id.get(app_id) if app_id is not None else None
@@ -342,6 +392,7 @@ def build_record(dll_path: Path, entries_by_id: dict[int, object], derive_privat
         public_exponent=key_material.public_exponent if key_material is not None else None,
         public_exponent_hex=format_hex(key_material.public_exponent) if key_material is not None else None,
         private_exponent_hex=private_exponent_hex,
+        private_exponent_source=private_exponent_source,
         prime_factors_hex=prime_factors_hex,
         list_name=getattr(list_entry, "name", None),
         list_modulus_hex=list_modulus_hex,
@@ -354,6 +405,7 @@ def build_record(dll_path: Path, entries_by_id: dict[int, object], derive_privat
 
 def summarize_records(records: list[KeyInventoryRecord]) -> dict[str, object]:
     revision_counts = Counter(record.key_revision for record in records if record.key_revision is not None)
+    private_source_counts = Counter(record.private_exponent_source for record in records if record.private_exponent_source is not None)
     public_matches = [record for record in records if record.list_modulus_match is True]
     exact_matches = [
         record
@@ -372,6 +424,7 @@ def summarize_records(records: list[KeyInventoryRecord]) -> dict[str, object]:
         "app_id_count": sum(record.app_id is not None for record in records),
         "public_key_count": sum(record.modulus_hex is not None for record in records),
         "private_key_count": sum(record.private_exponent_hex is not None for record in records),
+        "private_source_counts": dict(sorted(private_source_counts.items())),
         "public_list_matches": len(public_matches),
         "exact_list_matches": len(exact_matches),
         "failure_count": len(failures),
@@ -418,6 +471,20 @@ def render_markdown(
     else:
         lines.append("| none | 0 |")
 
+    private_source_counts = summary["private_source_counts"]
+    if private_source_counts:
+        lines.extend(
+            [
+                "",
+                "## Private Exponent Sources",
+                "",
+                "| Source | Count |",
+                "| --- | ---: |",
+            ]
+        )
+        for source, count in private_source_counts.items():
+            lines.append(f"| {source} | {count} |")
+
     exact_matches = [
         record
         for record in records
@@ -429,8 +496,8 @@ def render_markdown(
                 "",
                 "## Exact Matches",
                 "",
-                "| Game | App ID | Revision | Modulus | D |",
-                "| --- | ---: | --- | --- | --- |",
+                "| Game | App ID | Revision | Modulus | D | Source |",
+                "| --- | ---: | --- | --- | --- | --- |",
             ]
         )
         for record in exact_matches[:20]:
@@ -443,6 +510,7 @@ def render_markdown(
                         record.key_revision or "",
                         record.modulus_hex or "",
                         record.private_exponent_hex or "",
+                        record.private_exponent_source or "",
                     ]
                 )
                 + " |"
@@ -490,10 +558,21 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Extract embedded Reflexive RSA key material from branded DLLs.")
     parser.add_argument("extracted_root", type=Path, help="root of an extracted Reflexive corpus")
     parser.add_argument("--list-path", type=Path, default=DEFAULT_LIST_PATH, help="path to list.txt for comparison")
+    parser.add_argument(
+        "--list-history-root",
+        type=Path,
+        default=default_list_history_root(),
+        help="root containing historical listkg_* snapshots for exact private-exponent recovery",
+    )
     parser.add_argument("--json-out", type=Path, help="write JSON inventory output")
     parser.add_argument("--markdown-out", type=Path, help="write Markdown report output")
     parser.add_argument("--limit", type=int, help="scan at most this many DLLs")
     parser.add_argument("--skip-factor", action="store_true", help="skip private-exponent derivation and only inventory embedded public keys")
+    parser.add_argument(
+        "--skip-factor-remaining",
+        action="store_true",
+        help="recover private exponents from exact historical list matches but do not factor unknown moduli",
+    )
     parser.add_argument("--stdout-json", action="store_true", help="emit the JSON report to stdout")
     return parser.parse_args()
 
@@ -503,12 +582,22 @@ def main() -> int:
     extracted_root = args.extracted_root.resolve()
     source_id = infer_source_id_from_extracted_root(extracted_root)
     entries = load_entries(args.list_path.resolve())
+    historical_entries = load_historical_private_entries(args.list_history_root.resolve())
 
     dll_paths = discover_support_dlls(extracted_root)
     if args.limit is not None:
         dll_paths = dll_paths[: args.limit]
 
-    records = [build_record(dll_path, entries, derive_private=not args.skip_factor) for dll_path in dll_paths]
+    records = [
+        build_record(
+            dll_path,
+            entries,
+            historical_entries,
+            derive_private=not args.skip_factor,
+            factor_remaining=not args.skip_factor_remaining,
+        )
+        for dll_path in dll_paths
+    ]
     records.sort(key=lambda record: (record.app_id is None, record.app_id or -1, record.game_name_guess.casefold()))
     summary = summarize_records(records)
 
@@ -517,6 +606,7 @@ def main() -> int:
         "source_label": source_label(source_id) if source_id is not None else None,
         "extracted_root": display_path(extracted_root),
         "list_path": display_path(args.list_path.resolve()),
+        "list_history_root": display_path(args.list_history_root.resolve()),
         "summary": summary,
         "records": [asdict(record) for record in records],
     }
@@ -544,6 +634,8 @@ def main() -> int:
         print(f"app_ids={summary['app_id_count']}")
         print(f"public_keys={summary['public_key_count']}")
         print(f"private_keys={summary['private_key_count']}")
+        if summary["private_source_counts"]:
+            print(f"private_sources={json.dumps(summary['private_source_counts'], sort_keys=True)}")
         print(f"public_list_matches={summary['public_list_matches']}")
         print(f"exact_list_matches={summary['exact_list_matches']}")
         print(f"errors={summary['failure_count']}")
