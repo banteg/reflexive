@@ -4,7 +4,7 @@ Game preservation toolkit for [Reflexive Arcade](https://en.wikipedia.org/wiki/R
 
 This project provides tools to make those games playable again:
 
-- Recovered RSA key material for ~1400 titles
+- Recovered RSA key material for 1,653 RuTracker titles
 - A static unwrapper that extracts bare game executables from Reflexive wrappers
 - An exe patcher that bypasses the registration shell in-place
 - A keygen that generates valid registration and unlock codes
@@ -48,6 +48,12 @@ reflexive extract --all path/to/installers
 reflexive extract --all path/to/installers --unwrap
 ```
 
+Resume an interrupted batch run without redoing completed work:
+
+```
+reflexive extract --all path/to/installers --unwrap --keep-extracted --skip-existing
+```
+
 ### Generate registration codes
 
 In the Reflexive launcher, click "Already Paid", then choose "I'm not connected to the internet", copy the product code, then run:
@@ -73,7 +79,7 @@ Strip the Reflexive wrapper to recover the original game exe. This is the cleane
 reflexive unwrap --extracted-root path/to/extracted/corpus "Game Name"
 ```
 
-Note that several games integrate Reflexive libraries right into the game and this method will not work for them.
+Note that some games integrate the Reflexive binding layer right into the main game exe, so this method will not work for them.
 
 ### Patch a wrapper exe
 
@@ -85,15 +91,18 @@ reflexive patch path/to/game.exe
 
 ## Coverage
 
-From the two analyzed corpora (Archive.org repack and RuTracker anthology):
+From the RuTracker corpus, which is the main source this project targets:
 
-- ~1650 games successfully unwrapped out of ~1700 wrapper roots
-- ~1400 RSA key rows recovered from shipped DLLs via modulus factoring
-- 0 remaining execution errors in the unwrapper sweep
+- `1661 / 1697` wrapper roots statically unwrapped
+- `1653` branded key rows recovered and available to `keygen`
+- `36` unwrap roots still unsupported
+- `12` likely integrated main-exe wrappers identified
+- `0` execution errors in the unwrapper sweep
 
 ## Technical notes
 
 - [Embedded key reconstruction](docs/notes/embedded_key_reconstruction.md) — how branded RSA keys are recovered from shipped DLLs
 - [Keygen internals](docs/notes/listkg_keygen.md) — how the registration and unlock code generation works
+- [Integrated wrappers report](docs/generated/rutracker/integrated_wrappers.md) — titles where the Reflexive binding layer appears to be fused into the main exe
 - [Generated reports](docs/generated/index.md) — machine-generated analysis of the wrapped game corpora
 - [Provenance](docs/provenance/index.md) — source records and historical context
