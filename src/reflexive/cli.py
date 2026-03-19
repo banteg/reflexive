@@ -93,6 +93,12 @@ COMMANDS = (
         aliases=("generate-reflexive-key-inventory",),
     ),
     Command(
+        name="recovered-list",
+        module="generate_reflexive_recovered_list",
+        description="Generate a recovered list.txt from a key inventory report.",
+        aliases=("generate-reflexive-recovered-list",),
+    ),
+    Command(
         name="compare-unwrapped",
         module="compare_unwrapped_corpus_versions",
         description="Compare unwrapped corpora across sources.",

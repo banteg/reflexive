@@ -18,6 +18,7 @@ artifacts are easier to distinguish.
 | Report | Markdown | JSON |
 | --- | --- | --- |
 | Game list | [rutracker/game_list.md](rutracker/game_list.md) | |
+| Recovered key list | [rutracker/list.txt](rutracker/list.txt) | |
 | Native registration scan | [rutracker/native_registration_scan.md](rutracker/native_registration_scan.md) | [rutracker/native_registration_scan.json](rutracker/native_registration_scan.json) |
 | Probe report | [rutracker/probe.md](rutracker/probe.md) | [rutracker/probe.json](rutracker/probe.json) |
 | Publisher attribution | [rutracker/publisher_attribution.md](rutracker/publisher_attribution.md) | [rutracker/publisher_attribution.json](rutracker/publisher_attribution.json) |

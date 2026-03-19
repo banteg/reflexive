@@ -3,7 +3,7 @@
 This note explains the branded-key algorithm used by later Reflexive Arcade titles and how a
 single shipped [ReflexiveArcade.dll](/Users/banteg/dev/banteg/reflexive/artifacts/extracted/archive/Reflexive%20Arcade%200-9/5%20Spots/ReflexiveArcade/ReflexiveArcade.dll)
 can be turned back into the fields that appear in
-[list.txt](/Users/banteg/dev/banteg/reflexive/artifacts/rutracker/_Crack/listkg_1421_by_russiankid/list.txt).
+[list.txt](/Users/banteg/dev/banteg/reflexive/docs/generated/rutracker/list.txt).
 
 The short version is:
 
@@ -27,6 +27,9 @@ Game Name|GameID|RSA modulus N|private exponent D|
 The unpacked
 [listkg.unpacked.exe](/Users/banteg/dev/banteg/reflexive/artifacts/rutracker/_Crack/listkg_1421_by_russiankid/listkg.unpacked.exe)
 does not derive those values. It reads them from `list.txt` and uses them to produce unlock codes.
+The historical crack snapshot that shipped with `listkg` still lives at
+[artifacts/rutracker/_Crack/listkg_1421_by_russiankid/list.txt](/Users/banteg/dev/banteg/reflexive/artifacts/rutracker/_Crack/listkg_1421_by_russiankid/list.txt),
+but the repository default now points at the recovered RuTracker list generated from the verified key inventory.
 
 The reconstruction question is therefore:
 

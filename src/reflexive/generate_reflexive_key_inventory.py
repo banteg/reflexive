@@ -16,7 +16,7 @@ from pathlib import Path
 
 import pefile
 
-from .reflexive_listkg import DEFAULT_LIST_PATH, decode_payload_integer, load_entries
+from .reflexive_listkg import HISTORICAL_LIST_PATH, decode_payload_integer, load_entries
 from .source_layout import infer_source_id_from_extracted_root, repo_root as source_repo_root
 from .source_layout import source_label
 
@@ -932,7 +932,7 @@ def render_markdown(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Extract embedded Reflexive RSA key material from branded DLLs.")
     parser.add_argument("extracted_root", type=Path, help="root of an extracted Reflexive corpus")
-    parser.add_argument("--list-path", type=Path, default=DEFAULT_LIST_PATH, help="path to list.txt for comparison")
+    parser.add_argument("--list-path", type=Path, default=HISTORICAL_LIST_PATH, help="path to list.txt for comparison")
     parser.add_argument(
         "--list-history-root",
         type=Path,

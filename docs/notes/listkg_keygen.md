@@ -10,7 +10,7 @@ It reproduces the key path recovered from [listkg.unpacked.exe](/Users/banteg/de
 - base32-decode the remaining payload with the Reflexive alphabet `ABCDEFGHIJKLMNOPQRSTUVWXYZ345679`
 - recover the game id and registration groups from the decoded decimal string
 - build the registration code with the same CRC32-based formatting used by the keygen
-- generate the unlock code with the per-game modulus/exponent data from [list.txt](/Users/banteg/dev/banteg/reflexive/artifacts/rutracker/_Crack/listkg_1421_by_russiankid/list.txt)
+- generate the unlock code with the per-game modulus/exponent data from the checked-in recovered [list.txt](/Users/banteg/dev/banteg/reflexive/docs/generated/rutracker/list.txt)
 
 ## Historical Context
 
@@ -24,6 +24,13 @@ The local Ru.Board dump at [artifacts/ruboard](/Users/banteg/dev/banteg/reflexiv
 
 This matters because the script is not just emulating one GUI sample. It is implementing the
 community-maintained per-game keygen model described in the historical threads.
+
+The repository now keeps two distinct list files:
+
+- the historical crack artifact at [artifacts/rutracker/_Crack/listkg_1421_by_russiankid/list.txt](/Users/banteg/dev/banteg/reflexive/artifacts/rutracker/_Crack/listkg_1421_by_russiankid/list.txt)
+- the recovered RuTracker default at [docs/generated/rutracker/list.txt](/Users/banteg/dev/banteg/reflexive/docs/generated/rutracker/list.txt)
+
+`uv run reflexive listkg ...` now defaults to the recovered list so missing, mismatched, and corrected rows work out of the box for the RuTracker corpus.
 
 Examples:
 
