@@ -302,8 +302,8 @@ def build_message_bytes(registration_code: str) -> bytes:
     for index, byte in enumerate(first_mix):
         data[left_span + index] ^= byte
 
-    second_mix = mix_bytes(bytes(data[:right_span]), left_span)
-    data[left_span : left_span + left_span] = second_mix
+    second_mix = mix_bytes(bytes(data[left_span : left_span + right_span]), left_span)
+    data[:left_span] = second_mix
 
     for index in range(left_span):
         data[index] ^= KEY_MATERIAL[index]
