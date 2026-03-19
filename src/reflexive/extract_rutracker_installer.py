@@ -32,6 +32,12 @@ class OuterEntry:
     size: int
     record_size: int
 
+
+SKIPPED_EXISTING = "skipped_existing"
+EXTRACTED_ONLY = "extracted"
+UNWRAPPED_FRESH = "unwrapped_fresh"
+UNWRAPPED_REUSED_EXTRACTED = "unwrapped_reused_extracted"
+
 def default_archive_extracted_root() -> Path:
     return source_extracted_root("archive")
 
@@ -238,23 +244,43 @@ def extract_and_optionally_unwrap(
     extracted_output_root: Path,
     *,
     force: bool,
+    skip_existing: bool,
     archive_titles: dict[str, str],
     unwrap_after: bool,
     keep_extracted: bool,
     unwrapped_output_root: Path | None,
-) -> None:
+) -> str:
     installer_path = installer_path.resolve()
     extracted_output_root = extracted_output_root.resolve()
     final_unwrapped_root = None if unwrapped_output_root is None else unwrapped_output_root.resolve()
+    title = canonical_title(installer_path, archive_titles)
+
+    if skip_existing:
+        if unwrap_after:
+            if final_unwrapped_root is not None and final_unwrapped_root.exists():
+                print(f"Skipping existing unwrapped root: {final_unwrapped_root}")
+                return SKIPPED_EXISTING
+            if final_unwrapped_root is not None and extracted_output_root.exists():
+                print(f"Reusing extracted tree: {extracted_output_root}")
+                unwrap_result = unwrap_extracted_tree(extracted_output_root, final_unwrapped_root, force=False)
+                print(f"Unwrapped root: {final_unwrapped_root}")
+                print(f"Materialized wrapper roots: {len(unwrap_result.ok_roots)}")
+                if unwrap_result.unsupported_roots:
+                    print("Unsupported wrapper roots:")
+                    for root in unwrap_result.unsupported_roots:
+                        print(f"  - {root}")
+                return UNWRAPPED_REUSED_EXTRACTED
+        elif extracted_output_root.exists():
+            print(f"Skipping existing extracted root: {extracted_output_root}")
+            return SKIPPED_EXISTING
 
     if not unwrap_after:
         extract_installer(installer_path, extracted_output_root, force=force, archive_titles=archive_titles)
-        return
+        return EXTRACTED_ONLY
 
     if final_unwrapped_root is None:
         raise ValueError("unwrap destination is required when --unwrap is enabled")
 
-    title = canonical_title(installer_path, archive_titles)
     if keep_extracted:
         extracted_tree = extract_installer(
             installer_path,
@@ -263,6 +289,7 @@ def extract_and_optionally_unwrap(
             archive_titles=archive_titles,
         )
         unwrap_result = unwrap_extracted_tree(extracted_tree, final_unwrapped_root, force=force)
+        status = UNWRAPPED_FRESH
     else:
         temp_parent = final_unwrapped_root.parent
         temp_parent.mkdir(parents=True, exist_ok=True)
@@ -275,6 +302,7 @@ def extract_and_optionally_unwrap(
                 archive_titles=archive_titles,
             )
             unwrap_result = unwrap_extracted_tree(extracted_tree, final_unwrapped_root, force=force)
+        status = UNWRAPPED_FRESH
 
     print(f"Unwrapped root: {final_unwrapped_root}")
     print(f"Materialized wrapper roots: {len(unwrap_result.ok_roots)}")
@@ -284,6 +312,7 @@ def extract_and_optionally_unwrap(
             print(f"  - {root}")
         if not keep_extracted:
             print("Rerun with --keep-extracted to retain the extracted tree for inspection.")
+    return status
 
 
 def collect_batch_installers(installers_root: Path) -> list[Path]:
@@ -303,6 +332,7 @@ def extract_all_installers(
     output_root: Path,
     *,
     force: bool,
+    skip_existing: bool,
     archive_titles: dict[str, str],
     unwrap_after: bool,
     keep_extracted: bool,
@@ -319,20 +349,36 @@ def extract_all_installers(
     if unwrap_after and unwrapped_root is not None:
         print(f"Unwrapped root: {unwrapped_root.resolve()}")
 
+    status_counts = {
+        SKIPPED_EXISTING: 0,
+        EXTRACTED_ONLY: 0,
+        UNWRAPPED_FRESH: 0,
+        UNWRAPPED_REUSED_EXTRACTED: 0,
+    }
+
     for installer_path in installers:
         title = canonical_title(installer_path, archive_titles)
         destination = output_root / title
         print(f"\n[{installer_path.stem}] {title}")
         unwrap_destination = None if unwrapped_root is None else unwrapped_root / title
-        extract_and_optionally_unwrap(
+        status = extract_and_optionally_unwrap(
             installer_path,
             destination,
             force=force,
+            skip_existing=skip_existing,
             archive_titles=archive_titles,
             unwrap_after=unwrap_after,
             keep_extracted=keep_extracted,
             unwrapped_output_root=unwrap_destination,
         )
+        status_counts[status] += 1
+
+    print("")
+    print(f"Completed: {status_counts[EXTRACTED_ONLY] + status_counts[UNWRAPPED_FRESH] + status_counts[UNWRAPPED_REUSED_EXTRACTED]}")
+    print(f"Skipped existing: {status_counts[SKIPPED_EXISTING]}")
+    if unwrap_after:
+        print(f"Fresh unwrapped: {status_counts[UNWRAPPED_FRESH]}")
+        print(f"Reused extracted: {status_counts[UNWRAPPED_REUSED_EXTRACTED]}")
 
     return len(installers)
 
@@ -369,6 +415,14 @@ def parse_args() -> argparse.Namespace:
         ),
     )
     parser.add_argument("--force", action="store_true", help="Replace an existing output directory.")
+    parser.add_argument(
+        "--skip-existing",
+        action="store_true",
+        help=(
+            "Continue past existing outputs instead of stopping. "
+            "When --unwrap is enabled, reuse an existing extracted tree if available."
+        ),
+    )
     parser.add_argument(
         "--unwrap",
         action="store_true",
@@ -419,6 +473,7 @@ def main() -> int:
                 installers_root,
                 output_root,
                 force=args.force,
+                skip_existing=args.skip_existing,
                 archive_titles=archive_titles,
                 unwrap_after=args.unwrap,
                 keep_extracted=args.keep_extracted,
@@ -441,6 +496,7 @@ def main() -> int:
                 installer_path,
                 output_root,
                 force=args.force,
+                skip_existing=args.skip_existing,
                 archive_titles=archive_titles,
                 unwrap_after=args.unwrap,
                 keep_extracted=args.keep_extracted,
