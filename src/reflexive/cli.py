@@ -10,6 +10,8 @@ class Command:
     name: str
     module: str
     description: str
+    section: str
+    show_in_help: bool = True
 
 
 COMMANDS = (
@@ -17,120 +19,96 @@ COMMANDS = (
         name="patch",
         module="patch",
         description="Patch supported Reflexive wrapper executables.",
+        section="tool",
     ),
     Command(
         name="unwrap",
         module="unwrap",
         description="Statically unwrap Reflexive wrapper payloads.",
+        section="tool",
     ),
     Command(
         name="keygen",
         module="keygen",
         description="Generate or decode Reflexive registration material.",
+        section="tool",
     ),
     Command(
         name="unpack-mpress",
         module="unpack_mpress",
         description="Dump and rebuild MPRESS-packed PE files.",
+        section="advanced",
     ),
     Command(
         name="extract",
         module="extract_rutracker_installer",
         description="Extract Reflexive outer installers.",
+        section="tool",
     ),
     Command(
         name="extract-repack",
         module="extract_installer",
         description="Extract Reflexive smart installers from archive repacks.",
-    ),
-    Command(
-        name="wrapper-versions",
-        module="wrapper_versions",
-        description="Scan wrapper binaries and summarize version families.",
-    ),
-    Command(
-        name="wrapper-inventory",
-        module="wrapper_inventory",
-        description="Build a wrapper inventory for an extracted corpus.",
+        section="tool",
     ),
     Command(
         name="unwrapper-sweep",
         module="unwrapper_sweep",
         description="Run the full static unwrapper sweep.",
-    ),
-    Command(
-        name="unwrapper-report",
-        module="unwrapper_report",
-        description="Render the unwrapper coverage report.",
-    ),
-    Command(
-        name="game-list",
-        module="game_list",
-        description="Generate a game list from an extracted corpus.",
+        section="internal",
+        show_in_help=False,
     ),
     Command(
         name="installer-snapshot",
         module="installer_snapshot",
         description="Snapshot source installers with SHA-256 hashes.",
+        section="internal",
+        show_in_help=False,
     ),
     Command(
         name="native-registration-scan",
         module="native_registration_scan",
         description="Scan binaries for native registration signals.",
+        section="internal",
+        show_in_help=False,
     ),
     Command(
         name="integrated-wrappers",
         module="integrated_wrappers",
         description="Report likely Reflexive wrappers fused into the main EXE.",
+        section="internal",
+        show_in_help=False,
     ),
     Command(
         name="key-inventory",
         module="key_inventory",
         description="Extract embedded Reflexive RSA key material from branded DLLs.",
+        section="internal",
+        show_in_help=False,
     ),
     Command(
         name="recovered-list",
         module="recovered_list",
         description="Generate a recovered list.txt from a key inventory report.",
+        section="internal",
+        show_in_help=False,
     ),
     Command(
         name="compare-unwrapped",
         module="compare_unwrapped",
         description="Compare unwrapped corpora across sources.",
-    ),
-    Command(
-        name="rutracker-game-list",
-        module="rutracker_game_list",
-        description="Generate the rutracker installer-derived game list.",
-    ),
-    Command(
-        name="rutracker-probe-report",
-        module="rutracker_probe_report",
-        description="Build the rutracker probe report.",
-    ),
-    Command(
-        name="rutracker-publisher-attribution",
-        module="rutracker_publisher_attribution",
-        description="Build the rutracker publisher attribution report.",
-    ),
-    Command(
-        name="rutracker-engine-report",
-        module="rutracker_engine_report",
-        description="Build the rutracker game engine report.",
+        section="internal",
+        show_in_help=False,
     ),
 )
 
-COMMAND_INDEX = {
-    command.name: command
-    for command in COMMANDS
-}
-
-TOOL_COMMANDS = {"keygen", "patch", "unwrap", "extract", "extract-repack", "unpack-mpress"}
+COMMAND_INDEX = {command.name: command for command in COMMANDS}
 
 
 def format_help() -> str:
-    tools = [c for c in COMMANDS if c.name in TOOL_COMMANDS]
-    analysis = [c for c in COMMANDS if c.name not in TOOL_COMMANDS]
+    visible_commands = [command for command in COMMANDS if command.show_in_help]
+    tools = [command for command in visible_commands if command.section == "tool"]
+    advanced = [command for command in visible_commands if command.section == "advanced"]
     width = max(len(c.name) for c in COMMANDS)
 
     lines = [
@@ -140,13 +118,17 @@ def format_help() -> str:
     ]
     for command in tools:
         lines.append(f"  {command.name.ljust(width)}  {command.description}")
-    lines.append("")
-    lines.append("Analysis:")
-    for command in analysis:
-        lines.append(f"  {command.name.ljust(width)}  {command.description}")
+
+    if advanced:
+        lines.append("")
+        lines.append("Advanced:")
+        for command in advanced:
+            lines.append(f"  {command.name.ljust(width)}  {command.description}")
+
     lines.extend(
         [
             "",
+            "Internal analysis/report commands remain callable but are omitted from main help.",
             "Run `reflexive <command> --help` for command-specific options.",
         ]
     )
