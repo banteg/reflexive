@@ -15,22 +15,22 @@ class Command:
 
 COMMANDS = (
     Command(
-        name="patch-exe",
+        name="patch",
         module="patch_reflexive_exe",
         description="Patch supported Reflexive wrapper executables.",
-        aliases=("patch-reflexive-exe",),
+        aliases=("patch-exe", "patch-reflexive-exe"),
     ),
     Command(
-        name="unwrap-wrapper",
+        name="unwrap",
         module="unwrap_reflexive_wrapper",
         description="Statically unwrap Reflexive wrapper payloads.",
-        aliases=("unwrap-reflexive-wrapper",),
+        aliases=("unwrap-wrapper", "unwrap-reflexive-wrapper"),
     ),
     Command(
-        name="listkg",
+        name="keygen",
         module="reflexive_listkg",
         description="Generate or decode Reflexive registration material.",
-        aliases=("reflexive-listkg",),
+        aliases=("listkg", "reflexive-listkg"),
     ),
     Command(
         name="unpack-mpress",
