@@ -33,15 +33,15 @@ What is confirmed so far:
   `_Crack.7z` and `_Recovery.par2`.
 - All `1696` installer stubs are PE executables carrying `Inno Setup Setup Data (5.2.3)`,
   `Inno Setup Messages (5.1.11)`, and `CHANNEL_NAME=Reflexive`.
-- A custom outer-installer extractor now exists in `src/reflexive/extract_rutracker_installer.py`.
+- A custom outer-installer extractor now exists in `src/reflexive/extract_rutracker_installer.py` (CLI: `reflexive extract`).
 - The full installer corpus has been extracted under `artifacts/extracted/rutracker`.
 
 ## Extraction
 
-- Single installer: `uv run reflexive extract-rutracker-installer artifacts/sources/rutracker/10DaysUnderTheSeaSetup.exe`
-- Full source: `uv run reflexive extract-rutracker-installer --all`
-- Single installer direct to unwrapped: `uv run reflexive extract-rutracker-installer --unwrap artifacts/sources/rutracker/10DaysUnderTheSeaSetup.exe`
-- Full source direct to unwrapped: `uv run reflexive extract-rutracker-installer --all --unwrap`
+- Single installer: `uv run reflexive extract artifacts/sources/rutracker/10DaysUnderTheSeaSetup.exe`
+- Full source: `uv run reflexive extract --all`
+- Single installer direct to unwrapped: `uv run reflexive extract --unwrap artifacts/sources/rutracker/10DaysUnderTheSeaSetup.exe`
+- Full source direct to unwrapped: `uv run reflexive extract --all --unwrap`
 - Keep the extracted tree while unwrapping: add `--keep-extracted`
 - The custom extractor strips the Reflexive `ZipLite` wrapper, recovers the embedded Inno Setup
   installer, and then delegates to `innoextract` for the inner payload.

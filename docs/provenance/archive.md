@@ -12,9 +12,9 @@
 
 ## Extraction
 
-- Single installer: `uv run reflexive extract-installer artifacts/sources/archive/Reflexive\ Arcade\ A.exe`
-- Full source: `uv run reflexive extract-installer --all`
-- Single installer direct to unwrapped: `uv run reflexive extract-installer --unwrap artifacts/sources/archive/Reflexive\ Arcade\ A.exe`
+- Single installer: `uv run reflexive extract-repack artifacts/sources/archive/Reflexive\ Arcade\ A.exe`
+- Full source: `uv run reflexive extract-repack --all`
+- Single installer direct to unwrapped: `uv run reflexive extract-repack --unwrap artifacts/sources/archive/Reflexive\ Arcade\ A.exe`
 - Keep the extracted tree while unwrapping: add `--keep-extracted`
 - Compatibility wrapper: `./scripts/extract_all_reflexive_smart_installers.sh`
 

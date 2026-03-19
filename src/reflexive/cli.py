@@ -34,14 +34,14 @@ COMMANDS = (
         description="Dump and rebuild MPRESS-packed PE files.",
     ),
     Command(
-        name="extract-installer",
-        module="extract_installer",
-        description="Extract Reflexive smart installers.",
+        name="extract",
+        module="extract_rutracker_installer",
+        description="Extract Reflexive outer installers.",
     ),
     Command(
-        name="extract-rutracker-installer",
-        module="extract_rutracker_installer",
-        description="Extract the rutracker Reflexive installer corpus.",
+        name="extract-repack",
+        module="extract_installer",
+        description="Extract Reflexive smart installers from archive repacks.",
     ),
     Command(
         name="wrapper-versions",
@@ -115,7 +115,7 @@ COMMAND_INDEX = {
     for command in COMMANDS
 }
 
-TOOL_COMMANDS = {"keygen", "patch", "unwrap", "extract-installer", "unpack-mpress"}
+TOOL_COMMANDS = {"keygen", "patch", "unwrap", "extract", "extract-repack", "unpack-mpress"}
 
 
 def format_help() -> str:
