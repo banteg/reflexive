@@ -1,5 +1,5 @@
 {
-  "generated_from": "/Users/banteg/dev/banteg/reflexive/artifacts/extracted/archive",
+  "generated_from": "artifacts/extracted/archive",
   "methodology": {
     "wrapper_binary_detection": "A binary is treated as Reflexive wrapper code if it contains any of: ReflexiveArcade DLL Signature, radll_GetDLLVersionAsInt, radll_Initialize, or the standard ReflexiveArcade.dll load-error string.",
     "build_string_detection": "Build numbers are only accepted from standalone null-terminated ASCII strings of the form 'Build NNN'.",

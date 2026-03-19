@@ -1,6 +1,6 @@
 # Reflexive Key Inventory (Archive.org)
 
-- Extracted root: `/Volumes/puka/Software/reflexive/artifacts/extracted/archive`
+- Extracted root: `artifacts/extracted/archive`
 - Support DLLs scanned: 1084
 - App ids recovered: 1082
 - Public keys recovered: 1082
@@ -53,50 +53,50 @@
 
 | DLL | Errors |
 | --- | --- |
-| `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade A/Alpha Ball/bin/ReflexiveArcade/ReflexiveArcade.dll` | missing unittest_GetBrandedApplicationID export; missing Decryption Key Data string |
-| `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade T/Turtle Bay/ReflexiveArcade/ReflexiveArcade.dll` | missing unittest_GetBrandedApplicationID export; missing Decryption Key Data string |
+| `artifacts/extracted/archive/Reflexive Arcade A/Alpha Ball/bin/ReflexiveArcade/ReflexiveArcade.dll` | missing unittest_GetBrandedApplicationID export; missing Decryption Key Data string |
+| `artifacts/extracted/archive/Reflexive Arcade T/Turtle Bay/ReflexiveArcade/ReflexiveArcade.dll` | missing unittest_GetBrandedApplicationID export; missing Decryption Key Data string |
 
 ## list.txt Mismatches
 
 | Game | App ID | Modulus Match | D Match | DLL |
 | --- | ---: | --- | --- | --- |
-| Space Taxi 2 | 201 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade S/Space Taxi 2/ReflexiveArcade/ReflexiveArcade.dll` |
-| Snow Ball | 205 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade S/Snow Ball/ReflexiveArcade/ReflexiveArcade.dll` |
-| Spin & Win | 207 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade S/Spin & Win/ReflexiveArcade/ReflexiveArcade.dll` |
-| Brave Piglet | 211 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade B/Brave Piglet/ReflexiveArcade/ReflexiveArcade.dll` |
-| Global Defense Network | 213 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade G/Global Defense Network/ReflexiveArcade/ReflexiveArcade.dll` |
-| Dr Blobs Organism | 217 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade D/Dr Blobs Organism/ReflexiveArcade/ReflexiveArcade.dll` |
-| Weave Words | 219 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade W/Weave Words/ReflexiveArcade/ReflexiveArcade.dll` |
-| Rival Ball Tournament | 223 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade R/Rival Ball Tournament/ReflexiveArcade/ReflexiveArcade.dll` |
-| River Raider II | 233 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade R/River Raider II/ReflexiveArcade/ReflexiveArcade.dll` |
-| Big Kahuna Words | 239 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade B/Big Kahuna Words/ReflexiveArcade/ReflexiveArcade.dll` |
-| Machine Hell | 243 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade M/Machine Hell/ReflexiveArcade/ReflexiveArcade.dll` |
-| Barnyard Invasion | 245 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade B/Barnyard Invasion/ReflexiveArcade/ReflexiveArcade.dll` |
-| Super Bounce Out | 247 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade S/Super Bounce Out/ReflexiveArcade/ReflexiveArcade.dll` |
-| Jets N Guns | 249 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade J/Jets N Guns/ReflexiveArcade/ReflexiveArcade.dll` |
-| Funny Faces | 251 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade F/Funny Faces/ReflexiveArcade/ReflexiveArcade.dll` |
-| Warblade | 253 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade W/Warblade/ReflexiveArcade/ReflexiveArcade.dll` |
-| Mortimer and the Enchanted Castle | 255 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade M/Mortimer and the Enchanted Castle/ReflexiveArcade/ReflexiveArcade.dll` |
-| ABC Island | 257 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade A/ABC Island/ReflexiveArcade/ReflexiveArcade.dll` |
-| Zzed | 259 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade Z/Zzed/ReflexiveArcade/ReflexiveArcade.dll` |
-| Zero Count | 261 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade Z/Zero Count/ReflexiveArcade/ReflexiveArcade.dll` |
-| 5 Spots II | 263 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade 0-9/5 Spots II/ReflexiveArcade/ReflexiveArcade.dll` |
-| Fresco Wizard | 267 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade F/Fresco Wizard/ReflexiveArcade/ReflexiveArcade.dll` |
-| Wonderland Secret Worlds | 271 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade W/Wonderland Secret Worlds/ReflexiveArcade/ReflexiveArcade.dll` |
-| Coffee Tycoon | 273 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade C/Coffee Tycoon/ReflexiveArcade/ReflexiveArcade.dll` |
-| Charm Tale | 275 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade C/Charm Tale/ReflexiveArcade/ReflexiveArcade.dll` |
-| Super Cubes | 277 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade S/Super Cubes/ReflexiveArcade/ReflexiveArcade.dll` |
-| Pizza Frenzy | 279 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade P/Pizza Frenzy/ReflexiveArcade/ReflexiveArcade.dll` |
-| Action Memory | 281 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade A/Action Memory/ReflexiveArcade/ReflexiveArcade.dll` |
-| Glow Worm | 285 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade G/Glow Worm/ReflexiveArcade/ReflexiveArcade.dll` |
-| Wild West Wendy | 291 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade W/Wild West Wendy/ReflexiveArcade/ReflexiveArcade.dll` |
-| Tennis Titans | 295 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade T/Tennis Titans/ReflexiveArcade/ReflexiveArcade.dll` |
-| Gamehouse Word Collection | 299 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade G/Gamehouse Word Collection/ReflexiveArcade/ReflexiveArcade.dll` |
-| Amazon Quest | 305 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade A/Amazon Quest/ReflexiveArcade/ReflexiveArcade.dll` |
-| Kick Shot Pool | 307 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade K/Kick Shot Pool/ReflexiveArcade/ReflexiveArcade.dll` |
-| Fruit Lockers | 309 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade F/Fruit Lockers/ReflexiveArcade/ReflexiveArcade.dll` |
-| Fairy Words | 311 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade F/Fairy Words/ReflexiveArcade/ReflexiveArcade.dll` |
-| Slyder Adventures | 313 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade S/Slyder Adventures/ReflexiveArcade/ReflexiveArcade.dll` |
-| Treasure Fall | 315 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade T/Treasure Fall/ReflexiveArcade/ReflexiveArcade.dll` |
-| Alien Defense | 329 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade A/Alien Defense/ReflexiveArcade/ReflexiveArcade.dll` |
-| Spellagories | 335 | False | None | `/Volumes/puka/Software/reflexive/artifacts/extracted/archive/Reflexive Arcade S/Spellagories/ReflexiveArcade/ReflexiveArcade.dll` |
+| Space Taxi 2 | 201 | False | None | `artifacts/extracted/archive/Reflexive Arcade S/Space Taxi 2/ReflexiveArcade/ReflexiveArcade.dll` |
+| Snow Ball | 205 | False | None | `artifacts/extracted/archive/Reflexive Arcade S/Snow Ball/ReflexiveArcade/ReflexiveArcade.dll` |
+| Spin & Win | 207 | False | None | `artifacts/extracted/archive/Reflexive Arcade S/Spin & Win/ReflexiveArcade/ReflexiveArcade.dll` |
+| Brave Piglet | 211 | False | None | `artifacts/extracted/archive/Reflexive Arcade B/Brave Piglet/ReflexiveArcade/ReflexiveArcade.dll` |
+| Global Defense Network | 213 | False | None | `artifacts/extracted/archive/Reflexive Arcade G/Global Defense Network/ReflexiveArcade/ReflexiveArcade.dll` |
+| Dr Blobs Organism | 217 | False | None | `artifacts/extracted/archive/Reflexive Arcade D/Dr Blobs Organism/ReflexiveArcade/ReflexiveArcade.dll` |
+| Weave Words | 219 | False | None | `artifacts/extracted/archive/Reflexive Arcade W/Weave Words/ReflexiveArcade/ReflexiveArcade.dll` |
+| Rival Ball Tournament | 223 | False | None | `artifacts/extracted/archive/Reflexive Arcade R/Rival Ball Tournament/ReflexiveArcade/ReflexiveArcade.dll` |
+| River Raider II | 233 | False | None | `artifacts/extracted/archive/Reflexive Arcade R/River Raider II/ReflexiveArcade/ReflexiveArcade.dll` |
+| Big Kahuna Words | 239 | False | None | `artifacts/extracted/archive/Reflexive Arcade B/Big Kahuna Words/ReflexiveArcade/ReflexiveArcade.dll` |
+| Machine Hell | 243 | False | None | `artifacts/extracted/archive/Reflexive Arcade M/Machine Hell/ReflexiveArcade/ReflexiveArcade.dll` |
+| Barnyard Invasion | 245 | False | None | `artifacts/extracted/archive/Reflexive Arcade B/Barnyard Invasion/ReflexiveArcade/ReflexiveArcade.dll` |
+| Super Bounce Out | 247 | False | None | `artifacts/extracted/archive/Reflexive Arcade S/Super Bounce Out/ReflexiveArcade/ReflexiveArcade.dll` |
+| Jets N Guns | 249 | False | None | `artifacts/extracted/archive/Reflexive Arcade J/Jets N Guns/ReflexiveArcade/ReflexiveArcade.dll` |
+| Funny Faces | 251 | False | None | `artifacts/extracted/archive/Reflexive Arcade F/Funny Faces/ReflexiveArcade/ReflexiveArcade.dll` |
+| Warblade | 253 | False | None | `artifacts/extracted/archive/Reflexive Arcade W/Warblade/ReflexiveArcade/ReflexiveArcade.dll` |
+| Mortimer and the Enchanted Castle | 255 | False | None | `artifacts/extracted/archive/Reflexive Arcade M/Mortimer and the Enchanted Castle/ReflexiveArcade/ReflexiveArcade.dll` |
+| ABC Island | 257 | False | None | `artifacts/extracted/archive/Reflexive Arcade A/ABC Island/ReflexiveArcade/ReflexiveArcade.dll` |
+| Zzed | 259 | False | None | `artifacts/extracted/archive/Reflexive Arcade Z/Zzed/ReflexiveArcade/ReflexiveArcade.dll` |
+| Zero Count | 261 | False | None | `artifacts/extracted/archive/Reflexive Arcade Z/Zero Count/ReflexiveArcade/ReflexiveArcade.dll` |
+| 5 Spots II | 263 | False | None | `artifacts/extracted/archive/Reflexive Arcade 0-9/5 Spots II/ReflexiveArcade/ReflexiveArcade.dll` |
+| Fresco Wizard | 267 | False | None | `artifacts/extracted/archive/Reflexive Arcade F/Fresco Wizard/ReflexiveArcade/ReflexiveArcade.dll` |
+| Wonderland Secret Worlds | 271 | False | None | `artifacts/extracted/archive/Reflexive Arcade W/Wonderland Secret Worlds/ReflexiveArcade/ReflexiveArcade.dll` |
+| Coffee Tycoon | 273 | False | None | `artifacts/extracted/archive/Reflexive Arcade C/Coffee Tycoon/ReflexiveArcade/ReflexiveArcade.dll` |
+| Charm Tale | 275 | False | None | `artifacts/extracted/archive/Reflexive Arcade C/Charm Tale/ReflexiveArcade/ReflexiveArcade.dll` |
+| Super Cubes | 277 | False | None | `artifacts/extracted/archive/Reflexive Arcade S/Super Cubes/ReflexiveArcade/ReflexiveArcade.dll` |
+| Pizza Frenzy | 279 | False | None | `artifacts/extracted/archive/Reflexive Arcade P/Pizza Frenzy/ReflexiveArcade/ReflexiveArcade.dll` |
+| Action Memory | 281 | False | None | `artifacts/extracted/archive/Reflexive Arcade A/Action Memory/ReflexiveArcade/ReflexiveArcade.dll` |
+| Glow Worm | 285 | False | None | `artifacts/extracted/archive/Reflexive Arcade G/Glow Worm/ReflexiveArcade/ReflexiveArcade.dll` |
+| Wild West Wendy | 291 | False | None | `artifacts/extracted/archive/Reflexive Arcade W/Wild West Wendy/ReflexiveArcade/ReflexiveArcade.dll` |
+| Tennis Titans | 295 | False | None | `artifacts/extracted/archive/Reflexive Arcade T/Tennis Titans/ReflexiveArcade/ReflexiveArcade.dll` |
+| Gamehouse Word Collection | 299 | False | None | `artifacts/extracted/archive/Reflexive Arcade G/Gamehouse Word Collection/ReflexiveArcade/ReflexiveArcade.dll` |
+| Amazon Quest | 305 | False | None | `artifacts/extracted/archive/Reflexive Arcade A/Amazon Quest/ReflexiveArcade/ReflexiveArcade.dll` |
+| Kick Shot Pool | 307 | False | None | `artifacts/extracted/archive/Reflexive Arcade K/Kick Shot Pool/ReflexiveArcade/ReflexiveArcade.dll` |
+| Fruit Lockers | 309 | False | None | `artifacts/extracted/archive/Reflexive Arcade F/Fruit Lockers/ReflexiveArcade/ReflexiveArcade.dll` |
+| Fairy Words | 311 | False | None | `artifacts/extracted/archive/Reflexive Arcade F/Fairy Words/ReflexiveArcade/ReflexiveArcade.dll` |
+| Slyder Adventures | 313 | False | None | `artifacts/extracted/archive/Reflexive Arcade S/Slyder Adventures/ReflexiveArcade/ReflexiveArcade.dll` |
+| Treasure Fall | 315 | False | None | `artifacts/extracted/archive/Reflexive Arcade T/Treasure Fall/ReflexiveArcade/ReflexiveArcade.dll` |
+| Alien Defense | 329 | False | None | `artifacts/extracted/archive/Reflexive Arcade A/Alien Defense/ReflexiveArcade/ReflexiveArcade.dll` |
+| Spellagories | 335 | False | None | `artifacts/extracted/archive/Reflexive Arcade S/Spellagories/ReflexiveArcade/ReflexiveArcade.dll` |

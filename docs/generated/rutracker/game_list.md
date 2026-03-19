@@ -1,7 +1,7 @@
 # RuTracker Game List
 
 - Source id: `rutracker`
-- Generated from the live source files under `/Volumes/puka/Software/reflexive/artifacts/sources/rutracker`.
+- Generated from the live source files under `artifacts/sources/rutracker`.
 - Verified against the torrent manifest at `artifacts/rutracker-3687027.torrent`.
 
 - Source files: 1698

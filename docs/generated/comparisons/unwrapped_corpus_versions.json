@@ -1,7 +1,7 @@
 {
   "generated_at_utc": "2026-03-18T01:24:34.230157Z",
-  "archive_root": "/Users/banteg/dev/banteg/reflexive/artifacts/unwrapped/archive",
-  "rutracker_root": "/Users/banteg/dev/banteg/reflexive/artifacts/unwrapped/rutracker",
+  "archive_root": "artifacts/unwrapped/archive",
+  "rutracker_root": "artifacts/unwrapped/rutracker",
   "summary": {
     "archive_title_count": 1057,
     "rutracker_title_count": 1660,

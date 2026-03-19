@@ -1,8 +1,8 @@
 # Unwrapped Corpus Version Comparison
 
 - Generated: `2026-03-18T01:24:34.230157Z`
-- Archive root: `/Users/banteg/dev/banteg/reflexive/artifacts/unwrapped/archive`
-- RuTracker root: `/Users/banteg/dev/banteg/reflexive/artifacts/unwrapped/rutracker`
+- Archive root: `artifacts/unwrapped/archive`
+- RuTracker root: `artifacts/unwrapped/rutracker`
 
 ## Summary
 
