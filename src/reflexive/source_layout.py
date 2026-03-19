@@ -13,6 +13,24 @@ def repo_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
+def display_path(path: Path) -> str:
+    root = repo_root()
+    try:
+        return str(path.relative_to(root))
+    except ValueError:
+        pass
+    artifacts = root / "artifacts"
+    if artifacts.is_dir():
+        for entry in artifacts.iterdir():
+            if entry.is_symlink():
+                try:
+                    rel = path.relative_to(entry.resolve())
+                    return str(entry.relative_to(root) / rel)
+                except ValueError:
+                    continue
+    return str(path)
+
+
 def artifacts_root() -> Path:
     return repo_root() / "artifacts"
 

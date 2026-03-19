@@ -15,7 +15,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 import pefile
-from .source_layout import infer_source_id_from_extracted_root
+from .source_layout import display_path, repo_root, infer_source_id_from_extracted_root
 
 
 DLL_SECTION_NAMES = (".text", ".data", ".rsrc", ".reloc")
@@ -35,10 +35,6 @@ LAUNCHER_BUILD_RE = re.compile(rb"Build\s+(\d{2,4})")
 VERSION_NUMBER_RE = re.compile(r"Version Number=(\d+)")
 INFO_STRING_RE = re.compile(r"Info String=([^\r\n]+)")
 MANAGER_INFO_VERSION_RE = re.compile(r"Manager Information Version=(\d+)")
-
-
-def repo_root() -> Path:
-    return Path(__file__).resolve().parents[2]
 
 
 def default_markdown_path(source_id: str) -> Path:
@@ -74,14 +70,6 @@ def discover_wrapper_roots(extracted_root: Path) -> list[Path]:
         roots.add(marker.parent.resolve())
 
     return sorted(roots)
-
-
-def display_path(path: Path) -> str:
-    root = repo_root()
-    try:
-        return str(path.relative_to(root))
-    except ValueError:
-        return str(path)
 
 
 def pe_summary(path: Path, section_names: tuple[str, ...]) -> dict[str, object]:

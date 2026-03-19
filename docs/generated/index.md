@@ -22,6 +22,8 @@ artifacts are easier to distinguish.
 | Native registration scan | [rutracker/native_registration_scan.md](rutracker/native_registration_scan.md) | [rutracker/native_registration_scan.json](rutracker/native_registration_scan.json) |
 | Probe report | [rutracker/probe.md](rutracker/probe.md) | [rutracker/probe.json](rutracker/probe.json) |
 | Publisher attribution | [rutracker/publisher_attribution.md](rutracker/publisher_attribution.md) | [rutracker/publisher_attribution.json](rutracker/publisher_attribution.json) |
+| Key inventory | [rutracker/key_inventory.md](rutracker/key_inventory.md) | [rutracker/key_inventory.json](rutracker/key_inventory.json) |
+| Game engines | [rutracker/game_engines.md](rutracker/game_engines.md) | [rutracker/game_engines.json](rutracker/game_engines.json) |
 | Unwrapper sweep | [rutracker/unwrapper_sweep.md](rutracker/unwrapper_sweep.md) | [rutracker/unwrapper_sweep.json](rutracker/unwrapper_sweep.json) |
 
 ## Comparisons

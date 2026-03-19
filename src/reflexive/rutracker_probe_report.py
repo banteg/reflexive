@@ -16,7 +16,7 @@ from typing import Any
 import pefile
 
 from . import rutracker_publisher_attribution
-from .source_layout import repo_root
+from .source_layout import display_path, repo_root
 
 
 INSTALLER_MARKERS: tuple[tuple[str, str, tuple[bytes, ...]], ...] = (
@@ -64,13 +64,6 @@ def default_markdown_path() -> Path:
 
 def default_json_path() -> Path:
     return repo_root() / "docs" / "generated" / "rutracker" / "probe.json"
-
-
-def display_path(path: Path) -> str:
-    try:
-        return str(path.resolve().relative_to(repo_root()))
-    except ValueError:
-        return str(path.resolve())
 
 
 def load_attribution_report(torrent_path: Path, archive_extracted_root: Path) -> dict[str, Any]:

@@ -17,6 +17,8 @@ from typing import Any
 
 import pefile
 
+from .source_layout import repo_root
+
 
 VERSION_PART_RE = re.compile(r"\d+")
 SKIP_EXE_NAMES = {"unins000.exe"}
@@ -42,10 +44,6 @@ class ExeRecord:
     product_version: str | None
     product_name: str | None
     file_description: str | None
-
-
-def repo_root() -> Path:
-    return Path(__file__).resolve().parents[2]
 
 
 def default_archive_root() -> Path:

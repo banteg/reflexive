@@ -7,12 +7,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from .source_layout import infer_source_id_from_extracted_root
-from .source_layout import source_label
-
-
-def repo_root() -> Path:
-    return Path(__file__).resolve().parents[2]
+from .source_layout import repo_root, infer_source_id_from_extracted_root, source_label
 
 
 def default_output_path(source_id: str) -> Path:

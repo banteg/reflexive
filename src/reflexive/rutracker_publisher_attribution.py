@@ -11,6 +11,8 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
+from .source_layout import repo_root
+
 
 @dataclass(frozen=True)
 class FamilyRule:
@@ -171,10 +173,6 @@ FAMILY_RULES: tuple[FamilyRule, ...] = (
         rationale="Installer names match Sigma Team shooter lines.",
     ),
 )
-
-
-def repo_root() -> Path:
-    return Path(__file__).resolve().parents[2]
 
 
 def default_torrent_path() -> Path:

@@ -9,9 +9,7 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-
-def repo_root() -> Path:
-    return Path(__file__).resolve().parents[2]
+from .source_layout import repo_root
 
 
 def default_source_root() -> Path:

@@ -6,8 +6,7 @@ from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
-from .source_layout import repo_root as source_repo_root
-from .source_layout import source_label
+from .source_layout import display_path, repo_root, source_label
 
 
 @dataclass(frozen=True)
@@ -17,17 +16,6 @@ class RecoveredListRow:
     modulus_hex: str
     private_exponent_hex: str
     classification: str
-
-
-def repo_root() -> Path:
-    return source_repo_root()
-
-
-def display_path(path: Path) -> str:
-    try:
-        return str(path.relative_to(repo_root()))
-    except ValueError:
-        return str(path)
 
 
 def default_inventory_path(source_id: str = "rutracker") -> Path:

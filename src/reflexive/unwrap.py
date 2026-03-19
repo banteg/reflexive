@@ -17,7 +17,7 @@ from typing import Any, Iterable
 
 import pefile
 from . import wrapper_versions
-from .source_layout import infer_source_id_from_extracted_root
+from .source_layout import display_path, repo_root, infer_source_id_from_extracted_root
 from .source_layout import unwrapped_root as source_unwrapped_root
 
 
@@ -88,22 +88,11 @@ class SeedMaterial:
     method: str
 
 
-def repo_root() -> Path:
-    return Path(__file__).resolve().parents[2]
-
-
 def default_output_root(extracted_root: Path) -> Path:
     source_id = infer_source_id_from_extracted_root(extracted_root)
     if source_id is None:
         raise RuntimeError(f"unable to infer source id from {extracted_root}; pass --output-root explicitly")
     return source_unwrapped_root(source_id)
-
-
-def display_path(path: Path) -> str:
-    try:
-        return str(path.relative_to(repo_root()))
-    except ValueError:
-        return str(path)
 
 
 def load_wrapper_scan_module() -> Any:

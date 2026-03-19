@@ -11,7 +11,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from .source_layout import repo_root
+from .source_layout import display_path, repo_root
 from .source_layout import unwrapped_root as source_unwrapped_root
 
 
@@ -124,14 +124,6 @@ def default_markdown_path() -> Path:
 
 def default_json_path() -> Path:
     return repo_root() / "docs" / "generated" / "rutracker" / "game_engines.json"
-
-
-def display_path(path: Path) -> str:
-    root = repo_root()
-    try:
-        return str(path.relative_to(root))
-    except ValueError:
-        return str(path)
 
 
 def add_feature(features: dict[str, list[str]], feature: str, evidence: str) -> None:

@@ -9,9 +9,7 @@ from pathlib import Path
 from typing import Iterable
 
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
-HISTORICAL_LIST_PATH = REPO_ROOT / "artifacts" / "rutracker" / "_Crack" / "listkg_1421_by_russiankid" / "list.txt"
-DEFAULT_LIST_PATH = REPO_ROOT / "docs" / "generated" / "rutracker" / "list.txt"
+DEFAULT_LIST_PATH = Path(__file__).parent / "data" / "list.txt"
 
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ345679"
 ALPHABET_INDEX = {ch: index for index, ch in enumerate(ALPHABET)}

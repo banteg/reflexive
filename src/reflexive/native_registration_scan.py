@@ -8,8 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
-from .source_layout import repo_root as source_repo_root
-from .source_layout import source_label
+from .source_layout import display_path, repo_root, source_label
 from .source_layout import unwrapped_root as source_unwrapped_root
 
 
@@ -119,17 +118,6 @@ COARSE_ASCII_HINTS: tuple[bytes, ...] = tuple(hint.encode("ascii") for hint in T
 COARSE_UTF16_HINTS: tuple[bytes, ...] = tuple(hint.encode("utf-16le") for hint in TOKEN_HINTS)
 PRINTABLE_ASCII = set(range(0x20, 0x7F))
 MAX_EVIDENCE_LENGTH = 200
-
-
-def repo_root() -> Path:
-    return source_repo_root()
-
-
-def display_path(path: Path) -> str:
-    try:
-        return str(path.relative_to(repo_root()))
-    except ValueError:
-        return str(path)
 
 
 def infer_source_id_from_sweep(sweep_json_path: Path, report: dict[str, object]) -> str | None:

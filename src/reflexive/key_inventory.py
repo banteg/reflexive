@@ -16,9 +16,10 @@ from pathlib import Path
 
 import pefile
 
-from .keygen import HISTORICAL_LIST_PATH, decode_payload_integer, load_entries
-from .source_layout import infer_source_id_from_extracted_root, repo_root as source_repo_root
-from .source_layout import source_label
+from .keygen import decode_payload_integer, load_entries
+from .source_layout import display_path, repo_root, infer_source_id_from_extracted_root, source_label
+
+HISTORICAL_LIST_PATH = repo_root() / "artifacts" / "rutracker" / "_Crack" / "listkg_1421_by_russiankid" / "list.txt"
 
 try:
     from sympy import factorint as sympy_factorint
@@ -118,17 +119,6 @@ class KeyInventoryRecord:
     list_private_exponent_match: bool | None
     factored_private_exponent_match: bool | None
     errors: list[str]
-
-
-def repo_root() -> Path:
-    return source_repo_root()
-
-
-def display_path(path: Path) -> str:
-    try:
-        return str(path.relative_to(repo_root()))
-    except ValueError:
-        return str(path)
 
 
 def default_markdown_path(source_id: str) -> Path:

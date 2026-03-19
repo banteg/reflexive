@@ -14,7 +14,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 import pefile
-from .source_layout import infer_source_id_from_extracted_root
+from .source_layout import display_path, repo_root, infer_source_id_from_extracted_root
 
 
 DLL_SECTION_NAMES = (".text", ".data")
@@ -46,10 +46,6 @@ DLL_MAJOR_BY_SECTION_HASH = {
 }
 
 
-def repo_root() -> Path:
-    return Path(__file__).resolve().parents[2]
-
-
 def default_markdown_path(source_id: str) -> Path:
     return repo_root() / "docs" / "generated" / source_id / "wrapper_versions.md"
 
@@ -70,14 +66,6 @@ def utc_timestamp(value: int | None) -> str | None:
     if value is None:
         return None
     return dt.datetime.fromtimestamp(value, dt.UTC).isoformat().replace("+00:00", "Z")
-
-
-def display_path(path: Path) -> str:
-    root = repo_root()
-    try:
-        return str(path.relative_to(root))
-    except ValueError:
-        return str(path)
 
 
 def discover_wrapper_roots(extracted_root: Path) -> list[Path]:

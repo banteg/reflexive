@@ -12,11 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from . import unwrap
-from .source_layout import infer_source_id_from_extracted_root
-
-
-def repo_root() -> Path:
-    return Path(__file__).resolve().parents[2]
+from .source_layout import display_path, repo_root, infer_source_id_from_extracted_root
 
 
 def default_markdown_path(source_id: str) -> Path:
@@ -25,13 +21,6 @@ def default_markdown_path(source_id: str) -> Path:
 
 def default_json_path(source_id: str) -> Path:
     return repo_root() / "docs" / "generated" / source_id / "unwrapper.json"
-
-
-def display_path(path: Path) -> str:
-    try:
-        return str(path.relative_to(repo_root()))
-    except ValueError:
-        return str(path)
 
 
 def child_type(wrapper_root: Path) -> str | None:

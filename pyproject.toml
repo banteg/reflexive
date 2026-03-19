@@ -5,11 +5,16 @@ build-backend = "hatchling.build"
 [project]
 name = "reflexive"
 version = "0.1.0"
+description = "Game preservation toolkit for Reflexive Arcade titles"
+readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "capstone>=5.0.7",
     "pefile>=2024.8.26",
 ]
+
+[project.urls]
+Repository = "https://github.com/banteg/reflexive"
 
 [project.scripts]
 reflexive = "reflexive.cli:main"

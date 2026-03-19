@@ -4,7 +4,7 @@
 
 - Source id: `rutracker`
 - Repo-local path: `artifacts/sources/rutracker`
-- Original path: `/Users/banteg/Downloads/Reflexive`
+- Original download path: (local, no longer relevant)
 - Repo-local torrent: `artifacts/rutracker-3687027.torrent`
 - Source type: torrent-backed installer corpus
 - Status: extracted
@@ -17,7 +17,7 @@
 - Probe report: `docs/generated/rutracker/probe.md`
 - Unwrapper sweep: `docs/generated/rutracker/unwrapper_sweep.md`
 - Native registration signal scan: `docs/generated/rutracker/native_registration_scan.md`
-- Historical forum context: `docs/sources/ruboard.md`
+- Historical forum context: `docs/provenance/ruboard.md`
 
 ## Initial Analysis
 
@@ -92,7 +92,7 @@ The visible release metadata on that page states:
 
 There is also a local `.torrent` file whose name matches that thread id:
 
-- `/Users/banteg/dev/banteg/reflexive/artifacts/rutracker-3687027.torrent`
+- `artifacts/rutracker-3687027.torrent`
 
 Confirmed from the local torrent metadata:
 

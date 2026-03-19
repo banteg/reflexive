@@ -115,14 +115,24 @@ COMMAND_INDEX = {
     for command in COMMANDS
 }
 
+TOOL_COMMANDS = {"keygen", "patch", "unwrap", "extract-installer", "unpack-mpress"}
+
+
 def format_help() -> str:
+    tools = [c for c in COMMANDS if c.name in TOOL_COMMANDS]
+    analysis = [c for c in COMMANDS if c.name not in TOOL_COMMANDS]
+    width = max(len(c.name) for c in COMMANDS)
+
     lines = [
         "Usage: reflexive <command> [args...]",
         "",
-        "Commands:",
+        "Tools:",
     ]
-    width = max(len(command.name) for command in COMMANDS)
-    for command in COMMANDS:
+    for command in tools:
+        lines.append(f"  {command.name.ljust(width)}  {command.description}")
+    lines.append("")
+    lines.append("Analysis:")
+    for command in analysis:
         lines.append(f"  {command.name.ljust(width)}  {command.description}")
     lines.extend(
         [

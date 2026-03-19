@@ -1,4 +1,4 @@
-# Sources
+# Provenance
 
 This directory is for hand-written source records and interpretation notes.
 Machine-generated reports now live under [../generated/index.md](../generated/index.md).

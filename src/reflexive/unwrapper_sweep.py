@@ -13,19 +13,8 @@ from pathlib import Path
 from typing import Any
 
 from . import unwrap
-from .source_layout import infer_source_id_from_extracted_root
+from .source_layout import display_path, repo_root, infer_source_id_from_extracted_root
 from .source_layout import unwrapped_root as source_unwrapped_root
-
-
-def repo_root() -> Path:
-    return Path(__file__).resolve().parents[2]
-
-
-def display_path(path: Path) -> str:
-    try:
-        return str(path.relative_to(repo_root()))
-    except ValueError:
-        return str(path)
 
 
 def default_output_root(extracted_root: Path) -> Path:

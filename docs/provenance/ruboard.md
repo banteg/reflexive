@@ -69,7 +69,7 @@ support cannot be reduced to one fixed unlock algorithm without per-game materia
   right solution and no keygen is needed afterward.
 - The remaining `dll_only_with_application_dat` and integrated-wrapper roots are historically the
   cases where a keygen or shim path still matters.
-- The recovered `listkg` binary and [src/reflexive/keygen.py](/Users/banteg/dev/banteg/reflexive/src/reflexive/keygen.py) fit the documented post-2007 per-game RSA model, not the earlier universal-keygen model.
+- The recovered `listkg` binary and [src/reflexive/keygen.py](../../src/reflexive/keygen.py) fit the documented post-2007 per-game RSA model, not the earlier universal-keygen model.
 - The `list.txt` files should be treated as a community-maintained `(name, game id, modulus, private
   exponent)` database, not just a UI game list.
 - Historical discussion of wrapper-version ranges such as `167-184` is consistent with the

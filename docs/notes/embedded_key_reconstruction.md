@@ -1,9 +1,9 @@
 # Reconstructing Reflexive Key Rows From Shipped DLLs
 
 This note explains the branded-key algorithm used by later Reflexive Arcade titles and how a
-single shipped [ReflexiveArcade.dll](/Users/banteg/dev/banteg/reflexive/artifacts/extracted/archive/Reflexive%20Arcade%200-9/5%20Spots/ReflexiveArcade/ReflexiveArcade.dll)
+single shipped [ReflexiveArcade.dll](../../artifacts/extracted/archive/Reflexive%20Arcade%200-9/5%20Spots/ReflexiveArcade/ReflexiveArcade.dll)
 can be turned back into the fields that appear in
-[list.txt](/Users/banteg/dev/banteg/reflexive/docs/generated/rutracker/list.txt).
+[list.txt](../generated/rutracker/list.txt).
 
 The short version is:
 
@@ -25,10 +25,10 @@ Game Name|GameID|RSA modulus N|private exponent D|
 ```
 
 The unpacked
-[listkg.unpacked.exe](/Users/banteg/dev/banteg/reflexive/artifacts/rutracker/_Crack/listkg_1421_by_russiankid/listkg.unpacked.exe)
+[listkg.unpacked.exe](../../artifacts/rutracker/_Crack/listkg_1421_by_russiankid/listkg.unpacked.exe)
 does not derive those values. It reads them from `list.txt` and uses them to produce unlock codes.
 The historical crack snapshot that shipped with `listkg` still lives at
-[artifacts/rutracker/_Crack/listkg_1421_by_russiankid/list.txt](/Users/banteg/dev/banteg/reflexive/artifacts/rutracker/_Crack/listkg_1421_by_russiankid/list.txt),
+[artifacts/rutracker/_Crack/listkg_1421_by_russiankid/list.txt](../../artifacts/rutracker/_Crack/listkg_1421_by_russiankid/list.txt),
 but the repository default now points at the recovered RuTracker list generated from the verified key inventory.
 
 The reconstruction question is therefore:
@@ -197,7 +197,7 @@ So while `D` is not embedded directly, it is still recoverable in practice.
 The repository now includes a user-facing inventory command:
 
 ```bash
-uv run reflexive key-inventory /Users/banteg/dev/banteg/reflexive/artifacts/extracted/rutracker --skip-factor
+uv run reflexive key-inventory artifacts/extracted/rutracker --skip-factor
 ```
 
 That command performs the public half of the reconstruction algorithm across an extracted corpus:
@@ -241,7 +241,7 @@ So the right mental model is:
 This note is about reconstructing the key material that `listkg` consumes.
 
 The complementary note
-[listkg_keygen.md](/Users/banteg/dev/banteg/reflexive/docs/notes/listkg_keygen.md)
+[listkg_keygen.md](listkg_keygen.md)
 explains what the unpacked keygen does once it already has `(game id, N, D)`.
 
 Together the two notes describe the whole later-era pipeline:
