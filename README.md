@@ -1,6 +1,6 @@
 # reflexive
 
-Game preservation toolkit for [Reflexive Arcade](https://en.wikipedia.org/wiki/Reflexive_Entertainment) titles — a casual games publisher and download portal active from the early 2000s through ~2010. Reflexive wrapped third-party games in a registration shell before distributing them. The service is long defunct, but the wrapped executables survive in archived collections.
+Game preservation toolkit for [Reflexive Arcade](https://en.wikipedia.org/wiki/Reflexive_Entertainment) titles. Reflexive Entertainment was a prominent casual-games publisher and download portal in the 2000s, distributing both its own releases and a large catalog of third-party Windows games through a branded installer and registration stack. That service is long defunct, but the wrapped executables and setup installers survive in archived collections.
 
 This project provides tools to make those games playable again:
 
