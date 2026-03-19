@@ -257,18 +257,26 @@ def extract_and_optionally_unwrap(
 
     if skip_existing:
         if unwrap_after:
-            if final_unwrapped_root is not None and final_unwrapped_root.exists():
-                print(f"Skipping existing unwrapped root: {final_unwrapped_root}")
-                return SKIPPED_EXISTING
             if final_unwrapped_root is not None and extracted_output_root.exists():
                 print(f"Reusing extracted tree: {extracted_output_root}")
-                unwrap_result = unwrap_extracted_tree(extracted_output_root, final_unwrapped_root, force=False)
+                unwrap_result = unwrap_extracted_tree(
+                    extracted_output_root,
+                    final_unwrapped_root,
+                    force=False,
+                    skip_existing=True,
+                )
                 print(f"Unwrapped root: {final_unwrapped_root}")
                 print(f"Materialized wrapper roots: {len(unwrap_result.ok_roots)}")
+                if unwrap_result.skipped_roots:
+                    print("Skipped existing wrapper roots:")
+                    for root in unwrap_result.skipped_roots:
+                        print(f"  - {root}")
                 if unwrap_result.unsupported_roots:
                     print("Unsupported wrapper roots:")
                     for root in unwrap_result.unsupported_roots:
                         print(f"  - {root}")
+                if not unwrap_result.ok_roots:
+                    return SKIPPED_EXISTING
                 return UNWRAPPED_REUSED_EXTRACTED
         elif extracted_output_root.exists():
             print(f"Skipping existing extracted root: {extracted_output_root}")
@@ -306,6 +314,10 @@ def extract_and_optionally_unwrap(
 
     print(f"Unwrapped root: {final_unwrapped_root}")
     print(f"Materialized wrapper roots: {len(unwrap_result.ok_roots)}")
+    if unwrap_result.skipped_roots:
+        print("Skipped existing wrapper roots:")
+        for root in unwrap_result.skipped_roots:
+            print(f"  - {root}")
     if unwrap_result.unsupported_roots:
         print("Unsupported wrapper roots:")
         for root in unwrap_result.unsupported_roots:

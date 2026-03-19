@@ -11,12 +11,19 @@ from . import unwrap
 class UnwrapTreeResult:
     ok_roots: tuple[str, ...]
     unsupported_roots: tuple[str, ...]
+    skipped_roots: tuple[str, ...]
 
 def load_unwrapper_module() -> Any:
     return unwrap
 
 
-def unwrap_extracted_tree(extracted_tree: Path, output_root: Path, *, force: bool) -> UnwrapTreeResult:
+def unwrap_extracted_tree(
+    extracted_tree: Path,
+    output_root: Path,
+    *,
+    force: bool,
+    skip_existing: bool = False,
+) -> UnwrapTreeResult:
     extracted_tree = extracted_tree.resolve()
     output_root = output_root.resolve()
 
@@ -28,11 +35,25 @@ def unwrap_extracted_tree(extracted_tree: Path, output_root: Path, *, force: boo
 
     ok_roots: list[str] = []
     unsupported_roots: list[str] = []
+    skipped_roots: list[str] = []
     for record in records:
-        summary = module.materialize_record(record, extracted_tree, output_root, force=force)
+        summary = module.materialize_record(
+            record,
+            extracted_tree,
+            output_root,
+            force=force,
+            skip_existing=skip_existing,
+        )
         if summary["status"] == "unsupported":
             unsupported_roots.append(str(record["root"]))
             continue
+        if summary["status"] == "skipped_existing":
+            skipped_roots.append(str(record["root"]))
+            continue
         ok_roots.append(str(record["root"]))
 
-    return UnwrapTreeResult(ok_roots=tuple(ok_roots), unsupported_roots=tuple(unsupported_roots))
+    return UnwrapTreeResult(
+        ok_roots=tuple(ok_roots),
+        unsupported_roots=tuple(unsupported_roots),
+        skipped_roots=tuple(skipped_roots),
+    )

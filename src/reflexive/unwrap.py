@@ -699,7 +699,14 @@ def static_unwrap_child(wrapper_root: Path, strategy: Strategy, output_executabl
     return summary
 
 
-def materialize_record(record: dict[str, Any], extracted_root: Path, output_root: Path, force: bool) -> dict[str, Any]:
+def materialize_record(
+    record: dict[str, Any],
+    extracted_root: Path,
+    output_root: Path,
+    force: bool,
+    *,
+    skip_existing: bool = False,
+) -> dict[str, Any]:
     relative_root = Path(record["root"])
     wrapper_root = extracted_root / relative_root
     destination_root = output_root / relative_root
@@ -722,6 +729,9 @@ def materialize_record(record: dict[str, Any], extracted_root: Path, output_root
         return summary
 
     if destination_root.exists():
+        if skip_existing and not force:
+            summary["status"] = "skipped_existing"
+            return summary
         if not force:
             raise RuntimeError(f"{destination_root} already exists; pass --force to replace it")
         shutil.rmtree(destination_root)
