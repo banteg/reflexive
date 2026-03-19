@@ -240,12 +240,11 @@ def read_c_string(data: bytes, offset: int) -> bytes:
 
 def extract_app_id(path: Path) -> tuple[int | None, list[str]]:
     errors: list[str] = []
+    data = path.read_bytes()
     try:
-        pe = pefile.PE(str(path), fast_load=True)
+        pe = pefile.PE(data=data, fast_load=True)
     except pefile.PEFormatError as exc:
         return None, [f"invalid PE: {exc}"]
-
-    data = path.read_bytes()
     rva = parse_export_rva(pe, "unittest_GetBrandedApplicationID")
     if rva is None:
         return None, ["missing unittest_GetBrandedApplicationID export"]

@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import json
+import struct
 from pathlib import Path
+from types import SimpleNamespace
 
+import reflexive.generate_reflexive_key_inventory as key_inventory
 from reflexive.generate_reflexive_key_inventory import EmbeddedKeyMaterial
 from reflexive.generate_reflexive_key_inventory import FactorCacheEntry, HistoricalListEntry, ScannedKeyRecord
 from reflexive.generate_reflexive_key_inventory import build_record, derive_private_exponent, extract_embedded_key_material
@@ -37,6 +40,37 @@ def test_parse_msieve_factor_output() -> None:
         int("34A0889B37216B82DAFE48786FB55C0A584D4D", 16),
     )
     assert factors == [32163991228621816109617, 36488730283783782203869]
+
+
+def test_extract_app_id_uses_in_memory_pe_parse(tmp_path: Path, monkeypatch) -> None:
+    dll_path = tmp_path / "sample.dll"
+    dll_bytes = b"\x68" + struct.pack("<I", 6) + b"\x90" + b"000000aa\x00"
+    dll_path.write_bytes(dll_bytes)
+    seen: dict[str, object] = {}
+
+    class DummyPE:
+        OPTIONAL_HEADER = SimpleNamespace(ImageBase=0)
+
+        def parse_data_directories(self, directories) -> None:
+            self.DIRECTORY_ENTRY_EXPORT = SimpleNamespace(
+                symbols=[SimpleNamespace(name=b"unittest_GetBrandedApplicationID", address=0)]
+            )
+
+        def get_offset_from_rva(self, rva: int) -> int:
+            return rva
+
+    def fake_pe(*args, **kwargs):
+        seen["args"] = args
+        seen["kwargs"] = kwargs
+        return DummyPE()
+
+    monkeypatch.setattr(key_inventory.pefile, "PE", fake_pe)
+    app_id, errors = key_inventory.extract_app_id(dll_path)
+
+    assert app_id == 170
+    assert errors == []
+    assert seen["args"] == ()
+    assert seen["kwargs"] == {"data": dll_bytes, "fast_load": True}
 
 
 def test_load_historical_private_entries(tmp_path: Path) -> None:
