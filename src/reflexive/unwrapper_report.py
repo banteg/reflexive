@@ -11,7 +11,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
-from . import unwrap_reflexive_wrapper
+from . import unwrap
 from .source_layout import infer_source_id_from_extracted_root
 
 
@@ -45,7 +45,7 @@ def child_type(wrapper_root: Path) -> str | None:
 
 
 def build_report(extracted_root: Path) -> dict[str, Any]:
-    module = unwrap_reflexive_wrapper
+    module = unwrap
     inventory = module.build_scan(extracted_root)
     records = module.effective_records(inventory["roots"])
     source_id = infer_source_id_from_extracted_root(extracted_root)

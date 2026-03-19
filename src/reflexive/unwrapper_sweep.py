@@ -12,7 +12,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from . import unwrap_reflexive_wrapper
+from . import unwrap
 from .source_layout import infer_source_id_from_extracted_root
 from .source_layout import unwrapped_root as source_unwrapped_root
 
@@ -44,7 +44,7 @@ def default_json_path(source_id: str) -> Path:
 
 
 def load_unwrapper_module() -> Any:
-    return unwrap_reflexive_wrapper
+    return unwrap
 
 
 def render_markdown(report: dict[str, Any]) -> str:

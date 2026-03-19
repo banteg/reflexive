@@ -16,7 +16,7 @@ from pathlib import Path
 
 import pefile
 
-from .reflexive_listkg import HISTORICAL_LIST_PATH, decode_payload_integer, load_entries
+from .keygen import HISTORICAL_LIST_PATH, decode_payload_integer, load_entries
 from .source_layout import infer_source_id_from_extracted_root, repo_root as source_repo_root
 from .source_layout import source_label
 

@@ -5,12 +5,12 @@ import struct
 from pathlib import Path
 from types import SimpleNamespace
 
-import reflexive.generate_reflexive_key_inventory as key_inventory
-from reflexive.generate_reflexive_key_inventory import EmbeddedKeyMaterial
-from reflexive.generate_reflexive_key_inventory import FactorCacheEntry, HistoricalListEntry, ScannedKeyRecord
-from reflexive.generate_reflexive_key_inventory import build_record, derive_private_exponent, extract_embedded_key_material
-from reflexive.generate_reflexive_key_inventory import load_historical_private_entries
-from reflexive.generate_reflexive_key_inventory import load_factor_cache, parse_msieve_factor_output
+import reflexive.key_inventory as key_inventory
+from reflexive.key_inventory import EmbeddedKeyMaterial
+from reflexive.key_inventory import FactorCacheEntry, HistoricalListEntry, ScannedKeyRecord
+from reflexive.key_inventory import build_record, derive_private_exponent, extract_embedded_key_material
+from reflexive.key_inventory import load_historical_private_entries
+from reflexive.key_inventory import load_factor_cache, parse_msieve_factor_output
 
 
 def test_extract_embedded_key_material() -> None:

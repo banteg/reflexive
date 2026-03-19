@@ -1,6 +1,6 @@
 # Keygen fallback
 
-[reflexive_listkg.py](/Users/banteg/dev/banteg/reflexive/src/reflexive/reflexive_listkg.py) is a pure-Python fallback for the unpacked `listkg` v3.22 `E`-type Reflexive keygen.
+[keygen.py](/Users/banteg/dev/banteg/reflexive/src/reflexive/keygen.py) is a pure-Python fallback for the unpacked `listkg` v3.22 `E`-type Reflexive keygen.
 
 It reproduces the key path recovered from [listkg.unpacked.exe](/Users/banteg/dev/banteg/reflexive/artifacts/rutracker/_Crack/listkg_1421_by_russiankid/listkg.unpacked.exe):
 

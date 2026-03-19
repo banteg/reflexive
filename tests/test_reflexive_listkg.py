@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import pytest
 
-from reflexive.reflexive_listkg import build_message_bytes, generate_for_entry, ListkgEntry, parse_product_code
-from reflexive.reflexive_listkg import synthesize_product_code
+from reflexive.keygen import build_message_bytes, generate_for_entry, ListkgEntry, parse_product_code
+from reflexive.keygen import synthesize_product_code
 
 
 def test_synthesize_product_code_defaults_to_revision_a() -> None:

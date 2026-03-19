@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from . import unwrap_reflexive_wrapper
+from . import unwrap
 
 
 @dataclass(frozen=True)
@@ -13,7 +13,7 @@ class UnwrapTreeResult:
     unsupported_roots: tuple[str, ...]
 
 def load_unwrapper_module() -> Any:
-    return unwrap_reflexive_wrapper
+    return unwrap
 
 
 def unwrap_extracted_tree(extracted_tree: Path, output_root: Path, *, force: bool) -> UnwrapTreeResult:

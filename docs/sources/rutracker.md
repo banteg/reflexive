@@ -33,23 +33,23 @@ What is confirmed so far:
   `_Crack.7z` and `_Recovery.par2`.
 - All `1696` installer stubs are PE executables carrying `Inno Setup Setup Data (5.2.3)`,
   `Inno Setup Messages (5.1.11)`, and `CHANNEL_NAME=Reflexive`.
-- A custom outer-installer extractor now exists in `scripts/extract_rutracker_reflexive_installer.py`.
+- A custom outer-installer extractor now exists in `src/reflexive/extract_rutracker_installer.py`.
 - The full installer corpus has been extracted under `artifacts/extracted/rutracker`.
 
 ## Extraction
 
-- Single installer: `uv run scripts/extract_rutracker_reflexive_installer.py artifacts/sources/rutracker/10DaysUnderTheSeaSetup.exe`
-- Full source: `uv run scripts/extract_rutracker_reflexive_installer.py --all`
-- Single installer direct to unwrapped: `uv run scripts/extract_rutracker_reflexive_installer.py --unwrap artifacts/sources/rutracker/10DaysUnderTheSeaSetup.exe`
-- Full source direct to unwrapped: `uv run scripts/extract_rutracker_reflexive_installer.py --all --unwrap`
+- Single installer: `uv run reflexive extract-rutracker-installer artifacts/sources/rutracker/10DaysUnderTheSeaSetup.exe`
+- Full source: `uv run reflexive extract-rutracker-installer --all`
+- Single installer direct to unwrapped: `uv run reflexive extract-rutracker-installer --unwrap artifacts/sources/rutracker/10DaysUnderTheSeaSetup.exe`
+- Full source direct to unwrapped: `uv run reflexive extract-rutracker-installer --all --unwrap`
 - Keep the extracted tree while unwrapping: add `--keep-extracted`
 - The custom extractor strips the Reflexive `ZipLite` wrapper, recovers the embedded Inno Setup
   installer, and then delegates to `innoextract` for the inner payload.
 
 ## Unwrapping
 
-- Single root: `uv run scripts/unwrap_reflexive_wrapper.py --extracted-root artifacts/extracted/rutracker --force "10 Days Under The Sea"`
-- Full source sweep: `uv run scripts/generate_reflexive_unwrapper_sweep.py --extracted-root artifacts/extracted/rutracker --output-root artifacts/unwrapped/rutracker --markdown-out docs/generated/rutracker/unwrapper_sweep.md --json-out docs/generated/rutracker/unwrapper_sweep.json`
+- Single root: `uv run reflexive unwrap --extracted-root artifacts/extracted/rutracker --force "10 Days Under The Sea"`
+- Full source sweep: `uv run reflexive unwrapper-sweep --extracted-root artifacts/extracted/rutracker --output-root artifacts/unwrapped/rutracker --markdown-out docs/generated/rutracker/unwrapper_sweep.md --json-out docs/generated/rutracker/unwrapper_sweep.json`
 - Current sweep summary:
   - `1697` effective wrapper roots scanned
   - `1661` successful roots

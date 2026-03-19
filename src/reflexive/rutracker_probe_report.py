@@ -15,7 +15,7 @@ from typing import Any
 
 import pefile
 
-from . import generate_rutracker_publisher_attribution
+from . import rutracker_publisher_attribution
 from .source_layout import repo_root
 
 
@@ -74,7 +74,7 @@ def display_path(path: Path) -> str:
 
 
 def load_attribution_report(torrent_path: Path, archive_extracted_root: Path) -> dict[str, Any]:
-    return generate_rutracker_publisher_attribution.build_report(torrent_path, archive_extracted_root)
+    return rutracker_publisher_attribution.build_report(torrent_path, archive_extracted_root)
 
 
 def load_json(path: Path) -> dict[str, Any]:

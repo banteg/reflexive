@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from reflexive import unwrap_reflexive_wrapper as MODULE
+from reflexive import unwrap as MODULE
 
 
 class FakeOptionalHeader:

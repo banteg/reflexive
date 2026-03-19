@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from reflexive.generate_reflexive_recovered_list import build_rows, main, render_list_text, summarize_rows
+from reflexive.recovered_list import build_rows, main, render_list_text, summarize_rows
 
 
 def test_build_rows_classifies_kept_replaced_and_added() -> None:

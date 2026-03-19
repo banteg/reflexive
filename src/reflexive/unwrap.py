@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import pefile
-from . import generate_reflexive_wrapper_versions
+from . import wrapper_versions
 from .source_layout import infer_source_id_from_extracted_root
 from .source_layout import unwrapped_root as source_unwrapped_root
 
@@ -107,7 +107,7 @@ def display_path(path: Path) -> str:
 
 
 def load_wrapper_scan_module() -> Any:
-    return generate_reflexive_wrapper_versions
+    return wrapper_versions
 
 
 def build_scan(extracted_root: Path, selected_roots: Iterable[str] | None = None) -> dict[str, Any]:
