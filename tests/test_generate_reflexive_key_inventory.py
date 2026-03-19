@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
-from reflexive.generate_reflexive_key_inventory import derive_private_exponent, extract_embedded_key_material
+from reflexive.generate_reflexive_key_inventory import EmbeddedKeyMaterial
+from reflexive.generate_reflexive_key_inventory import FactorCacheEntry, HistoricalListEntry, ScannedKeyRecord
+from reflexive.generate_reflexive_key_inventory import build_record, derive_private_exponent, extract_embedded_key_material
 from reflexive.generate_reflexive_key_inventory import load_historical_private_entries
+from reflexive.generate_reflexive_key_inventory import load_factor_cache, parse_msieve_factor_output
 
 
 def test_extract_embedded_key_material() -> None:
@@ -20,8 +24,19 @@ def test_extract_embedded_key_material() -> None:
 
 def test_derive_private_exponent() -> None:
     result = derive_private_exponent(int("34A0889B37216B82DAFE48786FB55C0A584D4D", 16), 65537)
+    assert result.backend == "internal"
     assert result.prime_factors_hex == ["06CF9D0B9A4D6F389A31", "07BA0EDB3385D2B101DD"]
     assert result.private_exponent_hex == "1ABD872BF6F35041892550797506D085A75901"
+
+
+def test_parse_msieve_factor_output() -> None:
+    factors = parse_msieve_factor_output(
+        "0x34A0889B37216B82DAFE48786FB55C0A584D4D\n"
+        "prp23: 32163991228621816109617\n"
+        "prp23: 36488730283783782203869\n",
+        int("34A0889B37216B82DAFE48786FB55C0A584D4D", 16),
+    )
+    assert factors == [32163991228621816109617, 36488730283783782203869]
 
 
 def test_load_historical_private_entries(tmp_path: Path) -> None:
@@ -37,3 +52,129 @@ def test_load_historical_private_entries(tmp_path: Path) -> None:
     assert entry.name == "5 Spots"
     assert entry.game_id == 170
     assert entry.private_exponent_hex == "1ABD872BF6F35041892550797506D085A75901"
+
+
+def test_load_factor_cache(tmp_path: Path) -> None:
+    cache_path = tmp_path / "factor_cache.jsonl"
+    cache_path.write_text(
+        json.dumps(
+            {
+                "modulus_hex": "34A0889B37216B82DAFE48786FB55C0A584D4D",
+                "public_exponent": 65537,
+                "backend": "msieve",
+                "prime_factors_hex": ["06CF9D0B9A4D6F389A31", "07BA0EDB3385D2B101DD"],
+                "private_exponent_hex": "1ABD872BF6F35041892550797506D085A75901",
+                "elapsed_seconds": 0.12,
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    entries = load_factor_cache(cache_path)
+    entry = entries[("34A0889B37216B82DAFE48786FB55C0A584D4D", 65537)]
+    assert entry.backend == "msieve"
+    assert entry.prime_factors_hex == ["06CF9D0B9A4D6F389A31", "07BA0EDB3385D2B101DD"]
+    assert entry.private_exponent_hex == "1ABD872BF6F35041892550797506D085A75901"
+
+
+def test_build_record_verifies_historical_entry() -> None:
+    material = EmbeddedKeyMaterial(
+        revision="A",
+        encoded_modulus="3KBCE4G5QWXAW39ZEHQ46VLQFFQTKN",
+        encoded_public_exponent="CAAB",
+        modulus_hex="34A0889B37216B82DAFE48786FB55C0A584D4D",
+        public_exponent=65537,
+    )
+    historical = HistoricalListEntry(
+        name="5 Spots",
+        game_id=170,
+        modulus_hex="34A0889B37216B82DAFE48786FB55C0A584D4D",
+        private_exponent_hex="1ABD872BF6F35041892550797506D085A75901",
+        source_path="artifacts/rutracker/_Crack/list.txt",
+    )
+    scanned = ScannedKeyRecord(
+        game_name_guess="5 Spots",
+        dll_path="artifacts/extracted/rutracker/5 Spots/ReflexiveArcade/ReflexiveArcade.dll",
+        app_id=170,
+        key_material=material,
+        historical_entry=historical,
+        list_name="5 Spots",
+        list_modulus_hex="34A0889B37216B82DAFE48786FB55C0A584D4D",
+        list_private_exponent_hex="1ABD872BF6F35041892550797506D085A75901",
+        errors=[],
+    )
+    factored = FactorCacheEntry(
+        modulus_hex="34A0889B37216B82DAFE48786FB55C0A584D4D",
+        public_exponent=65537,
+        backend="msieve",
+        prime_factors_hex=["06CF9D0B9A4D6F389A31", "07BA0EDB3385D2B101DD"],
+        private_exponent_hex="01ABD872BF6F35041892550797506D085A75901",
+        elapsed_seconds=0.12,
+    )
+
+    record = build_record(
+        scanned,
+        factor_results={("34A0889B37216B82DAFE48786FB55C0A584D4D", 65537): factored},
+        factor_errors={},
+        derive_private=True,
+        factor_remaining=True,
+        verify_known=True,
+    )
+
+    assert record.private_exponent_source == "historical_list"
+    assert record.factored_private_exponent_source == "msieve"
+    assert record.factored_private_exponent_match is True
+    assert record.prime_factors_hex == []
+    assert record.factored_prime_factors_hex == ["06CF9D0B9A4D6F389A31", "07BA0EDB3385D2B101DD"]
+
+
+def test_build_record_uses_factored_override_for_invalid_historical_entry() -> None:
+    material = EmbeddedKeyMaterial(
+        revision="A",
+        encoded_modulus="3KBCE4G5QWXAW39ZEHQ46VLQFFQTKN",
+        encoded_public_exponent="CAAB",
+        modulus_hex="34A0889B37216B82DAFE48786FB55C0A584D4D",
+        public_exponent=65537,
+    )
+    historical = HistoricalListEntry(
+        name="5 Spots",
+        game_id=170,
+        modulus_hex="34A0889B37216B82DAFE48786FB55C0A584D4D",
+        private_exponent_hex="02ABD872BF6F35041892550797506D085A75901",
+        source_path="artifacts/rutracker/_Crack/list.txt",
+    )
+    scanned = ScannedKeyRecord(
+        game_name_guess="5 Spots",
+        dll_path="artifacts/extracted/rutracker/5 Spots/ReflexiveArcade/ReflexiveArcade.dll",
+        app_id=170,
+        key_material=material,
+        historical_entry=historical,
+        list_name="5 Spots",
+        list_modulus_hex="34A0889B37216B82DAFE48786FB55C0A584D4D",
+        list_private_exponent_hex="02ABD872BF6F35041892550797506D085A75901",
+        errors=[],
+    )
+    factored = FactorCacheEntry(
+        modulus_hex="34A0889B37216B82DAFE48786FB55C0A584D4D",
+        public_exponent=65537,
+        backend="msieve",
+        prime_factors_hex=["06CF9D0B9A4D6F389A31", "07BA0EDB3385D2B101DD"],
+        private_exponent_hex="1ABD872BF6F35041892550797506D085A75901",
+        elapsed_seconds=0.12,
+    )
+
+    record = build_record(
+        scanned,
+        factor_results={("34A0889B37216B82DAFE48786FB55C0A584D4D", 65537): factored},
+        factor_errors={},
+        derive_private=True,
+        factor_remaining=True,
+        verify_known=True,
+    )
+
+    assert record.private_exponent_source == "msieve"
+    assert record.private_exponent_hex == "1ABD872BF6F35041892550797506D085A75901"
+    assert record.list_private_exponent_match is False
+    assert record.factored_private_exponent_match is False
+    assert "historical private exponent failed RSA verification" in record.errors[0]
