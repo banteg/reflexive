@@ -11,16 +11,18 @@ This project provides tools to make those games playable again:
 
 ## Installation
 
+Install as a tool:
+
 ```
-uv add reflexive
+uv tool install git+https://github.com/banteg/reflexive
 ```
 
-Or install from source:
+Or clone and run directly:
 
 ```
 git clone https://github.com/banteg/reflexive
 cd reflexive
-uv sync
+uv run reflexive --help
 ```
 
 ## Usage
