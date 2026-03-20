@@ -106,6 +106,13 @@ COMMANDS = (
         section="internal",
         show_in_help=False,
     ),
+    Command(
+        name="download-manifest",
+        module="download_manifest",
+        description="Generate the packaged installer download manifest.",
+        section="internal",
+        show_in_help=False,
+    ),
 )
 
 COMMAND_INDEX = {command.name: command for command in COMMANDS}

@@ -2,15 +2,15 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.resources
 import json
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
 
-from .installer_snapshot import default_json_path as default_snapshot_path
 from .source_layout import display_path, source_root as source_source_root
-from .title_metadata import load_titles_from_key_inventory, normalize_title_key
+from .title_metadata import normalize_title_key
 
 
 DEFAULT_BASE_URL = "https://reflexive.banteg.xyz/"
@@ -19,14 +19,9 @@ DEFAULT_BASE_URL = "https://reflexive.banteg.xyz/"
 @dataclass(frozen=True)
 class InstallerRecord:
     file_name: str
-    path: str
     size_bytes: int
     sha256: str
     title: str | None
-
-
-def default_inventory_path() -> Path:
-    return Path(__file__).resolve().parents[2] / "docs" / "generated" / "rutracker" / "key_inventory.json"
 
 
 def default_output_root() -> Path:
@@ -41,19 +36,22 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def load_snapshot_records(snapshot_path: Path, inventory_path: Path | None) -> list[InstallerRecord]:
-    report = json.loads(snapshot_path.read_text(encoding="utf-8"))
-    title_map = load_titles_from_key_inventory(inventory_path) if inventory_path is not None and inventory_path.is_file() else {}
+def load_manifest_records(manifest_path: Path | None = None) -> list[InstallerRecord]:
+    if manifest_path is None:
+        payload = importlib.resources.files("reflexive.data").joinpath("rutracker_download_manifest.json").read_text(
+            encoding="utf-8"
+        )
+    else:
+        payload = manifest_path.read_text(encoding="utf-8")
+    report = json.loads(payload)
     records: list[InstallerRecord] = []
     for row in report["records"]:
-        file_name = str(row["file_name"])
         records.append(
             InstallerRecord(
-                file_name=file_name,
-                path=str(row["path"]),
+                file_name=str(row["file_name"]),
                 size_bytes=int(row["size_bytes"]),
                 sha256=str(row["sha256"]),
-                title=title_map.get(normalize_title_key(file_name)),
+                title=str(row["title"]) if row.get("title") is not None else None,
             )
         )
     return records
@@ -166,16 +164,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help=f"Mirror base URL. Defaults to {DEFAULT_BASE_URL}",
     )
     parser.add_argument(
-        "--snapshot-path",
+        "--manifest-path",
         type=Path,
-        default=default_snapshot_path("rutracker"),
-        help="Installer snapshot JSON used for file resolution and checksum verification.",
-    )
-    parser.add_argument(
-        "--inventory-path",
-        type=Path,
-        default=default_inventory_path(),
-        help="Key inventory JSON used to resolve metadata-backed game titles.",
+        default=None,
+        help="Override the packaged download manifest JSON.",
     )
     parser.add_argument("--force", action="store_true", help="Replace a mismatched existing output file.")
     return parser.parse_args(argv)
@@ -183,7 +175,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
-    records = load_snapshot_records(args.snapshot_path.resolve(), args.inventory_path.resolve())
+    manifest_path = args.manifest_path.resolve() if args.manifest_path is not None else None
+    records = load_manifest_records(manifest_path)
     record = resolve_record(args.query, records)
 
     output_path = args.output_path.resolve() if args.output_path is not None else default_output_root() / record.file_name
