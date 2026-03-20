@@ -52,6 +52,12 @@ COMMANDS = (
         section="tool",
     ),
     Command(
+        name="download",
+        module="download",
+        description="Download a single RuTracker installer from the mirror.",
+        section="tool",
+    ),
+    Command(
         name="unwrapper-sweep",
         module="unwrapper_sweep",
         description="Run the full static unwrapper sweep.",
