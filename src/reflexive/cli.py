@@ -54,7 +54,7 @@ COMMANDS = (
     Command(
         name="download",
         module="download",
-        description="Download a single RuTracker installer from the mirror.",
+        description="Download a single original Reflexive installer from the mirror.",
         section="tool",
     ),
     Command(

@@ -35,7 +35,7 @@ Download a single original Reflexive installer from the mirror:
 reflexive download "Air Strike 2"
 ```
 
-For the full installer corpus, prefer the torrent instead of mirror-downloading hundreds of individual files.
+A torrent is also available if you want the full installer corpus in one go.
 
 Extract a single installer into an installed game tree:
 

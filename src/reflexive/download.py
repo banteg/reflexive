@@ -148,7 +148,7 @@ def download_record(
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Download a single RuTracker installer from the mirror. For the full corpus, use the torrent instead."
+        description="Download a single original Reflexive installer from the mirror."
     )
     parser.add_argument("query", help="Exact installer filename or game title")
     parser.add_argument(
@@ -192,8 +192,6 @@ def main(argv: list[str] | None = None) -> int:
     print(f"size_bytes={record.size_bytes}")
     print(f"sha256={record.sha256}")
     print(f"status={status}")
-    if status == "downloaded":
-        print("note=for the full RuTracker corpus, prefer the torrent instead of mirror downloads")
     return 0
 
 
