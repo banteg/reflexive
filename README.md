@@ -29,13 +29,13 @@ uv run reflexive --help
 
 ### Extract installers
 
-Download a single RuTracker installer from the mirror:
+Download a single original Reflexive installer from the mirror:
 
 ```
 reflexive download "Air Strike 2"
 ```
 
-For the full RuTracker corpus, prefer the torrent instead of mirror-downloading hundreds of individual installers.
+For the full installer corpus, prefer the torrent instead of mirror-downloading hundreds of individual files.
 
 Extract a single installer into an installed game tree:
 
