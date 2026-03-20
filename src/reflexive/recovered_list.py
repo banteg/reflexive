@@ -27,10 +27,14 @@ def default_output_path(source_id: str) -> Path:
 
 
 def choose_name(record: dict[str, object]) -> str:
+    game_name_guess = record.get("game_name_guess")
+    game_name_source = record.get("game_name_source")
+    if game_name_source == "raw_002_config" and isinstance(game_name_guess, str) and game_name_guess:
+        return game_name_guess
+
     list_name = record.get("list_name")
     if isinstance(list_name, str) and list_name:
         return list_name
-    game_name_guess = record.get("game_name_guess")
     if isinstance(game_name_guess, str) and game_name_guess:
         return game_name_guess
     app_id = record.get("app_id")

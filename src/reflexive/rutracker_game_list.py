@@ -9,7 +9,8 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-from .source_layout import repo_root
+from .source_layout import display_path, repo_root
+from .title_metadata import load_titles_from_key_inventory
 
 
 def default_source_root() -> Path:
@@ -26,6 +27,10 @@ def default_archive_extracted_root() -> Path:
 
 def default_output_path() -> Path:
     return repo_root() / "docs" / "generated" / "rutracker" / "game_list.md"
+
+
+def default_key_inventory_path() -> Path:
+    return repo_root() / "docs" / "generated" / "rutracker" / "key_inventory.json"
 
 
 def decode_bencode(buf: bytes, index: int = 0):
@@ -109,6 +114,7 @@ def build_game_list(
     source_root: Path,
     torrent_path: Path,
     archive_extracted_root: Path,
+    metadata_titles: dict[str, str],
 ) -> dict[str, object]:
     source_files = sorted(path.name for path in source_root.iterdir() if path.is_file())
     torrent_files = sorted(parse_torrent_files(torrent_path))
@@ -123,12 +129,17 @@ def build_game_list(
 
     grouped: dict[str, list[dict[str, str]]] = defaultdict(list)
     overlap_count = 0
+    metadata_count = 0
 
     for file_name in setup_files:
         stem = file_name.removesuffix("Setup.exe")
         normalized = normalize_title(file_name)
+        metadata_title = metadata_titles.get(normalized)
         archive_title = archive_titles.get(normalized)
-        if archive_title is not None:
+        if metadata_title is not None:
+            display_title = metadata_title
+            metadata_count += 1
+        elif archive_title is not None:
             display_title = archive_title
             overlap_count += 1
         else:
@@ -157,20 +168,14 @@ def build_game_list(
         "missing_from_source": missing_from_source,
         "unexpected_in_source": unexpected_in_source,
         "archive_overlap_count": overlap_count,
+        "metadata_title_count": metadata_count,
         "groups": ordered_groups,
     }
 
 
 def render_markdown(report: dict[str, object], source_root: Path, torrent_path: Path) -> str:
-    root = repo_root()
-    try:
-        source_display = source_root.relative_to(root)
-    except ValueError:
-        source_display = source_root
-    try:
-        torrent_display = torrent_path.relative_to(root)
-    except ValueError:
-        torrent_display = torrent_path
+    source_display = display_path(source_root)
+    torrent_display = display_path(torrent_path)
 
     groups: list[tuple[str, list[dict[str, str]]]] = report["groups"]  # type: ignore[assignment]
     non_setup_files: list[str] = report["non_setup_files"]  # type: ignore[assignment]
@@ -186,6 +191,7 @@ def render_markdown(report: dict[str, object], source_root: Path, torrent_path: 
         "",
         f"- Source files: {report['source_file_count']}",
         f"- Setup installers: {report['setup_installer_count']}",
+        f"- Titles resolved from extracted Reflexive metadata: {report['metadata_title_count']}",
         f"- Archive-overlap titles with canonical archive naming: {report['archive_overlap_count']}",
         f"- Non-setup payload files: {len(non_setup_files)}",
         "",
@@ -212,7 +218,7 @@ def render_markdown(report: dict[str, object], source_root: Path, torrent_path: 
         lines.append("")
 
     lines.append(
-        "Titles below are derived from flat installer filenames by stripping `Setup.exe`, with canonical archive names used where the title overlaps the current `archive` corpus."
+        "Titles below prefer names recovered from the extracted RuTracker corpus via Reflexive metadata, then fall back to canonical archive names for overlap entries, and only then fall back to installer filename humanization."
     )
     lines.append("")
 
@@ -242,6 +248,12 @@ def parse_args() -> argparse.Namespace:
         default=default_output_path(),
         help="Markdown output path.",
     )
+    parser.add_argument(
+        "--key-inventory-path",
+        type=Path,
+        default=default_key_inventory_path(),
+        help="Key inventory report used to recover metadata-derived RuTracker titles.",
+    )
     return parser.parse_args()
 
 
@@ -251,8 +263,9 @@ def main() -> int:
     torrent_path = args.torrent_path.resolve()
     archive_extracted_root = args.archive_extracted_root.resolve()
     output_path = args.output_path.resolve()
+    metadata_titles = load_titles_from_key_inventory(args.key_inventory_path.resolve())
 
-    report = build_game_list(source_root, torrent_path, archive_extracted_root)
+    report = build_game_list(source_root, torrent_path, archive_extracted_root, metadata_titles)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(render_markdown(report, source_root, torrent_path), encoding="utf-8")
     print(f"Wrote {output_path}")

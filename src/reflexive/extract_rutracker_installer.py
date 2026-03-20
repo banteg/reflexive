@@ -17,6 +17,7 @@ from pathlib import Path
 from .source_layout import extracted_root as source_extracted_root
 from .source_layout import source_root as source_source_root
 from .source_layout import unwrapped_root as source_unwrapped_root
+from .title_metadata import load_titles_from_key_inventory
 from .unwrap_installer_tree import unwrap_extracted_tree
 
 
@@ -48,6 +49,10 @@ def default_rutracker_source_root() -> Path:
 
 def default_rutracker_unwrapped_root() -> Path:
     return source_unwrapped_root("rutracker")
+
+
+def default_rutracker_inventory_path() -> Path:
+    return Path(__file__).resolve().parents[2] / "docs" / "generated" / "rutracker" / "key_inventory.json"
 
 
 def normalize_title(value: str) -> str:
@@ -89,11 +94,18 @@ def collect_archive_titles(extracted_root: Path) -> dict[str, str]:
     return titles
 
 
-def canonical_title(installer_path: Path, archive_titles: dict[str, str]) -> str:
+def canonical_title(
+    installer_path: Path,
+    archive_titles: dict[str, str],
+    metadata_titles: dict[str, str] | None = None,
+) -> str:
     stem = installer_path.name.removesuffix(".exe")
     if stem.endswith("Setup"):
         stem = stem[:-5]
-    return archive_titles.get(normalize_title(installer_path.name), humanize_stem(stem))
+    normalized = normalize_title(installer_path.name)
+    if metadata_titles is not None and normalized in metadata_titles:
+        return metadata_titles[normalized]
+    return archive_titles.get(normalized, humanize_stem(stem))
 
 
 def parse_outer_entries(installer_path: Path) -> tuple[bytes, list[OuterEntry]]:
@@ -208,6 +220,7 @@ def extract_installer(
     *,
     force: bool,
     archive_titles: dict[str, str] | None = None,
+    metadata_titles: dict[str, str] | None = None,
 ) -> Path:
     installer_path = installer_path.resolve()
     output_root = output_root.resolve()
@@ -226,7 +239,7 @@ def extract_installer(
         materialize_inno_extract(inno_dir, output_root, force=force)
         embedded_installer_name = inner_installer.name
 
-    title = canonical_title(installer_path, archive_titles)
+    title = canonical_title(installer_path, archive_titles, metadata_titles)
     print(f"Outer installer: {installer_path}")
     print(f"Title: {title}")
     print(f"Output root: {output_root}")
@@ -246,6 +259,7 @@ def extract_and_optionally_unwrap(
     force: bool,
     skip_existing: bool,
     archive_titles: dict[str, str],
+    metadata_titles: dict[str, str],
     unwrap_after: bool,
     keep_extracted: bool,
     unwrapped_output_root: Path | None,
@@ -253,7 +267,7 @@ def extract_and_optionally_unwrap(
     installer_path = installer_path.resolve()
     extracted_output_root = extracted_output_root.resolve()
     final_unwrapped_root = None if unwrapped_output_root is None else unwrapped_output_root.resolve()
-    title = canonical_title(installer_path, archive_titles)
+    title = canonical_title(installer_path, archive_titles, metadata_titles)
 
     if skip_existing:
         if unwrap_after:
@@ -283,7 +297,13 @@ def extract_and_optionally_unwrap(
             return SKIPPED_EXISTING
 
     if not unwrap_after:
-        extract_installer(installer_path, extracted_output_root, force=force, archive_titles=archive_titles)
+        extract_installer(
+            installer_path,
+            extracted_output_root,
+            force=force,
+            archive_titles=archive_titles,
+            metadata_titles=metadata_titles,
+        )
         return EXTRACTED_ONLY
 
     if final_unwrapped_root is None:
@@ -295,6 +315,7 @@ def extract_and_optionally_unwrap(
             extracted_output_root,
             force=force,
             archive_titles=archive_titles,
+            metadata_titles=metadata_titles,
         )
         unwrap_result = unwrap_extracted_tree(extracted_tree, final_unwrapped_root, force=force)
         status = UNWRAPPED_FRESH
@@ -308,6 +329,7 @@ def extract_and_optionally_unwrap(
                 temp_extract_root,
                 force=True,
                 archive_titles=archive_titles,
+                metadata_titles=metadata_titles,
             )
             unwrap_result = unwrap_extracted_tree(extracted_tree, final_unwrapped_root, force=force)
         status = UNWRAPPED_FRESH
@@ -346,6 +368,7 @@ def extract_all_installers(
     force: bool,
     skip_existing: bool,
     archive_titles: dict[str, str],
+    metadata_titles: dict[str, str],
     unwrap_after: bool,
     keep_extracted: bool,
     unwrapped_root: Path | None,
@@ -369,7 +392,7 @@ def extract_all_installers(
     }
 
     for installer_path in installers:
-        title = canonical_title(installer_path, archive_titles)
+        title = canonical_title(installer_path, archive_titles, metadata_titles)
         destination = output_root / title
         print(f"\n[{installer_path.stem}] {title}")
         unwrap_destination = None if unwrapped_root is None else unwrapped_root / title
@@ -379,6 +402,7 @@ def extract_all_installers(
             force=force,
             skip_existing=skip_existing,
             archive_titles=archive_titles,
+            metadata_titles=metadata_titles,
             unwrap_after=unwrap_after,
             keep_extracted=keep_extracted,
             unwrapped_output_root=unwrap_destination,
@@ -469,6 +493,8 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     archive_titles = collect_archive_titles(args.archive_extracted_root.resolve())
+    inventory_path = default_rutracker_inventory_path()
+    metadata_titles = load_titles_from_key_inventory(inventory_path) if inventory_path.is_file() else {}
     if args.keep_extracted and not args.unwrap:
         print("error: --keep-extracted requires --unwrap")
         return 1
@@ -487,6 +513,7 @@ def main() -> int:
                 force=args.force,
                 skip_existing=args.skip_existing,
                 archive_titles=archive_titles,
+                metadata_titles=metadata_titles,
                 unwrap_after=args.unwrap,
                 keep_extracted=args.keep_extracted,
                 unwrapped_root=args.unwrapped_root.resolve() if args.unwrap else None,
@@ -498,11 +525,11 @@ def main() -> int:
             if installer_path.is_dir():
                 raise ValueError(f"expected a setup EXE, got directory: {installer_path}")
             if args.output_root is None:
-                title = canonical_title(installer_path, archive_titles)
+                title = canonical_title(installer_path, archive_titles, metadata_titles)
                 output_root = (source_extracted_root("rutracker") / title).resolve()
             else:
                 output_root = args.output_root.resolve()
-            title = canonical_title(installer_path, archive_titles)
+            title = canonical_title(installer_path, archive_titles, metadata_titles)
             unwrap_destination = (args.unwrapped_root.resolve() / title) if args.unwrap else None
             extract_and_optionally_unwrap(
                 installer_path,
@@ -510,6 +537,7 @@ def main() -> int:
                 force=args.force,
                 skip_existing=args.skip_existing,
                 archive_titles=archive_titles,
+                metadata_titles=metadata_titles,
                 unwrap_after=args.unwrap,
                 keep_extracted=args.keep_extracted,
                 unwrapped_output_root=unwrap_destination,

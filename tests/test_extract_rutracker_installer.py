@@ -6,6 +6,7 @@ from types import SimpleNamespace
 from reflexive.extract_rutracker_installer import (
     SKIPPED_EXISTING,
     UNWRAPPED_REUSED_EXTRACTED,
+    canonical_title,
     extract_and_optionally_unwrap,
 )
 import reflexive.extract_rutracker_installer as extract_rutracker_installer
@@ -31,6 +32,7 @@ def test_skip_existing_extracted_root_avoids_reextract(tmp_path: Path, monkeypat
         force=False,
         skip_existing=True,
         archive_titles={},
+        metadata_titles={},
         unwrap_after=False,
         keep_extracted=False,
         unwrapped_output_root=None,
@@ -38,6 +40,16 @@ def test_skip_existing_extracted_root_avoids_reextract(tmp_path: Path, monkeypat
 
     assert status == SKIPPED_EXISTING
     assert called["extract"] is False
+
+
+def test_canonical_title_prefers_metadata_titles() -> None:
+    title = canonical_title(
+        Path("Around3DSetup.exe"),
+        archive_titles={"around3d": "Around 3 D"},
+        metadata_titles={"around3d": "Around 3D"},
+    )
+
+    assert title == "Around 3D"
 
 
 def test_skip_existing_reuses_extracted_tree_for_unwrap(tmp_path: Path, monkeypatch) -> None:
@@ -70,6 +82,7 @@ def test_skip_existing_reuses_extracted_tree_for_unwrap(tmp_path: Path, monkeypa
         force=False,
         skip_existing=True,
         archive_titles={},
+        metadata_titles={},
         unwrap_after=True,
         keep_extracted=False,
         unwrapped_output_root=unwrapped_root,
@@ -104,6 +117,7 @@ def test_skip_existing_reuses_extracted_tree_with_nested_skips(tmp_path: Path, m
         force=False,
         skip_existing=True,
         archive_titles={},
+        metadata_titles={},
         unwrap_after=True,
         keep_extracted=True,
         unwrapped_output_root=unwrapped_root,

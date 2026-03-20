@@ -4,7 +4,6 @@ import argparse
 import json
 import random
 import re
-import struct
 import subprocess
 import sys
 import time
@@ -18,6 +17,7 @@ import pefile
 
 from .keygen import decode_payload_integer, load_entries
 from .source_layout import display_path, repo_root, infer_source_id_from_extracted_root, source_label
+from .title_metadata import extract_app_id, resolve_title_for_extracted_tree
 
 HISTORICAL_LIST_PATH = repo_root() / "artifacts" / "rutracker" / "_Crack" / "listkg_1421_by_russiankid" / "list.txt"
 
@@ -28,7 +28,6 @@ except ImportError:
 
 
 KEY_DATA_RE = re.compile(rb"Decryption Key Data=([A-Z0-9])(/([A-Z0-9]+))")
-APP_ID_HEX_RE = re.compile(rb"[0-9A-Fa-f]{8}")
 MSIEVE_FACTOR_RE = re.compile(r"^(?:p|prp|c)\d+:\s+(\d+)$", re.IGNORECASE)
 FIXED_EXPONENT_BLOB = "CAAB"
 MILLER_RABIN_BASES = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37)
@@ -63,6 +62,7 @@ class HistoricalListEntry:
 @dataclass(frozen=True)
 class ScannedKeyRecord:
     game_name_guess: str
+    game_name_source: str | None
     dll_path: str
     app_id: int | None
     key_material: EmbeddedKeyMaterial | None
@@ -96,6 +96,7 @@ class FactorWorkItem:
 @dataclass(frozen=True)
 class KeyInventoryRecord:
     game_name_guess: str
+    game_name_source: str | None
     dll_path: str
     app_id: int | None
     app_id_hex: str | None
@@ -183,78 +184,6 @@ def extract_embedded_key_material(data: bytes) -> tuple[EmbeddedKeyMaterial | No
         ),
         errors,
     )
-
-
-def parse_export_rva(pe: pefile.PE, export_name: str) -> int | None:
-    pe.parse_data_directories(directories=[pefile.DIRECTORY_ENTRY["IMAGE_DIRECTORY_ENTRY_EXPORT"]])
-    directory = getattr(pe, "DIRECTORY_ENTRY_EXPORT", None)
-    if directory is None:
-        return None
-    target = export_name.encode("ascii")
-    for symbol in directory.symbols:
-        if symbol.name == target:
-            return symbol.address
-    return None
-
-
-def follow_unconditional_jumps(pe: pefile.PE, data: bytes, rva: int, max_hops: int = 8) -> int:
-    current = rva
-    for _ in range(max_hops):
-        offset = pe.get_offset_from_rva(current)
-        opcode = data[offset]
-        if opcode == 0xE9 and offset + 5 <= len(data):
-            displacement = struct.unpack_from("<i", data, offset + 1)[0]
-            current = current + 5 + displacement
-            continue
-        if opcode == 0xEB and offset + 2 <= len(data):
-            displacement = struct.unpack_from("<b", data, offset + 1)[0]
-            current = current + 2 + displacement
-            continue
-        break
-    return current
-
-
-def va_to_offset(pe: pefile.PE, va: int) -> int:
-    rva = va - pe.OPTIONAL_HEADER.ImageBase
-    if rva < 0:
-        raise pefile.PEFormatError(f"virtual address before image base: 0x{va:X}")
-    return pe.get_offset_from_rva(rva)
-
-
-def read_c_string(data: bytes, offset: int) -> bytes:
-    end = data.find(b"\x00", offset)
-    if end == -1:
-        end = len(data)
-    return data[offset:end]
-
-
-def extract_app_id(path: Path) -> tuple[int | None, list[str]]:
-    errors: list[str] = []
-    data = path.read_bytes()
-    try:
-        pe = pefile.PE(data=data, fast_load=True)
-    except pefile.PEFormatError as exc:
-        return None, [f"invalid PE: {exc}"]
-    rva = parse_export_rva(pe, "unittest_GetBrandedApplicationID")
-    if rva is None:
-        return None, ["missing unittest_GetBrandedApplicationID export"]
-
-    target_rva = follow_unconditional_jumps(pe, data, rva)
-    offset = pe.get_offset_from_rva(target_rva)
-    window = data[offset : offset + 0x30]
-    for index in range(max(0, len(window) - 5)):
-        if window[index] != 0x68:
-            continue
-        string_va = struct.unpack_from("<I", window, index + 1)[0]
-        try:
-            string_offset = va_to_offset(pe, string_va)
-        except pefile.PEFormatError:
-            continue
-        candidate = read_c_string(data, string_offset)
-        if APP_ID_HEX_RE.fullmatch(candidate):
-            return int(candidate.decode("ascii"), 16), errors
-
-    return None, ["could not locate pushed branded application id string"]
 
 
 def is_probable_prime(value: int) -> bool:
@@ -514,6 +443,7 @@ def factor_modulus(
 
 def scan_record(
     dll_path: Path,
+    extracted_root: Path,
     entries_by_id: dict[int, object],
     historical_entries: dict[tuple[int, str], HistoricalListEntry],
 ) -> ScannedKeyRecord:
@@ -529,8 +459,19 @@ def scan_record(
         historical_entry = historical_entries.get((app_id, key_material.modulus_hex.upper()))
 
     list_entry = entries_by_id.get(app_id) if app_id is not None else None
+    try:
+        relative = dll_path.resolve().relative_to(extracted_root.resolve())
+        title_root = extracted_root.resolve() / relative.parts[0]
+    except ValueError:
+        title_root = dll_path.parent.parent
+    title_resolution = resolve_title_for_extracted_tree(
+        title_root,
+        entries_by_id=entries_by_id,
+        fallback_title=title_root.name,
+    )
     return ScannedKeyRecord(
-        game_name_guess=dll_path.parent.parent.name,
+        game_name_guess=title_resolution.title or title_root.name,
+        game_name_source=title_resolution.source,
         dll_path=display_path(dll_path),
         app_id=app_id,
         key_material=key_material,
@@ -680,6 +621,7 @@ def build_record(
 
     return KeyInventoryRecord(
         game_name_guess=scanned_record.game_name_guess,
+        game_name_source=scanned_record.game_name_source,
         dll_path=scanned_record.dll_path,
         app_id=scanned_record.app_id,
         app_id_hex=f"{scanned_record.app_id:08X}" if scanned_record.app_id is not None else None,
@@ -979,7 +921,7 @@ def main() -> int:
     if args.limit is not None:
         dll_paths = dll_paths[: args.limit]
 
-    scanned_records = [scan_record(dll_path, entries, historical_entries) for dll_path in dll_paths]
+    scanned_records = [scan_record(dll_path, extracted_root, entries, historical_entries) for dll_path in dll_paths]
     factor_cache = args.factor_cache
     if factor_cache is None and source_id is not None and (args.verify_known or not args.skip_factor):
         factor_cache = default_factor_cache_path(source_id)

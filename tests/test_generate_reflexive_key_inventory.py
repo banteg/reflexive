@@ -6,6 +6,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import reflexive.key_inventory as key_inventory
+import reflexive.title_metadata as title_metadata
 from reflexive.key_inventory import EmbeddedKeyMaterial
 from reflexive.key_inventory import FactorCacheEntry, HistoricalListEntry, ScannedKeyRecord
 from reflexive.key_inventory import build_record, derive_private_exponent, extract_embedded_key_material
@@ -64,13 +65,40 @@ def test_extract_app_id_uses_in_memory_pe_parse(tmp_path: Path, monkeypatch) -> 
         seen["kwargs"] = kwargs
         return DummyPE()
 
-    monkeypatch.setattr(key_inventory.pefile, "PE", fake_pe)
+    monkeypatch.setattr(title_metadata.pefile, "PE", fake_pe)
     app_id, errors = key_inventory.extract_app_id(dll_path)
 
     assert app_id == 170
     assert errors == []
     assert seen["args"] == ()
     assert seen["kwargs"] == {"data": dll_bytes, "fast_load": True}
+
+
+def test_scan_record_uses_top_level_metadata_root(tmp_path: Path, monkeypatch) -> None:
+    extracted_root = tmp_path / "extracted"
+    dll_path = extracted_root / "Gekko Mahjong" / "Data" / "System" / "ReflexiveArcade" / "ReflexiveArcade.dll"
+    dll_path.parent.mkdir(parents=True)
+    dll_path.write_bytes(b"dll")
+    seen: dict[str, object] = {}
+
+    monkeypatch.setattr(key_inventory, "extract_app_id", lambda path: (170, []))
+    monkeypatch.setattr(key_inventory, "extract_embedded_key_material", lambda data: (None, []))
+
+    def fake_resolve_title_for_extracted_tree(root: Path, *, entries_by_id, fallback_title):
+        seen["root"] = root
+        seen["fallback_title"] = fallback_title
+        return title_metadata.TitleResolution("Gekko Mahjong", "raw_002_config")
+
+    monkeypatch.setattr(key_inventory, "resolve_title_for_extracted_tree", fake_resolve_title_for_extracted_tree)
+
+    scanned = key_inventory.scan_record(dll_path, extracted_root, {}, {})
+
+    assert scanned.game_name_guess == "Gekko Mahjong"
+    assert scanned.game_name_source == "raw_002_config"
+    assert seen == {
+        "root": (extracted_root / "Gekko Mahjong").resolve(),
+        "fallback_title": "Gekko Mahjong",
+    }
 
 
 def test_load_historical_private_entries(tmp_path: Path) -> None:
@@ -129,6 +157,7 @@ def test_build_record_verifies_historical_entry() -> None:
     )
     scanned = ScannedKeyRecord(
         game_name_guess="5 Spots",
+        game_name_source="embedded_app_id_list",
         dll_path="artifacts/extracted/rutracker/5 Spots/ReflexiveArcade/ReflexiveArcade.dll",
         app_id=170,
         key_material=material,
@@ -180,6 +209,7 @@ def test_build_record_uses_factored_override_for_invalid_historical_entry() -> N
     )
     scanned = ScannedKeyRecord(
         game_name_guess="5 Spots",
+        game_name_source="embedded_app_id_list",
         dll_path="artifacts/extracted/rutracker/5 Spots/ReflexiveArcade/ReflexiveArcade.dll",
         app_id=170,
         key_material=material,

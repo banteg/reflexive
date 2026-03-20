@@ -39,6 +39,7 @@ def test_build_rows_classifies_kept_replaced_and_added() -> None:
             {
                 "app_id": 40,
                 "game_name_guess": "Youda Camper",
+                "game_name_source": "raw_002_config",
                 "list_name": None,
                 "modulus_hex": "11",
                 "private_exponent_hex": "22",
@@ -113,6 +114,7 @@ def test_main_writes_default_source_output(tmp_path: Path) -> None:
                     {
                         "app_id": 40,
                         "game_name_guess": "Youda Camper",
+                        "game_name_source": "raw_002_config",
                         "list_name": None,
                         "modulus_hex": "11",
                         "private_exponent_hex": "22",
@@ -130,3 +132,24 @@ def test_main_writes_default_source_output(tmp_path: Path) -> None:
 
     assert exit_code == 0
     assert output_path.read_text(encoding="utf-8") == "Youda Camper|40|11|22|\n"
+
+
+def test_build_rows_prefers_raw_002_name_over_historical_list_name() -> None:
+    report = {
+        "records": [
+            {
+                "app_id": 115,
+                "game_name_guess": "Around 3D",
+                "game_name_source": "raw_002_config",
+                "list_name": "Around3 D",
+                "modulus_hex": "AA",
+                "private_exponent_hex": "BB",
+                "list_modulus_match": True,
+                "list_private_exponent_match": True,
+            }
+        ]
+    }
+
+    rows = build_rows(report)
+
+    assert [(row.game_id, row.name) for row in rows] == [(115, "Around 3D")]
