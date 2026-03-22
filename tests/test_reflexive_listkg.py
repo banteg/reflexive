@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import pytest
 
-from reflexive.keygen import build_message_bytes, generate_for_entry, ListkgEntry, parse_product_code
-from reflexive.keygen import synthesize_product_code
+from reflexive.keygen import build_message_bytes, generate_for_entry, GeneratedKey, ListkgEntry, parse_product_code
+from reflexive.keygen import render_reg, synthesize_product_code
 
 
 def test_synthesize_product_code_defaults_to_revision_a() -> None:
@@ -42,3 +42,22 @@ def test_generate_for_entry_matches_listkg_for_zuma_deluxe_sample() -> None:
 
     assert generated.registration_code == "4861598"
     assert generated.unlock_code == "FAADRAIAALEOE6PI7UV9J4AX69JPFZTIJ"
+
+
+def test_render_reg_emits_hkcu_and_both_hklm_views() -> None:
+    generated = GeneratedKey(
+        game_id=368,
+        game_name="Zuma Deluxe",
+        group_values=[1614],
+        registration_body="48615",
+        registration_code="4861598",
+        unlock_code="FAADRAIAALEOE6PI7UV9J4AX69JPFZTIJ",
+    )
+
+    registry_text = render_reg([generated])
+
+    assert "[HKEY_CURRENT_USER\\SOFTWARE\\ReflexiveArcade\\368]" in registry_text
+    assert "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\ReflexiveArcade\\368]" in registry_text
+    assert "[HKEY_LOCAL_MACHINE\\SOFTWARE\\ReflexiveArcade\\368]" in registry_text
+    assert registry_text.count("\"RegistrationCode\"=\"4861598\"") == 3
+    assert registry_text.count("\"UnlockCode\"=\"FAADRAIAALEOE6PI7UV9J4AX69JPFZTIJ\"") == 3

@@ -41,6 +41,12 @@ KEY_MATERIAL = bytes.fromhex(
 
 BASE9_DIGITS = "123456789"
 
+REGISTRY_ROOTS = (
+    r"HKEY_CURRENT_USER\SOFTWARE\ReflexiveArcade",
+    r"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ReflexiveArcade",
+    r"HKEY_LOCAL_MACHINE\SOFTWARE\ReflexiveArcade",
+)
+
 
 @dataclass
 class ListkgEntry:
@@ -343,12 +349,11 @@ def generate_for_entry(entry: ListkgEntry, group_values: list[int]) -> Generated
 def render_reg(entries: Iterable[GeneratedKey]) -> str:
     lines = ["Windows Registry Editor Version 5.00", ""]
     for item in entries:
-        lines.append(f"[HKEY_LOCAL_MACHINE\\SOFTWARE\\ReflexiveArcade\\{item.game_id}]")
-        lines.append(f"\"RegistrationCode\"=\"{item.registration_code}\"")
-        lines.append("")
-        lines.append(f"[HKEY_LOCAL_MACHINE\\SOFTWARE\\ReflexiveArcade\\{item.game_id}]")
-        lines.append(f"\"UnlockCode\"=\"{item.unlock_code}\"")
-        lines.append("")
+        for registry_root in REGISTRY_ROOTS:
+            lines.append(f"[{registry_root}\\{item.game_id}]")
+            lines.append(f"\"RegistrationCode\"=\"{item.registration_code}\"")
+            lines.append(f"\"UnlockCode\"=\"{item.unlock_code}\"")
+            lines.append("")
     return "\r\n".join(lines) + "\r\n"
 
 
