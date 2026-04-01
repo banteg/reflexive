@@ -11,6 +11,8 @@ This project provides tools to make those games playable again:
 
 ## Installation
 
+Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/) first.
+
 Install as a tool:
 
 ```
@@ -28,6 +30,8 @@ uv run reflexive --help
 ## Usage
 
 ### Extract installers
+
+Installer extraction requires [`innoextract`](https://constexpr.org/innoextract/install/) to unpack the recovered inner Inno Setup payload.
 
 Download a single original Reflexive installer from the mirror:
 
