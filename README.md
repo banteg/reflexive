@@ -31,7 +31,7 @@ uv run reflexive --help
 
 ### Extract installers
 
-Installer extraction requires [`innoextract`](https://constexpr.org/innoextract/install/) to unpack the recovered inner Inno Setup payload.
+Installer extraction requires [`innoextract`](https://constexpr.org/innoextract/) to unpack the recovered inner Inno Setup payload.
 
 Download a single original Reflexive installer from the mirror:
 
