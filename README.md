@@ -4,7 +4,7 @@ Game preservation toolkit for [Reflexive Arcade](https://en.wikipedia.org/wiki/R
 
 This project provides tools to make those games playable again:
 
-- Recovered RSA key material for 1,653 RuTracker titles
+- Recovered RSA key material for 1,653 Reflexive titles
 - A static unwrapper that extracts bare game executables from Reflexive wrappers
 - An exe patcher that bypasses the registration shell in-place
 - A keygen that generates valid registration and unlock codes
