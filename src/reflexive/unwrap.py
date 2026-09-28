@@ -16,6 +16,8 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import pefile
+from capstone import CS_ARCH_X86, CS_MODE_32, Cs
+
 from . import wrapper_versions
 from .source_layout import display_path, repo_root, infer_source_id_from_extracted_root
 from .source_layout import unwrapped_root as source_unwrapped_root
@@ -24,6 +26,47 @@ from .source_layout import unwrapped_root as source_unwrapped_root
 MASK32 = 0xFFFFFFFF
 STATE_WORDS = 250
 NATIVE_ENTRY_SKIP = 5
+# Only wrapper builds that leave the first entrypoint bytes in plaintext carry this error string.
+NATIVE_ENTRY_SKIP_MARKER = b"The Code Section is not long enough to encode with some initial skip bytes"
+CODE_CHECK_WINDOW = 0x1000
+MAX_X86_INSTRUCTION_SIZE = 15
+MAX_IMPLAUSIBLE_INSTRUCTION_RATIO = 0.05
+# Instructions that compiled user-mode code practically never contains but decode often from random bytes.
+IMPLAUSIBLE_X86_MNEMONICS = frozenset(
+    {
+        ".byte",
+        "aaa",
+        "aad",
+        "aam",
+        "aas",
+        "arpl",
+        "bound",
+        "cli",
+        "daa",
+        "das",
+        "hlt",
+        "in",
+        "insb",
+        "insd",
+        "insw",
+        "int",
+        "int1",
+        "into",
+        "iret",
+        "iretd",
+        "lcall",
+        "lds",
+        "les",
+        "ljmp",
+        "out",
+        "outsb",
+        "outsd",
+        "outsw",
+        "retf",
+        "salc",
+        "sti",
+    }
+)
 UTILITY_EXE_NAMES = {
     "controls.exe",
     "config.exe",
@@ -330,16 +373,46 @@ def looks_like_decrypted_config(data: bytes) -> bool:
     return b"Application Name=" in data and b"Demo Time Seconds=" in data
 
 
-def looks_like_native_entrypoint(data: bytes) -> bool:
-    if len(data) < 16:
-        return False
-    if data[0] not in {0x51, 0x53, 0x55, 0x56, 0x57, 0x6A, 0x81, 0x83, 0x8B}:
-        return False
-    if 0xE8 not in data[:16]:
-        return False
-    if not any(opcode in data[:32] for opcode in (0x74, 0x75, 0x84, 0x85)):
-        return False
-    return True
+def implausible_instruction_ratio(code: bytes, length: int, address: int, image_range: range) -> float:
+    disassembler = Cs(CS_ARCH_X86, CS_MODE_32)
+    disassembler.skipdata = True
+    total = 0
+    implausible = 0
+
+    for instruction_address, size, mnemonic, operands in disassembler.disasm_lite(code, address):
+        if instruction_address >= address + length:
+            break
+        total += 1
+        branches_outside_image = (
+            (mnemonic == "call" or mnemonic.startswith("j"))
+            and size >= 5
+            and operands.startswith("0x")
+            and int(operands, 16) not in image_range
+        )
+        if mnemonic in IMPLAUSIBLE_X86_MNEMONICS or branches_outside_image:
+            implausible += 1
+
+    return implausible / total
+
+
+def verify_native_entry_code(child: bytes, code_start: int, code_length: int) -> float:
+    pe = pefile.PE(data=child, fast_load=True)
+    try:
+        image_base = pe.OPTIONAL_HEADER.ImageBase
+        entry_address = image_base + pe.OPTIONAL_HEADER.AddressOfEntryPoint
+        image_range = range(image_base, image_base + pe.OPTIONAL_HEADER.SizeOfImage)
+    finally:
+        pe.close()
+
+    window = min(code_length, CODE_CHECK_WINDOW)
+    code = child[code_start : code_start + window + MAX_X86_INSTRUCTION_SIZE]
+    ratio = implausible_instruction_ratio(code, window, entry_address, image_range)
+    if ratio > MAX_IMPLAUSIBLE_INSTRUCTION_RATIO:
+        raise RuntimeError(
+            f"decrypted entrypoint code is not plausible x86 ({ratio:.0%} implausible instructions); "
+            "the child payload was decrypted with the wrong key or region"
+        )
+    return ratio
 
 
 def parse_config(data: bytes) -> dict[str, str]:
@@ -560,7 +633,11 @@ def derive_seed2(encrypted_config: bytes, config: dict[str, str]) -> int:
     return total
 
 
-def native_encrypted_region(pe: pefile.PE, short_fixed: bool) -> tuple[int, int]:
+def wrapper_entry_skip(wrapper_binary: Path) -> int:
+    return NATIVE_ENTRY_SKIP if NATIVE_ENTRY_SKIP_MARKER in wrapper_binary.read_bytes() else 0
+
+
+def native_encrypted_region(pe: pefile.PE, short_fixed: bool, entry_skip: int) -> tuple[int, int]:
     entrypoint = pe.OPTIONAL_HEADER.AddressOfEntryPoint
 
     for section in pe.sections:
@@ -583,9 +660,9 @@ def native_encrypted_region(pe: pefile.PE, short_fixed: bool) -> tuple[int, int]
             if decrypt_length < 0x80:
                 raise RuntimeError("short native encrypted region is smaller than 0x80 bytes")
             decrypt_length = 0x80
-        if decrypt_length <= NATIVE_ENTRY_SKIP:
+        if decrypt_length <= entry_skip:
             raise RuntimeError("native encrypted region is too short after entrypoint skip")
-        return raw_start + NATIVE_ENTRY_SKIP, decrypt_length - NATIVE_ENTRY_SKIP
+        return raw_start + entry_skip, decrypt_length - entry_skip
 
     raise RuntimeError("unable to locate entrypoint section for child payload")
 
@@ -616,25 +693,33 @@ def dotnet_encrypted_region(pe: pefile.PE) -> tuple[int, int]:
 def decrypt_empty_config_child(strategy: Strategy) -> tuple[bytes, dict[str, Any]]:
     assert strategy.child_payload is not None
     assert strategy.config_path is not None
+    assert strategy.wrapper_binary is not None
 
+    entry_skip = wrapper_entry_skip(strategy.wrapper_binary)
     child_bytes = bytearray(strategy.child_payload.read_bytes())
     pe = pefile.PE(data=bytes(child_bytes), fast_load=True)
     try:
-        region_start, region_length = native_encrypted_region(pe, False)
+        region_start, region_length = native_encrypted_region(pe, False, entry_skip)
     finally:
         pe.close()
     decrypted_region = decrypt_with_stream(bytes(child_bytes[region_start : region_start + region_length]), 0)
-    if not looks_like_native_entrypoint(decrypted_region[:64]):
-        raise RuntimeError(f"empty RAW_002 fallback did not yield a plausible entrypoint for {strategy.child_payload}")
     child_bytes[region_start : region_start + region_length] = decrypted_region
+    try:
+        code_check_ratio = verify_native_entry_code(
+            bytes(child_bytes), region_start - entry_skip, region_length + entry_skip
+        )
+    except RuntimeError as exc:
+        raise RuntimeError(f"empty RAW_002 fallback failed for {strategy.child_payload}: {exc}") from exc
     return bytes(child_bytes), {
         "seed1": None,
         "seed2": 0,
         "dependency_paths": [],
         "child_payload": str(strategy.child_payload),
         "config_path": str(strategy.config_path),
+        "entry_skip": entry_skip,
         "region_start": region_start,
         "region_length": region_length,
+        "code_check_ratio": code_check_ratio,
         "config_fallback": "empty_raw_002_seed0_native",
     }
 
@@ -642,6 +727,7 @@ def decrypt_empty_config_child(strategy: Strategy) -> tuple[bytes, dict[str, Any
 def decrypt_static_child(wrapper_root: Path, strategy: Strategy) -> tuple[bytes, dict[str, Any]]:
     assert strategy.child_payload is not None
     assert strategy.config_path is not None
+    assert strategy.wrapper_binary is not None
 
     if strategy.config_path.stat().st_size == 0:
         return decrypt_empty_config_child(strategy)
@@ -653,15 +739,17 @@ def decrypt_static_child(wrapper_root: Path, strategy: Strategy) -> tuple[bytes,
         strategy.wrapper_binary,
     )
     config = parse_config(seed_material.decrypted_config)
+    is_dotnet = config_flag(config, "Is .NET Executable")
+    entry_skip = 0 if is_dotnet else wrapper_entry_skip(strategy.wrapper_binary)
 
     child_bytes = bytearray(strategy.child_payload.read_bytes())
     pe = pefile.PE(data=bytes(child_bytes), fast_load=True)
     try:
-        if config_flag(config, "Is .NET Executable"):
+        if is_dotnet:
             region_start, region_length = dotnet_encrypted_region(pe)
         else:
             region_start, region_length = native_encrypted_region(
-                pe, config_flag(config, "Game Needs Short Fixed Encryption")
+                pe, config_flag(config, "Game Needs Short Fixed Encryption"), entry_skip
             )
     finally:
         pe.close()
@@ -669,6 +757,14 @@ def decrypt_static_child(wrapper_root: Path, strategy: Strategy) -> tuple[bytes,
     seed2 = derive_seed2(encrypted_config, config)
     decrypted_region = decrypt_with_stream(bytes(child_bytes[region_start : region_start + region_length]), seed2)
     child_bytes[region_start : region_start + region_length] = decrypted_region
+    code_check_ratio = None
+    if not is_dotnet:
+        try:
+            code_check_ratio = verify_native_entry_code(
+                bytes(child_bytes), region_start - entry_skip, region_length + entry_skip
+            )
+        except RuntimeError as exc:
+            raise RuntimeError(f"static unwrap failed for {strategy.child_payload}: {exc}") from exc
     return bytes(child_bytes), {
         "seed1": seed_material.seed1,
         "seed2": seed2,
@@ -676,8 +772,10 @@ def decrypt_static_child(wrapper_root: Path, strategy: Strategy) -> tuple[bytes,
         "seed_method": seed_material.method,
         "child_payload": str(strategy.child_payload),
         "config_path": str(strategy.config_path),
+        "entry_skip": entry_skip,
         "region_start": region_start,
         "region_length": region_length,
+        "code_check_ratio": code_check_ratio,
     }
 
 
@@ -686,17 +784,14 @@ def probe_static_child(wrapper_root: Path, strategy: Strategy) -> dict[str, Any]
     return summary
 
 
-def static_unwrap_child(wrapper_root: Path, strategy: Strategy, output_executable: Path) -> dict[str, Any]:
+def write_static_child(strategy: Strategy, child_bytes: bytes, output_executable: Path) -> None:
     assert strategy.wrapper_binary is not None
-    child_bytes, summary = decrypt_static_child(wrapper_root, strategy)
     output_executable.write_bytes(child_bytes)
 
     try:
         output_executable.chmod(strategy.wrapper_binary.stat().st_mode)
     except OSError:
         pass
-
-    return summary
 
 
 def materialize_record(
@@ -734,15 +829,20 @@ def materialize_record(
             return summary
         if not force:
             raise RuntimeError(f"{destination_root} already exists; pass --force to replace it")
-        shutil.rmtree(destination_root)
 
+    # Decrypt before touching the destination so a failed unwrap never leaves a tree that looks finished.
+    static_child = decrypt_static_child(wrapper_root, strategy) if strategy.kind == "static" else None
+
+    if destination_root.exists():
+        shutil.rmtree(destination_root)
     destination_root.mkdir(parents=True, exist_ok=True)
     copy_support_tree(wrapper_root, destination_root, strategy, wrapper_paths)
 
-    if strategy.kind == "static":
+    if static_child is not None:
         assert strategy.output_executable_name is not None
+        child_bytes, static_summary = static_child
         output_executable = destination_root / strategy.output_executable_name
-        static_summary = static_unwrap_child(wrapper_root, strategy, output_executable)
+        write_static_child(strategy, child_bytes, output_executable)
         summary["status"] = "ok"
         summary["wrapper_binary"] = None if strategy.wrapper_binary is None else str(strategy.wrapper_binary)
         summary["output_executable"] = str(output_executable)
