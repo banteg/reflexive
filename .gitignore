@@ -1,3 +1,5 @@
 artifacts/*
 !artifacts/sources/
 artifacts/sources/*
+__pycache__/
+*.py[cod]
