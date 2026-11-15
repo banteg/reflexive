@@ -38,6 +38,7 @@ SKIPPED_EXISTING = "skipped_existing"
 EXTRACTED_ONLY = "extracted"
 UNWRAPPED_FRESH = "unwrapped_fresh"
 UNWRAPPED_REUSED_EXTRACTED = "unwrapped_reused_extracted"
+INVALID_WINDIR_CHARS = re.compile(r'[<>:"/\\|?*\x00-\x1f]')
 
 def default_archive_extracted_root() -> Path:
     return source_extracted_root("archive")
@@ -94,6 +95,11 @@ def collect_archive_titles(extracted_root: Path) -> dict[str, str]:
     return titles
 
 
+def safe_dirname(name: str) -> str:
+    dirname = INVALID_WINDIR_CHARS.sub(" -", name)
+    dirname = " ".join(dirname.split()).rstrip(". ")
+    return dirname or "unnamed"
+
 def canonical_title(
     installer_path: Path,
     archive_titles: dict[str, str],
@@ -104,8 +110,8 @@ def canonical_title(
         stem = stem[:-5]
     normalized = normalize_title(installer_path.name)
     if metadata_titles is not None and normalized in metadata_titles:
-        return metadata_titles[normalized]
-    return archive_titles.get(normalized, humanize_stem(stem))
+        return safe_dirname(metadata_titles[normalized])
+    return safe_dirname(archive_titles.get(normalized, humanize_stem(stem)))
 
 
 def parse_outer_entries(installer_path: Path) -> tuple[bytes, list[OuterEntry]]:
